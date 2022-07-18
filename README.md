@@ -3,7 +3,7 @@
 Group solution to the Kaggle problem titled "Natural Language Processing with Disaster Tweets". The problem is to classify text data from 10,000 tweets into one of two groups: representing tweets about real natural disaster (1), tweets that are not about actual disaster (0).
 
 ## Contents
-* [Go to Real Cool Heading section](#🔗-real-cool-heading)
+* [Go to Real Cool Heading section](#🔗real-cool-heading)
 
 
 
@@ -80,7 +80,7 @@ Description of tip 1.
 
 Description of warning 1.
 
-# 🔗 Real Cool Heading
+# 🔗Real Cool Heading
 
 
 
