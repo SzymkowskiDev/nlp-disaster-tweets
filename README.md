@@ -8,8 +8,20 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 ## 🎓 Learning Materials
 * A WONDERFUL BOOK ON THE BASICS OF NLP [Npeech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
 * [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
-* 
+
+## 📅 Development schedule
+**Version 1.0.0**
+
+- [ ] Solution to the Kaggle problem as a Jupyter notebook
+
+**Version 2.0.0**
+
+- [ ] Deployment of a blank dashboard
+- [ ] Web app representing the solution to the problem
+
 ## 🚀 How to run
+In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and running it.
+To run a Jupyter notebook with Anaconda distribution download the Anaconda suite from https://www.anaconda.com/.
 
 ## Contents
 Table of contents goes here
@@ -40,19 +52,6 @@ Sth
 
 ## 📂 Directory Structure
 Sth
-
-## 📅 Release schedule / Development schedule / Plans / TODOs
-**Version 1.0.0**
-
-- [x] Feature 1
-- [x] Feature 2
-- [x] Feature 3
-
-**Version 2.0.0**
-
-- [ ] Feature 4
-- [ ] Feature 5
-- [ ] Feature 6
 
 ## 🆕 Changelog
 A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.
