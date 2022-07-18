@@ -4,38 +4,25 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 
 ## Contents
 1. [🚀 How to run](#-How-to-run)
-2. [](#-real-cool-heading)
-3. [](#-real-cool-heading)
-4. [](#-real-cool-heading)
-5. [](#-real-cool-heading)
-6. [](#-real-cool-heading)
-7. [](#-real-cool-heading)
-8. [](#-real-cool-heading)
-9. [](#-real-cool-heading)
+2. [👨‍💻 Contributing](#-Contributing)
+3. [📂 Directory Structure](#-Directory-Structure)
+4. [🔗Related Projects](#-Related-Projects)
+5. [🎓 Learning Materials](#-Learning-Materials)
+6. [📅 Development Schedule](#-Development-Schedule)
+7. [🆕 Changelog](#-Changelog)
+8. [🤖 Stack](#-Stack)
+9. [⭐ Features](#-Features)
+10. [📝 Examples](#-Examples)
+11. [⚙ Configurations](#-Configurations)
+12. [💡 Tips](#-Tips)
+13. [🚧 Warnings](#-Warnings)
+14. [🧰 Troubleshooting](#-Troubleshooting)
+15. [📧 Contact](#-Contact)
+16. [📄 License](#-License)
 
 ## 🚀 How to run
 In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and running it.
 To run a Jupyter notebook with Anaconda distribution download the Anaconda suite from https://www.anaconda.com/.
-
-## 🔗Related Projects
-* Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
-
-## 🎓 Learning Materials
-* A WONDERFUL BOOK ON THE BASICS OF NLP [Npeech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
-* [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
-
-## 📅 Development schedule
-**Version 1.0.0**
-
-- [ ] Solution to the Kaggle problem as a Jupyter notebook
-
-**Version 2.0.0**
-
-- [ ] Deployment of a blank dashboard
-- [ ] Web app representing the solution to the problem
-
-## 🆕 Changelog
-A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.
 
 ## 👨‍💻 Contributing
 * [SzymkowskiDev](https://github.com/SzymkowskiDev)
@@ -51,7 +38,27 @@ A changelog is a file which contains a curated, chronologically ordered list of 
     │   ├───test.csv
     │   └───train.csv
     ├───models    
-    └───notebooks  
+    └───notebooks
+
+## 🔗Related Projects
+* Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
+
+## 🎓 Learning Materials
+* A WONDERFUL BOOK ON THE BASICS OF NLP [Npeech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+* [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
+
+## 📅 Development Schedule
+**Version 1.0.0**
+
+- [ ] Solution to the Kaggle problem as a Jupyter notebook
+
+**Version 2.0.0**
+
+- [ ] Deployment of a blank dashboard
+- [ ] Web app representing the solution to the problem
+
+## 🆕 Changelog
+A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.
 
 ## 🤖 Stack
 * Python
@@ -80,7 +87,7 @@ Sth
 
 Description of tip 1.
 
-## 🚧 Warnings / Common Errors / Known Issues
+## 🚧 Warnings
 
 ⚠️ **Warning 1**
 
