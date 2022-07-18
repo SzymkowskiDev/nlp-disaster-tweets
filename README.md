@@ -6,7 +6,7 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 1. [🚀 How to run](#-How-to-run)
 2. [👨‍💻 Contributing](#-Contributing)
 3. [📂 Directory Structure](#-Directory-Structure)
-4. [🔗Related Projects](#-Related-Projects)
+4. [🔗 Related Projects](#-Related-Projects)
 5. [🎓 Learning Materials](#-Learning-Materials)
 6. [📅 Development Schedule](#-Development-Schedule)
 7. [🆕 Changelog](#-Changelog)
@@ -40,7 +40,7 @@ To run a Jupyter notebook with Anaconda distribution download the Anaconda suite
     ├───models    
     └───notebooks
 
-## 🔗Related Projects
+## 🔗 Related Projects
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
 
 ## 🎓 Learning Materials
