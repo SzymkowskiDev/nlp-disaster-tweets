@@ -19,6 +19,9 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 - [ ] Deployment of a blank dashboard
 - [ ] Web app representing the solution to the problem
 
+## 🆕 Changelog
+A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.
+
 ## 🚀 How to run
 In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and running it.
 To run a Jupyter notebook with Anaconda distribution download the Anaconda suite from https://www.anaconda.com/.
@@ -31,11 +34,20 @@ To run a Jupyter notebook with Anaconda distribution download the Anaconda suite
 * [Pla9er9](https://github.com/Pla9er9)
 * [RafalN]()
 
-## Contents
-Table of contents goes here
+## 📂 Directory Structure
+    ├───dashboard
+    ├───data
+    │   ├───test.csv
+    │   └───train.csv
+    ├───models    
+    └───notebooks  
 
-## 📋 Requirements
-Sth.
+## 🤖 Stack
+* Python
+* scikit-learn
+
+## Contents
+[Go to Real Cool Heading section](## ⭐ Features)
 
 ## ⭐ Features
 Introductory sentance.
@@ -51,17 +63,7 @@ Description of the example.
 ```javascript
 CODE GOES HERE
 ```
-
-
-## 📦 Builds
-Sth
-
-## 📂 Directory Structure
-Sth
-
-## 🆕 Changelog
-A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.
-
+  
 ## ⚙ Configurations
 Sth
 
