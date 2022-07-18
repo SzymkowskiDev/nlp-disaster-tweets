@@ -6,7 +6,7 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 * [Go to Real Cool Heading section](##🔗a) 
 * [Go to Real Cool Heading section2](#🔗 Related Projects) 
 
-## 🔗a
+
 
 # 🔗Related Projects
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
@@ -24,6 +24,8 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 
 - [ ] Deployment of a blank dashboard
 - [ ] Web app representing the solution to the problem
+
+## 🔗a
 
 ## 🆕 Changelog
 A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.
