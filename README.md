@@ -4,6 +4,8 @@
 
 Short description.
 
+# 🚀 How to run
+
 ## Contents
 Table of contents goes here
 
