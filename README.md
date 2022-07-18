@@ -1,8 +1,13 @@
 
-# Project Title
-📊 Size, dependencies, version, code coverage
+# NLP with Disaster Tweets (group project)
+Group solution to the Kaggle problem titled "Natural Language Processing with Disaster Tweets". The problem is to classify text data from 10,000 tweets into one of two groups: representing tweets about real natural disaster (1), tweets that are not about actual disaster (0).
 
-Short description.
+## 🔗 Related Projects / Thanks / References / Acknowledgement 
+* Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
+
+## 🎓 Learning Materials
+* A WONDERFUL BOOK ON THE BASICS OF NLP [Npeech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+* Description 2 [Name 2](http://markdown.github.io)
 
 ## 🚀 How to run
 
@@ -19,18 +24,8 @@ Introductory sentance.
 
 Description of feature 1.
 
-⭐ **Feature 2**
-
-Description of feature 2.
-
 ## 📝 Examples
 **Example 1. Title**
-
-Description of the example.
-```javascript
-CODE GOES HERE
-```
-**Example 2. Title**
 
 Description of the example.
 ```javascript
@@ -70,19 +65,11 @@ Sth
 
 Description of tip 1.
 
-💭 **Tip 2**
-
-Description of tip 1.
-
 ## 🚧 Warnings / Common Errors / Known Issues
 
 ⚠️ **Warning 1**
 
 Description of warning 1.
-
-⚠️ **Warning 2**
-
-Description of warning 2.
 
 ## 🧰 Troubleshooting
 🚩 **Error 1**
@@ -90,30 +77,6 @@ Description of warning 2.
 Solution to error 1.
 
 ``` SOLUTION CODE ```
-
-🚩 **Error 2**
-
-Solution to error 2.
-
-
-``` SOLUTION CODE ```
-
-## 🚀 Upgrading
-Description.
-
-## 📖 Documentation
-Link to the wiki or external site.
-
-## 🔗 Related Projects / Thanks / References / Acknowledgement 
-* Description 1 [Name 1](http://markdown.github.io)
-* Description 2 [Name 2](http://markdown.github.io)
-* Description 3 [Name 3](http://markdown.github.io)
-
-## 🎓 Learning Materials
-* A WONDERFUL BOOK ON THE BASICS OF NLP [Npeech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
-* Description 2 [Name 2](http://markdown.github.io)
-* Description 3 [Name 3](http://markdown.github.io)
-* 
 
 ## 📧 Contact
 [![](https://img.shields.io/twitter/url?label=/SzymkowskiDev&style=social&url=https%3A%2F%2Ftwitter.com%2FSzymkowskiDev)](https://twitter.com/SzymkowskiDev) [![](https://img.shields.io/twitter/url?label=/kamil-szymkowski/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fkamil-szymkowski%2F)](https://www.linkedin.com/in/kamil-szymkowski/) [![](https://img.shields.io/twitter/url?label=@szymkowskidev&logo=medium&logoColor=%23292929&style=social&url=https%3A%2F%2Fmedium.com%2F%40szymkowskidev)](https://medium.com/@szymkowskidev) [![](https://img.shields.io/twitter/url?label=/SzymkowskiDev&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2FSzymkowskiDev)](https://github.com/SzymkowskiDev)
