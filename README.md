@@ -4,6 +4,7 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 
 ## Contents
 [Go to Real Cool Heading section](#a) 
+[Go to Real Cool Heading section](##🔗 Related Projects) 
 
 # a
 
