@@ -47,8 +47,10 @@ To run a Jupyter notebook with Anaconda distribution download the Anaconda suite
 * scikit-learn
 
 ## Contents
-[Go to Real Cool Heading section](## ⭐ Features)
-
+[Go to Real Cool Heading section](# a)
+[Go to Real Cool Heading section](#a) 
+# a
+#a
 ## ⭐ Features
 Introductory sentance.
 
