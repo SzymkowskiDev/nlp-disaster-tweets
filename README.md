@@ -80,7 +80,7 @@ Description of tip 1.
 
 Description of warning 1.
 
-# Real Cool Heading🔗
+# 🔗 Real Cool Heading
 
 
 
