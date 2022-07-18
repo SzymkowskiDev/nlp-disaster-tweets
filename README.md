@@ -3,12 +3,12 @@
 Group solution to the Kaggle problem titled "Natural Language Processing with Disaster Tweets". The problem is to classify text data from 10,000 tweets into one of two groups: representing tweets about real natural disaster (1), tweets that are not about actual disaster (0).
 
 ## Contents
-[Go to Real Cool Heading section](#🔗a) 
+[Go to Real Cool Heading section](##🔗a) 
 [Go to Real Cool Heading section](#🔗 Related Projects) 
 
-# 🔗a
+## 🔗a
 
-## 🔗 Related Projects
+# 🔗 Related Projects
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
 
 ## 🎓 Learning Materials
