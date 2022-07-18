@@ -7,7 +7,8 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 
 ## 🎓 Learning Materials
 * A WONDERFUL BOOK ON THE BASICS OF NLP [Npeech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
-
+* [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
+* 
 ## 🚀 How to run
 
 ## Contents
