@@ -3,11 +3,21 @@
 Group solution to the Kaggle problem titled "Natural Language Processing with Disaster Tweets". The problem is to classify text data from 10,000 tweets into one of two groups: representing tweets about real natural disaster (1), tweets that are not about actual disaster (0).
 
 ## Contents
-* [Go to Real Cool Heading section](#-real-cool-heading)
+1. [🚀 How to run](#-How-to-run)
+2. [](#-real-cool-heading)
+3. [](#-real-cool-heading)
+4. [](#-real-cool-heading)
+5. [](#-real-cool-heading)
+6. [](#-real-cool-heading)
+7. [](#-real-cool-heading)
+8. [](#-real-cool-heading)
+9. [](#-real-cool-heading)
 
+## 🚀 How to run
+In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and running it.
+To run a Jupyter notebook with Anaconda distribution download the Anaconda suite from https://www.anaconda.com/.
 
-
-# 🔗Related Projects
+## 🔗Related Projects
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
 
 ## 🎓 Learning Materials
@@ -26,10 +36,6 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 
 ## 🆕 Changelog
 A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.
-
-## 🚀 How to run
-In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and running it.
-To run a Jupyter notebook with Anaconda distribution download the Anaconda suite from https://www.anaconda.com/.
 
 ## 👨‍💻 Contributing
 * [SzymkowskiDev](https://github.com/SzymkowskiDev)
@@ -79,10 +85,6 @@ Description of tip 1.
 ⚠️ **Warning 1**
 
 Description of warning 1.
-
-## 🔗 Real Cool Heading
-
-
 
 ## 🧰 Troubleshooting
 🚩 **Error 1**
