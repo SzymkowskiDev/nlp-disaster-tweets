@@ -3,8 +3,7 @@
 Group solution to the Kaggle problem titled "Natural Language Processing with Disaster Tweets". The problem is to classify text data from 10,000 tweets into one of two groups: representing tweets about real natural disaster (1), tweets that are not about actual disaster (0).
 
 ## Contents
-* [Go to Real Cool Heading section](##🔗a) 
-* [Go to Real Cool Heading section2](#🔗 Related Projects) 
+* [Go to Real Cool Heading section](#real-cool-heading)
 
 
 
@@ -24,8 +23,6 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 
 - [ ] Deployment of a blank dashboard
 - [ ] Web app representing the solution to the problem
-
-## 🔗a
 
 ## 🆕 Changelog
 A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project.
@@ -82,6 +79,10 @@ Description of tip 1.
 ⚠️ **Warning 1**
 
 Description of warning 1.
+
+#Real Cool Heading
+
+
 
 ## 🧰 Troubleshooting
 🚩 **Error 1**
