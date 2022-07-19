@@ -30,7 +30,7 @@ To run a Jupyter notebook with Anaconda distribution download the Anaconda suite
 * [laplasjan](https://github.com/laplasjan)
 * [DarKovPl](https://github.com/DarKovPl)
 * [Pla9er9](https://github.com/Pla9er9)
-* [RafalN]()
+* [PanNorek](https://github.com/PanNorek)
 
 ## 📂 Directory Structure
     ├───dashboard
