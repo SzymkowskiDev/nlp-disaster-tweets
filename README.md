@@ -24,6 +24,12 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and running it.
 To run a Jupyter notebook with Anaconda distribution download the Anaconda suite from https://www.anaconda.com/.
 
+### Setup
+<li>Create a virtual environment using <code> virtualenv venv </code>
+<li>Activate the virtual environment by running <code> venv/bin/activate </code>
+<li>On Windows use <code> venv\Scripts\activate.bat </code>
+<li>Install the dependencies using <code> pip install -r requirements.txt </code>
+
 ## 👨‍💻 Contributing
 * [SzymkowskiDev](https://github.com/SzymkowskiDev)
 * [OlegTkachenkoY](https://github.com/OlegTkachenkoY)
