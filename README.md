@@ -21,8 +21,8 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 16. [📄 License](#-License)
 
 ## 🚀 How to run
-In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and running it.
-To run a Jupyter notebook with Anaconda distribution download the Anaconda suite from https://www.anaconda.com/.
+In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and launching it with Jupyter.
+Jupyter is available for download as a part of Anaconda suite from https://www.anaconda.com/.
 
 When feeding a Jupyter notebook with data, use data provided in directory "train_split" [here](https://github.com/SzymkowskiDev/nlp-disaster-tweets/tree/master/data/train_split).
 
