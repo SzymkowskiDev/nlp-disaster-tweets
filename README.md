@@ -11,7 +11,7 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 6. [📅 Development Schedule](#-Development-Schedule)
 7. [🆕 Changelog](#-Changelog)
 8. [🤖 Stack](#-Stack)
-9. [⭐ Features](#-Features)
+9. [⭐ Theory](#-Theory)
 10. [📝 Examples](#-Examples)
 11. [⚙ Configurations](#-Configurations)
 12. [💡 Tips](#-Tips)
@@ -71,12 +71,19 @@ A changelog is a file which contains a curated, chronologically ordered list of 
 * Python
 * scikit-learn
 
-## ⭐ Features
-Introductory sentance.
+## ⭐ Theory
+This section deals with the theory behind NLP classification relevant to our twitter data.
 
-⭐ **Feature 1**
+⭐ **Choosing data preprocessing method**
 
-Description of feature 1.
+Machines cannot understand characters and words. So when dealing with text data we need to represent it in numbers to be understood by the machine. Countvectorizer is a method to convert text to numerical data.
+    
+* CountVectorizer from scikit learn module
+* tf–idf ["Td-idf is a better method to vectorize data"](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
+    
+⭐ **Choice of a classifier**
+    
+* linear_model.RidgeClassifier()
 
 ## 📝 Examples
 **Example 1. Title**
