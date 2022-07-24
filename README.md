@@ -52,6 +52,7 @@ To run a Jupyter notebook with Anaconda distribution download the Anaconda suite
 ## 🎓 Learning Materials
 * A WONDERFUL BOOK ON THE BASICS OF NLP [Npeech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
 * [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
+* How does CountVectorizer work? [towardsdatascience.com article](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
 
 ## 📅 Development Schedule
 **Version 1.0.0**
