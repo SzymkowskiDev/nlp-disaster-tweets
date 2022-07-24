@@ -41,8 +41,13 @@ To run a Jupyter notebook with Anaconda distribution download the Anaconda suite
 ## 📂 Directory Structure
     ├───dashboard
     ├───data
-    │   ├───test.csv
-    │   └───train.csv
+    │   └───original
+    │   │   ├───test.csv
+    │   │   └───train.csv
+    │   └───train_split
+    │       ├───python
+    │       ├───test_new.csv
+    │       └───train_new.csv
     ├───models    
     └───notebooks
 
