@@ -76,6 +76,7 @@ A changelog is a file which contains a curated, chronologically ordered list of 
 
 ## 🤖 Stack
 * Python
+* pandas
 * scikit-learn
 
 ## ⭐ Theory
