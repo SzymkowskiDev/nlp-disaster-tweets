@@ -62,7 +62,9 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 
 ## 🎓 Learning Materials
 ❗ More resources are available on Team's google drive: discordnlp7@gmail.com, ask a team member for password ❗
-❗ Also check [the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
+    
+❗ Also check [the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki) ❗
+    
 * A wonderful book on the basics of NLP ["Speech and Language Processing"](https://web.stanford.edu/~jurafsky/slp3/)
 * Kaggle's introductory tutorial to NLP [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
 * How does CountVectorizer work? [towardsdatascience.com article](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
@@ -94,6 +96,7 @@ A changelog is a file which contains a curated, chronologically ordered list of 
 * Python
 * pandas
 * scikit-learn
+* nltk
 
 ## ⭐ Theory
 This section deals with the theory behind NLP classification relevant to our twitter data.
