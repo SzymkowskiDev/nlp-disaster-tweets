@@ -5,6 +5,7 @@ import pandas as pd
 import sklearn 
 from sklearn.model_selection import train
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 df= train.csv
 y= df['disaster'] #label
 X_train, X-test, y_train, y_test= train_test_split(
