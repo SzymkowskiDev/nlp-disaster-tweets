@@ -3,17 +3,18 @@
 
 import pandas as pd
 import sklearn 
-from sklearn.model_selection import train
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
+
 df= train.csv
 y= df['disaster'] #label
-X_train, X-test, y_train, y_test= train_test_split(
+X_train, X-test, y_train, y_test== train_test_split(
                                     df['plot'], y,
                                     test_size= 0.33 
                                     random_state= 53) #random seeds
     #sci-kit learn test function splits
-count_vectorizer = CountVectorizer(stop_worlds= 'english')
+    
+count_vectorizer = CountVectorizer(stop_words= 'english')
 count_train = count_vectorizer.fit_transform(X_train.values)
 count_test = count_vectorizer.transform(X_test.values)
 print(count_vectorizer.get_feature_names()[:10])
