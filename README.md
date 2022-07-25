@@ -80,7 +80,8 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     - [ ] Exploratory Data Analysis
     - [ ] Comparison of preprocessors (vectorizers)
     - [ ] Testing influence of data pre preprocessing methods
-
+    - [ ] Assembling a better model
+    
 **Version 2.0.0**
 
 - [ ] Deployment of a blank dashboard
