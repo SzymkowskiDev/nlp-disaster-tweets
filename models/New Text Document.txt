@@ -1,36 +1,23 @@
 #### training data
 ##part 1- using CountVectorizer
 
+import pandas
 import pandas as pd
 import sklearn 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-df= train.csv
-y= df['disaster'] #label
-X_train, X-test, y_train, y_test== train_test_split(
-                                    df['plot'], y,
-                                    test_size= 0.33 
-                                    random_state= 53) #random seeds
-    #sci-kit learn test function splits
-    
+df= pd.read_csv('https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/data/train_split/train_new.csv', nrows= 10)
+y = pd.read_csv('https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/data/train_split/test_new.csv', nrows= 10)
 count_vectorizer = CountVectorizer(stop_words= 'english')
-count_train = count_vectorizer.fit_transform(X_train.values)
-count_test = count_vectorizer.transform(X_test.values)
+count_train = count_vectorizer.fit_transform(df)
+count_test = count_vectorizer.transform(y)
 print(count_vectorizer.get_feature_names()[:10])
 
 ##Part 2- using TfidVectorizer
 # Initialize a TfidfVectorizer object: tfidf_vectorizer
-tfidf_vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)
 
 # Transform the training data: tfidf_train 
-tfidf_train = tfidf_vectorizer.fit_transform(X_train)
-
+TfidfVectorizer().fit_transform(df)
 # Transform the test data: tfidf_test 
-tfidf_test = tfidf_vectorizer.transform(X_test)
 
-# Print the first 10 features
-print(tfidf_vectorizer.get_feature_names()[:10])
-
-# Print the first 5 vectors of the tfidf training data
-print(tfidf_train.A[:5])
+TfidfVectorizer().fit_transform(y)
