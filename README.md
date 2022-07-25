@@ -61,7 +61,8 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
 
 ## 🎓 Learning Materials
-❗ More resources are available on Team's google drive: discordnlp7@gmail.com, ask a team member for password
+❗ More resources are available on Team's google drive: discordnlp7@gmail.com, ask a team member for password ❗
+❗ Also check [the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
 * A wonderful book on the basics of NLP ["Speech and Language Processing"](https://web.stanford.edu/~jurafsky/slp3/)
 * Kaggle's introductory tutorial to NLP [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
 * How does CountVectorizer work? [towardsdatascience.com article](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
@@ -70,7 +71,15 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 ## 📅 Development Schedule
 **Version 1.0.0**
 
-- [ ] Solution to the Kaggle problem as a Jupyter notebook
+- [X] First Solution to the Kaggle's problem as a Jupyter notebook
+    
+ **Version 1.1.0**
+
+- [ ] Improved production model
+    - [ ] Selecting current best performing model
+    - [ ] Exploratory Data Analysis
+    - [ ] Comparison of preprocessors (vectorizers)
+    - [ ] Testing influence of data pre preprocessing methods
 
 **Version 2.0.0**
 
