@@ -11,7 +11,7 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 6. [📅 Development Schedule](#-Development-Schedule)
 7. [🆕 Changelog](#-Changelog)
 8. [🤖 Stack](#-Stack)
-9. [⭐ Features](#-Features)
+9. [⭐ Theory](#-Theory)
 10. [📝 Examples](#-Examples)
 11. [⚙ Configurations](#-Configurations)
 12. [💡 Tips](#-Tips)
@@ -21,8 +21,10 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 16. [📄 License](#-License)
 
 ## 🚀 How to run
-In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and running it.
-To run a Jupyter notebook with Anaconda distribution download the Anaconda suite from https://www.anaconda.com/.
+In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and launching it with Jupyter.
+Jupyter is available for download as a part of Anaconda suite from https://www.anaconda.com/.
+
+When feeding a Jupyter notebook with data, use data provided in directory "train_split" [here](https://github.com/SzymkowskiDev/nlp-disaster-tweets/tree/master/data/train_split).
 
 ### Setup
 <li>Create a virtual environment using <code> virtualenv venv </code>
@@ -41,8 +43,13 @@ To run a Jupyter notebook with Anaconda distribution download the Anaconda suite
 ## 📂 Directory Structure
     ├───dashboard
     ├───data
-    │   ├───test.csv
-    │   └───train.csv
+    │   └───original
+    │   │   ├───test.csv
+    │   │   └───train.csv
+    │   └───train_split
+    │       ├───python
+    │       ├───test_new.csv
+    │       └───train_new.csv
     ├───models    
     └───notebooks
 
@@ -50,8 +57,9 @@ To run a Jupyter notebook with Anaconda distribution download the Anaconda suite
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
 
 ## 🎓 Learning Materials
-* A WONDERFUL BOOK ON THE BASICS OF NLP [Npeech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
-* [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
+* A wonderful book on the basics of NLP ["Speech and Language Processing"](https://web.stanford.edu/~jurafsky/slp3/)
+* Kaggle's introductory tutorial to NLP [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
+* How does CountVectorizer work? [towardsdatascience.com article](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
 
 ## 📅 Development Schedule
 **Version 1.0.0**
@@ -68,14 +76,22 @@ A changelog is a file which contains a curated, chronologically ordered list of 
 
 ## 🤖 Stack
 * Python
+* pandas
 * scikit-learn
 
-## ⭐ Features
-Introductory sentance.
+## ⭐ Theory
+This section deals with the theory behind NLP classification relevant to our twitter data.
 
-⭐ **Feature 1**
+⭐ **Choosing data preprocessing method**
 
-Description of feature 1.
+Machines cannot understand characters and words. So when dealing with text data we need to represent it in numbers to be understood by the machine. Countvectorizer is a method to convert text to numerical data.
+    
+* CountVectorizer from scikit learn module
+* tf–idf ["Td-idf is a better method to vectorize data"](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
+    
+⭐ **Choice of a classifier**
+    
+* linear_model.RidgeClassifier()
 
 ## 📝 Examples
 **Example 1. Title**
@@ -109,6 +125,7 @@ Solution to error 1.
 ## 📧 Contact
 [![](https://img.shields.io/twitter/url?label=/SzymkowskiDev&style=social&url=https%3A%2F%2Ftwitter.com%2FSzymkowskiDev)](https://twitter.com/SzymkowskiDev) [![](https://img.shields.io/twitter/url?label=/kamil-szymkowski/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fkamil-szymkowski%2F)](https://www.linkedin.com/in/kamil-szymkowski/) [![](https://img.shields.io/twitter/url?label=@szymkowskidev&logo=medium&logoColor=%23292929&style=social&url=https%3A%2F%2Fmedium.com%2F%40szymkowskidev)](https://medium.com/@szymkowskidev) [![](https://img.shields.io/twitter/url?label=/SzymkowskiDev&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2FSzymkowskiDev)](https://github.com/SzymkowskiDev)
 
+ [![](https://img.shields.io/twitter/url?label=/joanna-michalska/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2FJoanna-Michalska%2F)](https://www.linkedin.com/in/joannamichalska17/) [![](https://img.shields.io/twitter/url?label=/laplasjan&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2Flaplasjan)](https://github.com/laplasjan)
 ## 📄 License
 [MIT License](https://choosealicense.com/licenses/mit/) ©️ 2019-2020 [Kamil Szymkowski](https://github.com/SzymkowskiDev "Get in touch!")
 
