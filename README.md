@@ -48,16 +48,24 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     │       ├───python
     │       ├───test_new.csv
     │       └───train_new.csv
-    ├───models    
-    └───notebooks
+    ├───models
+    │   └───production
+    │       └───best_performing.py
+    ├───notebooks
+    └───reports
+        ├───EDA.ipynb/.doc
+        ├───Preprocessor_comparison.ipynb/.doc
+        └───Tests_of_pre_preprocessing.ipynb/.doc
 
 ## 🔗 Related Projects
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
 
 ## 🎓 Learning Materials
+❗ More resources are available on Team's google drive: discordnlp7@gmail.com, ask a team member for password
 * A wonderful book on the basics of NLP ["Speech and Language Processing"](https://web.stanford.edu/~jurafsky/slp3/)
 * Kaggle's introductory tutorial to NLP [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
 * How does CountVectorizer work? [towardsdatascience.com article](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
+
 
 ## 📅 Development Schedule
 **Version 1.0.0**
