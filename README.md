@@ -36,8 +36,6 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [SzymkowskiDev](https://github.com/SzymkowskiDev)
 * [OlegTkachenkoY](https://github.com/OlegTkachenkoY)
 * [laplasjan](https://github.com/laplasjan)
-* [DarKovPl](https://github.com/DarKovPl)
-* [Pla9er9](https://github.com/Pla9er9)
 * [PanNorek](https://github.com/PanNorek)
 
 ## 📂 Directory Structure
