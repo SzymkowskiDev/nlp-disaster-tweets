@@ -2,7 +2,8 @@
 ##part 1- using CountVectorizer
 
 import pandas as pd
-from sklearn.model_seelection import train
+import sklearn 
+from sklearn.model_selection import train
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 df= train.csv
 y= df['disaster'] #label
