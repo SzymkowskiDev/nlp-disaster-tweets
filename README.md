@@ -52,6 +52,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     │   └───production
     │       └───best_performing.py
     ├───notebooks
+    ├───submissions
     └───reports
         ├───EDA.ipynb/.doc
         ├───Preprocessor_comparison.ipynb/.doc
