@@ -5,7 +5,7 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 * ⭐ Kaggle's top score:           0.86117
 * ⭐ Our top prediction score:     0.84155
 
-![banner](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/banner.PNG?raw=true)
+![banner](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/assets/banner.PNG?raw=true)
 
 ## Contents
 1. [🚀 How to run](#-How-to-run)
