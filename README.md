@@ -44,6 +44,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [PanNorek](https://github.com/PanNorek)
 
 ## 📂 Directory Structure
+    ├───assets
     ├───dashboard
     ├───data
     │   └───original
