@@ -1,0 +1,23 @@
+#### training data
+##part 1- using CountVectorizer
+
+import pandas
+import pandas as pd
+import sklearn 
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+df= pd.read_csv('https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/data/train_split/train_new.csv', nrows= 10)
+y = pd.read_csv('https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/data/train_split/test_new.csv', nrows= 10)
+count_vectorizer = CountVectorizer(stop_words= 'english')
+count_train = count_vectorizer.fit_transform(df)
+count_test = count_vectorizer.transform(y)
+print(count_vectorizer.get_feature_names()[:10])
+
+##Part 2- using TfidVectorizer
+# Initialize a TfidfVectorizer object: tfidf_vectorizer
+
+# Transform the training data: tfidf_train 
+TfidfVectorizer().fit_transform(df)
+# Transform the test data: tfidf_test 
+
+TfidfVectorizer().fit_transform(y)
