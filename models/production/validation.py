@@ -8,19 +8,41 @@ from sklearn import svm
 
 
 def generate_perf_report(
-    X: Iterable, y: Iterable,  # training vectors and target values (class labels)
-    name: str,
-    description: str,
-    clf: Any = None,  # classification instance, by default `sklearn.svm.SVC()`
+    X: Iterable, y: Iterable, *,
+    name: str = "sample",
+    description: str = "no description",
+    clf: Any = None,
+    date_fmt: str = "%Y-%m-%d %H:%M:%S",
     test_size: float = .15,
-    date_fmt="%Y-%m-%d %H:%M:%S",
 ) -> pd.Series:
     """
-    Generate a report of certain model performance metrics, returned as an instance
-    of `pandas.Series`.
+    Generate a report gathering main model classification metrics.
 
-    See example 1. in the README for usage details.
-    """
+    Parameters
+    ----------
+    X : iterable of shape (n_samples, n_features)
+        Sparse matrix of shape (n_samples, n_features).
+    y : iterable
+        Target values (class labels).
+    name : str
+        Name of the report, by default "sample".
+    description : str
+        Optional description for better understanding of the report.
+    clf : Any
+        Vector classification. Defaults to C-Support Vector Classification
+        (`sklearn.svm.SVC`).
+    test_size : float or int, default=0.15
+        See `sklearn.model_selection.train_test_split` documentation
+        for details on this parameter.
+    date_fmt : str, default="%Y-%m-%d %H:%M:%S"
+        Date format.
+
+    Returns
+    -------
+    report : pd.Series
+        Human-friendly report containing with specified name, date, description, 
+        test size, precision score, recall score, f-measure, accuracy and ROC AUC score.
+    """  # needs review
     date = datetime.datetime.now().strftime(date_fmt)
 
     clf = clf or svm.SVC()
@@ -30,7 +52,6 @@ def generate_perf_report(
     model = clf.fit(X_train, y_train)
     predictions = model.predict(X_test)  # type: ignore
 
-    # Compute and return performance metrics in a human-readable Series format.
     return pd.Series({
         "Date": date,
         "Description": description,
