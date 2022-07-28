@@ -33,7 +33,6 @@ def generate_perf_report(
     # Compute and return performance metrics in a human-readable Series format.
     return pd.Series({
         "Date": date,
-        "Name": name,
         "Description": description,
         "Test Size": test_size,
         "Precision": metrics.precision_score(y_test, predictions),
@@ -43,4 +42,4 @@ def generate_perf_report(
         "Accuracy": metrics.accuracy_score(y_test, predictions),
         # Area Under the Receiver Operating Characteristic Curve (ROC AUC)
         "Roc_auc_score": metrics.roc_auc_score(y_test, predictions)
-    }, name="Performance Report")
+    }, name=name)

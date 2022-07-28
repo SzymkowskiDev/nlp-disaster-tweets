@@ -113,6 +113,10 @@ log of major changes to subsequent versions of the project/prediction model
 
 ## 📝 Examples
 **Example 1. Measuring performance metrics with `generate_perf_report()`**
+There are some criteria to find out how well the model is performing.
+We prepared a simple one-liner that brings all that information in a nice,
+human-friendly format.
+
 ```py
 import pandas as pd 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -128,23 +132,24 @@ y = df["target"].copy()
 
 # Generate and print the report
 report = generate_perf_report(
-    X, y, "demo", "tfidf vectorizer and no preprocessing"
+    X, y, "demo report", "tfidf vectorizer and no preprocessing"
 )
 print(report)
 ```
 Output:
 ```
-Date                               2022-07-29 00:10:24
-Name                                              demo
+Date                               2022-07-29 00:17:16
 Description      tfidf vectorizer and no preprocessing
 Test Size                                         0.15
-Precision                                     0.848958
-Recall                                        0.663951
-F1 Score                                      0.745143
-Accuracy                                      0.804729
-Roc_auc_score                                 0.787429
-Name: Performance Report, dtype: object
+Precision                                        0.875
+Recall                                        0.679208
+F1 Score                                      0.764771
+Accuracy                                      0.815236
+Roc_auc_score                                 0.801142
+Name: demo report, dtype: object
 ```
+The model precision is 0.875, recall score is about 0.68,
+F-measure is about 0.76, and so on.
 
 ## ⚙ Configurations
 Sth
