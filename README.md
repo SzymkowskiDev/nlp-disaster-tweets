@@ -113,6 +113,7 @@ log of major changes to subsequent versions of the project/prediction model
 
 ## 📝 Examples
 **Example 1. Measuring performance metrics with `generate_perf_report()`**
+
 There are some criteria to find out how well the model is performing.
 We prepared a simple one-liner that brings all that information in a nice,
 human-friendly format.
