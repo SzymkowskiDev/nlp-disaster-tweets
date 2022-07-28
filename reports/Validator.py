@@ -9,7 +9,7 @@ from typing import Any, Iterable
 class Validator:
     """
     WARNING: usage of this class is deprecated,
-      use `models.production.validation.generate_validation_report()` function instead.
+      use `models.production.validation.generate_perf_report()` function instead.
 
     A class for validating various methods of preprocessing data on
     the same model/models

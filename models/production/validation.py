@@ -7,15 +7,20 @@ from sklearn import metrics
 from sklearn import svm
 
 
-def generate_validation_report(
+def generate_perf_report(
     X: Iterable, y: Iterable,  # training vectors and target values (class labels)
     name: str,
     description: str,
     clf: Any = None,  # classification instance, by default `sklearn.svm.SVC()`
     test_size: float = .15,
     date_fmt="%Y-%m-%d %H:%M:%S",
-) -> pd.DataFrame:
-    """Generate report of certain model metrics, returned as `pandas.DataFrame`."""
+) -> pd.Series:
+    """
+    Generate a report of certain model performance metrics, returned as an instance
+    of `pandas.Series`.
+
+    See example 1. in the README for usage details.
+    """
     date = datetime.datetime.now().strftime(date_fmt)
 
     clf = clf or svm.SVC()
@@ -25,8 +30,8 @@ def generate_validation_report(
     model = clf.fit(X_train, y_train)
     predictions = model.predict(X_test)  # type: ignore
 
-    # Compute and return efficiency metrics in a DataFrame, in human-readable format.
-    return pd.DataFrame.from_dict({
+    # Compute and return performance metrics in a human-readable Series format.
+    return pd.Series({
         "Date": date,
         "Name": name,
         "Description": description,
@@ -38,4 +43,4 @@ def generate_validation_report(
         "Accuracy": metrics.accuracy_score(y_test, predictions),
         # Area Under the Receiver Operating Characteristic Curve (ROC AUC)
         "Roc_auc_score": metrics.roc_auc_score(y_test, predictions)
-    }, orient='index').T
+    }, name="Performance Report")
