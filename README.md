@@ -56,13 +56,16 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     │       └───train_new.csv
     ├───models
     │   └───production
-    │       └───best_performing.py
+    │       ├───best_performing.py
+    │       └───validation.py
     ├───notebooks
     ├───submissions
     └───reports
         ├───EDA.ipynb/.doc
         ├───Preprocessor_comparison.ipynb/.doc
-        └───Tests_of_pre_preprocessing.ipynb/.doc
+        ├───Tests_of_pre_preprocessing.ipynb/.doc
+        └───Validator.py
+
 
 ## 🔗 Related Projects
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
