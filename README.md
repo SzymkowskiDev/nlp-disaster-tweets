@@ -114,9 +114,9 @@ log of major changes to subsequent versions of the project/prediction model
 ## 📝 Examples
 **Example 1. Measuring performance metrics with `generate_perf_report()`**
 
-There are some criteria to find out how well the model is performing.
-We prepared a simple one-liner that brings all that information in a nice,
-human-friendly format.
+To generate the model performance report, use `generate_perf_report()`.
+It compares predictions based on provided training data (`X`) to expected results (`y`)
+and gathers certain classification metrics, like precision, accuracy etc.:
 
 ```py
 import pandas as pd 
@@ -133,10 +133,11 @@ y = df["target"].copy()
 
 # Generate and print the report
 report = generate_perf_report(
-    X, y, "demo report", "tfidf vectorizer and no preprocessing"
+    X, y, name="demo report", description="tfidf vectorizer and no preprocessing"
 )
 print(report)
 ```
+
 Output:
 ```
 Date                               2022-07-29 00:17:16
@@ -149,8 +150,7 @@ Accuracy                                      0.815236
 Roc_auc_score                                 0.801142
 Name: demo report, dtype: object
 ```
-The model precision is 0.875, recall score is about 0.68,
-F-measure is about 0.76, and so on.
+Name, description, test size and date format in the report can be optionally specified.
 
 ## ⚙ Configurations
 Sth
