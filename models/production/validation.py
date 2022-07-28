@@ -40,8 +40,9 @@ def generate_perf_report(
     Returns
     -------
     report : pd.Series
-        Human-friendly report containing with specified name, date, description, 
-        test size, precision score, recall score, f-measure, accuracy and ROC AUC score.
+        Report with specified name, date, description, test size, 
+        precision score, recall score, f-measure, accuracy and ROC 
+        AUC score in human-friendly format.
     """  # needs review
     date = datetime.datetime.now().strftime(date_fmt)
 
