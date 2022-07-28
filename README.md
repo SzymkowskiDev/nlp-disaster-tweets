@@ -75,6 +75,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * A wonderful book on the basics of NLP ["Speech and Language Processing"](https://web.stanford.edu/~jurafsky/slp3/)
 * Kaggle's introductory tutorial to NLP [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
 * How does CountVectorizer work? [towardsdatascience.com article](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
+* [Data Mining and Business Analytics with R - Johannes Ledolter](https://mail.sitoba.it.maranatha.edu/Temu%20Pengetahuan%201516/Buku%20Referensi/DMBAR%20-%20Data%20Mining%20and%20Business%20Analytics%20with%20R%20-%20Johannes%20Ledolter.pdf)
 
 
 ## 📅 Development Schedule
