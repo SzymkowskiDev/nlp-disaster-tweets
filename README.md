@@ -87,18 +87,26 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     
 **Version 1.1.0**
 
-- [ ] Improved production model
+- [ ] Improved production model (Machine Learning)
     - [X] Selecting current best performing model
     - [ ] Exploratory Data Analysis
     - [ ] Comparison of preprocessors (vectorizers)
     - [ ] Testing influence of data pre preprocessing methods
     - [ ] Assembling a better model
-    
+
+**Version 1.2.0**
+- [ ] Deep learning model
+ 
 **Version 2.0.0**
 
-- [ ] Deployment of a blank dashboard
-- [ ] Web app representing solution to the problem
-
+- [X] Deployment of a blank dashboard (and integrate Dash)
+- [ ] Customized classification
+    - [ ] Inputs (Parameters for classification) (Blocked by Maganzo & Asia)
+    - [ ] Outputs (Data Visualisation)
+        - [ ] Pefromance metrics visalisation (input data)   
+        - [ ] Word cloud visualisation (output data)  
+        - [ ] Map of locations (input data)
+        
 ## 🆕 Changelog
 log of major changes to subsequent versions of the project/prediction model
 
