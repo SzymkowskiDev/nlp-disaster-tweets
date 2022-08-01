@@ -87,13 +87,16 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     
 **Version 1.1.0**
 
-- [ ] Improved production model
+- [ ] Improved production model (Machine Learning)
     - [X] Selecting current best performing model
     - [ ] Exploratory Data Analysis
     - [ ] Comparison of preprocessors (vectorizers)
     - [ ] Testing influence of data pre preprocessing methods
     - [ ] Assembling a better model
-    
+
+**Version 1.2.0**
+- [ ] Deep learning model
+ 
 **Version 2.0.0**
 
 - [ ] Deployment of a blank dashboard
