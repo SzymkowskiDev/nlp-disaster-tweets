@@ -42,6 +42,8 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [OlegTkachenkoY](https://github.com/OlegTkachenkoY)
 * [laplasjan](https://github.com/laplasjan)
 * [PanNorek](https://github.com/PanNorek)
+* [bswck](https://github.com/bswck)
+* [Mefpef](https://github.com/Mefpef)
 
 ## 📂 Directory Structure
     ├───assets
@@ -75,6 +77,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * A wonderful book on the basics of NLP ["Speech and Language Processing"](https://web.stanford.edu/~jurafsky/slp3/)
 * Kaggle's introductory tutorial to NLP [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
 * How does CountVectorizer work? [towardsdatascience.com article](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
+* [Data Mining and Business Analytics with R - Johannes Ledolter](https://mail.sitoba.it.maranatha.edu/Temu%20Pengetahuan%201516/Buku%20Referensi/DMBAR%20-%20Data%20Mining%20and%20Business%20Analytics%20with%20R%20-%20Johannes%20Ledolter.pdf)
 
 
 ## 📅 Development Schedule
@@ -84,18 +87,26 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     
 **Version 1.1.0**
 
-- [ ] Improved production model
-    - [ ] Selecting current best performing model
+- [ ] Improved production model (Machine Learning)
+    - [X] Selecting current best performing model
     - [ ] Exploratory Data Analysis
     - [ ] Comparison of preprocessors (vectorizers)
     - [ ] Testing influence of data pre preprocessing methods
     - [ ] Assembling a better model
-    
+
+**Version 1.2.0**
+- [ ] Deep learning model
+ 
 **Version 2.0.0**
 
-- [ ] Deployment of a blank dashboard
-- [ ] Web app representing solution to the problem
-
+- [X] Deployment of a blank dashboard (and integrate Dash)
+- [ ] Customized classification
+    - [ ] Inputs (Parameters for classification) (Blocked by Maganzo & Asia)
+    - [ ] Outputs (Data Visualisation)
+        - [ ] Pefromance metrics visalisation (input data)   
+        - [ ] Word cloud visualisation (output data)  
+        - [ ] Map of locations (input data)
+        
 ## 🆕 Changelog
 log of major changes to subsequent versions of the project/prediction model
 
