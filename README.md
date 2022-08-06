@@ -105,6 +105,8 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     - [ ] Outputs (Data Visualisation)
         - [ ] Pefromance metrics visalisation (input data)
         - [ ] Word cloud visualisation (output data)
+        - [ ] Performance metrics visalisation (output data)   
+        - [ ] Word cloud visualisation (input data)
         - [ ] Map of locations (input data)
 
 ## 🆕 Changelog
