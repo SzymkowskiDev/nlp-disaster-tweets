@@ -120,6 +120,7 @@ log of major changes to subsequent versions of the project/prediction model
 * pandas
 * scikit-learn
 * nltk
+* dash
 
 ## 👓 Theory
 [Theory has been moved to the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
@@ -166,27 +167,6 @@ Name: demo report, dtype: object
 
 Name, description, test size and date format in the report can be optionally specified.
 
-## ⚙ Configurations
-Sth
-
-## 💡 Tips
-💭 **Tip 1**
-
-Description of tip 1.
-
-## 🚧 Warnings
-
-⚠️ **Warning 1**
-
-Description of warning 1.
-
-## 🧰 Troubleshooting
-🚩 **Error 1**
-
-Solution to error 1.
-
-``` SOLUTION CODE ```
-
 ## 📧 Contact
 [![](https://img.shields.io/twitter/url?label=/kamil-szymkowski/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fkamil-szymkowski%2F)](https://www.linkedin.com/in/kamil-szymkowski/) [![](https://img.shields.io/twitter/url?label=@szymkowskidev&logo=medium&logoColor=%23292929&style=social&url=https%3A%2F%2Fmedium.com%2F%40szymkowskidev)](https://medium.com/@szymkowskidev) [![](https://img.shields.io/twitter/url?label=/SzymkowskiDev&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2FSzymkowskiDev)](https://github.com/SzymkowskiDev)
 
@@ -197,8 +177,3 @@ Solution to error 1.
 [MIT License](https://choosealicense.com/licenses/mit/) ©️ 2019-2020 [Kamil Szymkowski](https://github.com/SzymkowskiDev "Get in touch!")
 
 [![](https://img.shields.io/badge/license-MIT-green?style=plastic)](https://choosealicense.com/licenses/mit/)
-
-
-
-
-
