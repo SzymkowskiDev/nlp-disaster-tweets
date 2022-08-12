@@ -42,6 +42,8 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [OlegTkachenkoY](https://github.com/OlegTkachenkoY)
 * [laplasjan](https://github.com/laplasjan)
 * [PanNorek](https://github.com/PanNorek)
+* [bswck](https://github.com/bswck)
+* [Mefpef](https://github.com/Mefpef)
 
 ## 📂 Directory Structure
     ├───assets
@@ -72,32 +74,43 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 
 ## 🎓 Learning Materials
 ❗ More resources are available on Team's google drive: discordnlp7@gmail.com, ask a team member for password ❗
-    
+
 ❗ Also check [the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki) ❗
-    
+
 * A wonderful book on the basics of NLP ["Speech and Language Processing"](https://web.stanford.edu/~jurafsky/slp3/)
 * Kaggle's introductory tutorial to NLP [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
 * How does CountVectorizer work? [towardsdatascience.com article](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
+* [Data Mining and Business Analytics with R - Johannes Ledolter](https://mail.sitoba.it.maranatha.edu/Temu%20Pengetahuan%201516/Buku%20Referensi/DMBAR%20-%20Data%20Mining%20and%20Business%20Analytics%20with%20R%20-%20Johannes%20Ledolter.pdf)
 
 
 ## 📅 Development Schedule
 **Version 1.0.0**
 
 - [X] First Solution to the Kaggle's problem as a Jupyter notebook
-    
+
 **Version 1.1.0**
 
-- [ ] Improved production model
-    - [ ] Selecting current best performing model
+- [ ] Improved production model (Machine Learning)
+    - [X] Selecting current best performing model
     - [ ] Exploratory Data Analysis
     - [ ] Comparison of preprocessors (vectorizers)
     - [ ] Testing influence of data pre preprocessing methods
     - [ ] Assembling a better model
-    
+
+**Version 1.2.0**
+- [ ] Deep learning model
+
 **Version 2.0.0**
 
-- [ ] Deployment of a blank dashboard
-- [ ] Web app representing solution to the problem
+- [X] Deployment of a blank dashboard (and integrate Dash)
+- [ ] Customized classification
+    - [ ] Inputs (Parameters for classification) (Blocked by Maganzo & Asia)
+    - [ ] Outputs (Data Visualisation)
+        - [ ] Pefromance metrics visalisation (input data)
+        - [ ] Word cloud visualisation (output data)
+        - [ ] Performance metrics visalisation (output data)   
+        - [ ] Word cloud visualisation (input data)
+        - [ ] Map of locations (input data)
 
 ## 🆕 Changelog
 log of major changes to subsequent versions of the project/prediction model
@@ -151,6 +164,7 @@ Roc_auc_score                                 0.801142
 Name: demo report, dtype: object
 ```
 Name, description, test size and date format in the report can be optionally specified.
+=======
 
 ## ⚙ Configurations
 Sth
@@ -176,9 +190,9 @@ Solution to error 1.
 ## 📧 Contact
 [![](https://img.shields.io/twitter/url?label=/kamil-szymkowski/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fkamil-szymkowski%2F)](https://www.linkedin.com/in/kamil-szymkowski/) [![](https://img.shields.io/twitter/url?label=@szymkowskidev&logo=medium&logoColor=%23292929&style=social&url=https%3A%2F%2Fmedium.com%2F%40szymkowskidev)](https://medium.com/@szymkowskidev) [![](https://img.shields.io/twitter/url?label=/SzymkowskiDev&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2FSzymkowskiDev)](https://github.com/SzymkowskiDev)
 
- [![](https://img.shields.io/twitter/url?label=/joanna-michalska/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2FJoanna-Michalska%2F)](https://www.linkedin.com/in/joannamichalska17/) [![](https://img.shields.io/twitter/url?label=/laplasjan&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2Flaplasjan)](https://github.com/laplasjan)
- 
- [![](https://img.shields.io/twitter/url?label=/rafal-nojek/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2in%2rafaln97%2F)](https://www.linkedin.com/in/rafaln97/) [![](https://img.shields.io/twitter/url?label=/PanNorek&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2FPanNorek)](https://github.com/PanNorek)
+[![](https://img.shields.io/twitter/url?label=/joanna-michalska/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2FJoanna-Michalska%2F)](https://www.linkedin.com/in/joannamichalska17/) [![](https://img.shields.io/twitter/url?label=/laplasjan&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2Flaplasjan)](https://github.com/laplasjan)
+
+[![](https://img.shields.io/twitter/url?label=/rafal-nojek/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2in%2rafaln97%2F)](https://www.linkedin.com/in/rafaln97/) [![](https://img.shields.io/twitter/url?label=/PanNorek&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2FPanNorek)](https://github.com/PanNorek)
 ## 📄 License
 [MIT License](https://choosealicense.com/licenses/mit/) ©️ 2019-2020 [Kamil Szymkowski](https://github.com/SzymkowskiDev "Get in touch!")
 
