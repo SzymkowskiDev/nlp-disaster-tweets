@@ -8,7 +8,10 @@ from typing import Any, Iterable
 
 class Validator:
     """
-    A class for validating various methods of preprocessing data on 
+    WARNING: usage of this class is deprecated,
+      use `models.production.validation.generate_perf_report()` function instead.
+
+    A class for validating various methods of preprocessing data on
     the same model/models
 
     Needs documentation

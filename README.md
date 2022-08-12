@@ -58,13 +58,16 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     │       └───train_new.csv
     ├───models
     │   └───production
-    │       └───best_performing.py
+    │       ├───best_performing.py
+    │       └───validation.py
     ├───notebooks
     ├───submissions
     └───reports
         ├───EDA.ipynb/.doc
         ├───Preprocessor_comparison.ipynb/.doc
-        └───Tests_of_pre_preprocessing.ipynb/.doc
+        ├───Tests_of_pre_preprocessing.ipynb/.doc
+        └───Validator.py
+
 
 ## 🔗 Related Projects
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
@@ -122,12 +125,46 @@ log of major changes to subsequent versions of the project/prediction model
 [Theory has been moved to the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
 
 ## 📝 Examples
-**Example 1. Title**
+**Example 1. Measuring performance metrics with `generate_perf_report()`**
 
-Description of the example.
-```javascript
-CODE GOES HERE
+To generate the model performance report, use `generate_perf_report()`.
+It compares predictions based on provided training data (`X`) to expected results (`y`)
+and gathers certain classification metrics, like precision, accuracy etc.:
+
+```py
+import pandas as pd 
+from sklearn.feature_extraction.text import TfidfVectorizer
+from models.production.validation import generate_perf_report
+
+# Load the training data, prepare the TF-IDF vectorizer just for this demo
+df = pd.read_csv(r"data\original\train.csv")
+tfidf_vect = TfidfVectorizer(max_features=5000)
+
+# Prepare training data and target values
+X = tfidf_vect.fit_transform(df['text'])
+y = df["target"].copy()
+
+# Generate and print the report
+report = generate_perf_report(
+    X, y, name="demo report", description="tfidf vectorizer and no preprocessing"
+)
+print(report)
 ```
+
+Output:
+```
+Date                               2022-07-29 00:17:16
+Description      tfidf vectorizer and no preprocessing
+Test Size                                         0.15
+Precision                                        0.875
+Recall                                        0.679208
+F1 Score                                      0.764771
+Accuracy                                      0.815236
+Roc_auc_score                                 0.801142
+Name: demo report, dtype: object
+```
+Name, description, test size and date format in the report can be optionally specified.
+=======
 
 ## ⚙ Configurations
 Sth
