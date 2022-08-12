@@ -163,8 +163,8 @@ Accuracy                                      0.815236
 Roc_auc_score                                 0.801142
 Name: demo report, dtype: object
 ```
+
 Name, description, test size and date format in the report can be optionally specified.
-=======
 
 ## ⚙ Configurations
 Sth
