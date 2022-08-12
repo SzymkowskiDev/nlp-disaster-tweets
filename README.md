@@ -167,6 +167,13 @@ Name: demo report, dtype: object
 
 Name, description, test size and date format in the report can be optionally specified.
 
+**Example 2. Performing vectorization of choice with `vectorize_data()`**
+ 
+Function `vectorize_data()` takes two parameters:
+    * data - 
+    * method - available options are: "tfidf"
+    
+    
 ## 📧 Contact
 [![](https://img.shields.io/twitter/url?label=/kamil-szymkowski/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fkamil-szymkowski%2F)](https://www.linkedin.com/in/kamil-szymkowski/) [![](https://img.shields.io/twitter/url?label=@szymkowskidev&logo=medium&logoColor=%23292929&style=social&url=https%3A%2F%2Fmedium.com%2F%40szymkowskidev)](https://medium.com/@szymkowskidev) [![](https://img.shields.io/twitter/url?label=/SzymkowskiDev&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2FSzymkowskiDev)](https://github.com/SzymkowskiDev)
 
