@@ -9,14 +9,14 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 
 ## Contents
 1. [🚀 How to run](#-How-to-run)
-2. [👨‍💻 Contributing](#-Contributing)
-3. [📂 Directory Structure](#-Directory-Structure)
-4. [🔗 Related Projects](#-Related-Projects)
-5. [🎓 Learning Materials](#-Learning-Materials)
-6. [📅 Development Schedule](#-Development-Schedule)
-7. [🆕 Changelog](#-Changelog)
-8. [🤖 Stack](#-Stack)
-9. [👓 Theory](#-Theory)
+2. [👓 Theory](#-Theory)
+3. [👨‍💻 Contributing](#-Contributing)
+4. [📂 Directory Structure](#-Directory-Structure)
+5. [🔗 Related Projects](#-Related-Projects)
+6. [🎓 Learning Materials](#-Learning-Materials)
+7. [📅 Development Schedule](#-Development-Schedule)
+8. [🆕 Changelog](#-Changelog)
+9. [🤖 Stack](#-Stack)
 10. [📝 Examples](#-Examples)
 11. [⚙ Configurations](#-Configurations)
 12. [💡 Tips](#-Tips)
@@ -24,6 +24,9 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 14. [🧰 Troubleshooting](#-Troubleshooting)
 15. [📧 Contact](#-Contact)
 16. [📄 License](#-License)
+
+## 👓 Theory
+[Theory has been moved to the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
 
 ## 🚀 How to run
 In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and launching it with Jupyter.
@@ -125,9 +128,6 @@ log of major changes to subsequent versions of the project/prediction model
 * scikit-learn
 * nltk
 * dash
-
-## 👓 Theory
-[Theory has been moved to the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
 
 ## 📝 Examples
 **Example 1. Measuring performance metrics with `generate_perf_report()`**
