@@ -87,6 +87,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [Markdown in Dash](https://commonmark.org/help/)
 * [Dash HTML Components Gallery & code snippets](https://dash.plotly.com/dash-html-components)
 * [Dash Core Components Gallery & code snippets](https://dash.plotly.com/dash-core-components)
+* [Bootstrap components for Dash](https://dash-bootstrap-components.opensource.faculty.ai/)
 
 
 ## 📅 Development Schedule
