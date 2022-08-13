@@ -8,11 +8,11 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 ![banner](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/assets/banner.PNG?raw=true)
 
 ## Contents
-1. [🚀 How to run](#-How-to-run)
+1. [🔗 Related Projects](#-Related-Projects)
 2. [👓 Theory](#-Theory)
-3. [👨‍💻 Contributing](#-Contributing)
-4. [📂 Directory Structure](#-Directory-Structure)
-5. [🔗 Related Projects](#-Related-Projects)
+3. [🚀 How to run](#-How-to-run)
+4. [👨‍💻 Contributing](#-Contributing)
+5. [📂 Directory Structure](#-Directory-Structure)
 6. [🎓 Learning Materials](#-Learning-Materials)
 7. [📅 Development Schedule](#-Development-Schedule)
 8. [🆕 Changelog](#-Changelog)
@@ -24,6 +24,9 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 14. [🧰 Troubleshooting](#-Troubleshooting)
 15. [📧 Contact](#-Contact)
 16. [📄 License](#-License)
+
+## 🔗 Related Projects
+* Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
 
 ## 👓 Theory
 [Theory has been moved to the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
@@ -69,10 +72,6 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
         ├───Preprocessor_comparison.ipynb/.doc
         ├───Tests_of_pre_preprocessing.ipynb/.doc
         └───Validator.py
-
-
-## 🔗 Related Projects
-* Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
 
 ## 🎓 Learning Materials
 ❗ More resources are available on Team's google drive: discordnlp7@gmail.com, ask a team member for password ❗
