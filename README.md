@@ -80,6 +80,11 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * Kaggle's introductory tutorial to NLP [NLP Getting Started Tutorial](https://www.kaggle.com/code/philculliton/nlp-getting-started-tutorial/notebook)
 * How does CountVectorizer work? [towardsdatascience.com article](https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c)
 * [Data Mining and Business Analytics with R - Johannes Ledolter](https://mail.sitoba.it.maranatha.edu/Temu%20Pengetahuan%201516/Buku%20Referensi/DMBAR%20-%20Data%20Mining%20and%20Business%20Analytics%20with%20R%20-%20Johannes%20Ledolter.pdf)
+* [Dash tutorial](https://dash.plotly.com/installation)
+* [Plotly docs](https://plotly.com/python/)
+* [Markdown in Dash](https://commonmark.org/help/)
+* [Dash HTML Components Gallery & code snippets](https://dash.plotly.com/dash-html-components)
+* [Dash Core Components Gallery & code snippets](https://dash.plotly.com/dash-core-components)
 
 
 ## 📅 Development Schedule
@@ -134,7 +139,7 @@ and gathers certain classification metrics, like precision, accuracy etc.:
 ```py
 import pandas as pd 
 from sklearn.feature_extraction.text import TfidfVectorizer
-from models.production.validation import generate_perf_report
+from models.production.generate_perf_report import generate_perf_report
 
 # Load the training data, prepare the TF-IDF vectorizer just for this demo
 df = pd.read_csv(r"data\original\train.csv")
