@@ -73,7 +73,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
         ├───Tests_of_pre_preprocessing.ipynb/.doc
         └───Validator.py
 
-## 🎓 Learning Materials
+## 🎓 Learning/Reference Materials
 ❗ More resources are available on Team's google drive: discordnlp7@gmail.com, ask a team member for password ❗
 
 ❗ Also check [the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki) ❗
@@ -88,6 +88,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [Dash HTML Components Gallery & code snippets](https://dash.plotly.com/dash-html-components)
 * [Dash Core Components Gallery & code snippets](https://dash.plotly.com/dash-core-components)
 * [Bootstrap components for Dash](https://dash-bootstrap-components.opensource.faculty.ai/)
+* [Font awesome icons](https://fontawesome.com/icons)
 
 
 ## 📅 Development Schedule
