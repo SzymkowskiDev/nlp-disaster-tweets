@@ -6,6 +6,16 @@ app = Dash(external_stylesheets=[dbc.themes.SLATE, dbc.icons.BOOTSTRAP])
 
 tab1_content = dbc.Card(
     dbc.CardBody(
+        [
+            html.P("This is tab 2!", className="card-text"),
+            dbc.Button("Don't click here", color="danger"),
+        ]
+    ),
+    className="mt-3",
+)
+
+tab2_content = dbc.Card(
+    dbc.CardBody(
     [
         dbc.Row(
             [
@@ -56,16 +66,6 @@ tab1_content = dbc.Card(
     className="mt-3",
 )
 
-tab2_content = dbc.Card(
-    dbc.CardBody(
-        [
-            html.P("This is tab 2!", className="card-text"),
-            dbc.Button("Don't click here", color="danger"),
-        ]
-    ),
-    className="mt-3",
-)
-
 tab5_content = dbc.Card(
     dbc.CardBody(
         [
@@ -79,13 +79,14 @@ tab5_content = dbc.Card(
 
 tabs = dbc.Tabs(
     [
-        dbc.Tab(tab1_content, label="Classification"),
-        dbc.Tab(tab2_content, label="Exploratory Data Analysis"),
-        dbc.Tab("This tab's content is never seen", label="Custom data upload", disabled=True),
-        dbc.Tab("This tab's content is never seen", label="Twitter API Calls", disabled=True),
-        dbc.Tab("This tab's content is never seen", label="Community labelling", disabled=True),
-        dbc.Tab(tab5_content, label="About"),
-    ]
+        dbc.Tab(tab1_content, label="Exploratory Data Analysis", tab_id="tab-1"),
+        dbc.Tab(tab2_content, label="Classification", tab_id="tab-2"),
+        dbc.Tab("This tab's content is never seen", label="Custom data upload", disabled=True, tab_id="tab-3"),
+        dbc.Tab("This tab's content is never seen", label="Twitter API Calls", disabled=True, tab_id="tab-4"),
+        dbc.Tab("This tab's content is never seen", label="Community labelling", disabled=True, tab_id="tab-5"),
+        dbc.Tab(tab5_content, label="About", tab_id="tab-6")
+    ],
+    active_tab="tab-2"
 )
 
 ### LAYOUT
