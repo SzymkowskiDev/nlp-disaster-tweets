@@ -79,7 +79,12 @@ tab2_content = dbc.Card(
                 width = 2),
 
                 dbc.Col(
-                    html.H2("OUTPUTS"),
+                    [html.H2("OUTPUTS"),
+                    html.P("PARAMETRIZED TEXT SUMMARIZING THE OUTCOME OF RUN"),
+                    html.P("TABLE OF PERFROMANCE METRICS"),
+                    html.P("CONFUSION MATRIX"),
+                    html.P("ROC & AUC")                    
+                    ],
                     width = 6
                 ),
             ]
