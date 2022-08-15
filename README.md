@@ -89,6 +89,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [Dash Core Components Gallery & code snippets](https://dash.plotly.com/dash-core-components)
 * [Bootstrap components for Dash](https://dash-bootstrap-components.opensource.faculty.ai/)
 * [Font awesome icons](https://fontawesome.com/icons)
+* [Colorscales for Plotly charts](https://plotly.com/python/colorscales/)
 
 
 ## 📅 Development Schedule
