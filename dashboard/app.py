@@ -1,8 +1,105 @@
+from turtle import width
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
+import plotly.express as px
+import plotly.graph_objects as go
+from dash import Dash, html, Input, Output, dash_table
+import pandas as pd
+import plotly.figure_factory as ff
+import plotly.express as px
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import roc_curve, auc
+from sklearn.datasets import make_classification
+
 
 app = Dash(external_stylesheets=[dbc.themes.SLATE, dbc.icons.BOOTSTRAP])
+
+#### OUTPUTS ####
+## METRICS TABLE
+metrics_df = pd.DataFrame({"Metric": ["Precision", "Recall", "F1 Score", "Accuracy"], "Value": [0.875, 0.679208, 0.764771, 0.815236]})
+
+## HEATMAP
+z = [[156, 310],
+     [602, 74]]
+x = ['0', '1']
+y =  ['1', '0']
+
+# change each element of z to type string for annotations
+z_text = [[str(y) for y in x] for x in z]
+
+# set up figure 
+conf_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=z_text, colorscale='greys', font_colors=["red", "red"])
+
+# add custom xaxis title
+conf_matrix.add_annotation(dict(font=dict(color="white",size=18),
+                        x=0.5,
+                        y=-0.15,
+                        showarrow=False,
+                        text="Predicted value",
+                        xref="paper",
+                        yref="paper"))
+
+# add custom yaxis title
+conf_matrix.add_annotation(dict(font=dict(color="white",size=18),
+                        x=-0.15,
+                        y=0.5,
+                        showarrow=False,
+                        text="Real value",
+                        textangle=-90,
+                        xref="paper",
+                        yref="paper"))
+
+# adjust margins to make room for yaxis title
+conf_matrix.update_layout(
+    margin=dict(t=0, l=50),
+    height = 500, 
+    width = 500,
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    font=dict(
+        family="Courier New, monospace",
+        size=22,
+        color="white"
+    ))
+
+# add colorbar
+conf_matrix['data'][0]['showscale'] = True
+
+## ROC & AUC
+X, y = make_classification(n_samples=500, random_state=0)
+
+model = LogisticRegression()
+model.fit(X, y)
+y_score = model.predict_proba(X)[:, 1]
+
+fpr, tpr, thresholds = roc_curve(y, y_score)
+
+fig = px.area(
+    x=fpr, y=tpr,
+    labels=dict(x='False Positive Rate', y='True Positive Rate')
+)
+fig.add_shape(
+    type='line', line=dict(dash='dash', color = "red"),
+    x0=0, x1=1, y0=0, y1=1
+)
+
+fig.update_yaxes(scaleanchor="x", scaleratio=1)
+fig.update_xaxes(constrain='domain')
+
+fig.update_layout(
+    margin=dict(t=10, l=50),
+    height = 500, 
+    width = 500,
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="white"
+    ))
+
+
 
 ### TAB 1: EXPLORATORY DATA ANALYSIS
 tab1_content = dbc.Card(
@@ -80,10 +177,25 @@ tab2_content = dbc.Card(
 
                 dbc.Col(
                     [html.H2("OUTPUTS"),
-                    html.P("PARAMETRIZED TEXT SUMMARIZING THE OUTCOME OF RUN"),
-                    html.P("TABLE OF PERFROMANCE METRICS"),
-                    html.P("CONFUSION MATRIX"),
-                    html.P("ROC & AUC")                    
+                    html.P("Your customized classification correctly predicted 732 responses out of 1002, which ammounts to the accuracy rate of 0.81. Other metrics are shown below."),
+                    html.H3("Fig 1. Performance Metrics",style={"fontSize": 20}),
+                    html.Div([
+                        dash_table.DataTable(
+                            id='table',
+                            columns=[{"name": i, "id": i} 
+                            for i in metrics_df.columns],
+                            data=metrics_df.to_dict('records'),
+                            style_cell=dict(textAlign='left', padding = '5px', border = '1px solid grey'),
+                            style_header=dict(backgroundColor="#1E1E1E", fontWeight = 'bold', color = 'white'),
+                            style_data=dict(backgroundColor="#323232", color = 'white')
+                        ), 
+                        html.P('Run generated on 2022-07-29 00:17:16'),
+                    ]),
+                    html.H3("Fig 2. Confusion Matrix",style={"fontSize": 20}),
+                    dcc.Graph(figure=conf_matrix),
+                    html.H3("Fig 3. ROC & AUC",style={"fontSize": 20}),
+                    dcc.Graph(figure=fig), 
+                    html.P(f'AUC = {auc(fpr, tpr):.4f}', style = {"fontFamily": "Courier New, monospace", "fontSize": 20, "color": "red"})                   
                     ],
                     width = 6
                 ),
@@ -115,7 +227,7 @@ tabs = dbc.Tabs(
         dbc.Tab("This tab's content is never seen", label="Community labelling", disabled=True, tab_id="tab-5"),
         dbc.Tab(tab6_content, label="About", tab_id="tab-6")
     ],
-    active_tab="tab-1"
+    active_tab="tab-2"
 )
 
 ### LAYOUT
