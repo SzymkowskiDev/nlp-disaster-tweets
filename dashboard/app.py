@@ -1,4 +1,3 @@
-from turtle import width
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
@@ -12,8 +11,11 @@ import plotly.express as px
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_curve, auc
 from sklearn.datasets import make_classification
-from ..models.production.generate_perf_report import generate_perf_report
-from ..models.production.vectorize_data import vectorize_data
+from sklearn.preprocessing import LabelEncoder
+from sklearn.feature_extraction.text import TfidfVectorizer
+from models.production.generate_perf_report import generate_perf_report
+from models.production.vectorize_data import vectorize_data
+
 
 app = Dash(external_stylesheets=[dbc.themes.SLATE, dbc.icons.BOOTSTRAP])
 
@@ -80,7 +82,7 @@ conf_matrix.update_layout(
 conf_matrix["data"][0]["showscale"] = True
 
 ## ROC & AUC
-X, y = make_classification(n_samples=500, random_state=0)
+X, y = make_classification(n_samples=1000, random_state=0)
 
 model = LogisticRegression()
 model.fit(X, y)
@@ -290,27 +292,30 @@ tab2_content = dbc.Card(
         Input("model-radio-items", "value"),
     ],
 )
-def our_function(value_1, value_2, value_3):
-    X, y = make_classification(n_samples=500, random_state=0)
+def our_function(preprocessing_checklist, vectorization, model):
+    df_train = pd.read_csv(r"data\original\train.csv")
+    tfidf_vect = TfidfVectorizer(max_features=5000)
+    X = tfidf_vect.fit_transform(df_train["text"])
+    y = df_train["target"].copy()
     # vectorize_data(data, method)
-    generate_perf_report(X, y)
+    series = generate_perf_report(X, y, clf=LogisticRegression())
     # TODO: fill this function
-    return (value_1, value_2, value_3)
+    return series
 
 
 @app.callback(Output("output-1", "children"), Input("intermediate-value", "data"))
 def first_callback(data):
-    return data[0]
+    return f'asasdas {data["Precision"]} asddasd'
 
 
 @app.callback(Output("output-2", "children"), Input("intermediate-value", "data"))
 def second_callback(data):
-    return data[1]
+    return f'asasdas {data["Recall"]} asddasd'
 
 
 @app.callback(Output("output-3", "children"), Input("intermediate-value", "data"))
 def third_callback(data):
-    return data[2]
+    return f'asasdas {data["Accuracy"]} asddasd'
 
 
 # TAB 6: ABOUT
