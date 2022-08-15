@@ -5,6 +5,7 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
 from dash import Dash, html, Input, Output, dash_table
+from dash.exceptions import PreventUpdate
 import pandas as pd
 import plotly.figure_factory as ff
 import plotly.express as px
@@ -253,7 +254,10 @@ tab2_content = dbc.Card(
                                     html.P("Run generated on 2022-07-29 00:17:16"),
                                 ]
                             ),
-                            html.H1(id="intermediate-value"),
+                            dcc.Store(id="intermediate-value"),
+                            html.H1(id="output-1"),
+                            html.H1(id="output-2"),
+                            html.H1(id="output-3"),
                             html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
                             dcc.Graph(figure=conf_matrix),
                             html.H3("Fig 3. ROC & AUC", style={"fontSize": 20}),
@@ -286,7 +290,23 @@ tab2_content = dbc.Card(
     ],
 )
 def our_function(value_1, value_2, value_3):
-    return value_1
+    # TODO: fill this function
+    return (value_1, value_2, value_3)
+
+
+@app.callback(Output("output-1", "children"), Input("intermediate-value", "data"))
+def first_callback(data):
+    return data[0]
+
+
+@app.callback(Output("output-2", "children"), Input("intermediate-value", "data"))
+def second_callback(data):
+    return data[1]
+
+
+@app.callback(Output("output-3", "children"), Input("intermediate-value", "data"))
+def third_callback(data):
+    return data[2]
 
 
 # TAB 6: ABOUT
