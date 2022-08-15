@@ -272,6 +272,7 @@ tab2_content = dbc.Card(
                                     "fontSize": 20,
                                     "color": "red",
                                 },
+                                id="roc-paragraph",
                             ),
                         ],
                         width=6,
@@ -318,7 +319,22 @@ def second_callback(data):
 @app.callback(Output("output-3", "children"), Input("intermediate-value", "data"))
 def third_callback(data):
     dff = pd.read_json(data, typ="series")
+    # TODO: delete when other functions are complete
     return f"Recall: {dff.get('Recall')}"
+
+
+@app.callback(Output("graph", "figure"), Input("intermediate-value", "data"))
+def update_roc(data):
+    dff = pd.read_json(data, typ="series")
+    # TODO: complete this function
+    pass
+
+
+@app.callback(Output("roc-paragraph", "children"), Input("intermediate-value", "data"))
+def update_roc(data):
+    dff = pd.read_json(data, typ="series")
+    # TODO: complete this function
+    pass
 
 
 # TAB 6: ABOUT
