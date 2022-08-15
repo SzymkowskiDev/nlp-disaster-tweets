@@ -300,22 +300,25 @@ def our_function(preprocessing_checklist, vectorization, model):
     # vectorize_data(data, method)
     series = generate_perf_report(X, y, clf=LogisticRegression())
     # TODO: fill this function
-    return series
+    return series.to_json(date_format="iso")
 
 
 @app.callback(Output("output-1", "children"), Input("intermediate-value", "data"))
 def first_callback(data):
-    return f'asasdas {data["Precision"]} asddasd'
+    dff = pd.read_json(data, typ="series")
+    return f"Test Size: {dff.get('Test Size')}"
 
 
 @app.callback(Output("output-2", "children"), Input("intermediate-value", "data"))
 def second_callback(data):
-    return f'asasdas {data["Recall"]} asddasd'
+    dff = pd.read_json(data, typ="series")
+    return f"Precision: {dff.get('Precision')}"
 
 
 @app.callback(Output("output-3", "children"), Input("intermediate-value", "data"))
 def third_callback(data):
-    return f'asasdas {data["Accuracy"]} asddasd'
+    dff = pd.read_json(data, typ="series")
+    return f"Recall: {dff.get('Recall')}"
 
 
 # TAB 6: ABOUT
