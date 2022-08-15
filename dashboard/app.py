@@ -150,8 +150,9 @@ tab2_content = dbc.Card(
                                             "Remove hashes",
                                             "Remove duplicates",
                                             "Translate emojis",
+                                            # TODO: add more preprocessing ideas
                                         ],
-                                        ["Remove hashes", "Remove duplicates"],
+                                        value=["Remove hashes", "Remove duplicates"],
                                         labelStyle={"display": "block"},
                                         style={
                                             "height": 200,
@@ -159,6 +160,7 @@ tab2_content = dbc.Card(
                                             "overflow": "auto",
                                         },
                                         inputStyle={"marginRight": "12px"},
+                                        id="preprocessing_checklist",
                                     ),
                                 ]
                             )
@@ -172,7 +174,7 @@ tab2_content = dbc.Card(
                                     html.H3("Vectorization", style={"fontSize": 20}),
                                     dcc.RadioItems(
                                         ["Count", "TF-IDF"],
-                                        "TF-IDF",
+                                        value="TF-IDF",
                                         labelStyle={"display": "block"},
                                         style={
                                             "height": 200,
@@ -180,6 +182,7 @@ tab2_content = dbc.Card(
                                             "overflow": "auto",
                                         },
                                         inputStyle={"marginRight": "12px"},
+                                        id="vectorization_radio_items",
                                     ),
                                 ]
                             )
@@ -194,13 +197,10 @@ tab2_content = dbc.Card(
                                     dcc.RadioItems(
                                         [
                                             "SVC",
-                                            "Ridge",
                                             "Logistic",
-                                            "SGD",
-                                            "Perceptron",
-                                            "PAA",
+                                            # TODO: add other classifiers
                                         ],
-                                        "SVC",
+                                        value="SVC",
                                         labelStyle={"display": "block"},
                                         style={
                                             "height": 200,
@@ -208,6 +208,7 @@ tab2_content = dbc.Card(
                                             "overflow": "auto",
                                         },
                                         inputStyle={"marginRight": "12px"},
+                                        id="model_radio_items",
                                     ),
                                     dbc.Button(
                                         "Run", color="success", className="me-1"
@@ -252,6 +253,7 @@ tab2_content = dbc.Card(
                                     html.P("Run generated on 2022-07-29 00:17:16"),
                                 ]
                             ),
+                            html.H1(id="intermediate-value"),
                             html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
                             dcc.Graph(figure=conf_matrix),
                             html.H3("Fig 3. ROC & AUC", style={"fontSize": 20}),
@@ -273,6 +275,19 @@ tab2_content = dbc.Card(
     ),
     className="mt-3",
 )
+
+
+@app.callback(
+    Output("intermediate-value", "data"),
+    [
+        Input("preprocessing_checklist", "value"),
+        Input("vectorization_radio_items", "value"),
+        Input("model_radio_items", "value"),
+    ],
+)
+def our_function(value_1, value_2, value_3):
+    return value_1
+
 
 # TAB 6: ABOUT
 tab6_content = dbc.Card(
