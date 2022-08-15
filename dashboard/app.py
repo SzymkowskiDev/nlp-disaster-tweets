@@ -12,7 +12,8 @@ import plotly.express as px
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_curve, auc
 from sklearn.datasets import make_classification
-
+from ..models.production.generate_perf_report import generate_perf_report
+from ..models.production.vectorize_data import vectorize_data
 
 app = Dash(external_stylesheets=[dbc.themes.SLATE, dbc.icons.BOOTSTRAP])
 
@@ -161,7 +162,7 @@ tab2_content = dbc.Card(
                                             "overflow": "auto",
                                         },
                                         inputStyle={"marginRight": "12px"},
-                                        id="preprocessing_checklist",
+                                        id="preprocessing-checklist",
                                     ),
                                 ]
                             )
@@ -183,7 +184,7 @@ tab2_content = dbc.Card(
                                             "overflow": "auto",
                                         },
                                         inputStyle={"marginRight": "12px"},
-                                        id="vectorization_radio_items",
+                                        id="vectorization-radio-items",
                                     ),
                                 ]
                             )
@@ -209,7 +210,7 @@ tab2_content = dbc.Card(
                                             "overflow": "auto",
                                         },
                                         inputStyle={"marginRight": "12px"},
-                                        id="model_radio_items",
+                                        id="model-radio-items",
                                     ),
                                     dbc.Button(
                                         "Run", color="success", className="me-1"
@@ -284,12 +285,15 @@ tab2_content = dbc.Card(
 @app.callback(
     Output("intermediate-value", "data"),
     [
-        Input("preprocessing_checklist", "value"),
-        Input("vectorization_radio_items", "value"),
-        Input("model_radio_items", "value"),
+        Input("preprocessing-checklist", "value"),
+        Input("vectorization-radio-items", "value"),
+        Input("model-radio-items", "value"),
     ],
 )
 def our_function(value_1, value_2, value_3):
+    X, y = make_classification(n_samples=500, random_state=0)
+    # vectorize_data(data, method)
+    generate_perf_report(X, y)
     # TODO: fill this function
     return (value_1, value_2, value_3)
 
