@@ -14,21 +14,11 @@ from turtle import width
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 import dash_leaflet as dl
-
 import dash_leaflet.express as dlx
 from dash import Dash, html, Output, Input
 from dash_extensions.javascript import arrow_function
-
 import plotly.express as px
-
 import plotly.graph_objects as go
-
-# # map with plolty.express
-# df = px.data.gapminder().query("year==2007")
-# map_from_px = px.choropleth(df, locations="iso_alpha",
-#                             color="lifeExp",  # lifeExp is a column of gapminder
-#                             hover_name="country",  # column to add to hover information
-#                             color_continuous_scale=px.colors.sequential.Plasma)
 
 
 # map with plotly.graph_objects
@@ -76,15 +66,6 @@ map_from_pgo.update_layout(
     )]
 )
 
-
-# # map with leaflet
-
-
-# url = 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
-# attribution = '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> '
-
-# let's try mapbox? no example with world choropleth
-
 app = Dash(external_stylesheets=[dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
 
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
@@ -101,13 +82,15 @@ tab1_content = dbc.Card(
 
             # DATA QUALITY ISSUES ##############################################################
             html.H2("Data Quality Issues"),
-            html.P("Duplicated rows with opposing target values"),
-            html.P("Missing responses in column 'location'"),
-            html.P("Fake responses in column 'location'"),
-            html.P("Location appearing in multipe formats: country, city"),
-            html.P("Missing values in column 'keyword"),
-            html.P("Strange characters appering in 'keyword' and 'text'"),
-
+            html.P("We were able to discover the following data quality issues:"),
+            html.Ul([html.Li("Duplicated rows with opposing target values"),
+                     html.Li("Missing responses in column 'location'"),
+                     html.Li("Fake responses in column 'location'"),
+                     html.Li(
+                         "Location appearing in multipe formats: country, city"),
+                     html.Li("Missing values in column 'keyword'"),
+                     html.Li("Strange characters appering in 'keyword' and 'text'")
+                     ]),
 
             # html.H2("Keyword"),
             # html.P("Description of variable 'keyword'."),
@@ -131,25 +114,7 @@ tab1_content = dbc.Card(
 
             html.P(
                 "Map 1. Total number of disasters by country and types of disasters"),
-            # dl.Map(dl.TileLayer(), style={
-            #        'height': '500px'})
-
-            # 'width': '100%' is okey
-            # how do I set starting coordinate views?
-            # How do I set starting zoom view?
-            # What is better interactive map or interactive globe?
-            # If interactive map: choropleth vs charts
-            # If interactive map: which provider: leaflet, mapbox, plotly.express as px, import plotly.graph_objects as go
-            # html.Div([
-            #     dl.Map(dl.TileLayer(url=url, attribution=attribution))
-            # ], style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block", "position": "relative"}),
-            # dcc.Graph(figure=map_from_px),
-
             dcc.Graph(figure=map_from_pgo)
-
-
-
-
 
 
             # html.H2("Text"),
