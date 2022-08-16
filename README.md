@@ -90,6 +90,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [Bootstrap components for Dash](https://dash-bootstrap-components.opensource.faculty.ai/)
 * [Font awesome icons](https://fontawesome.com/icons)
 * [Colorscales for Plotly charts](https://plotly.com/python/colorscales/)
+* [How to make a choropleth map or globe with plotly.graph_objects (go)](https://plotly.com/python/map-configuration/)
 * [layout.geo reference](https://plotly.com/python/reference/layout/geo/#layout-geo-center)
 
 
