@@ -8,12 +8,14 @@ from sklearn import svm
 
 
 def generate_perf_report(
-    X: Iterable, y: Iterable, *,
+    X: Iterable,
+    y: Iterable,
+    *,
     name: str = "sample",
     description: str = "no description",
     clf: Any = None,
     date_fmt: str = "%Y-%m-%d %H:%M:%S",
-    test_size: float = .15,
+    test_size: float = 0.15,
 ) -> pd.Series:
     """
     Generate a report gathering main model classification metrics.
@@ -40,8 +42,8 @@ def generate_perf_report(
     Returns
     -------
     report : pd.Series
-        Report with specified name, date, description, test size, 
-        precision score, recall score, f-measure, accuracy and ROC 
+        Report with specified name, date, description, test size,
+        precision score, recall score, f-measure, accuracy and ROC
         AUC score in human-friendly format.
     """  # needs review
     date = datetime.datetime.now().strftime(date_fmt)
@@ -53,15 +55,20 @@ def generate_perf_report(
     model = clf.fit(X_train, y_train)
     predictions = model.predict(X_test)  # type: ignore
 
-    return pd.Series({
-        "Date": date,
-        "Description": description,
-        "Test Size": test_size,
-        "Precision": metrics.precision_score(y_test, predictions),
-        "Recall": metrics.recall_score(y_test, predictions),
-        # F-measure
-        "F1 Score": metrics.f1_score(y_test, predictions),
-        "Accuracy": metrics.accuracy_score(y_test, predictions),
-        # Area Under the Receiver Operating Characteristic Curve (ROC AUC)
-        "Roc_auc_score": metrics.roc_auc_score(y_test, predictions)
-    }, name=name)
+    return pd.Series(
+        {
+            "Date": date,
+            "Description": description,
+            "Test Size": test_size,
+            "Precision": metrics.precision_score(y_test, predictions),
+            "Recall": metrics.recall_score(y_test, predictions),
+            # F-measure
+            "F1 Score": metrics.f1_score(y_test, predictions),
+            "Accuracy": metrics.accuracy_score(y_test, predictions),
+            # Area Under the Receiver Operating Characteristic Curve (ROC AUC)
+            "Roc_auc_score": metrics.roc_auc_score(y_test, predictions),
+            "Confusion Matrix": metrics.confusion_matrix(y_test, predictions),
+            "Roc curve": metrics.roc_curve(y_test, predictions),
+        },
+        name=name,
+    )
