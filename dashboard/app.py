@@ -1,112 +1,19 @@
-from dash import Dash, dcc, html
-from dash.dependencies import Input, Output
+from dash import Dash, html, Input, Output, dash_table, dcc
 import dash_bootstrap_components as dbc
-import plotly.express as px
-import plotly.graph_objects as go
-from dash import Dash, html, Input, Output, dash_table
 from dash.exceptions import PreventUpdate
 import pandas as pd
-import plotly.figure_factory as ff
 import plotly.express as px
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_curve, auc
 from sklearn.datasets import make_classification
-from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import TfidfVectorizer
 from models.production.generate_perf_report import generate_perf_report
 from models.production.vectorize_data import vectorize_data
+import plotly.figure_factory as ff
+from dash import Dash, html
 
 
 app = Dash(external_stylesheets=[dbc.themes.SLATE, dbc.icons.BOOTSTRAP])
-
-#### OUTPUTS ####
-## METRICS TABLE
-metrics_df = pd.DataFrame(
-    {
-        "Metric": ["Precision", "Recall", "F1 Score", "Accuracy"],
-        "Value": [0.875, 0.679208, 0.764771, 0.815236],
-    }
-)
-
-## HEATMAP
-z = [[156, 310], [602, 74]]
-x = ["0", "1"]
-y = ["1", "0"]
-
-# change each element of z to type string for annotations
-z_text = [[str(y) for y in x] for x in z]
-
-# set up figure
-conf_matrix = ff.create_annotated_heatmap(
-    z, x=x, y=y, annotation_text=z_text, colorscale="greys", font_colors=["red", "red"]
-)
-
-# add custom xaxis title
-conf_matrix.add_annotation(
-    dict(
-        font=dict(color="white", size=18),
-        x=0.5,
-        y=-0.15,
-        showarrow=False,
-        text="Predicted value",
-        xref="paper",
-        yref="paper",
-    )
-)
-
-# add custom yaxis title
-conf_matrix.add_annotation(
-    dict(
-        font=dict(color="white", size=18),
-        x=-0.15,
-        y=0.5,
-        showarrow=False,
-        text="Real value",
-        textangle=-90,
-        xref="paper",
-        yref="paper",
-    )
-)
-
-# adjust margins to make room for yaxis title
-conf_matrix.update_layout(
-    margin=dict(t=0, l=50),
-    height=500,
-    width=500,
-    paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(0,0,0,0)",
-    font=dict(family="Courier New, monospace", size=22, color="white"),
-)
-
-# add colorbar
-conf_matrix["data"][0]["showscale"] = True
-
-## ROC & AUC
-X, y = make_classification(n_samples=1000, random_state=0)
-
-model = LogisticRegression()
-model.fit(X, y)
-y_score = model.predict_proba(X)[:, 1]
-
-fpr, tpr, thresholds = roc_curve(y, y_score)
-
-fig = px.area(
-    x=fpr, y=tpr, labels=dict(x="False Positive Rate", y="True Positive Rate")
-)
-fig.add_shape(type="line", line=dict(dash="dash", color="red"), x0=0, x1=1, y0=0, y1=1)
-
-fig.update_yaxes(scaleanchor="x", scaleratio=1)
-fig.update_xaxes(constrain="domain")
-
-fig.update_layout(
-    margin=dict(t=10, l=50),
-    height=500,
-    width=500,
-    paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(0,0,0,0)",
-    font=dict(family="Courier New, monospace", size=18, color="white"),
-)
-
 
 ### TAB 1: EXPLORATORY DATA ANALYSIS
 tab1_content = dbc.Card(
@@ -137,6 +44,7 @@ tab1_content = dbc.Card(
     ),
     className="mt-3",
 )
+
 
 # TAB 2: CLASSIFICATION
 tab2_content = dbc.Card(
@@ -231,49 +139,13 @@ tab2_content = dbc.Card(
                             html.H3(
                                 "Fig 1. Performance Metrics", style={"fontSize": 20}
                             ),
-                            html.Div(
-                                [
-                                    dash_table.DataTable(
-                                        id="table",
-                                        columns=[
-                                            {"name": i, "id": i}
-                                            for i in metrics_df.columns
-                                        ],
-                                        data=metrics_df.to_dict("records"),
-                                        style_cell=dict(
-                                            textAlign="left",
-                                            padding="5px",
-                                            border="1px solid grey",
-                                        ),
-                                        style_header=dict(
-                                            backgroundColor="#1E1E1E",
-                                            fontWeight="bold",
-                                            color="white",
-                                        ),
-                                        style_data=dict(
-                                            backgroundColor="#323232", color="white"
-                                        ),
-                                    ),
-                                    html.P("Run generated on 2022-07-29 00:17:16"),
-                                ]
-                            ),
+                            html.Div(id="output-datatable"),
                             dcc.Store(id="intermediate-value"),
-                            html.H1(id="output-1"),
-                            html.H1(id="output-2"),
-                            html.H1(id="output-3"),
                             html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
-                            dcc.Graph(figure=conf_matrix),
+                            dcc.Graph(id="confusion-matrix-graph"),
                             html.H3("Fig 3. ROC & AUC", style={"fontSize": 20}),
-                            dcc.Graph(figure=fig),
-                            html.P(
-                                f"AUC = {auc(fpr, tpr):.4f}",
-                                style={
-                                    "fontFamily": "Courier New, monospace",
-                                    "fontSize": 20,
-                                    "color": "red",
-                                },
-                                id="roc-paragraph",
-                            ),
+                            dcc.Graph(id="roc-graph"),
+                            html.Div(id="roc-info"),
                         ],
                         width=6,
                     ),
@@ -300,41 +172,115 @@ def our_function(preprocessing_checklist, vectorization, model):
     y = df_train["target"].copy()
     # vectorize_data(data, method)
     series = generate_perf_report(X, y, clf=LogisticRegression())
-    # TODO: fill this function
+    # TODO: complete this function
     return series.to_json(date_format="iso")
 
 
-@app.callback(Output("output-1", "children"), Input("intermediate-value", "data"))
-def first_callback(data):
+@app.callback(
+    Output("output-datatable", "children"), Input("intermediate-value", "data")
+)
+def update_datatable(data):
     dff = pd.read_json(data, typ="series")
-    return f"Test Size: {dff.get('Test Size')}"
-
-
-@app.callback(Output("output-2", "children"), Input("intermediate-value", "data"))
-def second_callback(data):
-    dff = pd.read_json(data, typ="series")
-    return f"Precision: {dff.get('Precision')}"
-
-
-@app.callback(Output("output-3", "children"), Input("intermediate-value", "data"))
-def third_callback(data):
-    dff = pd.read_json(data, typ="series")
-    # TODO: delete when other functions are complete
-    return f"Recall: {dff.get('Recall')}"
-
-
-@app.callback(Output("graph", "figure"), Input("intermediate-value", "data"))
-def update_roc(data):
-    dff = pd.read_json(data, typ="series")
-    # TODO: complete this function
+    return html.Div(
+        [
+            html.Table(
+                [
+                    html.Tbody(
+                        [
+                            html.Tr(
+                                [html.Th("Accuracy  "), html.Th(dff.get("Accuracy"))]
+                            ),
+                            html.Tr(
+                                [html.Th("Precision  "), html.Th(dff.get("Precision"))]
+                            ),
+                            html.Tr([html.Th("Recall  "), html.Th(dff.get("Recall"))]),
+                            html.Tr(
+                                [html.Th("F1 Score  "), html.Th(dff.get("F1 Score"))]
+                            ),
+                        ]
+                    )
+                ],
+                style=dict(
+                    textAlign="left",
+                    padding="5px",
+                    border="1px solid grey",
+                    backgroundColor="#1E1E1E",
+                    fontWeight="bold",
+                    color="white",
+                ),
+                # style_header=dict(
+                #     backgroundColor="#1E1E1E", fontWeight="bold", color="white"
+                # ),
+                # style_data=dict(backgroundColor="#323232", color="white"),
+            )
+        ]
+    )
+    # TODO: complete this function, e.g. add 'readable' layout
     pass
 
 
-@app.callback(Output("roc-paragraph", "children"), Input("intermediate-value", "data"))
-def update_roc(data):
+@app.callback(
+    Output("confusion-matrix-graph", "figure"), Input("intermediate-value", "data")
+)
+def update_confusion_matrix(data):
     dff = pd.read_json(data, typ="series")
+    z = dff.get("Confusion Matrix")
+    x = ["0", "1"]
+    y = ["1", "0"]
+
+    # change each element of z to type string for annotations
+    z_text = [[str(y) for y in x] for x in z]
+
+    # set up figure
+    conf_matrix = ff.create_annotated_heatmap(
+        z,
+        x=x,
+        y=y,
+        annotation_text=z_text,
+        colorscale="greys",
+        font_colors=["red", "red"],
+    )
+
+    # add custom xaxis title
+    conf_matrix.add_annotation(
+        dict(
+            font=dict(color="white", size=18),
+            x=0.5,
+            y=-0.15,
+            showarrow=False,
+            text="Predicted value",
+            xref="paper",
+            yref="paper",
+        )
+    )
+
+    # add custom yaxis title
+    conf_matrix.add_annotation(
+        dict(
+            font=dict(color="white", size=18),
+            x=-0.15,
+            y=0.5,
+            showarrow=False,
+            text="Real value",
+            textangle=-90,
+            xref="paper",
+            yref="paper",
+        )
+    )
+
+    # adjust margins to make room for yaxis title
+    conf_matrix.update_layout(
+        margin=dict(t=0, l=50),
+        height=500,
+        width=500,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Courier New, monospace", size=22, color="white"),
+    )
+    # add colorbar
+    conf_matrix["data"][0]["showscale"] = True
     # TODO: complete this function
-    pass
+    return conf_matrix
 
 
 # TAB 6: ABOUT
@@ -347,6 +293,48 @@ tab6_content = dbc.Card(
     ),
     className="mt-3",
 )
+
+
+@app.callback(Output("roc-graph", "figure"), Input("intermediate-value", "data"))
+def update_roc(data):
+    dff = pd.read_json(data, typ="series")
+    fpr, tpr, _ = dff.get("Roc curve")
+    fig = px.area(
+        x=fpr, y=tpr, labels=dict(x="False Positive Rate", y="True Positive Rate")
+    )
+    fig.add_shape(
+        type="line", line=dict(dash="dash", color="red"), x0=0, x1=1, y0=0, y1=1
+    )
+
+    fig.update_yaxes(scaleanchor="x", scaleratio=1)
+    fig.update_xaxes(constrain="domain")
+
+    fig.update_layout(
+        margin=dict(t=10, l=50),
+        height=500,
+        width=500,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Courier New, monospace", size=18, color="white"),
+    )
+    return fig
+
+
+@app.callback(Output("roc-info", "children"), Input("intermediate-value", "data"))
+def update_roc_info(data):
+    dff = pd.read_json(data, typ="series")
+    roc_auc_score = dff.get("Roc_auc_score")
+    return (
+        html.P(
+            f"AUC = {roc_auc_score:.4f}",
+            style={
+                "fontFamily": "Courier New, monospace",
+                "fontSize": 20,
+                "color": "red",
+            },
+            id="roc-paragraph",
+        ),
+    )
 
 
 tabs = dbc.Tabs(
@@ -380,6 +368,7 @@ tabs = dbc.Tabs(
 app.layout = dbc.Container(
     [html.H1([html.I(className="bi bi-twitter me-2"), "NLP Disaster Tweets"]), tabs]
 )
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
