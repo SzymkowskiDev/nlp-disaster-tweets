@@ -13,7 +13,77 @@ import plotly.figure_factory as ff
 from turtle import width
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
+import dash_leaflet as dl
 
+import dash_leaflet.express as dlx
+from dash import Dash, html, Output, Input
+from dash_extensions.javascript import arrow_function
+
+import plotly.express as px
+
+import plotly.graph_objects as go
+
+# # map with plolty.express
+# df = px.data.gapminder().query("year==2007")
+# map_from_px = px.choropleth(df, locations="iso_alpha",
+#                             color="lifeExp",  # lifeExp is a column of gapminder
+#                             hover_name="country",  # column to add to hover information
+#                             color_continuous_scale=px.colors.sequential.Plasma)
+
+
+# map with plotly.graph_objects
+df2 = pd.read_csv(
+    'https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
+
+map_from_pgo = go.Figure(data=go.Choropleth(
+    locations=df2['CODE'],
+    z=df2['GDP (BILLIONS)'],
+    text=df2['COUNTRY'],
+    colorscale='Plasma',
+    autocolorscale=False,
+    reversescale=True,
+    marker_line_color='darkgray',
+    marker_line_width=0.5,
+    colorbar_tickprefix='$',
+    colorbar_title='Number of disasters',
+))
+
+map_from_pgo.update_layout(
+    #title_text='2014 Global GDP',
+    geo=dict(
+        showframe=False,
+        showcoastlines=False,
+        # projection_type='equirectangular',
+        projection_type="orthographic",
+        bgcolor='rgba(0,0,0,0)',
+        lakecolor="#17082D",
+        showocean=True,
+        oceancolor="#17082D"
+        # showrivers =True,
+        # rivercolor = "red",
+    ),
+    height=600, margin={"r": 0, "t": 0, "l": 0, "b": 0},
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    annotations=[dict(
+        x=0.55,
+        y=0.1,
+        xref='paper',
+        yref='paper',
+        # text='Source: <a href="https://www.cia.gov/library/publications/the-world-factbook/fields/2195.html">\
+        #     CIA World Factbook</a>',
+        showarrow=False
+    )]
+)
+
+
+# # map with leaflet
+
+
+# url = 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
+# attribution = '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> '
+
+# let's try mapbox? no example with world choropleth
 
 app = Dash(external_stylesheets=[dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
 
@@ -25,23 +95,69 @@ tab1_content = dbc.Card(
             html.P(
                 "We have at our disposal multivariate data consisting of 3 potential explonatory variables (keyword, location, text) and response variable (target). Variables 'keyword', 'location' and 'text' are nominal. The outcome variable 'target' is of binary type."
             ),
+            # This is not quite right, that's just an estimate
             html.P("In total we have a sample of 10,000."),
+
+
+            # DATA QUALITY ISSUES ##############################################################
             html.H2("Data Quality Issues"),
-            html.P(
-                "Missing values are found in the column 'keyword', where there were only 61 missing records (out of 10,000) and in the column 'location', where a total of 2533 values were missing (over 25%)."
-            ),
-            html.H2("Keyword"),
-            html.P("Description of variable 'keyword'."),
-            html.P("WORDCLOUD"),
+            html.P("Duplicated rows with opposing target values"),
+            html.P("Missing responses in column 'location'"),
+            html.P("Fake responses in column 'location'"),
+            html.P("Location appearing in multipe formats: country, city"),
+            html.P("Missing values in column 'keyword"),
+            html.P("Strange characters appering in 'keyword' and 'text'"),
+
+
+            # html.H2("Keyword"),
+            # html.P("Description of variable 'keyword'."),
+            # html.P("WORDCLOUD"),
+
+            # LOCATION #########################################################################
             html.H2("Location"),
-            html.P("In the variable 'location' there are 3341 distinct values."),
-            html.P("INTERACTIVE MAP"),
-            html.H2("Text"),
-            html.P("Description of variable 'text'"),
-            html.P("WORDCLOUD"),
-            html.H2("Dataset Balance"),
-            html.P("Is the dataset balanced?"),
-            html.P("BAR CHART"),
+
+            # What does the variable 'location' represent?
+            html.P("The variable 'location' represents the responses that Twitter users gave about where they were from. Out of 10,000 users, 7467 submited any response at all giving the response rate of 74.7%. One would expect structured data in the form 'country-city', but that is not the case. Users submitted their location data with the help of a text input. So, apart from responses like 'France', 'Germany' or 'USA' the column contains values like 'milky way', 'Worldwide' or 'Your Sister's Bedroom'. When geographical name is given at all, it often isn't given in a standard format. For example, the variable contains values like 'Jaipur, India' (city, country), 'bangalore' (just city), 'Indonesia' (just country) and many other variations of country, city, province or other administrative divison name in different combinations and no one uniform order."),
+
+            # How we will transform the data to make it useful for analysis
+            html.P("Nevertheless, thanks to so some data crunching we were able to make use of the largest possible subset of responses that contained geohraphical names."),
+
+            # How many non-null responses contained geographical names that we could link with specific countries?
+            html.P(
+                "We were able to obtain the total of X number of legitimate country responses."),
+
+            html.P("Since the response rate in the variable 'keyword' (that contains names of disasters) was 99.4%, we have the types of a catastrophy for almost all countries. The map below represents the most disastered countries in total and by type* of a catastrophy."),
+            html.P("*It is worth noting, that the number of distinct values in the column 'keyword' was almost X. This is not because there are so many types of disasters out there. One of the reasons, why that's the case is because sometimes the same type of disaster like for example 'fire' is given in different ways like 'explosion', 'fire responders' or 'flames'. Hence we combined values in the following groups: ()."),
+
+            html.P(
+                "Map 1. Total number of disasters by country and types of disasters"),
+            # dl.Map(dl.TileLayer(), style={
+            #        'height': '500px'})
+
+            # 'width': '100%' is okey
+            # how do I set starting coordinate views?
+            # How do I set starting zoom view?
+            # What is better interactive map or interactive globe?
+            # If interactive map: choropleth vs charts
+            # If interactive map: which provider: leaflet, mapbox, plotly.express as px, import plotly.graph_objects as go
+            # html.Div([
+            #     dl.Map(dl.TileLayer(url=url, attribution=attribution))
+            # ], style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block", "position": "relative"}),
+            # dcc.Graph(figure=map_from_px),
+
+            dcc.Graph(figure=map_from_pgo)
+
+
+
+
+
+
+            # html.H2("Text"),
+            # html.P("Description of variable 'text'"),
+            # html.P("WORDCLOUD"),
+            # html.H2("Dataset Balance"),
+            # html.P("Is the dataset balanced?"),
+            # html.P("BAR CHART"),
         ]
     ),
     className="mt-3",
@@ -249,6 +365,7 @@ def update_confusion_matrix(data):
     # TODO: complete this function
     return conf_matrix
 
+
 @app.callback(Output("roc-graph", "figure"), Input("intermediate-value", "data"))
 def update_roc(data):
     dff = pd.read_json(data, typ="series")
@@ -332,7 +449,7 @@ tabs = dbc.Tabs(
         ),
         dbc.Tab(tab6_content, label="About", tab_id="tab-7"),
     ],
-    active_tab="tab-2",
+    active_tab="tab-1",
 )
 
 # LAYOUT ##############################################################################################################################
