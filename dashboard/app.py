@@ -39,7 +39,7 @@ map_from_pgo = go.Figure(data=go.Choropleth(
 ))
 
 map_from_pgo.update_layout(
-    #title_text='2014 Global GDP',
+    # title_text='2014 Global GDP',
     geo=dict(
         showframe=False,
         showcoastlines=False,
@@ -136,63 +136,68 @@ tab2_content = dbc.Card(
                 html.H2("INPUTS"),
                 dbc.Col([html.Div([
                     html.H3("Data Cleaning", style={"fontSize": 20}),
-                    dcc.Checklist(
-                        [
-                            "Remove hashes",
-                            "Remove duplicates",
-                            "Translate emojis",
-                            # TODO: add more preprocessing ideas
-                        ],
-                        value=["Remove hashes",
-                               "Remove duplicates"],
-                        labelStyle={"display": "block"},
-                        style={
-                            "height": 200,
-                            "width": 200,
-                            "overflow": "auto",
-                        },
-                        inputStyle={"marginRight": "12px"},
-                        id="preprocessing-checklist",
+                    dbc.Checklist(
+                        options=[
+                            {"label": "Remove hashes", "value": 1},
+                            {"label": "Remove duplicate records", "value": 2},
+                            {"label": "Lemmatize", "value": 3},
+                            {"label": "Remove HTML special entities", "value": 4},
+                            {"label": "Remove tickers", "value": 5},
+                            {"label": "Remove hyperlinks", "value": 6},
+                            {"label": "Remove whitespaces", "value": 7},
+                            {"label": "Remove URL, RT, mention(@)",
+                             "value": 8},
+                            {"label": "Remove no BMP characters", "value": 9},
+                            {"label": "Remove misspelled words", "value": 10},
+                            {"label": "Remove emojis", "value": 11},
+                            {"label": "Remove Mojibake", "value": 12},
+                            {"label": "Lemmatize", "value": 13},
+                            {"label": "Leave only nouns", "value": 14},
+                            {"label": "Spell check", "value": 15}],
+                        id="preprocessing-checklist"
                     )
-                ])], width=4),
+                ])], width=3),
                 dbc.Col([html.Div([
                     html.H3("Vectorization", style={"fontSize": 20}),
-                    dcc.RadioItems(
-                        ["Count", "TF-IDF"],
-                        value="TF-IDF",
-                        labelStyle={"display": "block"},
-                        style={
-                            "height": 200,
-                            "width": 200,
-                            "overflow": "auto",
-                        },
-                        inputStyle={"marginRight": "12px"},
+                    dbc.RadioItems(
+                        options=[
+                            {"label": "Count", "value": "Count"},
+                            {"label": "TF-IDF", "value": "TF-IDF"},
+                            {"label": "Bag of Words", "value": "BoW"},
+                            {"label": "Word2Vec ", "value": "W2V"}
+                        ],
+                        value=1,
                         id="vectorization-radio-items",
                     )
-                ])], width=4),
+                ])], width=2),
                 dbc.Col([html.Div([
                     html.H3("Model", style={"fontSize": 20}),
-                    dcc.RadioItems(
-                        [
-                            "SVC",
-                            "Logistic",
-                            # TODO: add other classifiers
+                    dbc.RadioItems(
+                        options=[
+                            {"label": "SVC", "value": "SVC"},
+                            {"label": "Logistic", "value": "Logistic"}
                         ],
-                        value="SVC",
-                        labelStyle={"display": "block"},
-                        style={
-                            "height": 200,
-                            "width": 200,
-                            "overflow": "auto",
-                        },
-                        inputStyle={"marginRight": "12px"},
+                        value=1,
                         id="model-radio-items",
                     ),
-                    dbc.Button("Run", color="success", className="me-1")
-                ])], width=4)
+                ])], width=3),
+                dbc.Col([
+                    html.Div(
+                        [
+                            dbc.Button("Run", color="success", outline=True,
+                                       id="run", style={"borderRadius": "50%", "height": 110, "width": 110, "marginBottom": 20}),
+                            dbc.Button("Reset", color="secondary", outline=True,
+                                       id="reset", style={"borderRadius": "50%", "height": 110, "width": 110, "marginBottom": 20}),
+                            dbc.Button("Save", color="primary", outline=True,
+                                       id="save", style={"borderRadius": "50%", "height": 110, "width": 110, "marginBottom": 20})
+                        ],
+                        className="d-grid gap-2"
+                    ),
+                ],
+                    width=3)
             ]),
             dbc.Row([
-                html.H2("OUTPUTS"),
+                html.H2("OUTPUTS", style={"marginTop": 25}),
                 dbc.Col([html.P(
                     "Your customized classification correctly predicted 732 responses out of 1002, which amounts to the accuracy rate of 0.81. Other metrics are shown below."),
                     html.H3("Fig 1. Performance Metrics",
@@ -213,7 +218,7 @@ tab2_content = dbc.Card(
 )
 
 
-@app.callback(
+@ app.callback(
     Output("intermediate-value", "data"),
     [
         Input("preprocessing-checklist", "value"),
@@ -232,7 +237,7 @@ def our_function(preprocessing_checklist, vectorization, model):
     return series.to_json(date_format="iso")
 
 
-@app.callback(
+@ app.callback(
     Output("output-datatable", "children"), Input("intermediate-value", "data")
 )
 def update_datatable(data):
@@ -275,7 +280,7 @@ def update_datatable(data):
     pass
 
 
-@app.callback(
+@ app.callback(
     Output("confusion-matrix-graph",
            "figure"), Input("intermediate-value", "data")
 )
@@ -331,7 +336,7 @@ def update_confusion_matrix(data):
     return conf_matrix
 
 
-@app.callback(Output("roc-graph", "figure"), Input("intermediate-value", "data"))
+@ app.callback(Output("roc-graph", "figure"), Input("intermediate-value", "data"))
 def update_roc(data):
     dff = pd.read_json(data, typ="series")
     fpr, tpr, _ = dff.get("Roc curve")
@@ -414,7 +419,7 @@ tabs = dbc.Tabs(
         ),
         dbc.Tab(tab6_content, label="About", tab_id="tab-7"),
     ],
-    active_tab="tab-1",
+    active_tab="tab-2",
 )
 
 # LAYOUT ##############################################################################################################################
