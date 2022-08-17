@@ -93,6 +93,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [How to make a choropleth map or globe with plotly.graph_objects (go)](https://plotly.com/python/map-configuration/)
 * [layout.geo reference](https://plotly.com/python/reference/layout/geo/#layout-geo-center)
 * [bootstrap theme explorer](https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/explorer/)
+* [ML Crach Course from google developlers](https://developers.google.com/machine-learning/crash-course/classification/accuracy)
 
 
 ## 📅 Development Schedule
