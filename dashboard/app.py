@@ -216,14 +216,14 @@ tab2_content = dbc.Card(
                         ]),
                         html.P(
                             "The sample contained a total of 652 true positives. Out of them, 610 were correctly predicted by the model. Hence, the recall is 66.87%. Finally, the harmonic mean of precison and recall is 77.34%."),
-                        ], width=3),
+                        ], width=4),
                 # dbc.Col([html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
                 #          dcc.Graph(id="confusion-matrix-graph")], width=4),
                 dbc.Col([
                     html.P(
                         "Fig 3. shows the performance of the classification model at all classification thresholds."),
                     html.H3("Fig 3. ROC & AUC", style={"fontSize": 20}),
-                    dcc.Graph(id="roc-graph")], width=3)
+                    dcc.Graph(id="roc-graph")], width=4)
             ]),
         ]
     ),
