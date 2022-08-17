@@ -65,6 +65,9 @@ map_from_pgo.update_layout(
     )]
 )
 
+# IMPORT DUMMY DATA FOR BAR CHART
+dummy_class = pd.read_csv("data\class_chart.csv")
+
 app = Dash(external_stylesheets=[dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
 
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
@@ -198,24 +201,59 @@ tab2_content = dbc.Card(
             dbc.Row([
                 html.H2("OUTPUTS", style={"marginTop": 25}),
                 dbc.Col([
-                    html.P(
-                        "Your customized classification correctly predicted 732 responses out of 1002, which amounts to the accuracy rate of 0.81. Other metrics are shown below."),
-                    html.H3("Fig 1. Performance Metrics",
+                    html.P("Your customized model has been tried out on a test sample of 1002 tweets. It correctly classified 732 of records, while the remaining 270 were assigned to a wrong class. This means that the accuracy is 81.45%."),
+                    html.H3("Fig 1. Confusion Matrix data",
                             style={"fontSize": 20}),
-                    html.Div([
-                        html.Div(id="output-datatable"),
-                        dcc.Store(id="intermediate-value"),
-                        html.P('Run generated on 2022-07-29 00:17:16')
-                    ])], width=4),
-                dbc.Col([html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
-                         dcc.Graph(id="confusion-matrix-graph")], width=4),
-                dbc.Col([html.H3("Fig 3. ROC & AUC", style={"fontSize": 20}),
-                         dcc.Graph(id="roc-graph")], width=4)
+                    dcc.Graph(id="class_barchart"),
+                ], width=4),
+                dbc.Col([
+                        html.P("The classifier has marked a total of 632 tweets as those that relate to natural disasters (class 1). Out of these, 547 were actually in this group. This gives precision of 83.26%."),
+                        html.H3("Fig 2. Performance Metrics",
+                                style={"fontSize": 20}),
+                        html.Div([
+                            html.Div(id="output-datatable"),
+                            dcc.Store(id="intermediate-value"),
+                        ]),
+                        html.P(
+                            "The sample contained a total of 652 true positives. Out of them, 610 were correctly predicted by the model. Hence, the recall is 66.87%. Finally, the harmonic mean of precison and recall is 77.34%."),
+                        ], width=3),
+                # dbc.Col([html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
+                #          dcc.Graph(id="confusion-matrix-graph")], width=4),
+                dbc.Col([
+                    html.P(
+                        "Fig 3. shows the performance of the classification model at all classification thresholds."),
+                    html.H3("Fig 3. ROC & AUC", style={"fontSize": 20}),
+                    dcc.Graph(id="roc-graph")], width=3)
             ]),
         ]
     ),
     className="mt-3",
 )
+
+# BARCHART
+
+
+@app.callback(
+    Output("class_barchart", "figure"), Input("intermediate-value", "data"))
+def update_bar_chart(data):
+    df = dummy_class
+    fig = px.bar(df, x="Disaster", y="Count",
+                 color="Actual", barmode="group", text_auto=True, color_discrete_sequence=['#48EF7B', '#D85360', '#48EF7B', '#D85360'])
+    fig.update_layout(
+        margin=dict(t=0, l=50),
+        height=350,
+        # width="100%",
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        showlegend=False,
+        font=dict(
+            size=14,
+            color="#32FBE2"
+        ))
+
+    return fig
+
+# INTERIM DATA
 
 
 @ app.callback(
@@ -225,6 +263,8 @@ tab2_content = dbc.Card(
         Input("vectorization-radio-items", "value"),
         Input("model-radio-items", "value"),
     ],
+
+
 )
 def our_function(preprocessing_checklist, vectorization, model):
     df_train = pd.read_csv(r"data\original\train.csv")
@@ -235,6 +275,8 @@ def our_function(preprocessing_checklist, vectorization, model):
     series = generate_perf_report(X, y, clf=LogisticRegression())
     # TODO: complete this function
     return series.to_json(date_format="iso")
+
+# PERFORMANCE METRICS TABLE
 
 
 @ app.callback(
@@ -282,61 +324,63 @@ def update_datatable(data):
     # TODO: complete this function, e.g. add 'readable' layout
     pass
 
+# # CONFUSION MATRIX GRAPH
+# @ app.callback(
+#     Output("confusion-matrix-graph",
+#            "figure"), Input("intermediate-value", "data")
+# )
+# def update_confusion_matrix(data):
+#     dff = pd.read_json(data, typ="series")
+#     z = dff.get("Confusion Matrix")
+#     x = ["0", "1"]
+#     y = ["1", "0"]
 
-@ app.callback(
-    Output("confusion-matrix-graph",
-           "figure"), Input("intermediate-value", "data")
-)
-def update_confusion_matrix(data):
-    dff = pd.read_json(data, typ="series")
-    z = dff.get("Confusion Matrix")
-    x = ["0", "1"]
-    y = ["1", "0"]
+#     # change each element of z to type string for annotations
+#     z_text = [[str(y) for y in x] for x in z]
 
-    # change each element of z to type string for annotations
-    z_text = [[str(y) for y in x] for x in z]
+#     # set up figure
+#     conf_matrix = ff.create_annotated_heatmap(
+#         z, x=x, y=y, annotation_text=z_text, colorscale='plasma', font_colors=["black", "white"])
 
-    # set up figure
-    conf_matrix = ff.create_annotated_heatmap(
-        z, x=x, y=y, annotation_text=z_text, colorscale='plasma', font_colors=["black", "white"])
+#     # add custom xaxis title
+#     conf_matrix.add_annotation(dict(font=dict(color="white", size=18),
+#                                     x=0.5,
+#                                     y=-0.15,
+#                                     showarrow=False,
+#                                     text="Predicted value",
+#                                     xref="paper",
+#                                     yref="paper"))
 
-    # add custom xaxis title
-    conf_matrix.add_annotation(dict(font=dict(color="white", size=18),
-                                    x=0.5,
-                                    y=-0.15,
-                                    showarrow=False,
-                                    text="Predicted value",
-                                    xref="paper",
-                                    yref="paper"))
+#     # add custom yaxis title
+#     conf_matrix.add_annotation(dict(font=dict(color="white", size=18),
+#                                     x=-0.15,
+#                                     y=0.5,
+#                                     showarrow=False,
+#                                     text="Real value",
+#                                     textangle=-90,
+#                                     xref="paper",
+#                                     yref="paper"))
 
-    # add custom yaxis title
-    conf_matrix.add_annotation(dict(font=dict(color="white", size=18),
-                                    x=-0.15,
-                                    y=0.5,
-                                    showarrow=False,
-                                    text="Real value",
-                                    textangle=-90,
-                                    xref="paper",
-                                    yref="paper"))
+#     # adjust margins to make room for yaxis title
+#     conf_matrix.update_layout(
+#         margin=dict(t=0, l=50),
+#         height=350,
+#         width=350,
+#         paper_bgcolor='rgba(0,0,0,0)',
+#         plot_bgcolor='rgba(0,0,0,0)',
+#         font=dict(
+#             family="Courier New, monospace",
+#             size=22,
+#             color="white"
+#         ))
 
-    # adjust margins to make room for yaxis title
-    conf_matrix.update_layout(
-        margin=dict(t=0, l=50),
-        height=350,
-        width=350,
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        font=dict(
-            family="Courier New, monospace",
-            size=22,
-            color="white"
-        ))
+#     # add colorbar
+#     conf_matrix['data'][0]['showscale'] = True
 
-    # add colorbar
-    conf_matrix['data'][0]['showscale'] = True
+#     # TODO: complete this function
+#     return conf_matrix
 
-    # TODO: complete this function
-    return conf_matrix
+# ROC GRAPH
 
 
 @ app.callback(Output("roc-graph", "figure"), Input("intermediate-value", "data"))
@@ -361,9 +405,8 @@ def update_roc(data):
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         font=dict(
-            family="Courier New, monospace",
-            size=18,
-            color="white"
+            size=14,
+            color="#32FBE2"
         ))
 
     fig.add_trace(go.Scatter(
