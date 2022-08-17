@@ -20,7 +20,6 @@ from dash_extensions.javascript import arrow_function
 import plotly.express as px
 import plotly.graph_objects as go
 
-
 # map with plotly.graph_objects
 df2 = pd.read_csv(
     'https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
@@ -198,8 +197,9 @@ tab2_content = dbc.Card(
             ]),
             dbc.Row([
                 html.H2("OUTPUTS", style={"marginTop": 25}),
-                dbc.Col([html.P(
-                    "Your customized classification correctly predicted 732 responses out of 1002, which amounts to the accuracy rate of 0.81. Other metrics are shown below."),
+                dbc.Col([
+                    html.P(
+                        "Your customized classification correctly predicted 732 responses out of 1002, which amounts to the accuracy rate of 0.81. Other metrics are shown below."),
                     html.H3("Fig 1. Performance Metrics",
                             style={"fontSize": 20}),
                     html.Div([
@@ -249,29 +249,32 @@ def update_datatable(data):
                     html.Tbody(
                         [
                             html.Tr(
-                                [html.Th("Accuracy  "), html.Th(
-                                    dff.get("Accuracy"))]
+                                [html.Th("Accuracy", style={"padding": "8px 8px 4px 8px"}),
+                                 html.Th(
+                                    round(dff.get("Accuracy"), 2), style={"width": 50})]
                             ),
                             html.Tr(
-                                [html.Th("Precision  "), html.Th(
-                                    dff.get("Precision"))]
+                                [html.Th("Precision", style={"padding": "8px 8px 4px 8px"}), html.Th(
+                                    round(dff.get("Precision"), 2))]
                             ),
                             html.Tr(
-                                [html.Th("Recall  "), html.Th(dff.get("Recall"))]),
+                                [html.Th("Recall", style={"padding": "8px 8px 4px 8px"}), html.Th(round(dff.get("Recall"), 2))]),
                             html.Tr(
-                                [html.Th("F1 Score  "), html.Th(
-                                    dff.get("F1 Score"))]
+                                [html.Th("F1 Score", style={"padding": "8px 8px 4px 8px"}), html.Th(
+                                    round(dff.get("F1 Score"), 2))]
                             ),
                         ]
                     )
                 ],
                 style=dict(
                     textAlign="left",
-                    padding="5px",
-                    border="1px solid grey",
+                    padding=15,
+                    margin=10,
+                    border="1px solid #32FBE2",
                     backgroundColor="#3F3B96",
                     fontWeight="bold",
                     color="white",
+                    width="85%"
                 )
             )
         ]
@@ -295,7 +298,7 @@ def update_confusion_matrix(data):
 
     # set up figure
     conf_matrix = ff.create_annotated_heatmap(
-        z, x=x, y=y, annotation_text=z_text, colorscale='blues', font_colors=["red", "red"])
+        z, x=x, y=y, annotation_text=z_text, colorscale='plasma', font_colors=["black", "white"])
 
     # add custom xaxis title
     conf_matrix.add_annotation(dict(font=dict(color="white", size=18),
