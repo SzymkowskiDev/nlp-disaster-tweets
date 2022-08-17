@@ -115,11 +115,11 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 
 - [X] Deployment of a blank dashboard (and integrate Dash)
 - [ ] Customized classification
-    - [ ] Inputs (Parameters for classification) (Blocked by Maganzo & Asia)
-    - [ ] Outputs (Data Visualisation)
-        - [ ] Pefromance metrics visalisation (input data)
+    - [X] Inputs (Parameters for classification)
+    - [X] Outputs (Data Visualisation)
+        - [X] Pefromance metrics visalisation (input data)
         - [ ] Word cloud visualisation (output data)
-        - [ ] Performance metrics visalisation (output data)   
+        - [X] Performance metrics visalisation (output data)   
         - [ ] Word cloud visualisation (input data)
         - [ ] Map of locations (input data)
 
