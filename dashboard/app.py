@@ -24,6 +24,9 @@ import plotly.graph_objects as go
 df2 = pd.read_csv(
     'https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
 
+# DATA TRANSFORMATIONS TO FEED MAP
+
+
 map_from_pgo = go.Figure(data=go.Choropleth(
     locations=df2['CODE'],
     z=df2['GDP (BILLIONS)'],
@@ -116,7 +119,40 @@ tab1_content = dbc.Card(
 
             html.P(
                 "Map 1. Total number of disasters by country and types of disasters"),
-            dcc.Graph(figure=map_from_pgo)
+            dbc.Row([
+                dbc.Col([
+                    html.H3("Select disaster type",
+                            style={"fontSize": 20}),
+                    dbc.RadioItems(
+                        options=[
+                            {"label": "All types", "value": "all"},
+                            {"label": "Fire", "value": "fire"},
+                            {"label": "Explosion", "value": "explosion"},
+                            {"label": "Transport", "value": "transport"},
+                            {"label": "Terrorism", "value": "terrorism"},
+                            {"label": "Construction", "value": "construction"},
+                            {"label": "Wind", "value": "wind"},
+                            {"label": "Flooding", "value": "flooding"},
+                            {"label": "Hot weather", "value": "hot"},
+                            {"label": "Tectonics", "value": "tectonics"},
+                            {"label": "Famine", "value": "famine"},
+                            {"label": "Errosion", "value": "errosion"},
+                            {"label": "Lightening", "value": "lightening"},
+                            {"label": "Mass murder", "value": "mass"},
+                            {"label": "Nuclear", "value": "nuclear"},
+                            {"label": "Industrial", "value": "industrial"},
+                            {"label": "Disease", "value": "disease"},
+                            {"label": "Riot", "value": "riot"},
+                            {"label": "War", "value": "war"},
+                            {"label": "Unidentified", "value": "Unidentified"},
+                        ],
+                        value="all",
+                        id="location-radio-items",
+                    )], width=2),
+                dbc.Col([dcc.Graph(figure=map_from_pgo)], width=10),
+            ]),
+
+
 
 
             # html.H2("Text"),
@@ -465,7 +501,7 @@ tabs = dbc.Tabs(
         ),
         dbc.Tab(tab6_content, label="About", tab_id="tab-7"),
     ],
-    active_tab="tab-2",
+    active_tab="tab-1",
 )
 
 # LAYOUT ##############################################################################################################################
