@@ -1,10 +1,11 @@
 from dash import Dash, html, Input, Output, dcc
 import dash_bootstrap_components as dbc
 import pandas as pd
+import numpy as np
 import plotly.express as px
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import auc
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from models.production.generate_perf_report import generate_perf_report
 from models.production.vectorize_data import vectorize_data
 import plotly.figure_factory as ff
@@ -13,6 +14,8 @@ import plotly.graph_objects as go
 from dash import Dash, html, Output, Input
 import plotly.express as px
 import plotly.graph_objects as go
+
+TRAIN_DATA_PATH = r"data\original\train.csv"
 
 # map with plotly.graph_objects
 df2 = pd.read_csv(
@@ -159,10 +162,9 @@ tab2_content = dbc.Card(
                         options=[
                             {"label": "Count", "value": "Count"},
                             {"label": "TF-IDF", "value": "TF-IDF"},
-                            {"label": "Bag of Words", "value": "BoW"},
-                            {"label": "Word2Vec ", "value": "W2V"}
+                            # TODO: implement this {"label": "Word2Vec ", "value": "W2V"}
                         ],
-                        value=1,
+                        value="TF-IDF",
                         id="vectorization-radio-items",
                     )
                 ])], width=2),
@@ -173,7 +175,7 @@ tab2_content = dbc.Card(
                             {"label": "SVC", "value": "SVC"},
                             {"label": "Logistic", "value": "Logistic"}
                         ],
-                        value=1,
+                        value="Logistic",
                         id="model-radio-items",
                     ),
                 ])], width=3),
@@ -230,13 +232,16 @@ tab2_content = dbc.Card(
 @app.callback(
     Output("class_barchart", "figure"), Input("intermediate-value", "data"))
 def update_bar_chart(data):
-    df = dummy_class
+    dff = pd.read_json(data, typ="series")
+    tn, fp, fn, tp = np.array(dff.get("Confusion Matrix")).ravel()
+    df = pd.DataFrame({'Disaster':['No', 'Yes','No', 'Yes'],
+                        'Actual': ['TRUE', 'TRUE', 'FALSE', 'FALSE'],
+                        'Count': [tn, tp, fn, fp]})
     fig = px.bar(df, x="Disaster", y="Count",
                  color="Actual", barmode="group", text_auto=True, color_discrete_sequence=['#48EF7B', '#D85360', '#48EF7B', '#D85360'])
     fig.update_layout(
         margin=dict(t=0, l=50),
         height=350,
-        # width="100%",
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         showlegend=False,
@@ -261,12 +266,20 @@ def update_bar_chart(data):
 
 )
 def our_function(preprocessing_checklist, vectorization, model):
-    df_train = pd.read_csv(r"data\original\train.csv")
+    df_train = pd.read_csv(TRAIN_DATA_PATH)
+    #set default vectorizer
     tfidf_vect = TfidfVectorizer(max_features=5000)
     X = tfidf_vect.fit_transform(df_train["text"])
+    if vectorization=='Count':
+        count_vect = CountVectorizer()
+        X = count_vect.fit_transform(df_train["text"])
+    #TODO: add another vectorizers
+
+
+
     y = df_train["target"].copy()
     # vectorize_data(data, method)
-    series = generate_perf_report(X, y, clf=LogisticRegression())
+    series = generate_perf_report(X, y, clf=LogisticRegression(max_iter=50))
     # TODO: complete this function
     return series.to_json(date_format="iso")
 
