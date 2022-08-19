@@ -4,8 +4,9 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.svm import SVC
 from sklearn.metrics import auc
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from models.production.generate_perf_report import generate_perf_report
 from models.production.vectorize_data import vectorize_data
 import plotly.figure_factory as ff
@@ -160,11 +161,11 @@ tab2_content = dbc.Card(
                     html.H3("Vectorization", style={"fontSize": 20}),
                     dbc.RadioItems(
                         options=[
-                            {"label": "Count", "value": "Count"},
-                            {"label": "TF-IDF", "value": "TF-IDF"},
+                            {"label": "Count", "value": "count"},
+                            {"label": "TF-IDF", "value": "tfidf"},
                             # TODO: implement this {"label": "Word2Vec ", "value": "W2V"}
                         ],
-                        value="TF-IDF",
+                        value="tfidf",
                         id="vectorization-radio-items",
                     )
                 ])], width=2),
@@ -173,7 +174,8 @@ tab2_content = dbc.Card(
                     dbc.RadioItems(
                         options=[
                             {"label": "SVC", "value": "SVC"},
-                            {"label": "Logistic", "value": "Logistic"}
+                            {"label": "Logistic", "value": "Logistic"},
+                            {"label": "Naive Bayes", "value": "Bayes"},
                         ],
                         value="Logistic",
                         id="model-radio-items",
@@ -228,7 +230,6 @@ tab2_content = dbc.Card(
 
 # BARCHART
 
-
 @app.callback(
     Output("class_barchart", "figure"), Input("intermediate-value", "data"))
 def update_bar_chart(data):
@@ -267,20 +268,22 @@ def update_bar_chart(data):
 )
 def our_function(preprocessing_checklist, vectorization, model):
     df_train = pd.read_csv(TRAIN_DATA_PATH)
-    #set default vectorizer
-    tfidf_vect = TfidfVectorizer(max_features=5000)
-    X = tfidf_vect.fit_transform(df_train["text"])
-    if vectorization=='Count':
-        count_vect = CountVectorizer()
-        X = count_vect.fit_transform(df_train["text"])
-    #TODO: add another vectorizers
 
-
-
+    #set  vectorizer
+    X = vectorize_data(df_train, vectorization)
     y = df_train["target"].copy()
-    # vectorize_data(data, method)
-    series = generate_perf_report(X, y, clf=LogisticRegression(max_iter=50))
-    # TODO: complete this function
+
+    #set model
+    if model=="Logistic":
+        clf = LogisticRegression
+    elif model=='SVC':
+        clf = SVC
+    elif model=='Bayes':
+        clf = MultinomialNB
+    
+
+    
+    series = generate_perf_report(X, y, clf=clf())
     return series.to_json(date_format="iso")
 
 # PERFORMANCE METRICS TABLE
@@ -328,64 +331,7 @@ def update_datatable(data):
             )
         ]
     )
-    # TODO: complete this function, e.g. add 'readable' layout
     pass
-
-# # CONFUSION MATRIX GRAPH
-# @ app.callback(
-#     Output("confusion-matrix-graph",
-#            "figure"), Input("intermediate-value", "data")
-# )
-# def update_confusion_matrix(data):
-#     dff = pd.read_json(data, typ="series")
-#     z = dff.get("Confusion Matrix")
-#     x = ["0", "1"]
-#     y = ["1", "0"]
-
-#     # change each element of z to type string for annotations
-#     z_text = [[str(y) for y in x] for x in z]
-
-#     # set up figure
-#     conf_matrix = ff.create_annotated_heatmap(
-#         z, x=x, y=y, annotation_text=z_text, colorscale='plasma', font_colors=["black", "white"])
-
-#     # add custom xaxis title
-#     conf_matrix.add_annotation(dict(font=dict(color="white", size=18),
-#                                     x=0.5,
-#                                     y=-0.15,
-#                                     showarrow=False,
-#                                     text="Predicted value",
-#                                     xref="paper",
-#                                     yref="paper"))
-
-#     # add custom yaxis title
-#     conf_matrix.add_annotation(dict(font=dict(color="white", size=18),
-#                                     x=-0.15,
-#                                     y=0.5,
-#                                     showarrow=False,
-#                                     text="Real value",
-#                                     textangle=-90,
-#                                     xref="paper",
-#                                     yref="paper"))
-
-#     # adjust margins to make room for yaxis title
-#     conf_matrix.update_layout(
-#         margin=dict(t=0, l=50),
-#         height=350,
-#         width=350,
-#         paper_bgcolor='rgba(0,0,0,0)',
-#         plot_bgcolor='rgba(0,0,0,0)',
-#         font=dict(
-#             family="Courier New, monospace",
-#             size=22,
-#             color="white"
-#         ))
-
-#     # add colorbar
-#     conf_matrix['data'][0]['showscale'] = True
-
-#     # TODO: complete this function
-#     return conf_matrix
 
 # ROC GRAPH
 
