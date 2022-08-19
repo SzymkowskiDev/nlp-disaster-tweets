@@ -1,22 +1,16 @@
-from dash import Dash, html, Input, Output, dash_table, dcc
+from dash import Dash, html, Input, Output, dcc
 import dash_bootstrap_components as dbc
-from dash.exceptions import PreventUpdate
 import pandas as pd
 import plotly.express as px
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import roc_curve, auc
-from sklearn.datasets import make_classification
+from sklearn.metrics import auc
 from sklearn.feature_extraction.text import TfidfVectorizer
 from models.production.generate_perf_report import generate_perf_report
 from models.production.vectorize_data import vectorize_data
 import plotly.figure_factory as ff
-from turtle import width
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
-import dash_leaflet as dl
-import dash_leaflet.express as dlx
 from dash import Dash, html, Output, Input
-from dash_extensions.javascript import arrow_function
 import plotly.express as px
 import plotly.graph_objects as go
 
