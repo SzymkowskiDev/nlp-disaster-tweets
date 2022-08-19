@@ -489,11 +489,12 @@ def update_datatable(data):
     pass
 
 
+# PERFORMANCE METRICS TEXT - ACCURACY
 @app.callback(
     Output("performance-metrics-accuracy-text", "children"),
     Input("intermediate-value", "data"),
 )
-def update(data):
+def update_performance_metrics_accuracy_text(data):
     dff = pd.read_json(data, typ="series")
     tn, fp, fn, tp = np.array(dff.get("Confusion Matrix")).ravel()
     return (
