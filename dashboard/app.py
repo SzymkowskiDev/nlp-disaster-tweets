@@ -9,6 +9,7 @@ from sklearn.svm import SVC
 from sklearn.metrics import auc
 from models.production.generate_perf_report import generate_perf_report
 from models.production.vectorize_data import vectorize_data
+from models.production.preprocess_data import preprocess_data
 import plotly.figure_factory as ff
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
@@ -139,21 +140,21 @@ tab2_content = dbc.Card(
                     dbc.Checklist(
                         options=[
                             {"label": "Remove hashes", "value": 1},
-                            {"label": "Remove duplicate records", "value": 2},
-                            {"label": "Lemmatize", "value": 3},
-                            {"label": "Remove HTML special entities", "value": 4},
-                            {"label": "Remove tickers", "value": 5},
-                            {"label": "Remove hyperlinks", "value": 6},
-                            {"label": "Remove whitespaces", "value": 7},
+                            {"label": "Remove HTML special entities", "value": 2},
+                            {"label": "Remove tickers", "value": 3},
+                            {"label": "Remove hyperlinks", "value": 4},
+                            {"label": "Remove whitespaces", "value": 5},
                             {"label": "Remove URL, RT, mention(@)",
-                             "value": 8},
-                            {"label": "Remove no BMP characters", "value": 9},
-                            {"label": "Remove misspelled words", "value": 10},
-                            {"label": "Remove emojis", "value": 11},
-                            {"label": "Remove Mojibake", "value": 12},
-                            {"label": "Lemmatize", "value": 13},
-                            {"label": "Leave only nouns", "value": 14},
-                            {"label": "Spell check", "value": 15}],
+                             "value": 6},
+                            {"label": "Remove no BMP characters", "value": 7},
+                            {"label": "Remove misspelled words", "value": 8},
+                            {"label": "Remove emojis", "value": 9},
+                            {"label": "Remove Mojibake", "value": 10},
+                            {"label": "Tokenize & Lemmatize", "value": 11},
+                            {"label": "Leave only nouns", "value": 12},
+                            {"label": "Spell check", "value": 13},
+                            ],
+                            
                         id="preprocessing-checklist"
                     )
                 ])], width=3),
@@ -269,19 +270,20 @@ def update_bar_chart(data):
 def our_function(preprocessing_checklist, vectorization, model):
     df_train = pd.read_csv(TRAIN_DATA_PATH)
 
-    #set  vectorizer
+    # Data Cleaning
+    df_train = preprocess_data(df_train, preprocessing_checklist)
+    
+    # Vectorization
     X = vectorize_data(df_train, vectorization)
     y = df_train["target"].copy()
 
-    #set model
+    # Model
     if model=="Logistic":
         clf = LogisticRegression
     elif model=='SVC':
         clf = SVC
     elif model=='Bayes':
         clf = MultinomialNB
-    
-
     
     series = generate_perf_report(X, y, clf=clf())
     return series.to_json(date_format="iso")
