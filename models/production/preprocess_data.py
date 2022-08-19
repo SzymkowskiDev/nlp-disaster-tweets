@@ -2,6 +2,7 @@ import re
 from itertools import groupby
 import emoji
 import pandas as pd
+import nltk
 from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk.corpus import stopwords
@@ -32,6 +33,19 @@ def preprocess_data(frame: pd.DataFrame, options: list):
     frame['text'] = frame['text'].apply(preprocess_text, options=options)
     
     if 11 in options:
+        try:
+            nltk.data.find('wordnet')
+        except LookupError:
+            nltk.download('wordnet')
+        try:
+            nltk.data.find('omw-1.4')
+        except LookupError:
+            nltk.download('omw-1.4')
+        try:
+            nltk.data.find('averaged_perceptron_tagger')
+        except LookupError:
+            nltk.download('averaged_perceptron_tagger')
+            
         #Tokenize & Lemmatize
         frame['text']= [word_tokenize(entry) for entry in frame['text']]
     
