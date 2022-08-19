@@ -114,9 +114,65 @@ tab1_content = dbc.Card(
                     )], width=2),
                 dbc.Col([dcc.Graph(id="map_from_pgo")], width=10),
             ]),
+            # TEXT SECTION
             html.H2("Text"),
-            html.P("Description of variable 'text'"),
+            html.P(
+                "What does this variable represent? What type of variable is that? Some statistics from this variable"),
+
+            # WORD FREQUENCY
+            html.H3("WORD FREQUENCY", style={
+                    "fontSize": 20}),
+            html.P("What are the most common words in both groups together?"),
+            html.P("BARCHART"),
             html.P("WORDCLOUD"),
+            html.P("What are the most common words in either of classes?"),
+
+            # POLARITY (SENTIMENT ANALYSIS)
+            html.H3("SENTIMENT ANALYSIS", style={
+                "fontSize": 20}),
+            html.P(
+                "Sentiment analysis is a very common natural language processing task in which we determine if the text is positive, negative or neutral. It could be possible that tweets relating to distasters are more negative. The way to check that is by looking at a metric called 'polarity'. Polarity is a floating-point number that lies in the range of [-1,1] where 1 means positive statement and -1 means a negative statement."),
+            html.P("What is the polarity of entire dataset?"),
+            html.P("How does polarity differ between groups?"),
+            html.P("DATA VIZ FOR POLARITY",),
+
+            # STOP WORDS
+            html.H3("STOP WORDS", style={
+                "fontSize": 20}),
+
+
+            # PARTS OF SPEECH
+            html.H3("PARTS OF SPEECH", style={
+                "fontSize": 20}),
+
+            # SPELLING ERRORS
+            html.H3("SPELL ERRORS", style={
+                "fontSize": 20}),
+
+            # LEMMATIZATION
+            html.H3("SENTIMENT ANALYSIS", style={
+                "fontSize": 20}),
+
+            # NAMED ENTITY RECOGNITION
+            html.H3("NAMED ENTITY RECOGNITION", style={
+                "fontSize": 20}),
+
+            # CHUNKING
+            html.H3("CHUNKING", style={
+                "fontSize": 20}),
+
+            # UNSUPERVISED LEARNING
+            html.H3("UNSUPERVISED LEARNING", style={
+                "fontSize": 20}),
+
+
+
+
+
+
+
+
+
             # html.H2("Dataset Balance"),
             # html.P("Is the dataset balanced?"),
             # html.P("BAR CHART"),
@@ -181,6 +237,9 @@ def update_location_map(value):
     )
 
     return fig
+
+
+# CALLBACKI DO TEXT SECTION ################################################# after this line
 
 
 # TAB 2: CLASSIFICATION ##############################################################################################################
