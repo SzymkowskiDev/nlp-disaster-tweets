@@ -14,51 +14,6 @@ from dash import Dash, html, Output, Input
 import plotly.express as px
 import plotly.graph_objects as go
 
-# map with plotly.graph_objects
-df2 = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
-
-map_from_pgo = go.Figure(data=go.Choropleth(
-    locations=df2['CODE'],
-    z=df2['GDP (BILLIONS)'],
-    text=df2['COUNTRY'],
-    colorscale='Plasma',
-    autocolorscale=False,
-    reversescale=True,
-    marker_line_color='darkgray',
-    marker_line_width=0.5,
-    colorbar_tickprefix='$',
-    colorbar_title='Number of disasters',
-))
-
-map_from_pgo.update_layout(
-    # title_text='2014 Global GDP',
-    geo=dict(
-        showframe=False,
-        showcoastlines=False,
-        # projection_type='equirectangular',
-        projection_type="orthographic",
-        bgcolor='rgba(0,0,0,0)',
-        lakecolor="#17082D",
-        showocean=True,
-        oceancolor="#17082D"
-        # showrivers =True,
-        # rivercolor = "red",
-    ),
-    height=600, margin={"r": 0, "t": 0, "l": 0, "b": 0},
-    paper_bgcolor='rgba(0,0,0,0)',
-    plot_bgcolor='rgba(0,0,0,0)',
-    annotations=[dict(
-        x=0.55,
-        y=0.1,
-        xref='paper',
-        yref='paper',
-        # text='Source: <a href="https://www.cia.gov/library/publications/the-world-factbook/fields/2195.html">\
-        #     CIA World Factbook</a>',
-        showarrow=False
-    )]
-)
-
 # IMPORT DUMMY DATA FOR BAR CHART
 dummy_class = pd.read_csv("data\class_chart.csv")
 
@@ -110,8 +65,38 @@ tab1_content = dbc.Card(
 
             html.P(
                 "Map 1. Total number of disasters by country and types of disasters"),
-            dcc.Graph(figure=map_from_pgo)
-
+            dbc.Row([
+                dbc.Col([
+                    html.H3("Select disaster type",
+                            style={"fontSize": 20}),
+                    dbc.RadioItems(
+                        options=[
+                            {"label": "All types", "value": "all"},
+                            {"label": "Fire", "value": "fire"},
+                            {"label": "Explosion", "value": "explosion"},
+                            {"label": "Transport", "value": "transport"},
+                            {"label": "Terrorism", "value": "terrorism"},
+                            {"label": "Construction", "value": "construction"},
+                            {"label": "Wind", "value": "wind"},
+                            {"label": "Flooding", "value": "flooding"},
+                            {"label": "Hot weather", "value": "hot"},
+                            {"label": "Tectonics", "value": "tectonics"},
+                            {"label": "Famine", "value": "famine"},
+                            {"label": "Errosion", "value": "errosion"},
+                            {"label": "Lightening", "value": "lightening"},
+                            {"label": "Mass murder", "value": "mass"},
+                            {"label": "Nuclear", "value": "nuclear"},
+                            {"label": "Industrial", "value": "industrial"},
+                            {"label": "Disease", "value": "disease"},
+                            {"label": "Riot", "value": "riot"},
+                            {"label": "War", "value": "war"},
+                            {"label": "Unidentified", "value": "Unidentified"},
+                        ],
+                        value="all",
+                        id="location-radio-items",
+                    )], width=2),
+                dbc.Col([dcc.Graph(id="map_from_pgo")], width=10),
+            ]),
 
             # html.H2("Text"),
             # html.P("Description of variable 'text'"),
@@ -223,6 +208,63 @@ tab2_content = dbc.Card(
     ),
     className="mt-3",
 )
+
+
+# LOCATION MAP
+@app.callback(
+    Output("map_from_pgo", "figure"), Input("location-radio-items", "value"))
+def update_location_map(value):
+
+    df2 = pd.read_csv("data/totals.csv")
+    df2 = df2[["country", value]]
+
+    # DATA TRANSFORMATIONS TO FEED MAP
+    fig = go.Figure(data=go.Choropleth(
+        locations=df2['country'],
+        z=df2[value],
+        text=df2['country'],
+        colorscale='Plasma',
+        autocolorscale=False,
+        reversescale=True,
+        marker_line_color='darkgray',
+        marker_line_width=0.5,
+        # colorbar_tickprefix='$',
+        colorbar_title='Number of disasters',))
+
+    fig.update_layout(
+        # title_text='2014 Global GDP',
+        geo=dict(
+            showframe=False,
+            showcoastlines=False,
+            # projection_type='equirectangular',
+            projection_type="orthographic",
+            bgcolor='rgba(0,0,0,0)',
+            lakecolor="#17082D",
+            showocean=True,
+            oceancolor="#17082D"
+            # showrivers =True,
+            # rivercolor = "red",
+        ),
+        height=600, margin={"r": 0, "t": 0, "l": 0, "b": 0},
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(
+            size=14,
+            color="#32FBE2"
+        ),
+        annotations=[dict(
+            x=0.55,
+            y=0.1,
+            xref='paper',
+            yref='paper',
+            text='Source: Twitter',
+            showarrow=False
+        ),
+        ]
+    )
+
+    return fig
+
 
 # BARCHART
 
@@ -459,7 +501,7 @@ tabs = dbc.Tabs(
         ),
         dbc.Tab(tab6_content, label="About", tab_id="tab-7"),
     ],
-    active_tab="tab-2",
+    active_tab="tab-1",
 )
 
 # LAYOUT ##############################################################################################################################
