@@ -54,6 +54,7 @@ def preprocess_data(frame: pd.DataFrame, options: list):
         tag_map = defaultdict(lambda : wn.NOUN)
 
         if 12 not in options:
+            # 12 option == Leave only nouns
             tag_map['J'] = wn.ADJ
             tag_map['V'] = wn.VERB
             tag_map['R'] = wn.ADV
