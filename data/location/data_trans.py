@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-data = pd.read_csv("data/nloc_train.csv")
+data = pd.read_csv("data/location/nloc_train.csv")
 
 
 # PART 1: Getting disaster totals
