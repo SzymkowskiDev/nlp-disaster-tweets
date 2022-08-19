@@ -33,6 +33,7 @@ def preprocess_data(frame: pd.DataFrame, options: list):
     frame['text'] = frame['text'].apply(preprocess_text, options=options)
     
     if 11 in options:
+        #Tokenize & Lemmatize
         try:
             nltk.data.find('wordnet')
         except LookupError:
@@ -45,15 +46,17 @@ def preprocess_data(frame: pd.DataFrame, options: list):
             nltk.data.find('averaged_perceptron_tagger')
         except LookupError:
             nltk.download('averaged_perceptron_tagger')
-            
-        #Tokenize & Lemmatize
+
+        
         frame['text']= [word_tokenize(entry) for entry in frame['text']]
     
         # Remove Stop words, Non-Numeric and perfom Word Stemming/Lemmenting.
         tag_map = defaultdict(lambda : wn.NOUN)
-        tag_map['J'] = wn.ADJ
-        tag_map['V'] = wn.VERB
-        tag_map['R'] = wn.ADV
+
+        if 12 not in options:
+            tag_map['J'] = wn.ADJ
+            tag_map['V'] = wn.VERB
+            tag_map['R'] = wn.ADV
 
         # Initializing WordNetLemmatizer()
         word_Lemmatized = WordNetLemmatizer()
