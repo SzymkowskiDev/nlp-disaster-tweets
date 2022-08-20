@@ -150,6 +150,13 @@ tab1_content = dbc.Card(
             html.P(
                 "We can start, as is typical in analysing text data, from word frequency. "),
 
+            dcc.Slider(0, 300, 10,
+                       value=50,
+                       id='n_of_words'
+                       ),
+
+            dcc.Graph(id="freq_w_stopwords"),
+
             html.P("Fig 1. Word distribution of values of variable 'text' combined'"),
             html.Div([
                 html.Img(id="image_wc", width="100%"),
@@ -246,6 +253,8 @@ list_of_counts = list(nlp_words.values())
 
 word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
 
+word_freqs = word_freqs.sort_values(by=["freq"], ascending=False)
+
 
 def plot_wordcloud(data):
     d = {a: x for a, x in data.values}
@@ -262,6 +271,44 @@ def make_image(b):
     img = BytesIO()
     plot_wordcloud(data=word_freqs).save(img, format='PNG')
     return 'data:image/png;base64,{}'.format(base64.b64encode(img.getvalue()).decode())
+
+
+# BARCHART
+# next we can try adding a slider to view n number of words using input
+# @app.callback(Output("freq_w_stopwords", "figure"), Input("intermediate-value", "data"))
+@app.callback(Output("freq_w_stopwords", "figure"), Input("n_of_words", "value"))
+def update_bar_chart(value):
+    # dff = pd.read_json(data, typ="series")
+    #tn, fp, fn, tp = np.array(dff.get("Confusion Matrix")).ravel()
+    # df = pd.DataFrame(
+    #     {
+    #         "Disaster": ["No", "Yes", "No", "Yes"],
+    #         "Actual": ["TRUE", "TRUE", "FALSE", "FALSE"],
+    #         "Count": [tn, tp, fn, fp],
+    #     }
+    # )
+
+    ndf = word_freqs.iloc[:value]
+
+    fig = px.bar(
+        ndf,
+        x="word",
+        y="freq",
+        # color="Actual",
+        # barmode="group",
+        text_auto=True
+        # color_discrete_sequence=["#48EF7B", "#D85360", "#48EF7B", "#D85360"],
+    )
+    fig.update_layout(
+        margin=dict(t=0, l=50),
+        height=350,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+        font=dict(size=14, color="#32FBE2"),
+    )
+
+    return fig
 
 
 # LOCATION MAP
