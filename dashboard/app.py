@@ -17,6 +17,31 @@ import plotly.graph_objects as go
 from dash import Dash, html, Output, Input
 import plotly.express as px
 import plotly.graph_objects as go
+from wordcloud import WordCloud, STOPWORDS
+from io import BytesIO
+import base64
+from wordcloud import WordCloud
+# Display the generated image:
+# the matplotlib way:
+import matplotlib.pyplot as plt
+import io
+import base64
+# import the required packages
+import requests
+from bs4 import BeautifulSoup
+import re
+import nltk
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# dfm = pd.DataFrame({'word': ['apple', 'pear', 'orange'], 'freq': [1, 3, 9]})
+
+
+df = pd.read_csv("data/original/train.csv")
+text = df[['text']]
+
+dfm = " ".join(df[df.target == 1].text)
+
 
 TRAIN_DATA_PATH = r"data\original\train.csv"
 
@@ -51,6 +76,7 @@ tab1_content = dbc.Card(
             # html.H2("Keyword"),
             # html.P("Description of variable 'keyword'."),
             # html.P("WORDCLOUD"),
+
             # LOCATION #########################################################################
             html.H2("Location"),
             # What does the variable 'location' represent?
@@ -116,15 +142,27 @@ tab1_content = dbc.Card(
             ]),
             # TEXT SECTION
             html.H2("Text"),
-            html.P(
-                "What does this variable represent? What type of variable is that? Some statistics from this variable"),
+            html.P("The column 'text' has a special place in our analysis, because it is the only variable used in our NLP classification model. Values are strings. Each cell represents a separate tweet, so a short chunk of text, as Twitter limits the number of characters in a miniblog to 280."),
 
             # WORD FREQUENCY
             html.H3("WORD FREQUENCY", style={
                     "fontSize": 20}),
-            html.P("What are the most common words in both groups together?"),
-            html.P("BARCHART"),
-            html.P("WORDCLOUD"),
+            html.P(
+                "We can start, as is typical in analysing text data, from word frequency. "),
+
+            html.P("Fig 1. Word distribution of values of variable 'text' combined'"),
+            html.Div([
+                html.Img(id="image_wc", width="100%"),
+            ]),
+            # dcc.Graph(id="wordcloud"),
+            # html.Div([
+            #     html.Img(id= 'matplotlib-graph', className="img-responsive", style={'max-height': '520px', 'margin': '0 auto'})
+            #     ],
+            #     className='col-sm-12 col-md-6 col-lg-6'),
+
+
+
+
             html.P("What are the most common words in either of classes?"),
 
             # POLARITY (SENTIMENT ANALYSIS)
@@ -180,6 +218,51 @@ tab1_content = dbc.Card(
     ),
     className="mt-3",
 )
+
+
+# WORDCLOUD
+
+# Function that creates a list of all words in tweets
+
+def get_corpus(text):
+    words = []
+    for i in text:
+        i = str(i)
+        for j in i.split():
+            words.append(j.strip())
+    return words
+
+
+corpus = get_corpus(df.text)
+len(corpus)
+
+nlp_words = nltk.FreqDist(corpus)
+
+# print(nlp_words.keys())
+list_of_words = list(nlp_words.keys())
+list_of_counts = list(nlp_words.values())
+
+# print(list(list_of_words))
+
+word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
+
+
+def plot_wordcloud(data):
+    d = {a: x for a, x in data.values}
+
+    wc = WordCloud(background_color='black', width=800,
+                   height=360, max_words=1000, colormap="plasma")
+
+    wc.fit_words(d)
+    return wc.to_image()
+
+
+@app.callback(Output('image_wc', 'src'), [Input('image_wc', 'id')])
+def make_image(b):
+    img = BytesIO()
+    plot_wordcloud(data=word_freqs).save(img, format='PNG')
+    return 'data:image/png;base64,{}'.format(base64.b64encode(img.getvalue()).decode())
+
 
 # LOCATION MAP
 
@@ -237,9 +320,6 @@ def update_location_map(value):
     )
 
     return fig
-
-
-# CALLBACKI DO TEXT SECTION ################################################# after this line
 
 
 # TAB 2: CLASSIFICATION ##############################################################################################################
