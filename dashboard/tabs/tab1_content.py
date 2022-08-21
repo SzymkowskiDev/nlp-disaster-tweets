@@ -48,14 +48,6 @@ from collections import Counter
 from wordcloud import WordCloud, STOPWORDS
 from scipy.stats import kstest
 
-# # LOAD FILES
-# df = pd.read_csv("data/original/train.csv")
-# text = df[['text']]
-# dfm = " ".join(df[df.target == 1].text)
-# TRAIN_DATA_PATH = r"data\original\train.csv"
-# # IMPORT DUMMY DATA FOR BAR CHART
-# dummy_class = pd.read_csv("data\class_chart\class_chart.csv")
-
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
 tab1_content = dbc.Card(
     dbc.CardBody(
@@ -79,6 +71,7 @@ tab1_content = dbc.Card(
                     html.Li("Strange characters appering in 'keyword' and 'text'"),
                 ]
             ),
+            # KEYWORD #########################################################################
             # html.H2("Keyword"),
             # html.P("Description of variable 'keyword'."),
             # html.P("WORDCLOUD"),
@@ -146,10 +139,9 @@ tab1_content = dbc.Card(
                     )], width=2),
                 dbc.Col([dcc.Graph(id="map_from_pgo")], width=10),
             ]),
-            # TEXT SECTION
+            # TEXT #################################################################################################################
             html.H2("Text"),
             html.P("The column 'text' takes a special place in our analysis, because it is the only explanatory variable, that is, used in our NLP classification model. Values are strings. Each cell represents a separate tweet, so a short chunk of text, as Twitter limits the number of characters in a miniblog to 280."),
-
             # WORD FREQUENCY
             html.H3("WORD FREQUENCY", style={
                     "fontSize": 20}),
@@ -187,21 +179,17 @@ tab1_content = dbc.Card(
             dcc.Slider(0, 300, 10, value=100, id='n_of_words_cleaned'),
             html.P("Fig 2. Most frequent words and their counts in cleaned data"),
             dcc.Graph(id="freq_w_cleaned"),
-
-
             html.P("Fig 1. Word distribution of values of variable 'text' combined'"),
             html.Div([
                 html.Img(id="image_wc", width="100%"),
             ]),
-            # dcc.Graph(id="wordcloud"),
-            # html.Div([
-            #     html.Img(id= 'matplotlib-graph', className="img-responsive", style={'max-height': '520px', 'margin': '0 auto'})
-            #     ],
-            #     className='col-sm-12 col-md-6 col-lg-6'),
-
             html.P("What are the most common words in either of classes?"),
 
-            # POLARITY (SENTIMENT ANALYSIS)
+            # PARTS OF SPEECH
+            html.H3("PARTS OF SPEECH", style={
+                "fontSize": 20}),
+
+            # SENTIMENT ANALYSIS
             html.H3("SENTIMENT ANALYSIS", style={
                 "fontSize": 20}),
             html.P(
@@ -210,35 +198,28 @@ tab1_content = dbc.Card(
             html.P("How does polarity differ between groups?"),
             html.P("DATA VIZ FOR POLARITY",),
 
-            # STOP WORDS
-            html.H3("STOP WORDS", style={
-                "fontSize": 20}),
+            # VERSION 2.0
+            # # SPELLING ERRORS
+            # html.H3("SPELL ERRORS", style={
+            #     "fontSize": 20}),
 
+            # # LEMMATIZATION
+            # html.H3("SENTIMENT ANALYSIS", style={
+            #     "fontSize": 20}),
 
-            # PARTS OF SPEECH
-            html.H3("PARTS OF SPEECH", style={
-                "fontSize": 20}),
+            # # NAMED ENTITY RECOGNITION
+            # html.H3("NAMED ENTITY RECOGNITION", style={
+            #     "fontSize": 20}),
 
-            # SPELLING ERRORS
-            html.H3("SPELL ERRORS", style={
-                "fontSize": 20}),
+            # # CHUNKING
+            # html.H3("CHUNKING", style={
+            #     "fontSize": 20}),
 
-            # LEMMATIZATION
-            html.H3("SENTIMENT ANALYSIS", style={
-                "fontSize": 20}),
+            # # UNSUPERVISED LEARNING
+            # html.H3("UNSUPERVISED LEARNING", style={
+            #     "fontSize": 20}),
 
-            # NAMED ENTITY RECOGNITION
-            html.H3("NAMED ENTITY RECOGNITION", style={
-                "fontSize": 20}),
-
-            # CHUNKING
-            html.H3("CHUNKING", style={
-                "fontSize": 20}),
-
-            # UNSUPERVISED LEARNING
-            html.H3("UNSUPERVISED LEARNING", style={
-                "fontSize": 20}),
-
+            # RESPONSE VARIABLE
             # html.H2("Dataset Balance"),
             # html.P("Is the dataset balanced?"),
             # html.P("BAR CHART"),
