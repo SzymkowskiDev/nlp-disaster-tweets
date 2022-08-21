@@ -48,13 +48,13 @@ from collections import Counter
 from wordcloud import WordCloud, STOPWORDS
 from scipy.stats import kstest
 
-# LOAD FILES
-df = pd.read_csv("data/original/train.csv")
-text = df[['text']]
-dfm = " ".join(df[df.target == 1].text)
-TRAIN_DATA_PATH = r"data\original\train.csv"
-# IMPORT DUMMY DATA FOR BAR CHART
-dummy_class = pd.read_csv("data\class_chart\class_chart.csv")
+# # LOAD FILES
+# df = pd.read_csv("data/original/train.csv")
+# text = df[['text']]
+# dfm = " ".join(df[df.target == 1].text)
+# TRAIN_DATA_PATH = r"data\original\train.csv"
+# # IMPORT DUMMY DATA FOR BAR CHART
+# dummy_class = pd.read_csv("data\class_chart\class_chart.csv")
 
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
 tab1_content = dbc.Card(

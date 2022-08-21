@@ -48,13 +48,13 @@ from collections import Counter
 from wordcloud import WordCloud, STOPWORDS
 from scipy.stats import kstest
 
-# LOAD FILES
-df = pd.read_csv("data/original/train.csv")
-text = df[['text']]
-dfm = " ".join(df[df.target == 1].text)
-TRAIN_DATA_PATH = r"data\original\train.csv"
-# IMPORT DUMMY DATA FOR BAR CHART
-dummy_class = pd.read_csv("data\class_chart\class_chart.csv")
+# REUSABLE COMPONENTS
+progress = html.Div(
+    [
+        dcc.Interval(id="progress-interval", n_intervals=0, interval=500),
+        dbc.Progress(id="progress", striped=True, color="success"),
+    ]
+)
 
 
 # TAB 2: CLASSIFICATION ##############################################################################################################
@@ -228,6 +228,35 @@ tab2_content = dbc.Card(
             ),
             dbc.Row(
                 [
+
+
+                    ##
+                    html.Div(
+
+
+
+                        dbc.Row([
+
+                            dbc.Col([
+
+                                html.H2("REPORT", style={"marginTop": 25})],
+                                width=2),
+
+                            dbc.Col(
+                                html.Div([progress],
+                                         style={"marginTop": 32, "marginRight": 28}),
+
+                                width=10)
+
+
+                        ]),
+
+
+
+                    ),
+                    ##
+
+
                     html.H2("OUTPUTS", style={"marginTop": 25}),
                     dbc.Col(
                         [
@@ -268,7 +297,7 @@ tab2_content = dbc.Card(
                         ],
                         width=4,
                     ),
-                ]
+                ], style={"backgroundColor": "#30115E"}
             ),
         ]
     ),
