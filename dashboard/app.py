@@ -68,6 +68,8 @@ dummy_class = pd.read_csv("dashboard\data\class_chart\class_chart.csv")
 word_freqs_l = pd.read_csv(
     "dashboard/data/word_frequencies/word-freq_lemmatized.csv")
 
+word_freqs_g = pd.read_csv(
+    "dashboard/data/keyword/group_frequencies.csv")
 
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
 
@@ -214,6 +216,32 @@ def update_location_map(value):
     )
 
     return fig
+
+
+# DATA VIZ:
+@app.callback(Output("barplot_groups", "figure"), Input("groups", "value"))
+def update_bar_chart(value):
+
+    ndf = word_freqs_g.iloc[:value]
+
+    fig = px.bar(
+        ndf,
+        x="word",
+        y="freq",
+        text_auto=True,
+        color="freq",
+        color_continuous_scale='plasma',
+    )
+    fig.update_layout(
+        margin=dict(t=0, l=50),
+        height=350,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+        font=dict(size=14, color="#32FBE2"),
+    )
+    return fig
+
 
 # TAB 2: CLASSIFICATION ##############################################################################################################
 
