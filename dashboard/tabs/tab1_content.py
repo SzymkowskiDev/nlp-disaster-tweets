@@ -185,20 +185,20 @@ tab1_content = dbc.Card(
             ]),
             html.P("What are the most common words in either of classes?"),
 
-            # PARTS OF SPEECH
-            html.H3("PARTS OF SPEECH", style={
-                "fontSize": 20}),
-
-            # SENTIMENT ANALYSIS
-            html.H3("SENTIMENT ANALYSIS", style={
-                "fontSize": 20}),
-            html.P(
-                "Sentiment analysis is a very common natural language processing task in which we determine if the text is positive, negative or neutral. It could be possible that tweets relating to distasters are more negative. The way to check that is by looking at a metric called 'polarity'. Polarity is a floating-point number that lies in the range of [-1,1] where 1 means positive statement and -1 means a negative statement."),
-            html.P("What is the polarity of entire dataset?"),
-            html.P("How does polarity differ between groups?"),
-            html.P("DATA VIZ FOR POLARITY",),
-
             # VERSION 2.0
+            # # PARTS OF SPEECH
+            # html.H3("PARTS OF SPEECH", style={
+            #     "fontSize": 20}),
+
+            # # SENTIMENT ANALYSIS
+            # html.H3("SENTIMENT ANALYSIS", style={
+            #     "fontSize": 20}),
+            # html.P(
+            #     "Sentiment analysis is a very common natural language processing task in which we determine if the text is positive, negative or neutral. It could be possible that tweets relating to distasters are more negative. The way to check that is by looking at a metric called 'polarity'. Polarity is a floating-point number that lies in the range of [-1,1] where 1 means positive statement and -1 means a negative statement."),
+            # html.P("What is the polarity of entire dataset?"),
+            # html.P("How does polarity differ between groups?"),
+            # html.P("DATA VIZ FOR POLARITY",),
+
             # # SPELLING ERRORS
             # html.H3("SPELL ERRORS", style={
             #     "fontSize": 20}),
@@ -220,9 +220,9 @@ tab1_content = dbc.Card(
             #     "fontSize": 20}),
 
             # RESPONSE VARIABLE
-            # html.H2("Dataset Balance"),
-            # html.P("Is the dataset balanced?"),
-            # html.P("BAR CHART"),
+            html.H2("Dataset Balance"),
+            html.P("Is the dataset balanced?"),
+            html.P("BAR CHART"),
         ]
     ),
     className="mt-3",
