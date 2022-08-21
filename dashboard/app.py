@@ -1,3 +1,16 @@
+# IMPORT LOCAL
+from dashboard.tabs.tab1_content import tab1_content
+from dashboard.tabs.tab2_content import tab2_content
+# from dashboard.tabs.tab3_content import tab3_content
+# from dashboard.tabs.tab4_content import tab4_content
+# from dashboard.tabs.tab5_content import tab5_content
+# from dashboard.tabs.tab6_content import tab6_content
+from dashboard.tabs.tab7_content import tab7_content
+from models.production.generate_perf_report import generate_perf_report
+from models.production.vectorize_data import vectorize_data
+from models.production.preprocess_data import preprocess_data
+
+# IMPORT EXTERNAL
 import time
 from dash import Dash, html, Input, Output, dcc
 import dash_bootstrap_components as dbc
@@ -8,122 +21,145 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
 from sklearn.metrics import auc
-from models.production.generate_perf_report import generate_perf_report
-from models.production.vectorize_data import vectorize_data
-from models.production.preprocess_data import preprocess_data
 import plotly.figure_factory as ff
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 from dash import Dash, html, Output, Input
 import plotly.express as px
 import plotly.graph_objects as go
+from wordcloud import WordCloud, STOPWORDS
+from io import BytesIO
+import base64
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+import io
+import base64
+import requests
+from bs4 import BeautifulSoup
+import re
+import nltk
+import seaborn as sns
+import matplotlib.pyplot as plt
+import string
+import json
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import string
+import json
+import re
+import emoji
+import itertools
+from collections import Counter
+from wordcloud import WordCloud, STOPWORDS
+from scipy.stats import kstest
 
-TRAIN_DATA_PATH = r"data\original\train.csv"
-
-# IMPORT DUMMY DATA FOR BAR CHART
-dummy_class = pd.read_csv("data\class_chart.csv")
-
+# APP
 app = Dash(external_stylesheets=[dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
 
+# IMPORT DATA
+# Data used by logic in all tabs:
+df = pd.read_csv("dashboard/data/original/train.csv")
+text = df[['text']]
+dfm = " ".join(df[df.target == 1].text)
+TRAIN_DATA_PATH = r"dashboard\data\original\train.csv"
+
+# Data used by logic in tab 2:
+dummy_class = pd.read_csv("dashboard\data\class_chart\class_chart.csv")
+
+# Data used by logic in tab 3:
+
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
-tab1_content = dbc.Card(
-    dbc.CardBody(
-        [
-            html.H2("Introduction"),
-            html.P(
-                "We have at our disposal multivariate data consisting of 3 potential explonatory variables (keyword, location, text) and response variable (target). Variables 'keyword', 'location' and 'text' are nominal. The outcome variable 'target' is of binary type."
-            ),
-            # This is not quite right, that's just an estimate
-            html.P("In total we have a sample of 10,000."),
-            # DATA QUALITY ISSUES ##############################################################
-            html.H2("Data Quality Issues"),
-            html.P("We were able to discover the following data quality issues:"),
-            html.Ul(
-                [
-                    html.Li("Duplicated rows with opposing target values"),
-                    html.Li("Missing responses in column 'location'"),
-                    html.Li("Fake responses in column 'location'"),
-                    html.Li("Location appearing in multipe formats: country, city"),
-                    html.Li("Missing values in column 'keyword'"),
-                    html.Li("Strange characters appering in 'keyword' and 'text'"),
-                ]
-            ),
-            # html.H2("Keyword"),
-            # html.P("Description of variable 'keyword'."),
-            # html.P("WORDCLOUD"),
-            # LOCATION #########################################################################
-            html.H2("Location"),
-            # What does the variable 'location' represent?
-            html.P(
-                "The variable 'location' represents the responses that Twitter users gave about where they were from. Out of 10,000 users, 7467 submited any response at all giving the response rate of 74.7%. One would expect structured data in the form 'country-city', but that is not the case. Users submitted their location data with the help of a text input. So, apart from responses like 'France', 'Germany' or 'USA' the column contains values like 'milky way', 'Worldwide' or 'Your Sister's Bedroom'. When geographical name is given at all, it often isn't given in a standard format. For example, the variable contains values like 'Jaipur, India' (city, country), 'bangalore' (just city), 'Indonesia' (just country) and many other variations of country, city, province or other administrative divison name in different combinations and no one uniform order."
-            ),
-            # How we will transform the data to make it useful for analysis
-            html.P(
-                "Nevertheless, thanks to so some data crunching we were able to make use of the largest possible subset of responses that contained geohraphical names."
-            ),
-            # How many non-null responses contained geographical names that we could link with specific countries?
-            html.P(
-                "We were able to obtain the total of X number of legitimate country responses."
-            ),
-            html.P(
-                "Since the response rate in the variable 'keyword' (that contains names of disasters) was 99.4%, we have the types of a catastrophy for almost all countries. The map below represents the most disastered countries in total and by type* of a catastrophy."
-            ),
-            html.P(
-                "*It is worth noting, that the number of distinct values in the column 'keyword' was almost X. This is not because there are so many types of disasters out there. One of the reasons, why that's the case is because sometimes the same type of disaster like for example 'fire' is given in different ways like 'explosion', 'fire responders' or 'flames'. Hence we combined values in the following groups: ()."
-            ),
-            html.P(
-                "Map 1. Total number of disasters by country and types of disasters"
-            ),
-            dbc.Row([
-                dbc.Col([
-                    html.H3("Select disaster type",
-                            style={"fontSize": 20}),
-                    dbc.RadioItems(
-                        options=[
-                            {"label": "All types", "value": "all"},
-                            {"label": "Fire", "value": "fire"},
-                            {"label": "Explosion",
-                             "value": "explosion"},
-                            {"label": "Transport",
-                             "value": "transport"},
-                            {"label": "Terrorism",
-                             "value": "terrorism"},
-                            {"label": "Construction",
-                             "value": "construction"},
-                            {"label": "Wind", "value": "wind"},
-                            {"label": "Flooding", "value": "flooding"},
-                            {"label": "Hot weather", "value": "hot"},
-                            {"label": "Tectonics",
-                             "value": "tectonics"},
-                            {"label": "Famine", "value": "famine"},
-                            {"label": "Errosion", "value": "errosion"},
-                            {"label": "Lightening",
-                             "value": "lightening"},
-                            {"label": "Mass murder", "value": "mass"},
-                            {"label": "Nuclear", "value": "nuclear"},
-                            {"label": "Industrial",
-                             "value": "industrial"},
-                            {"label": "Disease", "value": "disease"},
-                            {"label": "Riot", "value": "riot"},
-                            {"label": "War", "value": "war"},
-                            {"label": "Unidentified",
-                             "value": "Unidentified"},
-                        ],
-                        value="all",
-                        id="location-radio-items",
-                    )], width=2),
-                dbc.Col([dcc.Graph(id="map_from_pgo")], width=10),
-            ]),
-            html.H2("Text"),
-            html.P("Description of variable 'text'"),
-            html.P("WORDCLOUD"),
-            # html.H2("Dataset Balance"),
-            # html.P("Is the dataset balanced?"),
-            # html.P("BAR CHART"),
-        ]
-    ),
-    className="mt-3",
-)
+
+# WORDCLOUD DATA
+
+
+def get_corpus(text):
+    words = []
+    for i in text:
+        i = str(i)
+        for j in i.split():
+            words.append(j.strip())
+    return words
+
+
+corpus = get_corpus(df.text)
+nlp_words = nltk.FreqDist(corpus)
+list_of_words = list(nlp_words.keys())
+list_of_counts = list(nlp_words.values())
+word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
+word_freqs = word_freqs.sort_values(by=["freq"], ascending=False)
+
+# WORDCLOUD (looks a bit difffrent from other outputs)
+
+
+def plot_wordcloud(data):
+    d = {a: x for a, x in data.values}
+
+    wc = WordCloud(background_color='black', width=800,
+                   height=360, max_words=1000, colormap="plasma")
+
+    wc.fit_words(d)
+    return wc.to_image()
+
+
+@app.callback(Output('image_wc', 'src'), [Input('image_wc', 'id')])
+def make_image(b):
+    img = BytesIO()
+    plot_wordcloud(data=word_freqs).save(img, format='PNG')
+    return 'data:image/png;base64,{}'.format(base64.b64encode(img.getvalue()).decode())
+
+# BARCHART 1
+
+
+@app.callback(Output("freq_w_stopwords", "figure"), Input("n_of_words", "value"))
+def update_bar_chart(value):
+    ndf = word_freqs.iloc[:value]
+    fig = px.bar(
+        ndf,
+        x="word",
+        y="freq",
+        # color="Actual",
+        # barmode="group",
+        text_auto=True
+        # color_discrete_sequence=["#48EF7B", "#D85360", "#48EF7B", "#D85360"],
+    )
+    fig.update_layout(
+        margin=dict(t=0, l=50),
+        height=350,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+        font=dict(size=14, color="#32FBE2"),
+    )
+    return fig
+
+# BARCHART 2
+
+
+@app.callback(Output("freq_w_cleaned", "figure"), Input("n_of_words_cleaned", "value"))
+def update_bar_chart(value):
+    ndf = word_freqs.iloc[:value]
+    fig = px.bar(
+        ndf,
+        x="word",
+        y="freq",
+        # color="Actual",
+        # barmode="group",
+        text_auto=True
+        # color_discrete_sequence=["#48EF7B", "#D85360", "#48EF7B", "#D85360"],
+    )
+    fig.update_layout(
+        margin=dict(t=0, l=50),
+        height=350,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+        font=dict(size=14, color="#32FBE2"),
+    )
+    return fig
+
 
 # LOCATION MAP
 
@@ -131,10 +167,8 @@ tab1_content = dbc.Card(
 @app.callback(
     Output("map_from_pgo", "figure"), Input("location-radio-items", "value"))
 def update_location_map(value):
-
     df2 = pd.read_csv("data/location/totals.csv")
     df2 = df2[["country", value]]
-
     # DATA TRANSFORMATIONS TO FEED MAP
     fig = go.Figure(data=go.Choropleth(
         locations=df2['country'],
@@ -147,7 +181,6 @@ def update_location_map(value):
         marker_line_width=0.5,
         # colorbar_tickprefix='$',
         colorbar_title='Number of disasters',))
-
     fig.update_layout(
         # title_text='2014 Global GDP',
         geo=dict(
@@ -182,224 +215,7 @@ def update_location_map(value):
 
     return fig
 
-
 # TAB 2: CLASSIFICATION ##############################################################################################################
-tab2_content = dbc.Card(
-    dbc.CardBody(
-        [
-            dbc.Row(
-                [
-                    html.H2("INPUTS"),
-                    dbc.Col(
-                        [
-                            html.Div(
-                                [
-                                    html.H3("Data Cleaning", style={
-                                            "fontSize": 20}),
-                                    dbc.Checklist(
-                                        options=[
-                                            {"label": "Remove hashes", "value": 1},
-                                            {
-                                                "label": "Remove HTML special entities",
-                                                "value": 2,
-                                            },
-                                            {"label": "Remove tickers", "value": 3},
-                                            {"label": "Remove hyperlinks",
-                                                "value": 4},
-                                            {"label": "Remove whitespaces",
-                                                "value": 5},
-                                            {
-                                                "label": "Remove URL, RT, mention(@)",
-                                                "value": 6,
-                                            },
-                                            {
-                                                "label": "Remove no BMP characters",
-                                                "value": 7,
-                                            },
-                                            {
-                                                "label": "Remove misspelled words",
-                                                "value": 8,
-                                            },
-                                            {"label": "Remove emojis", "value": 9},
-                                            {"label": "Remove Mojibake",
-                                                "value": 10},
-                                            {
-                                                "label": "Tokenize & Lemmatize",
-                                                "value": 11,
-                                            },
-                                            {"label": "Leave only nouns",
-                                                "value": 12},
-                                            {
-                                                "label": "Spell check",
-                                                "value": 13,
-                                                "disabled": True,
-                                            },
-                                        ],
-                                        id="preprocessing-checklist",
-                                    ),
-                                ]
-                            )
-                        ],
-                        width=3,
-                    ),
-                    dbc.Col(
-                        [
-                            html.Div(
-                                [
-                                    html.H3("Vectorization", style={
-                                            "fontSize": 20}),
-                                    dbc.RadioItems(
-                                        options=[
-                                            {"label": "Count", "value": "count"},
-                                            {"label": "TF-IDF", "value": "tfidf"},
-                                            {
-                                                "label": "Word2Vec ",
-                                                "value": "W2V",
-                                                "disabled": True,
-                                            }
-                                            # TODO: implement this
-                                        ],
-                                        value="tfidf",
-                                        id="vectorization-radio-items",
-                                    ),
-                                ]
-                            )
-                        ],
-                        width=2,
-                    ),
-                    dbc.Col(
-                        [
-                            html.Div(
-                                [
-                                    html.H3("Model", style={"fontSize": 20}),
-                                    dbc.RadioItems(
-                                        options=[
-                                            {"label": "SVC", "value": "SVC"},
-                                            {"label": "Logistic",
-                                                "value": "Logistic"},
-                                            {"label": "Naive Bayes",
-                                                "value": "Bayes"},
-                                            {
-                                                "label": "LSTM ANN model",
-                                                "value": "LSTM",
-                                                "disabled": True,
-                                            },
-                                            {
-                                                "label": "BERT model",
-                                                "value": "BERT",
-                                                "disabled": True,
-                                            },
-                                            {
-                                                "label": "roBERTa model",
-                                                "value": "roBERTa",
-                                                "disabled": True,
-                                            },
-                                            # TODO: add other models
-                                        ],
-                                        value="Logistic",
-                                        id="model-radio-items",
-                                    ),
-                                ]
-                            )
-                        ],
-                        width=3,
-                    ),
-                    dbc.Col(
-                        [
-                            html.Div(
-                                [
-                                    dbc.Button(
-                                        "Run",
-                                        color="success",
-                                        outline=True,
-                                        id="run",
-                                        style={
-                                            "borderRadius": "50%",
-                                            "height": 110,
-                                            "width": 110,
-                                            "marginBottom": 20,
-                                        },
-                                    ),
-                                    dbc.Button(
-                                        "Reset",
-                                        color="secondary",
-                                        outline=True,
-                                        id="reset",
-                                        style={
-                                            "borderRadius": "50%",
-                                            "height": 110,
-                                            "width": 110,
-                                            "marginBottom": 20,
-                                        },
-                                    ),
-                                    dbc.Button(
-                                        "Save",
-                                        color="primary",
-                                        outline=True,
-                                        id="save",
-                                        style={
-                                            "borderRadius": "50%",
-                                            "height": 110,
-                                            "width": 110,
-                                            "marginBottom": 20,
-                                        },
-                                    ),
-                                ],
-                                className="d-grid gap-2",
-                            ),
-                        ],
-                        width=3,
-                    ),
-                ]
-            ),
-            dbc.Row(
-                [
-                    html.H2("OUTPUTS", style={"marginTop": 25}),
-                    dbc.Col(
-                        [
-                            html.Div(id="performance-metrics-accuracy-text"),
-                            html.H3(
-                                "Fig 1. Confusion Matrix data", style={"fontSize": 20}
-                            ),
-                            dcc.Graph(id="class_barchart"),
-                        ],
-                        width=4,
-                    ),
-                    dbc.Col(
-                        [
-                            html.Div(id="performance-metrics-precison-text"),
-                            html.H3(
-                                "Fig 2. Performance Metrics", style={"fontSize": 20}
-                            ),
-                            html.Div(
-                                [
-                                    html.Div(id="output-datatable"),
-                                    dcc.Store(id="intermediate-value"),
-                                ]
-                            ),
-                            html.P(id="performance-metrics-recall-text"),
-                        ],
-                        width=4,
-                    ),
-                    # dbc.Col([html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
-                    #          dcc.Graph(id="confusion-matrix-graph")], width=4),
-                    dbc.Col(
-                        [
-                            html.P(
-                                "Fig 3. shows the performance of the classification model at all classification thresholds."
-                            ),
-                            html.H3("Fig 3. ROC & AUC",
-                                    style={"fontSize": 20}),
-                            dcc.Graph(id="roc-graph"),
-                        ],
-                        width=4,
-                    ),
-                ]
-            ),
-        ]
-    ),
-    className="mt-3",
-)
 
 # BARCHART
 
@@ -632,19 +448,23 @@ def update_roc(data):
     return fig
 
 
-# TAB 7: ABOUT ######################################################################################################################
-tab6_content = dbc.Card(
-    dbc.CardBody(
-        [
-            html.P("This is tab 2!", className="card-text"),
-            dbc.Button("Don't click here", color="danger"),
-        ]
-    ),
-    className="mt-3",
+# PROGRESS BAR
+
+
+@ app.callback(
+    [Output("progress", "value"), Output("progress", "label")],
+    [Input("progress-interval", "n_intervals")],
 )
+def update_progress(n):
+    # check progress of some background process, in this example we'll just
+    # use n_intervals constrained to be in 0-100
 
-# TABS SETUP ########################################################################################################################
+    progress = min(n % 110, 100)
+    # only add text after 5% progress to ensure text isn't squashed too much
+    return progress, f"{progress} %" if progress >= 5 else ""
 
+
+# TABS SETUP
 tabs = dbc.Tabs(
     [
         dbc.Tab(tab1_content, label="Exploratory Data Analysis", tab_id="tab-1"),
@@ -673,12 +493,12 @@ tabs = dbc.Tabs(
             disabled=True,
             tab_id="tab-6",
         ),
-        dbc.Tab(tab6_content, label="About", tab_id="tab-7"),
+        dbc.Tab(tab7_content, label="About", tab_id="tab-7"),
     ],
     active_tab="tab-1",
 )
 
-# LAYOUT ##############################################################################################################################
+# LAYOUT
 app.layout = dbc.Container(
     [html.H1([html.I(className="bi bi-twitter me-2"), "NLP Disaster Tweets"]), tabs]
 )
