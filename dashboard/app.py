@@ -88,8 +88,7 @@ nlp_words = nltk.FreqDist(corpus)
 list_of_words = list(nlp_words.keys())
 list_of_counts = list(nlp_words.values())
 
-#word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
-word_freqs = word_freqs_l
+word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
 word_freqs = word_freqs.sort_values(by=["freq"], ascending=False)
 
 # WORDCLOUD (looks a bit difffrent from other outputs)
@@ -108,7 +107,7 @@ def plot_wordcloud(data):
 @app.callback(Output('image_wc', 'src'), [Input('image_wc', 'id')])
 def make_image(b):
     img = BytesIO()
-    plot_wordcloud(data=word_freqs).save(img, format='PNG')
+    plot_wordcloud(data=word_freqs_l).save(img, format='PNG')
     return 'data:image/png;base64,{}'.format(base64.b64encode(img.getvalue()).decode())
 
 # BARCHART 1
@@ -141,7 +140,7 @@ def update_bar_chart(value):
 
 @app.callback(Output("freq_w_cleaned", "figure"), Input("n_of_words_cleaned", "value"))
 def update_bar_chart(value):
-    ndf = word_freqs.iloc[:value]
+    ndf = word_freqs_l.iloc[:value]
     fig = px.bar(
         ndf,
         x="word",
