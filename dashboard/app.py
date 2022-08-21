@@ -59,16 +59,15 @@ from scipy.stats import kstest
 app = Dash(external_stylesheets=[dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
 
 # IMPORT DATA
-# Data used by logic in all tabs:
 df = pd.read_csv("dashboard/data/original/train.csv")
 text = df[['text']]
 dfm = " ".join(df[df.target == 1].text)
 TRAIN_DATA_PATH = r"dashboard\data\original\train.csv"
-
-# Data used by logic in tab 2:
 dummy_class = pd.read_csv("dashboard\data\class_chart\class_chart.csv")
 
-# Data used by logic in tab 3:
+word_freqs_l = pd.read_csv(
+    "dashboard/data/word_frequencies/word-freq_lemmatized.csv")
+
 
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
 
@@ -88,7 +87,9 @@ corpus = get_corpus(df.text)
 nlp_words = nltk.FreqDist(corpus)
 list_of_words = list(nlp_words.keys())
 list_of_counts = list(nlp_words.values())
-word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
+
+#word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
+word_freqs = word_freqs_l
 word_freqs = word_freqs.sort_values(by=["freq"], ascending=False)
 
 # WORDCLOUD (looks a bit difffrent from other outputs)
