@@ -1,0 +1,222 @@
+index,keyword,disaster_group
+0,ablaze,FIRE
+1,arson,FIRE
+2,arsonist,FIRE
+3,buildings burning,FIRE
+4,buildings on fire,FIRE
+5,burned,FIRE
+6,burning,FIRE
+7,burning buildings,FIRE
+8,bush fires,FIRE
+9,fire,FIRE
+10,fire truck,FIRE
+11,first responders,FIRE
+12,flames,FIRE
+13,forest fire,FIRE
+14,forest fires,FIRE
+15,wild fires,FIRE
+16,wildfire,FIRE
+17,engulfed,FIRE
+18,hellfire,FIRE
+19,blew up,EXPLOSION
+20,blown up,EXPLOSION
+21,bomb,EXPLOSION
+22,bombed,EXPLOSION
+23,bombing,EXPLOSION
+24,detonate,EXPLOSION
+25,detonation,EXPLOSION
+26,explode,EXPLOSION
+27,exploded,EXPLOSION
+28,explosion,EXPLOSION
+29,loud bang,EXPLOSION
+30,airplane accident,TRANSPORT
+31,collide,TRANSPORT
+32,collided,TRANSPORT
+33,collision,TRANSPORT
+34,crash,TRANSPORT
+35,crashed,TRANSPORT
+36,wreck,TRANSPORT
+37,wreckage,TRANSPORT
+38,wrecked,TRANSPORT
+39,derail,TRANSPORT
+40,derailed,TRANSPORT
+41,derailment,TRANSPORT
+42,sinking,TRANSPORT
+43,sunk,TRANSPORT
+44,bioterrorism,TERRORISM
+45,bioterror,TERRORISM
+46,hijack,TERRORISM
+47,hijacker,TERRORISM
+48,hijacking,TERRORISM
+49,hostage,TERRORISM
+50,hostages,TERRORISM
+51,suicide bomb,TERRORISM
+52,suicide bomber,TERRORISM
+53,suicide bombing,TERRORISM
+54,terrorism,TERRORISM
+55,terrorist,TERRORISM
+56,bridge collapse,CONSTRUCTION
+57,collapse,CONSTRUCTION
+58,collapsed,CONSTRUCTION
+59,structural failure,CONSTRUCTION
+60,cyclone,WIND
+61,hurricane,WIND
+62,rainstorm,WIND
+63,snowstorm,WIND
+64,storm,WIND
+65,tornado,WIND
+66,typhoon,WIND
+67,whirlwind,WIND
+68,windstorm,WIND
+69,blizzard,WIND
+70,hail,WIND
+71,hailstorm,WIND
+72,sandstorm,WIND
+73,dust storm,WIND
+74,violent storm,WIND
+75,deluge,FLOODING
+76,deluged,FLOODING
+77,drown,FLOODING
+78,drowned,FLOODING
+79,drowning,FLOODING
+80,flooding,FLOODING
+81,floods,FLOODING
+82,flood,FLOODING
+83,tsunami,FLOODING
+84,drought,HOT WEATHER
+85,heat wave,HOT WEATHER
+86,earthquake,TECTONICS
+87,epicentre,TECTONICS
+88,lava,TECTONICS
+89,seismic,TECTONICS
+90,volcano,TECTONICS
+91,famine,FAMINE
+92,accident,UNINDENTIFIED
+93,aftershock,UNINDENTIFIED
+94,ambulance,UNINDENTIFIED
+95,annihilated,UNINDENTIFIED
+96,annihilation,UNINDENTIFIED
+97,apocalypse,UNINDENTIFIED
+98,armageddon,UNINDENTIFIED
+99,attack,UNINDENTIFIED
+100,attacked,UNINDENTIFIED
+101,blaze,UNINDENTIFIED
+102,blazing,UNINDENTIFIED
+103,bleeding,UNINDENTIFIED
+104,blight,UNINDENTIFIED
+105,blood,UNINDENTIFIED
+106,bloody,UNINDENTIFIED
+107,body bag,UNINDENTIFIED
+108,body bagging,UNINDENTIFIED
+109,body bags,UNINDENTIFIED
+110,casualties,UNINDENTIFIED
+111,casualty,UNINDENTIFIED
+112,catastrophe,UNINDENTIFIED
+113,catastrophic,UNINDENTIFIED
+114,crush,UNINDENTIFIED
+115,crushed,UNINDENTIFIED
+116,curfew,UNINDENTIFIED
+117,damage,UNINDENTIFIED
+118,danger,UNINDENTIFIED
+119,dead,UNINDENTIFIED
+120,death,UNINDENTIFIED
+121,deaths,UNINDENTIFIED
+122,debris,UNINDENTIFIED
+123,demolish,UNINDENTIFIED
+124,demolished,UNINDENTIFIED
+125,demolition,UNINDENTIFIED
+126,desolate,UNINDENTIFIED
+127,desolation,UNINDENTIFIED
+128,destroy,UNINDENTIFIED
+129,destroyed,UNINDENTIFIED
+130,destruction,UNINDENTIFIED
+131,devastated,UNINDENTIFIED
+132,devastation,UNINDENTIFIED
+133,disaster,UNINDENTIFIED
+134,displaced,UNINDENTIFIED
+135,emergency,UNINDENTIFIED
+136,emergency plan,UNINDENTIFIED
+137,emergency services,UNINDENTIFIED
+138,evacuate,UNINDENTIFIED
+139,evacuated,UNINDENTIFIED
+140,evacuation,UNINDENTIFIED
+141,eyewitness,UNINDENTIFIED
+142,fatal,UNINDENTIFIED
+143,fatalities,UNINDENTIFIED
+144,fatality,UNINDENTIFIED
+145,fear,UNINDENTIFIED
+146,flattened,UNINDENTIFIED
+147,harm,UNINDENTIFIED
+148,hazard,UNINDENTIFIED
+149,hazardous,UNINDENTIFIED
+150,injured,UNINDENTIFIED
+151,injuries,UNINDENTIFIED
+152,injury,UNINDENTIFIED
+153,inundated,UNINDENTIFIED
+154,inundation,UNINDENTIFIED
+155,massacre,UNINDENTIFIED
+156,mayhem,UNINDENTIFIED
+157,obliterate,UNINDENTIFIED
+158,obliterated,UNINDENTIFIED
+159,obliteration,UNINDENTIFIED
+160,pandemonium,UNINDENTIFIED
+161,panic,UNINDENTIFIED
+162,panicking,UNINDENTIFIED
+163,police,UNINDENTIFIED
+164,razed,UNINDENTIFIED
+165,rescue,UNINDENTIFIED
+166,rescued,UNINDENTIFIED
+167,rescuers,UNINDENTIFIED
+168,rubble,UNINDENTIFIED
+169,ruin,UNINDENTIFIED
+170,screamed,UNINDENTIFIED
+171,screaming,UNINDENTIFIED
+172,screams,UNINDENTIFIED
+173,siren,UNINDENTIFIED
+174,sirens,UNINDENTIFIED
+175,smoke,UNINDENTIFIED
+176,stretcher,UNINDENTIFIED
+177,survive,UNINDENTIFIED
+178,survived,UNINDENTIFIED
+179,survivors,UNINDENTIFIED
+180,threat,UNINDENTIFIED
+181,tragedy,UNINDENTIFIED
+182,trapped,UNINDENTIFIED
+183,trauma,UNINDENTIFIED
+184,traumatised,UNINDENTIFIED
+185,trouble,UNINDENTIFIED
+186,twister,UNINDENTIFIED
+187,upheaval,UNINDENTIFIED
+188,wounded,UNINDENTIFIED
+189,wounds,UNINDENTIFIED
+190,landslide,ERROSION
+191,mudslide,ERROSION
+192,sinkhole,ERROSION
+193,avalanche,ERROSION
+194,cliff fall,ERROSION
+195,lightning,LIGHTENING
+196,thunder,LIGHTENING
+197,thunderstorm,LIGHTENING
+198,mass murder,MASS MURDER
+199,mass murderer,MASS MURDER
+200,meltdown,NUCLEAR
+201,military,NUCLEAR
+202,natural disaster,NUCLEAR
+203,nuclear disaster,NUCLEAR
+204,nuclear reactor,NUCLEAR
+205,radiation emergency,NUCLEAR
+206,oil spill,INDUSTRIAL
+207,electrocute,INDUSTRIAL
+208,electrocuted,INDUSTRIAL
+209,chemical emergency,INDUSTRIAL
+210,outbreak,DISEASE
+211,quarantine,DISEASE
+212,quarantined,DISEASE
+213,riot,RIOT
+214,rioting,RIOT
+215,war zone,WAR
+216,weapon,WAR
+217,weapons,WAR
+218,army,WAR
+219,battle,WAR
+220,refugees,WAR
