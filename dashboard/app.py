@@ -184,18 +184,14 @@ def update_location_map(value):
         # colorbar_tickprefix='$',
         colorbar_title='Number of disasters',))
     fig.update_layout(
-        # title_text='2014 Global GDP',
         geo=dict(
             showframe=False,
             showcoastlines=False,
-            # projection_type='equirectangular',
             projection_type="orthographic",
             bgcolor='rgba(0,0,0,0)',
             lakecolor="#17082D",
             showocean=True,
             oceancolor="#17082D"
-            # showrivers =True,
-            # rivercolor = "red",
         ),
         height=600, margin={"r": 0, "t": 0, "l": 0, "b": 0},
         paper_bgcolor='rgba(0,0,0,0)',

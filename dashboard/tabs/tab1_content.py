@@ -78,136 +78,137 @@ tab1_content = dbc.Card(
             dbc.Row([
                 dbc.Col(
                     [
-                        html.H2("FIRE", style={
+                        html.H2("🔥 FIRE", style={
                                 "color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'ablaze' 'arson' 'arsonist' 'arson' 'arsonist' 'buildings burning' 'buildings on fire' 'burned' 'burning' 'burning buildings'  'bush fires' 'fire' 'fire truck' 'first responders' 'flames' 'forest fire' 'forest fires' 'wild fires' 'wildfire' 'engulfed' 'hellfire'",
+                        html.P("ablaze arson arsonist arson arsonist buildings burning buildings on fire burned burning burning buildings  bush fires fire fire truck first responders flames forest fire forest fires wild fires wildfire engulfed hellfire",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("EXPLOSION",
+                        html.H2("💥 EXPLOSION",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'blew up' 'blown up' 'bomb' 'bombed' 'bombing' 'detonate' 'detonation' 'explode' 'exploded' 'explosion' 'loud bang'",
+                        html.P("blew up blown up bomb bombed bombing detonate detonation explode exploded explosion loud bang",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("TRANSPORT",
+                        html.H2("🚗 TRANSPORT",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'airplane accident'   'collide' 'collided' 'collision' 'crash' 'crashed' 'wreck' 'wreckage' 'wrecked' 'derail' 'derailed' 'derailment' 'sinking' 'sunk'",
+                        html.P("airplane accident   collide collided collision crash crashed wreck wreckage wrecked derail derailed derailment sinking sunk",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("TERRORISM",
+                        html.H2("🧨 TERRORISM",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'bioterrorism' 'bioterror' 'hijack' 'hijacker'  'hijacking' 'hostage' 'hostages' 'suicide bomb' 'suicide bomber' 'suicide bombing' 'terrorism' 'terrorist'",
+                        html.P("bioterrorism bioterror hijack hijacker  hijacking hostage hostages suicide bomb suicide bomber suicide bombing terrorism terrorist",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
             ]),
             dbc.Row([
                 dbc.Col(
                     [
-                        html.H2("CONSTRUCTION", style={
+                        html.H2("🏗️ CONSTRUCTION", style={
                             "color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'bridge collapse' 'collapse'  'collapsed' 'structural failure'",
+                        html.P("bridge collapse collapse  collapsed structural failure",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("WIND",
+                        html.H2("💨 WIND",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'cyclone'  'hurricane' 'rainstorm' 'snowstorm' 'storm' 'tornado' 'typhoon' 'whirlwind' 'windstorm' 'blizzard' 'hail' 'hailstorm' 'sandstorm' 'dust storm' 'violent storm'",
+                        html.P("cyclone  hurricane rainstorm snowstorm storm tornado typhoon whirlwind windstorm blizzard hail hailstorm sandstorm dust storm violent storm",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("FLOOD",
+                        html.H2("🏔️ ERROSION",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'deluge' 'deluged' 'drown' 'drowned' 'drowning'  'flooding' 'floods' 'flood' 'tsunami'",
+                        html.P("landslide  mudslide sinkhole avalanche cliff fall",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("HOT WEATHER",
+                        html.H2("☀️ HOT WEATHER",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'drought' 'heat wave'",
+                        html.P("drought heat wave",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
             ]),
             dbc.Row([
                 dbc.Col(
                     [
-                        html.H2("TECTONICS", style={
+                        html.H2("🌋 TECTONICS", style={
                             "color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'earthquake' 'epicentre' 'lava' 'seismic' 'volcano'",
+                        html.P("earthquake epicentre lava seismic volcano",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("FAMINE",
+                        html.H2("🌽 FAMINE",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'famine'",
+                        html.P("famine",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("ERROSION",
+                        html.H2("🌊 FLOOD",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'landslide'  'mudslide' 'sinkhole' 'avalanche' 'cliff fall'",
+                        html.P("deluge deluged drown drowned drowning  flooding floods flood tsunami",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
+
                 dbc.Col(
                     [
-                        html.H2("LIGHTENING",
+                        html.H2("⚡ LIGHTENING",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'lightning' 'thunder' 'thunderstorm'",
+                        html.P("lightning thunder thunderstorm",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
             ]),
             dbc.Row([
                 dbc.Col(
                     [
-                        html.H2("MASS MURDER", style={
+                        html.H2("🩸 MASS MURDER", style={
                             "color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'mass murder' 'mass murderer'",
+                        html.P("mass murder mass murderer",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("NUCLEAR",
+                        html.H2("☢️ NUCLEAR",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'meltdown' 'military' 'natural disaster' 'nuclear disaster' 'nuclear reactor' 'radiation emergency'",
+                        html.P("meltdown military natural disaster nuclear disaster nuclear reactor radiation emergency",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("INDUSTRIAL",
+                        html.H2("🏭 INDUSTRIAL",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'oil spill' 'electrocute' 'electrocuted' 'chemical emergency'",
+                        html.P("oil spill electrocute electrocuted chemical emergency",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("DISEASE",
+                        html.H2("🦠 DISEASE",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'outbreak' 'quarantine' 'quarantined'",
+                        html.P("outbreak quarantine quarantined",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
             ]),
             dbc.Row([
                 dbc.Col(
                     [
-                        html.H2("RIOT", style={
+                        html.H2("👥 RIOT", style={
                             "color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'riot' 'rioting'",
+                        html.P("riot rioting",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
                     [
-                        html.H2("WAR",
+                        html.H2("⚔️ WAR",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
-                        html.P("'war zone' 'weapon' 'weapons' 'army' 'battle' 'refugees'",
+                        html.P("war zone weapon weapons army battle refugees",
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
                 dbc.Col(
@@ -223,16 +224,16 @@ tab1_content = dbc.Card(
                     ], width=3),
             ]),
             html.P("We have created an additional category for all the words that are too generic for other groupings such as 'danger' or 'police':"),
-            html.H2("UNIDENTIFIED",
+            html.H2("🚨 UNIDENTIFIED",
                     style={"color": "#32FBE2", "fontSize": "18px"}),
-            html.P("'accident' 'aftershock' 'ambulance' 'annihilated' 'annihilation' 'apocalypse' 'armageddon'  'attack' 'attacked'   'blaze' 'blazing' 'bleeding' 'blight' 'blood' 'bloody' 'body bag' 'body bagging' 'body bags' 'casualties' 'casualty' 'catastrophe' 'catastrophic' 'crush' 'crushed' 'curfew'  'damage' 'danger' 'dead' 'death'  'deaths' 'debris' 'demolish' 'demolished' 'demolition'  ' 'desolate' 'desolation' 'destroy' 'destroyed' 'destruction' 'devastated' 'devastation' 'disaster' 'displaced'  'emergency' 'emergency plan' 'emergency services'    'evacuate' 'evacuated' 'evacuation'  'eyewitness' 'fatal' 'fatalities' 'fatality' 'fear' 'flattened'   'harm' 'hazard' 'hazardous'   'injured' 'injuries' 'injury' 'inundated' 'inundation'  'massacre' 'mayhem' 'obliterate' 'obliterated'  'obliteration'   'pandemonium' 'panic' 'panicking'  'police'  'razed' 'rescue' 'rescued' 'rescuers'   'rubble' 'ruin'  'screamed' 'screaming' 'screams'  'siren' 'sirens' 'smoke'  'stretcher'   'survive' 'survived' 'survivors'  'threat' 'tragedy' 'trapped' 'trauma' 'traumatised' 'trouble'  'twister'  'upheaval' 'wounded' 'wounds'",
+            html.P("accident aftershock ambulance annihilated annihilation apocalypse armageddon  attack attacked   blaze blazing bleeding blight blood bloody body bag body bagging body bags casualties casualty catastrophe catastrophic crush crushed curfew  damage danger dead death  deaths debris demolish demolished demolition   desolate desolation destroy destroyed destruction devastated devastation disaster displaced  emergency emergency plan emergency services evacuate evacuated evacuation  eyewitness fatal fatalities fatality fear flattened   harm hazard hazardous   injured injuries injury inundated inundation  massacre mayhem obliterate obliterated  obliteration   pandemonium panic panicking  police  razed rescue rescued rescuers   rubble ruin  screamed screaming screams  siren sirens smoke  stretcher   survive survived survivors  threat tragedy trapped trauma traumatised trouble  twister  upheaval wounded wounds",
                    style={"color": "#32FBE2", "fontSize": "14px"}),
             html.P("Fig 1. Frequency of disaster types (keywords) by category"),
             # DATA VIZ:
             #dcc.Input(id='range', type='number', min=2, max=10, step=1),
 
 
-            dcc.Slider(0, 15, 10, value=100, id='groups'),
+            dcc.Slider(0, 15, 10, value=15, id='groups'),
             dcc.Graph(id="barplot_groups"),
 
 
