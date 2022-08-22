@@ -73,6 +73,42 @@ word_freqs_g = pd.read_csv(
 
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
 
+# SANKEY
+
+
+@app.callback(Output("sankey-legit-location", "figure"), Input("sankey-input", "value"))
+def update_sankey_chart(value):
+    fig = go.Figure(data=[go.Sankey(
+        arrangement="perpendicular",
+        node=dict(
+            pad=40,
+            thickness=20,
+            line=dict(color="black", width=0.5),
+            label=["Total", "Non-null", "Null",
+                   "Legitimate", "Not legitimate", "Null"],
+            color=["#636EFA", "#48EF7B", "#D85360",
+                   "#48EF7B", "#D85360", "#D85360"]
+        ),
+        link=dict(
+            source=[0, 0, 1, 1, 2],
+            target=[1, 2, 3, 4, 5],
+            value=[5081, 2533, 4132, 949, 2533],
+            color=["#48EF7B", "#D85360", "#48EF7B", "#D85360", "#D85360"],
+        ))])
+
+    fig.update_layout(
+        hovermode='x',
+        margin=dict(t=0, l=50),
+        height=420,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+        font=dict(size=14, color="black"),
+    )
+
+    return fig
+
+
 # WORDCLOUD DATA
 
 
@@ -122,10 +158,11 @@ def update_bar_chart(value):
         ndf,
         x="word",
         y="freq",
-        # color="Actual",
-        # barmode="group",
+        labels={
+            "freq": "Frequency",
+            "word": "",
+        },
         text_auto=True
-        # color_discrete_sequence=["#48EF7B", "#D85360", "#48EF7B", "#D85360"],
     )
     fig.update_layout(
         margin=dict(t=0, l=50),
@@ -147,10 +184,11 @@ def update_bar_chart(value):
         ndf,
         x="word",
         y="freq",
-        # color="Actual",
-        # barmode="group",
-        text_auto=True
-        # color_discrete_sequence=["#48EF7B", "#D85360", "#48EF7B", "#D85360"],
+        text_auto=True,
+        labels={
+            "freq": "Frequency",
+            "word": "",
+        },
     )
     fig.update_layout(
         margin=dict(t=0, l=50),
@@ -181,7 +219,6 @@ def update_location_map(value):
         reversescale=True,
         marker_line_color='darkgray',
         marker_line_width=0.5,
-        # colorbar_tickprefix='$',
         colorbar_title='Number of disasters',))
     fig.update_layout(
         geo=dict(
@@ -200,25 +237,25 @@ def update_location_map(value):
             size=14,
             color="#32FBE2"
         ),
-        annotations=[dict(
-            x=0.55,
-            y=0.1,
-            xref='paper',
-            yref='paper',
-            text='Source: Twitter',
-            showarrow=False
-        ),
-        ]
     )
 
     return fig
 
 
-# DATA VIZ:
-@app.callback(Output("barplot_groups", "figure"), Input("groups", "value"))
+# FIRST BAR CHART
+@app.callback(Output("barplot_groups", "figure"), Input("groups-input", "value"))
 def update_bar_chart(value):
 
-    ndf = word_freqs_g.iloc[:value]
+    ndf = word_freqs_g
+
+    if value == 1:
+        include = ['UNINDENTIFIED', 'TRANSPORT', 'WIND', 'FIRE', 'FLOODING', 'TERRORISM', 'EXPLOSION', 'WAR', 'TECTONICS',
+                   'ERROSION', 'DISEASE', 'LIGHTENING', 'CONSTRUCTION', 'RIOT', 'NUCLEAR', 'INDUSTRIAL', 'FAMINE', 'HOT WEATHER']
+        ndf = ndf[ndf['word'].isin(include)]
+    elif value == 2:
+        exclude = ['TRANSPORT', 'WIND', 'FIRE', 'FLOODING', 'TERRORISM', 'EXPLOSION', 'WAR', 'TECTONICS',
+                   'ERROSION', 'DISEASE', 'LIGHTENING', 'CONSTRUCTION', 'RIOT', 'NUCLEAR', 'INDUSTRIAL', 'FAMINE', 'HOT WEATHER']
+        ndf = ndf[ndf['word'].isin(exclude)]
 
     fig = px.bar(
         ndf,
@@ -227,6 +264,10 @@ def update_bar_chart(value):
         text_auto=True,
         color="freq",
         color_continuous_scale='plasma',
+        labels={
+            "freq": "Frequency",
+            "word": "",
+        },
     )
     fig.update_layout(
         margin=dict(t=0, l=50),
@@ -236,6 +277,36 @@ def update_bar_chart(value):
         showlegend=False,
         font=dict(size=14, color="#32FBE2"),
     )
+    return fig
+
+# BALANCE PIE CHART
+
+
+@app.callback(Output("balance-output", "figure"), Input("balance-input", "value"))
+def update_pie_chart(value):
+
+    # DATA
+    df = pd.read_csv("dashboard/data/original/train.csv")
+
+    count_0 = df['target'].value_counts().loc[0].item()
+    count_1 = df['target'].value_counts().loc[1].item()
+
+    dfp = pd.DataFrame(
+        {"Class": ["Class 0", "Class 1"], "Count": [count_0, count_1]})
+
+    fig = px.pie(dfp, values='Count', names='Class', color_discrete_sequence=["#D85360", "#48EF7B"],
+                 # hover_data=['lifeExp'], labels={'lifeExp': 'life expectancy'}
+                 )
+    fig.update_traces(textposition='inside', textinfo='percent+label')
+    fig.update_layout(
+        margin=dict(t=0, l=50),
+        height=350,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+        font=dict(size=14, color="#32FBE2"),
+    )
+
     return fig
 
 
