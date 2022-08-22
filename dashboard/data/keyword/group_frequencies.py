@@ -20,7 +20,7 @@ def count_group_frequencies(
             counter.update([group])
     return pd.DataFrame(
         [(group, freq) for group, freq in counter.items()],
-        columns=("group", "freq"),
+        columns=("word", "freq"),
     ).sort_values("freq", ascending=False)
 
 
