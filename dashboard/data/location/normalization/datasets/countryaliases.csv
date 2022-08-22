@@ -1,0 +1,911 @@
+iso3,Alias,AliasDescription
+NA,Abkhazia,"common, English"
+NA,Republic of Abkhazia,"official, English"
+NA,Aphsny Axwynthkharra,"official, Abkhaz"
+NA,Respublika Abkhaziya,"official, Russian"
+NA,Autonomous Republic of Abkhazia,"Internationally recognized, English"
+AFG,Afghanistan,"common, English"
+AFG,Islamic Republic of Afghanistan,"official, English"
+AFG,Da Afganistan Islami Jumhoryat,"official, Pashto"
+AFG,Jomhuriyyeh Eslamiyyeh Afganestan,"official, Dari"
+ALB,Albania,"common, English"
+ALB,Republic of Albania,"official, English"
+ALB,Republika e Shqipërisë,"official, Albanian"
+ALB,Arnavutluk,Turkish
+ALB,Arbanon,"former, English"
+DZA,Algeria,"common, English"
+DZA,People's Democratic Republic of Algeria,"official, English"
+DZA,al-Jaza’ir,"common, Arabic"
+DZA,al Jumhuriyya al Jazaa'iriyya ad-Dimuqratiyya ash Sha'biyya,"official, Arabic"
+AND,Andorra,"common, English"
+AND,Principality of Andorra,"official, English"
+AND,Principat d'Andorra,"official, Catalan"
+AND,Principality of the Valleys of Andorra,"alternate, English"
+ARG,Argentina,"common, English"
+ARG,Argentine Republic,"official, English"
+ARG,la Argentina,"colloquial, Spanish"
+ARG,the Argentine,"archaic, English"
+ARG,Argentine Nation,"official and legally preferred, English"
+ARG,United Provinces of the Río de la Plata,"official, English"
+ARG,Argentine Confederation,"official, English"
+ARM,Armenia,"common, English"
+ARM,Hayastan,transliterated Armenian
+ARM,Republic of Armenia,"official, English"
+NA,Artsakh,"common, English"
+NA,Republic of Artsakh,"official, English"
+NA,Artsakhi Hanrapetut’yun,"official, Armenian"
+NA,Nagorno-Karabakh Republic,"former official, English"
+NA,Artsakh Republic of Mountainous Karabakh,"in official use, English"
+AUS,Australia,"common, English"
+AUS,Commonwealth of Australia,"official, English"
+AUS,New Holland,"former name, English"
+AUT,Austria,"common, English"
+AUT,Republic of Austria,"official, English"
+AUT,Republik Österreich,"official, German"
+AUT,Österreich,"common, German"
+AZE,Azerbaijan,"common, English"
+AZE,Az?ebaycan Respublikasi,"official, Azerbaijani"
+AZE,Republic of Azerbaijan,"official, English"
+BHS,The Bahamas,"common, English"
+BHS,Commonwealth of The Bahamas,"official, English"
+BHS,Commonwealth of the Bahama Islands,"former official, English"
+BHS,Bahama Islands,"colonial name, English"
+BHR,Bahrain,"common, English"
+BHR,Kingdom of Bahrain,"official, English"
+BHR,Mamlakat al-Bahrayn,"official, Arabic"
+BHR,State of Bahrain,"former official, English"
+BGD,Bangladesh,"common, English"
+BGD,People's Republic of Bangladesh,long official name in English
+BGD,Bengal Presidency,former political name
+BGD,East Bengal,former political name
+BGD,East Pakistan,former political name
+BRB,Barbados,"official, English"
+BRB,Bim,nickname
+BRB,Bimshire,nickname
+BRB,Little England,nickname
+BRB,The Rock,nickname
+BLR,Belarus,"common, English"
+BLR,Republic of Belarus,"official, English"
+BLR,Gudija,Lithuanian
+BLR,Byelorussia,former name
+BLR,White Russia,outdated
+BEL,Belgium,"common, English"
+BEL,Kingdom of Belgium,"official, English"
+BEL,Koninkrijk België,"official, Dutch"
+BEL,Royaume de Belgique,"official, French"
+BEL,Königreich Belgien,"official, German"
+BLZ,Belize,"common, English"
+BLZ,British Honduras,"former, English"
+BEN,Benin,"common, English"
+BEN,Dahomey,former name
+BEN,Republic of Benin,"official, English"
+BEN,République du Bénin,"official, French"
+BTN,Bhutan,"common, English"
+BTN,Kingdom of Bhutan,"official, English"
+BTN,Druk Gyal Khap,"official, Dzongkha"
+BOL,Bolivia,"common, English"
+BOL,Plurinational State of Bolivia,"official, English"
+BOL,Estado Plurinacional de Bolivia,"official, Spanish"
+BOL,Republic of Bolívar,"former official, English"
+BOL,Republic of Bolivia,"former official, English"
+BIH,Bosnia and Herzegovina,"official, English"
+BIH,Republic of Bosnia and Herzegovina,"former official, English"
+BIH,Socialist Republic of Bosnia and Herzegovina,"former official, English"
+BWA,Botswana,"common, English"
+BWA,Bechuanaland,"former, English"
+BWA,Republic of Botswana,"official, English"
+BRA,Brazil,"common, English"
+BRA,Pindorama,"in Tupi and Guarani, native languages"
+BRA,Terra de Santa Cruz,early Portuguese colonization
+BRA,Ilha de Vera Cruz,"former, Portuguese"
+BRA,Empire of Brazil,"former, English"
+BRA,United States of Brazil,"former, English"
+BRA,Federative Republic of Brazil,"official, English"
+BRA,República Federativa do Brasil,"official, Portuguese"
+BRA,Terra di Papaga,"former, Italian"
+BRN,Brunei,"common, English"
+BRN,"Nation of Brunei, the Abode of Peace","official name, English"
+BRN,State of Brunei,"colonial name, English"
+BRN,Negara Brunei Darussalam,Malay
+BRN,Brunei Darussalam,Malay
+BGR,Bulgaria,"common, English"
+BGR,Republic of Bulgaria,"official, English"
+BGR,People's Republic of Bulgaria,"former official, English"
+BFA,Burkina Faso,"official, English and French"
+BFA,Upper Volta,"former name, English"
+BFA,Haute-Volta,"former name, French"
+BFA,Bourkina-Fasso,unofficial French
+BDI,Burundi,"common, English"
+BDI,Republic of Burundi,"official, English"
+BDI,Republika y'Uburundi,"official, Kirundi"
+BDI,République du Burundi,"official, French"
+BDI,Kingdom of Burundi,"former official, English"
+KHM,Cambodia,"common, English"
+KHM,Kingdom of Cambodia,"official, English"
+KHM,Royaume du Cambodge,"official, French"
+KHM,Kampuchea,former official English transliteration
+KHM,Khmer Republic,former official
+KHM,Democratic Kampuchea,former official
+KHM,People's Republic of Kampuchea,former official
+KHM,State of Cambodia,former official
+CMR,Cameroon,"common, English"
+CMR,Republic of Cameroon,"official, English"
+CMR,United Republic of Cameroon,"former official, English"
+CMR,Kamerun,"former colonial, German"
+CAN,Canada,"official, English and French"
+CAN,Dominion of Canada,"historical long form, English"
+CAN,Dominion du Canada,"historical long form, French"
+CAN,Acadia,French colony
+CAN,Francisca,as labeled on an old map
+CPV,Cape Verde,"common, English"
+CPV,Cabo Verde,"official, Portuguese and English"
+CAF,Central African Republic,"official, English"
+CAF,Oubangui-Chari,"former, French"
+CAF,Ubangi-Shari,English
+CAF,République Centrafricaine,"official, French"
+CAF,Empire Centrafricain,"former official, French"
+CAF,Central African Empire,English
+TCD,Chad,"official, English"
+TCD,Republic of Chad,"official, English"
+TCD,République du Tchad,"official, French"
+TCD,Jumhuriyat Tashad,"official, Arabic"
+CHL,Chile,"common, English"
+CHL,Republic of Chile,"official, English"
+CHL,Chilli,Mapuche
+CHL,Chili,Quechua
+CHL,Reyno de Chile,colonial Spanish
+CHL,Capitania general de Chile,colonial Spanish
+CHN,China,"common, English"
+CHN,People's Republic of China,official
+CHN,Communist China,"colloquial, mainly used by Western countries"
+CHN,Red China,"colloquial, mainly derogatory"
+CHN,Mainland China,"colloquial, refers to the area that the PRC Government administers since the end of the Chinese Civil War"
+CHN,New China,"colloquial, pro-Communist"
+CHN,"Shenzhou, Ch'in Empire, Cathay","obsolete, now mainly used poetically"
+CHN,Zhongguo,Chinese
+COL,Colombia,"common, English"
+COL,Republic of Colombia,"official, English"
+COL,República de Colombia,"official, Spanish"
+COL,Estados Unidos de Colombia,"former official, Spanish"
+COL,Confederación Granadina,"former official, Spanish"
+COL,República de la Nueva Granada,"former official, Spanish"
+COM,Comoros,"common, English"
+COM,Union of the Comoros,"official, English"
+COM,Union des Comores,"official, French"
+COM,Udzima wa Komori,"official, Swahili"
+COM,al-Ittihad al-Qumuri,"official, Arabic"
+COM,United Republic of the Commoros,"official, English"
+CRI,Costa Rica,"common, English"
+CRI,Republic of Costa Rica,"official, English"
+CRI,República de Costa Rica,"official, Spanish"
+CIV,Côte d'Ivoire,"common, French and English"
+CIV,Ivory Coast,"common, English"
+CIV,the Ivory Coast,common English
+CIV,Republic of Côte d'Ivoire,official English
+CIV,République de Côte d'Ivoire,"official, French"
+HRV,Croatia,"common, English"
+HRV,Republic of Croatia,"official, English"
+HRV,Republika Hrvatska,"official, Croatian"
+HRV,Hrvatska,"common, Croatian; also in Serbian, Bosnian and Montenegrin"
+HRV,Hrvaška,Slovenian
+CUB,Cuba,"common, English"
+CUB,Republic of Cuba,"official, English"
+CUB,República de Cuba,"official, Spanish"
+CZE,Czech Republic,"official, English"
+CZE,Czechia,"official shortform name, English"
+CZE,Ceská republika,"official, Czech, Slovak"
+CZE,Cesko,"common, Czech, Slovak"
+CZE,CR,Czech initialism
+CZE,CR,English initialism
+CZE,Bohemia,"former, English"
+CZE,Czechland,"unofficial, English"
+CZE,the Czechlands,"unofficial, English"
+CZE,Ceské zeme,Czech for Bohemian lands or Czech lands
+CZE,Former Ceská socialistická republika,Czech for the Czech Socialist Republic
+CZE,CSR,Czech initialism
+CZE,CSR,English initialism Protektorát
+CZE,Cechy a Morava,Czech for the Protectorate of Bohemia and Moravia
+CZE,Zeme Koruny ceské,Czech for the Lands of the Bohemian Crown
+CZE,Koruna ceská,Czech for the Bohemian Crown
+CZE,Ceská konfederace,Czech for the Bohemian Confederation
+DNK,Denmark,"common, English"
+DNK,Danmark,"common, Danish, Swedish, Norwegian"
+DNK,Kingdom of Denmark,"official, English"
+DNK,Kongeriget Danmark,"official, Danish"
+COD,Democratic Republic of Congo,"official, English"
+COD,Zaire,"former official name, 1971 to 1997; still occasionally used to distinguish it from Republic of the Congo"
+COD,DRC,initialism
+COD,Congo Kinshasa,used in contrast to Congo Brazzaville
+COD,Belgian Congo,"former name during Belgian colonization, 1908 to 1960, English"
+COD,Congo belge,"former name, French"
+COD,Congo Free State,"former name, 1885 to 1908"
+COD,Republic of the Congo,"former name, 1960 to 1964, during which time both Congos had identical official names"
+DJI,Djibouti,common
+DJI,"French Territory of the Afars and the Issas, French Somaliland, Obock Territory","former names, English"
+DJI,"Territoire français des Afars et des Issas, Côte française des Somalis, Territoire d'Obock","former names, French"
+DJI,Republic of Djibouti,"official, English"
+DJI,République de Djibouti,"official, French"
+TLS,East Timor,common
+TLS,Timor-Leste,"official shortform name, English, Portuguese"
+TLS,Democratic Republic of Timor-Leste,"official, English"
+EGY,Egypt,common
+EGY,Misr,"formal shortened, Arabic"
+EGY,Mess,"common, Arabic"
+EGY,Aegyptus,"former, Latin"
+EGY,Kimi,Coptic
+EGY,Arab Republic of Egypt,"official, English"
+EST,Estonia,common
+EST,Eesti,"common, Estonian"
+EST,Viru,"poetic, Estonian"
+EST,Viro,"common, Finnish"
+EST,Estland,"common, German, Swedish, Danish, Norwegian, Dutch"
+EST,Maarjamaa,"Terra Mariana poetic, Estonian"
+EST,Igaunija,"common, Latvian"
+SWZ,Eswatini,common
+SWZ,Swaziland,"common, former"
+SWZ,eSwatini,Swazi
+SWZ,Kingdom of Eswatini,"official, English"
+ETH,Ethiopia,common
+ETH,Abyssinia,former
+ETH,Habeshastan,Turkish
+ETH,Federal Democratic Republic of Ethiopia,"official, English"
+ETH,Ethiopië,"common, Dutch"
+ETH,Al-Habasha,Arabic
+FIN,Finland,"common, English and Swedish"
+FIN,Republic of Finland,"official, English"
+FIN,Suomi,"common, Finnish"
+FIN,Suomen tasavalta,"official, Finnish"
+FIN,Republiken Finland,"official, Swedish"
+FIN,Suomenmaa,"poetic, Finnish"
+FIN,Suopma and Suoma dásseváldi,"North Sami, official"
+FIN,Lää´ddjânnam and Lää´ddjânnam tää´ssvä´ldd,"Skolt Sami, official"
+FIN,Suomâ and Suomâ täsiväldi,"official, Inari Sami"
+FIN,Soome,"common, Estonian"
+FRA,France,"common, English and French"
+FRA,French Republic,"official, English"
+FRA,République Française,"official, French"
+FRA,L'Hexagone,"often journalistic, colloquial French"
+FRA,Gaul,"former name, English"
+FRA,Gaule,"former name, French"
+FRA,Gallia,Contemporary Greek name
+FRA,Farança,common Arabic
+FRA,Tsarfat,common Hebrew
+GAB,Gabon,"common, English"
+GAB,Gabonese Republic,"official, English"
+GEO,Georgia,"official, English"
+GEO,Iberia,"former, English, East Georgia"
+GEO,Colchis,"former, English, West Georgia"
+GEO,Iveria,usually used as Christian name
+GEO,Republic of Georgia,"former, before the 1995 Constitution"
+GEO,Sakartvelo,Georgian
+DEU,Germany,"common, English"
+DEU,Federal Republic of Germany,"official, English*"
+DEU,Bundesrepublik Deutschland,"official, German*"
+DEU,Deutschland,"common, German*"
+DEU,BRD,German initialism*
+DEU,FRG,English initialism*
+DEU,Duitsland,"common, Dutch"
+DEU,Allemagne,"common, French"
+DEU,Alemania,"common, Spanish"
+DEU,Germania,"common, Italian"
+DEU,Nemecko,"common, Czech"
+DEU,Niemcy,"common, Polish"
+DEU,Németország,"common, Hungarian"
+DEU,Former East Germany,"unofficial, English"
+DEU,Deutsche Demokratische Republik,"official, German"
+DEU,German Democratic Republic,"official, English"
+DEU,DDR,German initialism
+DEU,GDR,English initialism.
+GHA,Ghana,"common, English"
+GHA,Gold Coast,"colonial, English"
+GHA,United Gold Coast Convention,UGCC
+GHA,Ghana Tinzuyu,Dagbon
+GHA,Gaana,Akan
+GRC,Greece,official English description
+GRC,Hellas,official and common name
+GRC,Hellada,common name in Greek
+GRC,Hellas,official description in Greek
+GRC,Yunanistan,Turkish
+GRC,Hellenic Republic,"official name of Greek state, English"
+GRC,Yavan,common Hebrew
+GIN,The Republic of Guinea,official
+GIN,Guinea,common
+GNB,Guinea-Bissau,"common, English"
+GNB,Portuguese Guinea,"former, English"
+GNB,Republic of Guinea-Bissau,"official, English"
+GNB,Guiné-Bissao,"archaic, Portuguese"
+GNB,Guinea,"shorthand, used when context clearly distinguishes Guinea-Bissau from the neighboring Republic of Guinea"
+HUN,Hungary,"official, English"
+HUN,Republic of Hungary,official between 1946–1949 and 1989–2012
+HUN,Hungarian People's Republic,"official, 1918–1919 and 1949–1989"
+HUN,Kingdom of Hungary,1000–1918 and 1920–1946
+HUN,Regnum Hungari,"official in Latin, the language of administration until 1844"
+HUN,Hungaria,"short form, Latin"
+HUN,Magyarország,official Hungarian name; has been the commonly used form of the name during all its history
+HUN,Magyar Köztársaság,Hungarian for Republic of Hungary
+HUN,Magyar Népköztársaság,Hungarian for People's Republic of Hungary
+HUN,Magyar Tanácsköztársaság,Hungarian name of the first People's Republic
+HUN,Magyar Királyság,Hungarian for Kingdom of Hungary
+ISL,Iceland,"official, English"
+ISL,Republic of Iceland,official English description
+ISL,Ísland,official Icelandic name
+ISL,Lýðveldið Ísland,official Icelandic description
+ISL,Fold,poetic name
+ISL,Thule,"Latin name, also poetic"
+ISL,Frón,poetic
+ISL,Ísafold,poetic
+IND,India,"common, English"
+IND,Bharat,official name in Hindi
+IND,Bharat Ganarajya,official long form in Hindi
+IND,Bharata,Kannada
+IND,Bharatadesam,Telugu
+IND,Republic of India,official long form in English
+IND,Union of India,semi-official name
+IND,Hindustan,unofficial name in Hindi/Urdu
+IND,Al-Hind,name in Arabic/Persian/Urdu
+IND,Bharat Prajatantra,official long form in Bengali
+IND,Bharatavarsa,name in Sanskrit
+IND,Hodu,name in Hebrew
+IND,Aryavarta,obsolete name
+IND,Jumhuriyat-e Bharat,name in Urdu.
+IDN,Indonesia,common
+IDN,Republic of Indonesia,"official, English"
+IDN,Republik Indonesia,"official, Indonesian"
+IDN,Nusantara,dating back from Hindu era
+IDN,Insulinde,from the Colonial era
+IDN,Indunesia,suggestion for Dutch East Indies' modern name
+IDN,Indonesië,"common, Dutch"
+IDN,Dutch East Indies or Netherlands East-Indies,"former, English"
+IDN,Nederlandsch-Indië,"former, Dutch"
+IDN,Hindia Belanda,"former, Indonesian"
+IRN,Islamic Republic or Iran,official
+IRN,Iran,common
+IRN,Persia,coined by ancient Greeks
+IRQ,Iraq,common
+IRQ,Mesopotamia,former name
+IRQ,Assyria,former/historical name
+IRQ,Babylon,former/historical name
+IRL,Ireland,"common and official, English"
+IRL,Éire,official Irish name
+IRL,Irish Free State,1922–1937
+IRL,Poblacht na hÉireann,official Irish description
+IRL,Republic of Ireland,unofficial English description
+IRL,Saorstát Éireann,Irish 1922–1937
+IRL,"Erin, Banba, Fodla",three poetic names
+IRL,Hibernia,"Latin name, also poetic"
+ISR,Israel,common
+ISR,State of Israel,official English name
+ISR,Zion,historical Jewish name for Jerusalem
+ISR,Yehuda,Hebrew for the ancient land of Judea
+ISR,the Jewish State,unofficial
+ISR,the Hebrew State,unofficial
+ISR,the Holy Land,Bible
+ISR,Eretz Yisrael,Bible
+ISR,Tel Aviv regime,used in Iran's news media
+ISR,the Zionist entity,"referred to Arabs and Muslims, also used by Iran's news media"
+ISR,Occupied Palestine,"used by Arabs and Muslims, as well as pro-Palestinian supporters"
+ISR,Illegal State of Zion,"sometimes used by Arabs, Muslims, and pro-Palestinian supporters"
+ISR,Zionistan,"sometimes used by Arabs, Muslims, and pro-Palestinian supporters"
+ISR,Herzlstan,"used by pro-Palestinans and anti-Zionist Jews, named after Theodore Herzl"
+ITA,Italy,common
+ITA,Repubblica Italiana,official Italian name
+ITA,Italia,"common, Italian"
+ITA,the Beautiful Country,nickname
+ITA,the Boot,journalistic
+ITA,"Ausonia, Esperia, Enotria, Tirrenia",poetic names
+JAM,Jamaica,common
+JAM,Xamayca,Spanish version of Taino name
+JPN,Japan,common
+JPN,Nippon,official name in Japanese
+JPN,Nihon,alternate
+JPN,Yamato,"historic, ancient Japan"
+JPN,Oyashima,"meaning the country of eight great islands, historic"
+JPN,Cipangu/Zipangu,appeared in The Travels of Marco Polo in the 13th century
+JPN,Gipangu,appeared in The Travels of Marco Polo in the 13th century
+JPN,Hinomoto,NA
+JOR,Jordan,common
+JOR,Hashemite Kingdom of Jordan,"official, English"
+KAZ,Kazakhstan,"common, English"
+KAZ,Republic of Kazakhstan,official English long name
+KAZ,Kazakhstan,English passport short name
+KAZ,Republic of Kazakhstan,English passport long name
+KAZ,Qazaqstan,Kazakh short name in Latin script
+KAZ,Alash / ???? / Alas,"former name, also poetic"
+KAZ,Kazakh Soviet Socialist Republic,"former Soviet name, English"
+KEN,Kenya,conventional short form
+KEN,Republic of Kenya,"official, English"
+KEN,Jamhuri ya Kenya,"official, Swahili"
+KEN,British East Africa Protectorate,former name 1880s until 1920
+KEN,Kenya Colony,former name 1920 until 1963
+PRK,North Korea,"common, English"
+PRK,Democratic People's Republic of Korea,"official, English"
+PRK,D.P.R.K.,"initialism, English"
+PRK,DPRK,"initialism, English"
+PRK,Choson Minjujuui Inmin Konghwaguk,"official, Korean"
+PRK,Cho-son,"colloquial, Korean"
+PRK,Korea,conventional short form
+KOR,South Korea,"common, English"
+KOR,Republic of Korea,"official, English"
+KOR,R.O.K.,"initialism, English"
+KOR,ROK,"initialism, English"
+KOR,Dae-han-min-guk,"official, Korean"
+KOR,Han-guk,"colloquial, Korean"
+KOR,Korea,conventional short form
+KOR,Korea Republic,FIFA designation
+NA,Kosovo,"common, English"
+NA,Republic of Kosovo,"official, English"
+NA,Republika e Kosovës,"official, Albanian"
+NA,Republika Kosovo,"official, Serbian Latin"
+KGZ,Kyrgyzstan,"common, English"
+KGZ,Kyrgyz Republic,official English long name
+KGZ,Kyrgyz Respublikasy,Kyrgyz short name in Latin script
+KGZ,Kyrgyzskaya Respublika,Russian short name in Latin script
+KGZ,Kirghiz Soviet Socialist Republic,"former Soviet name, English"
+KGZ,Kyrgyz Sovettik Sotsialisttik Respublikasy,"former Soviet name, Kyrgyz"
+KGZ,Kirgizskaya Sovetskaya Sotsialisticheskaya Respublika,"former Soviet name, Russian"
+KGZ,Kirghizia,former common English name prior to 1991
+KGZ,Kirgizstan,Russian transliteration of the English name
+KGZ,Republic of Kyrgyzstan,"official English long name, 1990–1993"
+LAO,Laos,"common, English"
+LAO,Lao People's Democratic Republic,"official, English"
+LAO,Sathalanalat Paxathipatai Paxaxôn,romanized Lao
+LAO,République démocratique populaire lao,French
+LVA,Latvia,"common, English"
+LVA,Latvija,"common, Latvian"
+LVA,Lettland,"German, Swedish"
+LVA,Letland,"Dutch, Danish"
+LVA,Letonija,Serbian
+LVA,Letonnie,French
+LBN,Lebanon,"common, English"
+LBN,The Lebanese Republic,"official, English"
+LBN,Al-Jumhuriyya Al-Lubnaniyya,"official, Arabic"
+LBN,Lebnan,"Common, Arabic"
+LBN,Lubnan,"Common, Arabic"
+LBN,Liban,"Common, French"
+LBN,Levanon,"Common, Hebrew"
+LSO,Lesotho,"common, English"
+LSO,Basutoland,"former, English"
+LSO,Kingdom of Lesotho,"official, English"
+LTU,Lithuania,"common, English"
+LTU,Lietuva,"common, Lithuanian"
+LTU,Lietuvos Respublika,"official, Lithuanian"
+LTU,Lita,"common, Yiddish/Hebrew"
+LUX,Luxembourg,"common, English"
+LUX,Grand Duchy of Luxembourg,"official, English"
+LUX,Groussherzogdem Lëtzebuerg,"official, Luxembourgish"
+LUX,Lëtzebuerg,"common, Luxembourgish"
+LUX,Grand-Duché de Luxembourg,"official, French"
+LUX,Luxembourg,"common, French"
+LUX,Großherzogtum Luxemburg,"official, German"
+LUX,Luxemburg,"common, German"
+LUX,Luxemburgo,"common, Spanish & Portuguese"
+LUX,Lussemburgo,"common, Italian"
+MDG,Madagascar,common
+MDG,Madagasikara,Malagasy
+MDG,Republic of Madagascar,"official, English"
+MDG,Repoblikan'i Madagasikara,"official, Malagasy"
+MDG,République de Madagascar,"official, French"
+MWI,Malawi,common
+MWI,Nyasaland,"former, English"
+MWI,Republic of Malawi,"official, English"
+MYS,Malaysia,official
+MYS,Persekutuan Malaysia,"colloquial long form, Malay"
+MYS,Federation of Malaysia,"colloquial long form, English"
+MYS,"Malaya, Sabah and Sarawak","former, English names of the various components"
+MYS,Tanah Melayu or Malay Land,"former, Malay"
+MYS,Maláixiyà,"common, Mandarin"
+MYS,Malesiya,"common, Tamil"
+MDV,Maldives,common
+MDV,Republic of the Maldives,official
+MDV,The Maldive Islands,"colloquial, colonial"
+MDV,Dhivehi Raajje,"official, Dhivehi"
+MDV,Mahal Dvipa,"ancient, Sanskrit"
+MDV,Maléldvipa,"ancient, Sanskrit"
+MDV,Dhibat-al-Mahal,"ancient, Arabic"
+MRT,Mauritania,common
+MRT,Islamic Republic of Mauritania,"official, English"
+MRT,République Islamique de Mauritanie,"official, French"
+MEX,Mexico,shortened form
+MEX,United Mexican States,"official, English"
+MEX,Estados Unidos Mexicanos,"official, Spanish"
+MEX,México,Spanish short form
+MEX,República Mexicana,"colloquial, Spanish"
+MEX,Méjico,Spanish variant
+MEX,MEX,initialism
+MEX,MX,initialism
+MEX,Aztlán,"Spanish, Nahuatl"
+MEX,Aztlan,"Spanish, Nahuatl"
+MDA,Moldova,common
+MDA,Republic of Moldova,official
+MDA,Republica Moldova,"official, Moldovan and Romanian"
+MDA,Moldavian Soviet Socialist Republic,"former Soviet name, English"
+MDA,"Bessarabia, Bassarabia","historic name, still used by irredentists"
+MDA,Bogdan,"'Land of Voyvoda I. Bogdan', former common and official name during Ottoman Empire, Turkish"
+MDA,Moldavia,alternative name in English
+MDA,Moldau,alternative name in German
+MAR,Morocco,common
+MAR,Kingdom of Morocco,official
+MAR,Al Mamkaka Al Maghribiya,"official, Arabic"
+MAR,Maghreb,English
+MNE,Montenegro,"official, English and other languages"
+MNE,Crna Gora,"official, Montenegrin, Serbian and Croatian"
+MNE,Republic of Montenegro,official until 2007
+MNE,Republika Crna Gora,official until 2007
+MNE,Mali i Zi,"official, Albanian"
+MNE,Karadag,"official, Turkish"
+MNE,Duklja,name in medieval times
+MNE,Zeta,alternative name in medieval times
+MNE,Black Mountain,literal translation into English
+MMR,Myanmar,common
+MMR,Republic of the Union of Myanmar,official
+MMR,Burma,colloquial
+NLD,Netherlands,"official, English"
+NLD,Kingdom of the Netherlands,"official, English"
+NLD,Koninkrijk der Nederlanden,"official, Dutch"
+NLD,Nederland,Dutch
+NLD,Holland,"pars pro toto, English, Dutch and other languages"
+NLD,Batavia,"former and poetic, English, Dutch and other languages"
+NLD,Pays-Bas,French
+NPL,Nepal,"common, English"
+NPL,Federal Democratic Republic Of Nepal,"official, English"
+NZL,New Zealand,"official, English"
+NZL,Aotearoa,"official, Maori"
+NZL,Realm of New Zealand,"official English name including Cook Islands, Niue, Tokelau, and Ross Dependency"
+NZL,Dominion of New Zealand,"former official, English"
+MKD,North Macedonia,shortened form
+MKD,Republic of North Macedonia,official
+MKD,Republic of Macedonia,former
+MKD,The former Yugoslav Republic of Macedonia,former
+MKD,Paeonia,"Latin name, poetic"
+MKD,Vardar Banovina,former Yugoslav province
+NOR,Norway,"common, English"
+NOR,Norge,"common, Norwegian Bokmål, Danish, Swedish"
+NOR,Noreg,"common, Norwegian Nynorsk"
+NOR,Kingdom of Norway,"official, English"
+NOR,Kongeriket Norge,"official, Norwegian Bokmål"
+NOR,Kongeriket Noreg,"official, Norwegian Nynorsk"
+OMN,Oman,"official, English"
+OMN,Sultanate of Oman,"official, English"
+PAK,Pakistan,"common, English"
+PAK,Islamic Republic of Pakistan,"official and constitutional, English"
+PAK,Federation of Pakistan,"alternate official name, English"
+PAK,Dominion of Pakistan,"historic official name, English"
+PAK,West Pakistan,common and later official name before the secession of Bangladesh
+PAK,Sindhustan and Indoscythia,unofficial historical names
+PAK,Mumlikat-e Khudadaad Pakistan,"The God-given realm of Pakistan, unofficial, used in literature mostly, Urdu"
+PLW,Palau,"common, English"
+PLW,Republic of Palau,"official, English"
+PLW,Belau,"common, Palauan"
+PSE,Palestine,"common, English"
+PSE,State of Palestine,"English name, official, semi-international designation"
+PSE,Medinat Palestina,Hebrew name
+PSE,Dawlat Filastin,official Arabic name
+PSE,the Holy Land,Bible
+PSE,Eretz Yisrael,Bible
+PSE,Filastin,"common name, Arabic"
+PSE,Palestina,"common name, Hebrew"
+PSE,Palestinian National Authority,"English name, alternate official"
+PSE,as-Sul?a al-Filastiniya,"Arabic name, alternate official"
+PSE,West Bank and Gaza Strip,territorial names
+PSE,Palestinian territories,"official name, English"
+PSE,al-Aradi al-Filastiniyya,"official name, Arabic"
+PSE,Occupied Palestinian Territory / Occupied Palestinian Territories,"International designation, English"
+PSE,Israeli-occupied territories,"name of the territories occupied by Israel since 1967, English"
+PSE,Mandatory Palestine,"former name, English"
+PER,Peru,"common, English"
+PER,Republic of Peru,"official, English"
+PER,República del Perú,"official, Spanish"
+PER,Perú,"common, Spanish"
+PER,Peruvian Republic,"former official name, English"
+PER,República Peruana,"former official name, Spanish"
+PHL,Philippines,"common, English"
+PHL,Repúblika ng Pilipinas,"official, Filipino"
+PHL,Republic of the Philippines,"official, English"
+PHL,Pilipinas,"common, corruption of the Spanish, Filipinas"
+PHL,Filipinas,common Spanish and other local languages
+PHL,Las Islas Filipinas,"named after Philip II of Spain, historical, Spanish"
+PHL,Las Islas Felipenas,"historical, by Ruy López de Villalobos"
+PHL,Pinás,colloquial
+PHL,PH,"official initialism, changed from RP to avoid confusion with Poland; see below"
+PHL,Philippine Islands,"historic; official name under American control; also used colloquially, English"
+PHL,Filipina,"common, Malay"
+PHL,Haríng Bayang Katagalugan,"Sovereign Tagalog Nation, historical, by Andrés Bonifacio"
+PHL,Islas de San Lázaro,"Isles of Saint Lazarus, historical, by Ferdinand Magellan"
+POL,Poland,"common, English"
+POL,Republic of Poland,"official, English"
+POL,Rzeczpospolita Polska,"official, Polish"
+POL,Polska,"common, Polish"
+POL,RP,"often journalistic, Polish"
+POL,People's Republic of Poland,"former Communist name, English"
+POL,Polska Rzeczpospolita Ludowa,"former Communist name, Polish"
+POL,Rzeczpospolita,"historic common name, Polish"
+POL,Polish–Lithuanian Commonwealth,"historic official name, English"
+POL,Rzeczpospolita Obojga Narodów,"historic official name, Polish"
+POL,United Commonwealth of the Two Nations,"historic official name, English"
+POL,Polonia,"poetic, Latin and Polish"
+POL,Lechia,"historic and poetic original name, Latin, Polish, and English"
+PRT,Portugal,common
+PRT,Portuguese Republic,"official, English"
+PRT,Lusitania,"official, Latin"
+PRT,Galaico-Portuguese nation,Celtic Gale and Roman-Celtic Portus Cale
+PRT,Portucale from the Gallaeci tribe,Celtic Gale and Roman-Celtic Portus Cale
+PRT,Galician-Portuguese,ethnic term derived from the original language
+PRT,Ophiussa,ancient Greek
+PRT,Ophiusa,ancient Greek
+PRT,Portugalensis patrie,NA
+PRT,Portugalensium patrie and Portugaliae,by King Afonso I
+PRT,Regno Portugalensium,"Latin, Medieval"
+PRT,Portugalis,"Latin, Medieval"
+PRT,Portugalliae et Algarbiae,NA
+PRT,"Portugalliae, Lusitaniae",Latin
+PRT,Purtugall,Middle Ages
+PRT,Burtughal,Arabic
+PRT,Portingall,common classical English and other late medieval Germanic languages
+PRT,Portingal,common classical English and other late medieval Germanic languages
+PRT,Ocidental Praia Lusitana,Western Lusitanian Beach
+PRT,Pátria Lusitana,Lusitanian Fatherland
+PRT,Luxitania,Port of Grail in Esotericism and metaphysical literature
+PRT,Portugraal,Port of Grail in Esotericism and metaphysical literature
+PRI,Puerto Rico,"common, English and Spanish"
+PRI,Estado Libre Asociado de Puerto Rico,"official, Spanish"
+PRI,Commonwealth of Puerto Rico,"official, English"
+PRI,Porto Rico,"archaic, English"
+PRI,Associated Free State of Puerto Rico,non-official literal translation to English of the official Spanish name
+PRI,"Borikén, Borinquen, or Borinken",former Taíno name also used colloquially and among nationalists
+COG,Republic of the Congo,"official, English"
+COG,Congo,common
+COG,Congo Brazzaville,used in contrast to Congo Kinshasa
+COG,French Congo,"former name during French colonization, 1880 to 1910, English"
+ROU,Romania,common
+ROU,România,"official, Romanian"
+ROU,Rumania or Roumania,"archaic, English"
+ROU,Kingdom of Romania,"name under monarchy, English"
+ROU,Regatul României,"name under monarchy, Romanian"
+ROU,Romanian People's Republic,"former Communist name, English"
+ROU,Republica Populara Romîna,"former Communist name, Romanian"
+ROU,Socialist Republic of Romania,"former Communist name, English"
+ROU,Republica Socialista România,"former Communist name, Romanian"
+RUS,Russian Federation,official English description
+RUS,Russia,"official and common name, ambiguous, English"
+RUS,"Russland,",German
+RUS,Rossiya,"common, Russian"
+RUS,RF,initialism
+RUS,Russian Socialist Federative Soviet Republic,"former name, 1918–1936"
+RUS,Russian Soviet Federative Socialist Republic,"former name, 1936–1991"
+RUS,RSFSR,former name initialism
+RUS,Soviet Union,former name
+RUS,Union of Soviet Socialist Republics,official former name
+RUS,USSR,former initialism
+RUS,Soyuz Sovetskikh Sotsialisticheskikh Respublik,"former official name, transliterated"
+RUS,SSSR,former initialism
+RUS,SU,"common, but former initialism"
+RUS,Sovetskiy Soyuz,"common former name, transliterated"
+RUS,Rus,"poetic or obsolete name, ambiguous"
+RUS,Great Russia,obsolete name
+RWA,Rwanda,common
+RWA,Rwandese Republic,"official, English"
+RWA,Republic of Rwanda,"official, English, former"
+RWA,République du Rwanda,"official, French"
+RWA,Repubulika y'u Rwanda,"official, Kinyarwanda"
+RWA,Pays des mille collines,"poetic, French"
+RWA,Ruanda,former colonial name
+KNA,Saint Kitts and Nevis,common
+KNA,Federation of Saint Kitts and Nevis,"co-official, English"
+KNA,Federation of Saint Christopher and Nevis,"co-official, English"
+KNA,Saint Christopher and Nevis,"alternate short-form, English"
+KNA,Saint Christopher-Nevis-Anguilla,"former official, English"
+KNA,Saint Kitts-Nevis-Anguilla,"former common, English"
+KNA,Saint Kitts or Saint Christopher,"shorthand, English"
+KNA,Liamuiga and Oualie,"former indigenous names of the islands of Saint Kitts and Nevis, respectively"
+VCT,Saint Vincent and the Grenadines,common
+VCT,Hairouna,"former indigenous name, Carib"
+SAU,Saudi Arabia,"common, English"
+SAU,Kingdom of Saudi Arabia,"official, English"
+SAU,KSA,initialism
+SAU,Saudia,"former in English, common in Arabic"
+SAU,Al-Mamlaka al-Arabiyya as-Saudiyya,official name in Arabic
+SAU,"Hijaz, Saudi regime",used in Iran's news media
+SAU,Arav haSa'udit,name in Hebrew
+SRB,Serbia,"common, English"
+SRB,Republic of Serbia,"official, English"
+SRB,Servia,"archaic, English"
+SRB,Srbija,"common, Serbian"
+SRB,Republika Srbija,"official, Serbian"
+SRB,Serbia and Montenegro,"former common, English"
+SRB,Yugoslavia,"former common, English"
+SRB,Raška,alternative name in medieval times
+SRB,Serboslavia,"derogatory, used by the rule of Slobodan Miloševic"
+SGP,Singapore,"common, English"
+SGP,Republic of Singapore,"official, English"
+SGP,Singapura,"common, Malay"
+SGP,Sinhapura,"Sanskrit, i.e., Land of Lions"
+SGP,Xinjiapo,"common, Chinese"
+SGP,Cinjkappur,"common, Tamil"
+SGP,Pulau Ujong,"historical, ancient"
+SGP,Shonan-to,"former, Japanese occupation"
+SGP,little red dot,colloquial; originally derogatory
+SVK,Slovakia,"common, English"
+SVK,Slovak Republic,"official, English"
+SVK,Slovensko,"common, Slovak"
+SVK,Slovenská republika,"official, Slovak"
+SVK,SR,English and Slovak initialism
+SVK,Slovak Socialist Republic,"former name, 1969 to 1990"
+SVK,Slovenská socialistická republika,"former name, Slovak"
+SVK,SSR,English and Slovak initialism
+SVN,Slovenia,"common, English"
+SVN,Republic of Slovenia,"official, English"
+SVN,Slovenija,"common, Slovenian"
+SVN,Republika Slovenija,"official, Slovenian"
+SVN,RS,English and Slovenian initialism
+ZAF,South Africa,"common, English"
+ZAF,"Azania, Mzansi","Xhosa, for South"
+ZAF,Suid-Afrika,"official, Afrikaans"
+ZAF,Zuid-Afrika,"former official, Dutch"
+ZAF,Union of South Africa,"Colonial, pre-1961"
+ESP,Spain,"common, English"
+ESP,España,"common, Spanish"
+ESP,Kingdom of Spain,"official, English"
+ESP,Reino de España,"official, Spanish"
+ESP,Espanya,"common, Catalan"
+ESP,Hispania,Latin
+ESP,Espainia,"common, Euskera"
+ESP,Spanish State,former name
+ESP,La piel de toro,Spanish
+ESP,La pell de brau,Catalan
+ESP,Las Batuecas,derogatory name used in the works of Mariano José de Larra
+ESP,Iberia,"Latin, for the peninsula which includes modern Portugal"
+ESP,Sepharad,"common, Hebrew"
+LKA,Sri Lanka,"common, Sanskrit, English"
+LKA,Ceylon,"former, English"
+LKA,Democratic Socialist Republic of Sri Lanka,"official, English"
+LKA,Heladiva,"Land of Sinhalese former, Sinhala"
+LKA,Ratnadeepa,"Island of Gems ormer, Sinhala"
+LKA,elangai,"common, Tamil"
+LKA,Taprobane,one of the medieval names of Sri Lanka
+SDN,Sudan,common
+SDN,Republic of the Sudan,"official, English"
+SDN,The Sudan,alternate English
+SDN,Anglo-Egyptian Sudan,"colonial name, English"
+SDN,Mahdist State,former English unofficial
+SDN,Nubia,"ancient name, also poetic"
+SUR,Suriname,"common, English"
+SUR,Dutch Guiana,"former, English"
+SUR,Netherlands Guiana,"former official, English"
+SUR,Republic of Suriname,"official, English"
+SUR,Republiek Suriname,"official, Dutch"
+SUR,Surinam,English name until 1978
+SWE,Sweden,"common, English"
+SWE,Sverige,"common, Swedish, Danish, Norwegian"
+SWE,Konungariket Sverige,"official, Swedish"
+SWE,Kingdom of Sweden,"official, English"
+SWE,Svea Rike,"possibly former/poetical, Swedish"
+SWE,Thule,"Latin name, also poetic"
+SWE,Svitjod,Old Norse
+CHE,Switzerland,"common, English"
+CHE,Swiss Confederation,"official, English"
+CHE,Schweiz,"common, German, Danish, Swedish"
+CHE,Schweizerische Eidgenossenschaft,"official, German"
+CHE,Suisse,"common, French"
+CHE,Confédération suisse,"official, French"
+CHE,Svizzera,"common, Italian"
+CHE,Confederazione Svizzera,"official, Italian"
+CHE,Svizra,"common, Romansh"
+CHE,Confederaziun Svizra,"official, Romansh"
+CHE,"Confoederatio Helvetica, Helvetia","Latin, sometimes used officially"
+CHE,CH,initialism
+TWN,Taiwan,"common, English"
+TWN,Republic of China,"official, English"
+TWN,Taiwan,"common, English"
+TWN,ROC,initialism
+TWN,Chinese Taipei,international designation
+TWN,Zhonghuá Táibei,"international designation, pinyin"
+TWN,"Separate Customs Territory of Taiwan, Penghu, Kinmen and Matsu",international designation
+TWN,"Taipei, China",designation used by China to imply that Taiwan is part of China
+TWN,"Taiwan, Province of China",UN designation
+TWN,Nationalist China,"obsolete, but still mainly used by Western countries"
+TWN,Free China,"obsolete, pro-Nationalist"
+TWN,Formosa,"former, English"
+TWN,Cathay,"obsolete, now mainly used poetically"
+TWN,Zhongguo,"alternative, Chinese"
+TWN,Qing dynasty,former name.
+TZA,Tanzania,"common, English"
+TZA,United Republic of Tanganyika and Zanzibar,"former, English"
+TZA,United Republic of Tanzania,"official, English"
+TZA,Deutsch-Ostafrika,"German East Africa, colonial name until 1918"
+TZA,Ruanda and Urundi,"German East Africa, colonial name until 1918"
+THA,Thailand,"common, English"
+THA,Siam,"former, English"
+THA,Kingdom of Thailand,"official, English"
+NA,Transnistria,NA
+NA,Pridnestrovie,official shortform name
+NA,Pridnestrovskaia Moldavskaia Respublica,"official, longform"
+TTO,Trinidad and Tobago,"common, English"
+TTO,Iere,"poetic, Land of the Hummingbird, believed to be derived from Arawak"
+TTO,Republic of Trinidad and Tobago,"official, English"
+TTO,Trinbago,"informal, English"
+TUN,Tunisia,official shortform name
+TUN,Republic of Tunisia,"official, longform"
+TUR,Turkey,common
+TUR,Republic of Turkey,"official, English"
+TUR,Türkiye Cumhuriyeti,"official, Turkish"
+TUR,Asia Minor,"geographical, English"
+TUR,Anatolia,"geographical, English"
+TUR,Ottoman Empire,"former, English"
+TUR,Turkish Empire,"former unofficial, English"
+TUR,Porte or Sublime Porte,English descriptions of the former Ottoman state
+TUV,Tuvalu,English and Tuvaluan
+TUV,Ellice Islands,"colonial name, English"
+UKR,Ukraine,official
+UKR,UA,initialism
+UKR,UKR,initialism
+UKR,Kievan Rus,Former name for of East Slavic tribes in Europe from the late 9th to the mid-13th century
+UKR,Kingdom of Galicia–Volhynia,historic name of Western Ukraine
+UKR,Kingdom of Ruthenia,historic name of Western Ukraine
+UKR,Zaporizhian Host,is an adopted name in historiography for the Ukrainian Cossack state on the territory of Dnieper Ukraine and Siveria that existed between 1649 and 1764
+ARE,United Arab Emirates,shortened form
+ARE,United Arab Emirates,English
+ARE,Trucial States,"English, prior to 1971"
+ARE,Al Emirat al Arabbiya al Muttahida,"official, Arabic"
+ARE,UAE,English initialism
+ARE,U.A.E.,English initialism
+ARE,The Emirates,"colloquial, English"
+GBR,United Kingdom,shortened form
+GBR,United Kingdom of Great Britain and Northern Ireland,"official, English"
+GBR,Britain,alternative
+GBR,Great Britain,alternative
+GBR,UK,initialism
+GBR,U.K.,initialism
+GBR,United Kingdom,short form
+GBR,Albion,"poetic, Latin"
+GBR,Britannia,"poetic, Latin"
+GBR,Perfidious Albion,"if said by an old enemy, mainly humorous today"
+GBR,Anglia,"poetic, Latin, refers specifically to England"
+GBR,Alba,"Scottish, Gaelic-refers specifically to Scotland"
+GBR,Caledonia,"poetic, Latin-refers specifically to Scotland"
+GBR,Cymru,"official, Welsh-refers specifically to Wales"
+GBR,Cambria,"poetic, Latin-refers to Wales"
+GBR,Ulster,"colloquial, refers specifically to Northern Ireland"
+USA,United States,shortened form
+USA,United States of America,official
+USA,America,alternative
+USA,the States,alternative
+USA,US,initialism
+USA,U.S.,initialism
+USA,USA,initialism
+USA,Usa,initialism
+USA,U.S.A,initialism
+USA,Columbia,"Latin, poetic"
+USA,Freedonia,names proposed after American Revolutionary War
+USA,Appalachia,names proposed after American Revolutionary War
+USA,Alleghany,names proposed after American Revolutionary War
+USA,Usonia,used by James Duff Law and popularized by Frank Lloyd Wright
+USA,Usono,Esperanto; comes from Usona in English
+VUT,Vanuatu,common
+VUT,New Hebrides,former name under British and French condominium rule from 1906 to 1980
+VUT,Niuhebridis,Bislama
+VUT,Nouvelles Hebrides,former official name in French
+VUT,République de Vanuatu,French
+VUT,Ripablik blong Vanuatu,Bislama
+VUT,Vanuatri,jocular name used in humour
+VNM,Vietnam,common
+VNM,An Nam,former name in other foreign languages
+VNM,Champa,historical kingdom
+VNM,Giao Chi,former Chinese province or vassal kingdom
+VNM,French Indochina,"former name under French colonization when united with Laos and Cambodia, English"
+VNM,Linh Nam,poetic name
+VNM,Socialist Republic of Vietnam,"official, English"
+VNM,North Vietnam,Democratic Republic of Vietnam from 1954 to 1975
+VNM,South Vietnam,Republic of Vietnam from 1954 to 1975
+VNM,Cong hòa Xã hoi Chu nghia Viet Nam,"official, Vietnamese"
+VNM,Viet Nam,"short form, Vietnamese"
+VNM,SRV,English initialism
+VNM,S.R.V.,English initialism
+VNM,VN,English initialism
+VNM,V.N.,English initialism
+ZMB,Zambia,common
+ZMB,Northern Rhodesia,"former, English"
+ZMB,Republic of Zambia,"official, English"
+ZWE,Zimbabwe,common
+ZWE,Rhodesia or Republic of Rhodesia,"former names, English"
+ZWE,Republic of Zimbabwe,"official, English"
+ZWE,Southern Rhodesia,"former, English"
