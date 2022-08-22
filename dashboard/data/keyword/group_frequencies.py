@@ -41,4 +41,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    count_group_frequencies(pd.read_csv(args.file)).to_csv(args.output_file)
+    count_group_frequencies(pd.read_csv(args.file)).to_csv(
+        args.output_file, index=False
+    )
