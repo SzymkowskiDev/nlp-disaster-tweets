@@ -54,10 +54,12 @@ tab1_content = dbc.Card(
         [
             html.H2("Introduction"),
             html.P(
-                "We have at our disposal multivariate data consisting of 3 potential explonatory variables (keyword, location, text) and response variable (target). Variables 'keyword', 'location' and 'text' are nominal. The outcome variable 'target' is of binary type."
-            ),
+                "We have at our disposal multivariate data consisting of 3 potential explonatory variables ('keyword', 'location', 'text') and a response variable ('target')."),
+            html.P("Variables 'keyword', 'location' and 'text' are categorical. The outcome variable 'target' is of binary type."),
             # This is not quite right, that's just an estimate
-            html.P("In total we have a sample of 10,000."),
+            html.P("In total we have a sample of 10 873 tweets. This is split into train dataset of 7 614 records and a validation set of 3 264 rows. Giving roughly a 70-30 ratio."),
+            html.P(
+                "As is adviced by related literarture, our EDA focuses solely on the train set."),
             # DATA QUALITY ISSUES ##############################################################
             html.H2("Data Quality Issues"),
             html.P("We were able to discover the following data quality issues:"),
@@ -73,8 +75,10 @@ tab1_content = dbc.Card(
             ),
             # KEYWORD #########################################################################
             html.H2("Keyword"),
-            html.P("The column 'keyword' represents keywords associated with tweets. Each tweet is accompanied by only one keyword. In our dataset keywords relate to disasters, so for example we have there values like 'fire', 'earthquake', 'airplane accident' etc. It is worth taking a note, that not all tweets have a keyword. There are N number of null values in the column 'keyword', so only 57 percent tweets have keywords."),
-            html.P("There are 321 distinct values in the variable 'keyword'. We were able to come up with the following 19 logical groupings:"),
+            html.P("The column 'keyword' represents keywords associated with individual tweets. Each tweet is accompanied by only one keyword. In our dataset, keywords relate to disasters, so for example we have there values like 'fire', 'earthquake', 'airplane accident' or smilar."),
+            html.P(
+                "There are only 61 null values in the column, making it 99.2% complete."),
+            html.P("There are 221 distinct values in the variable 'keyword'. So, for the purpose of summary, we were able to come up with the following 18 logical groupings:"),
             dbc.Row([
                 dbc.Col(
                     [
@@ -223,51 +227,54 @@ tab1_content = dbc.Card(
                                style={"color": "#32FBE2", "fontSize": "14px"})
                     ], width=3),
             ]),
-            html.P("We have created an additional category for all the words that are too generic for other groupings such as 'danger' or 'police':"),
+            html.P("We have created an additional category for all the generic words that relate to distasters like 'emergency' while not indicating any specific type:"),
             html.H2("🚨 UNIDENTIFIED",
                     style={"color": "#32FBE2", "fontSize": "18px"}),
             html.P("accident aftershock ambulance annihilated annihilation apocalypse armageddon  attack attacked   blaze blazing bleeding blight blood bloody body bag body bagging body bags casualties casualty catastrophe catastrophic crush crushed curfew  damage danger dead death  deaths debris demolish demolished demolition   desolate desolation destroy destroyed destruction devastated devastation disaster displaced  emergency emergency plan emergency services evacuate evacuated evacuation  eyewitness fatal fatalities fatality fear flattened   harm hazard hazardous   injured injuries injury inundated inundation  massacre mayhem obliterate obliterated  obliteration   pandemonium panic panicking  police  razed rescue rescued rescuers   rubble ruin  screamed screaming screams  siren sirens smoke  stretcher   survive survived survivors  threat tragedy trapped trauma traumatised trouble  twister  upheaval wounded wounds",
                    style={"color": "#32FBE2", "fontSize": "14px"}),
-            html.P("Fig 1. Frequency of disaster types (keywords) by category"),
-            # DATA VIZ:
-            #dcc.Input(id='range', type='number', min=2, max=10, step=1),
-
-
-            dcc.Slider(0, 15, 10, value=15, id='groups'),
+            html.P("When the generic category is excluded, we see that the most common types of disasters are accidents in all means of transportation (car, train, plane, marine) as well as related to the effects of wind, fires, floodings, terrorism and explosions."),
+            dbc.RadioItems(
+                options=[
+                    {"label": "All groups", "value": 1},
+                    {"label": "Exclude 'UNIDENTIFIED'", "value": 2},
+                ],
+                value=2,
+                id="groups-input",
+                inline=True,
+                style={"float": "right"}
+            ),
+            html.P("Fig 1. Frequencies of disasters by category"),
             dcc.Graph(id="barplot_groups"),
-
-
-
-
-
-
-
-
-
-
 
             # LOCATION #########################################################################
             html.H2("Location"),
-            # What does the variable 'location' represent?
             html.P(
-                "The variable 'location' represents the responses that Twitter users gave about where they were from. Out of 10,000 users, 7467 submited any response at all giving the response rate of 74.7%. One would expect structured data in the form 'country-city', but that is not the case. Users submitted their location data with the help of a text input. So, apart from responses like 'France', 'Germany' or 'USA' the column contains values like 'milky way', 'Worldwide' or 'Your Sister's Bedroom'. When geographical name is given at all, it often isn't given in a standard format. For example, the variable contains values like 'Jaipur, India' (city, country), 'bangalore' (just city), 'Indonesia' (just country) and many other variations of country, city, province or other administrative divison name in different combinations and no one uniform order."
-            ),
-            # How we will transform the data to make it useful for analysis
+                "The variable 'location' represents the responses that Twitter users gave about where they were from. Out of 7 614 users considered, only 5 081 submited any response at all giving the response rate of 66.7%."),
+            html.P("One would expect structured data in the form 'country-city', but that is not the case. Users submitted their location data with the help of a text input. So, apart from legitimate responses like 'France', 'Germany' or 'USA' the column contains also entries like 'milky way', 'Worldwide' or 'Your Sister's Bedroom'. When a geographical name is given at all, it often isn't given in a standard format. For example, the variable contains values like 'Jaipur, India' (city, country), 'bangalore' (just city), 'Indonesia' (just country) and many other variations of country, city, province or other administrative divison name in different combinations and no one uniform order."),
             html.P(
                 "Nevertheless, thanks to so some data crunching we were able to make use of the largest possible subset of responses that contained geohraphical names."
             ),
-            # How many non-null responses contained geographical names that we could link with specific countries?
             html.P(
-                "We were able to obtain the total of X number of legitimate country responses."
+                "Out of 5 081 non-null responses we were able to obtain the total of 4 132 of legitimate country responses (81.3%). So, for the entire dataset 54.3% (4132/7614) of tweets had legitimate location given."
             ),
-            html.P(
-                "Since the response rate in the variable 'keyword' (that contains names of disasters) was 99.4%, we have the types of a catastrophy for almost all countries. The map below represents the most disastered countries in total and by type* of a catastrophy."
+            html.P("Fig 2. Proportions of null/non-null and legitimate/fake responses"),
+            # This input is hidden, it is here to make sankey work
+            dbc.RadioItems(
+                options=[
+                    {"label": "All groups", "value": 1},
+                    {"label": "Exclude 'UNIDENTIFIED'", "value": 2},
+                ],
+                value=2,
+                id="sankey-input",
+                inline=True,
+                style={'display': 'none'}
             ),
+            dcc.Graph(id="sankey-legit-location"),
+            # BLOCKED: by Stim
+            html.P("By further filtering our sample of 4 132 tweets to include only those where disastered did happen ('target' = 1) we obtain a sample of X."),
+            html.P("This allows us to make the observation that the highest number of disasters were tweeted from: A, B, C, D."),
             html.P(
-                "*It is worth noting, that the number of distinct values in the column 'keyword' was almost X. This is not because there are so many types of disasters out there. One of the reasons, why that's the case is because sometimes the same type of disaster like for example 'fire' is given in different ways like 'explosion', 'fire responders' or 'flames'. Hence we combined values in the following groups: ()."
-            ),
-            html.P(
-                "Map 1. Total number of disasters by country and types of disasters"
+                "Map 3. Frequencies of disaster types by country"
             ),
             dbc.Row([
                 dbc.Col([
@@ -276,32 +283,32 @@ tab1_content = dbc.Card(
                     dbc.RadioItems(
                         options=[
                             {"label": "All types", "value": "all"},
-                            {"label": "Fire", "value": "fire"},
-                            {"label": "Explosion",
+                            {"label": "🔥 Fire", "value": "fire"},
+                            {"label": "💥 Explosion",
                              "value": "explosion"},
-                            {"label": "Transport",
+                            {"label": "🚗 Transport",
                              "value": "transport"},
-                            {"label": "Terrorism",
+                            {"label": "🧨 Terrorism",
                              "value": "terrorism"},
-                            {"label": "Construction",
+                            {"label": "🏗️ Construction",
                              "value": "construction"},
-                            {"label": "Wind", "value": "wind"},
-                            {"label": "Flooding", "value": "flooding"},
-                            {"label": "Hot weather", "value": "hot"},
-                            {"label": "Tectonics",
+                            {"label": "💨 Wind", "value": "wind"},
+                            {"label": "🌊 Flooding", "value": "flooding"},
+                            {"label": "☀️ Hot weather", "value": "hot"},
+                            {"label": "🌋 Tectonics",
                              "value": "tectonics"},
-                            {"label": "Famine", "value": "famine"},
-                            {"label": "Errosion", "value": "errosion"},
-                            {"label": "Lightening",
+                            {"label": "🌽 Famine", "value": "famine"},
+                            {"label": "🏔️ Errosion", "value": "errosion"},
+                            {"label": "⚡ Lightening",
                              "value": "lightening"},
-                            {"label": "Mass murder", "value": "mass"},
-                            {"label": "Nuclear", "value": "nuclear"},
-                            {"label": "Industrial",
+                            {"label": "🩸 Mass murder", "value": "mass"},
+                            {"label": "☢️ Nuclear", "value": "nuclear"},
+                            {"label": "🏭 Industrial",
                              "value": "industrial"},
-                            {"label": "Disease", "value": "disease"},
-                            {"label": "Riot", "value": "riot"},
-                            {"label": "War", "value": "war"},
-                            {"label": "Unidentified",
+                            {"label": "🦠 Disease", "value": "disease"},
+                            {"label": "👥 Riot", "value": "riot"},
+                            {"label": "⚔️ War", "value": "war"},
+                            {"label": "🚨 Unidentified",
                              "value": "Unidentified"},
                         ],
                         value="all",
@@ -311,17 +318,17 @@ tab1_content = dbc.Card(
             ]),
             # TEXT #################################################################################################################
             html.H2("Text"),
-            html.P("The column 'text' takes a special place in our analysis, because it is the only explanatory variable, that is, used in our NLP classification model. Values are strings. Each cell represents a separate tweet, so a short chunk of text, as Twitter limits the number of characters in a miniblog to 280."),
+            html.P("The column 'text' takes a special place in our analysis. This is because it is the only explanatory variable, that is used in our NLP classification model. Each value represents a separate tweet, so a short chunk of text, as Twitter limits the number of characters in a miniblog to 280."),
             # WORD FREQUENCY
             html.H3("WORD FREQUENCY", style={
                     "fontSize": 20}),
             html.P(
                 "We can start, as is typical in analysing text data, from word frequency."),
-            html.P("'Corpus' is an another name for a pool of all the words in a text file, column of table, or a paragraph of text. The pool of all words present in column 'text' has 31 924 distinct values. Values are in vast majority words but can also mean dashes or other punctuation characters."),
+            html.P("'Corpus' is an another name for a pool of all the words in a text file, column of table, or a paragraph of text. The pool of all words present in column 'text' totals has 31 924 distinct values. Values are in vast majority words but can also mean dashes or other punctuation characters."),
             html.P("Distributiom is right-skewed and resambles a Pareto distribution, otherwise known as a power-law distribution, where top words are much more frequent than the next most frequent words."),
-            html.P("Use the slider to load the first X number of most frequent words."),
-            dcc.Slider(0, 300, 10, value=170, id='n_of_words'),
-            html.P("Fig 1. Most frequent words and their counts in raw data"),
+            html.P("Choose number of top words to display"),
+            dcc.Slider(0, 300, 10, value=60, id='n_of_words'),
+            html.P("Fig 4. Most frequent words and their counts in raw data"),
             dcc.Graph(id="freq_w_stopwords"),
             html.P("Taking a first glance at the word frequency distribution, we discover that stopwords take up the first 50 most frequent words. Stopwords represent words like 'the', 'a', 'to', 'in', 'of', 'and', etc. This type of words is common in all kinds of text irregardles of the meaning. Therefore, we decided to perform the following data manipulations:"),
             html.Ul(
@@ -345,16 +352,16 @@ tab1_content = dbc.Card(
                     html.Li("Remove mojibake (also extra spaces)"),
                 ]
             ),
-            html.P("Hence, we obtaine the following data:"),
+            html.P("This resulted in the following data:"),
             dcc.Slider(0, 300, 10, value=100, id='n_of_words_cleaned'),
-            html.P("Fig 2. Most frequent words and their counts in cleaned data"),
+            html.P("Fig 5. Most frequent words and their counts in cleaned data"),
             dcc.Graph(id="freq_w_cleaned"),
-            html.P("Fig 1. Word distribution of values of variable 'text' combined'"),
+            html.P(
+                "Alternatively, we can get the sense of most common words by looking at the wordcloud below:"),
+            html.P("Fig 6. Most common words in cleaned text data"),
             html.Div([
                 html.Img(id="image_wc", width="100%"),
             ]),
-            html.P("What are the most common words in either of classes?"),
-
             # VERSION 2.0
             # # PARTS OF SPEECH
             # html.H3("PARTS OF SPEECH", style={
@@ -390,9 +397,25 @@ tab1_content = dbc.Card(
             #     "fontSize": 20}),
 
             # RESPONSE VARIABLE
-            html.H2("Dataset Balance"),
-            html.P("Is the dataset balanced?"),
-            html.P("BAR CHART"),
+            html.H2("Target"),
+            html.P("Finally, we come to the response variable 'target'. It is a labelling variable that designates rows to one of two classes."),
+            html.P("Most of the machine learning algorithms used for classification were designed around the assumption of an equal number of examples for each class."),
+            html.P(
+                "The ratio of classes is 57% to 43%, so we can call this dataset balanced."),
+            html.P("Fig 7. Dataset Balance"),
+            # This input is hidden, it is here to make balance output work
+            dbc.RadioItems(
+                options=[
+                    {"label": "All groups", "value": 1},
+                    {"label": "Exclude 'UNIDENTIFIED'", "value": 2},
+                ],
+                value=2,
+                id="balance-input",
+                inline=True,
+                style={'display': 'none'}
+            ),
+            dcc.Graph(id="balance-output"),
+
         ]
     ),
     className="mt-3",
