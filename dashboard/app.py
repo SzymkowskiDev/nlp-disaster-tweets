@@ -294,9 +294,7 @@ def update_pie_chart(value):
     dfp = pd.DataFrame(
         {"Class": ["Class 0", "Class 1"], "Count": [count_0, count_1]})
 
-    fig = px.pie(dfp, values='Count', names='Class', color_discrete_sequence=["#D85360", "#48EF7B"],
-                 # hover_data=['lifeExp'], labels={'lifeExp': 'life expectancy'}
-                 )
+    fig = px.pie(dfp, values='Count', names='Class', color_discrete_sequence=["#D85360", "#48EF7B"])
     fig.update_traces(textposition='inside', textinfo='percent+label')
     fig.update_layout(
         margin=dict(t=0, l=50),
