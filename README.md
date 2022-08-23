@@ -48,6 +48,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [OlegTkachenkoY](https://github.com/OlegTkachenkoY)
 * [PanNorek](https://github.com/PanNorek)
 * [bswck](https://github.com/bswck)
+* [Mefpef](https://github.com/Mefpef)
 
 ## 📂 Directory Structure
     ├───assets
