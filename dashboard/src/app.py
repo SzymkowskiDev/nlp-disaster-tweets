@@ -1,11 +1,10 @@
 # IMPORT LOCAL
 from tabs.tab1_content import tab1_content
 from tabs.tab2_content import tab2_content
-# from tabs.tab3_content import tab3_content
-# from tabs.tab4_content import tab4_content
-# from tabs.tab5_content import tab5_content
-# from tabs.tab6_content import tab6_content
-from tabs.tab7_content import tab7_content
+from tabs.tab3_content import tab3_content
+from tabs.tab4_content import tab4_content
+from tabs.tab5_content import tab5_content
+from tabs.tab6_content import tab6_content
 from models.production.generate_perf_report import generate_perf_report
 from models.production.vectorize_data import vectorize_data
 from models.production.preprocess_data import preprocess_data
@@ -44,7 +43,8 @@ from scipy.stats import kstest
 
 
 # APP
-app = Dash(__name__, title="folder", external_stylesheets=[dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
+app = Dash(__name__, title="folder", external_stylesheets=[
+           dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
 
 # IMPORT DATA
 df = pd.read_csv("data/original/train.csv")
@@ -282,7 +282,8 @@ def update_pie_chart(value):
     dfp = pd.DataFrame(
         {"Class": ["Class 0", "Class 1"], "Count": [count_0, count_1]})
 
-    fig = px.pie(dfp, values='Count', names='Class', color_discrete_sequence=["#D85360", "#48EF7B"])
+    fig = px.pie(dfp, values='Count', names='Class',
+                 color_discrete_sequence=["#D85360", "#48EF7B"])
     fig.update_traces(textposition='inside', textinfo='percent+label')
     fig.update_layout(
         margin=dict(t=0, l=50),
@@ -551,33 +552,28 @@ tabs = dbc.Tabs(
         dbc.Tab(tab1_content, label="Exploratory Data Analysis", tab_id="tab-1"),
         dbc.Tab(tab2_content, label="Classification", tab_id="tab-2"),
         dbc.Tab(
-            "This tab's content is never seen",
+            tab3_content,
             label="Compare runs",
-            disabled=True,
             tab_id="tab-3",
         ),
         dbc.Tab(
-            "This tab's content is never seen",
-            label="Custom data upload",
-            disabled=True,
+            tab4_content,
+            label="Make a prediction",
             tab_id="tab-4",
         ),
         dbc.Tab(
-            "This tab's content is never seen",
-            label="Twitter API Calls",
-            disabled=True,
+            tab5_content,
+            label="Twitter BOT Analytics",
             tab_id="tab-5",
         ),
         dbc.Tab(
-            "This tab's content is never seen",
-            label="Community labelling",
-            disabled=True,
+            tab6_content,
+            label="About",
             tab_id="tab-6",
         ),
-        dbc.Tab(tab7_content, label="About", tab_id="tab-7"),
     ],
     active_tab="tab-1",
-)    
+)
 
 # Declare server for Heroku deployment. Needed for Procfile.
 server = app.server
