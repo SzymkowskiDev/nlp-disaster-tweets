@@ -1,11 +1,11 @@
 # IMPORT LOCAL
-from dashboard.tabs.tab1_content import tab1_content
-from dashboard.tabs.tab2_content import tab2_content
-# from dashboard.tabs.tab3_content import tab3_content
-# from dashboard.tabs.tab4_content import tab4_content
-# from dashboard.tabs.tab5_content import tab5_content
-# from dashboard.tabs.tab6_content import tab6_content
-from dashboard.tabs.tab7_content import tab7_content
+from tabs.tab1_content import tab1_content
+from tabs.tab2_content import tab2_content
+# from tabs.tab3_content import tab3_content
+# from tabs.tab4_content import tab4_content
+# from tabs.tab5_content import tab5_content
+# from tabs.tab6_content import tab6_content
+from tabs.tab7_content import tab7_content
 from models.production.generate_perf_report import generate_perf_report
 from models.production.vectorize_data import vectorize_data
 from models.production.preprocess_data import preprocess_data
@@ -13,63 +13,51 @@ from models.production.preprocess_data import preprocess_data
 # IMPORT EXTERNAL
 import time
 from dash import Dash, html, Input, Output, dcc
+from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import plotly.graph_objects as go
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
 from sklearn.metrics import auc
 import plotly.figure_factory as ff
-from dash.dependencies import Input, Output
-import plotly.graph_objects as go
-from dash import Dash, html, Output, Input
-import plotly.express as px
-import plotly.graph_objects as go
 from wordcloud import WordCloud, STOPWORDS
 from io import BytesIO
 import base64
-from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import io
-import base64
 import requests
 from bs4 import BeautifulSoup
 import re
 import nltk
 import seaborn as sns
-import matplotlib.pyplot as plt
 import string
 import json
-import pandas as pd
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 import string
-import json
-import re
 import emoji
 import itertools
 from collections import Counter
-from wordcloud import WordCloud, STOPWORDS
 from scipy.stats import kstest
 
+
 # APP
-app = Dash(external_stylesheets=[dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
+app = Dash(__name__, title="folder", external_stylesheets=[dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
 
 # IMPORT DATA
-df = pd.read_csv("dashboard/data/original/train.csv")
+df = pd.read_csv("data/original/train.csv")
 text = df[['text']]
 dfm = " ".join(df[df.target == 1].text)
-TRAIN_DATA_PATH = r"dashboard\data\original\train.csv"
-dummy_class = pd.read_csv("dashboard\data\class_chart\class_chart.csv")
+TRAIN_DATA_PATH = r"data\original\train.csv"
+dummy_class = pd.read_csv("data/class_chart/class_chart.csv")
 
 word_freqs_l = pd.read_csv(
-    "dashboard/data/word_frequencies/word-freq_lemmatized.csv")
+    "data/word_frequencies/word-freq_lemmatized.csv")
 
 word_freqs_g = pd.read_csv(
-    "dashboard/data/keyword/group_frequencies.csv")
+    "data/keyword/group_frequencies.csv")
 
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
 
@@ -286,7 +274,7 @@ def update_bar_chart(value):
 def update_pie_chart(value):
 
     # DATA
-    df = pd.read_csv("dashboard/data/original/train.csv")
+    df = pd.read_csv("data/original/train.csv")
 
     count_0 = df['target'].value_counts().loc[0].item()
     count_1 = df['target'].value_counts().loc[1].item()
@@ -589,13 +577,15 @@ tabs = dbc.Tabs(
         dbc.Tab(tab7_content, label="About", tab_id="tab-7"),
     ],
     active_tab="tab-1",
-)
+)    
+
+# Declare server for Heroku deployment. Needed for Procfile.
+server = app.server
 
 # LAYOUT
 app.layout = dbc.Container(
     [html.H1([html.I(className="bi bi-twitter me-2"), "NLP Disaster Tweets"]), tabs]
 )
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run_server(debug=True)
