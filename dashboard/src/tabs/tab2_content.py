@@ -237,14 +237,7 @@ tab2_content = dbc.Card(
 
 
                         ]),
-
-
-
                     ),
-                    ##
-
-
-                    html.H2("OUTPUTS", style={"marginTop": 25}),
                     dbc.Col(
                         [
                             html.Div(id="performance-metrics-accuracy-text"),

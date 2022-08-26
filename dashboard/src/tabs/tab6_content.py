@@ -14,7 +14,7 @@ tab6_content = dbc.Card(
                       html.P(
                           "This is, so as to quickly alert first responders about an emmergency taking place."),
                       html.P(
-                          "So, being able to tell whether a given tweet is conveying messange on a disaster is a matter of public safety."),
+                          "So, being able to tell whether a given tweet is conveying a message on a disaster is a matter of public safety."),
                       html.P([html.A(["This is a Kaggle problem, more info here."],
                              href="https://www.kaggle.com/competitions/nlp-getting-started/overview")]),
                       html.P([html.A(["Related GitHub repo can be accessed here."],

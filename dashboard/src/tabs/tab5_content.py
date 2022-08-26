@@ -8,9 +8,10 @@ import dash_bootstrap_components as dbc
 tab5_content = dbc.Card(
     dbc.CardBody(
         [
-            html.P("This is tab!", className="card-text"),
-            dbc.Button("Don't click here", color="danger"),
+            html.H2("The Disaster Retweeter", className="card-text"),
+            html.P("We have built a twitter BOT whose sole purpose is to apply our classification model to share tweets that it decideds are about a disaster."),
+            html.P("Below are live analytics from its long-term operations.")
         ]
     ),
-    className="mt-3",
+    className="mt-3", style={"height": 600}
 )

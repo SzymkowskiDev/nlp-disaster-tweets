@@ -570,6 +570,7 @@ tabs = dbc.Tabs(
         dbc.Tab(
             tab3_content,
             label="Compare runs",
+            disabled=True,
             tab_id="tab-3",
         ),
         dbc.Tab(
@@ -588,7 +589,7 @@ tabs = dbc.Tabs(
             tab_id="tab-6",
         ),
     ],
-    active_tab="tab-4",
+    active_tab="tab-2",
 )
 
 # Declare server for Heroku deployment. Needed for Procfile.
