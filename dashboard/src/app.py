@@ -546,6 +546,22 @@ def update_progress(n):
     return progress, f"{progress} %" if progress >= 5 else ""
 
 
+# TAB 4 - MAKE A PREDICTION ###########################################################################################################
+
+@app.callback(
+    Output("input-tweet-to-predict", "value"),
+    [Input("input-make-a-prediction", "n_clicks")],
+)
+def on_button_click(n_clicks):
+
+    if n_clicks:
+        names = ["Arthur Dent", "Ford Prefect", "Trillian Astra"]
+        which = n_clicks % len(names)
+        return names[which]
+    else:
+        return ""
+
+
 # TABS SETUP
 tabs = dbc.Tabs(
     [
@@ -572,7 +588,7 @@ tabs = dbc.Tabs(
             tab_id="tab-6",
         ),
     ],
-    active_tab="tab-1",
+    active_tab="tab-4",
 )
 
 # Declare server for Heroku deployment. Needed for Procfile.
