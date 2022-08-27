@@ -30,6 +30,7 @@ import matplotlib.pyplot as plt
 import io
 import requests
 from bs4 import BeautifulSoup
+import os
 import re
 import nltk
 import seaborn as sns
@@ -42,10 +43,16 @@ from collections import Counter
 from scipy.stats import kstest
 
 ## PATHS ##
-TRAIN_DATA_PATH = r"data/original/train.csv"
-CLASS_CHART_PATH = r"data/class_chart/class_chart.csv"
-WORD_FREQ_LEMMATIZED_PATH = r"data/word_frequencies/word-freq_lemmatized.csv"
-WORD_FREQ_PATH = r"data/keyword/group_frequencies.csv"
+# TRAIN_DATA_PATH = r"data/original/train.csv"
+# CLASS_CHART_PATH = r"data/class_chart/class_chart.csv"
+# WORD_FREQ_LEMMATIZED_PATH = r"data/word_frequencies/word-freq_lemmatized.csv"
+# WORD_FREQ_PATH = r"data/keyword/group_frequencies.csv"
+
+
+TRAIN_DATA_PATH = os.path.join(os.getcwd(), "dashboard", "src", "data", "original", "train.csv")
+CLASS_CHART_PATH = os.path.join(os.getcwd(), "dashboard", "src", "data", "class_chart", "class_chart.csv")
+WORD_FREQ_LEMMATIZED_PATH = os.path.join(os.getcwd(),"dashboard","src","data","word_frequencies","word-freq_lemmatized.csv")
+WORD_FREQ_PATH = os.path.join(os.getcwd(), "dashboard", "src", "data", "keyword", "group_frequencies.csv")
 
 
 ## FUNCTIONS ##
@@ -74,6 +81,7 @@ list_of_counts = list(nlp_words.values())
 word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
 word_freqs = word_freqs.sort_values(by=["freq"], ascending=False)
 
+
 # APP SATRT
 app = Dash(__name__, title="folder", external_stylesheets=[
     dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
@@ -84,26 +92,44 @@ app = Dash(__name__, title="folder", external_stylesheets=[
 # SANKEY diagram
 @app.callback(Output("sankey-legit-location", "figure"), Input("sankey-input", "value"))
 def update_sankey_chart(value):
-    fig = go.Figure(data=[go.Sankey(
-        arrangement="perpendicular",
-        node=dict(
-            pad=40,
-            thickness=20,
-            line=dict(color="black", width=0.5),
-            label=["Total", "Non-null", "Null",
-                   "Legitimate", "Not legitimate", "Null"],
-            color=["#636EFA", "#48EF7B", "#D85360",
-                   "#48EF7B", "#D85360", "#D85360"]
-        ),
-        link=dict(
-            source=[0, 0, 1, 1, 2],
-            target=[1, 2, 3, 4, 5],
-            value=[5081, 2533, 4132, 949, 2533],
-            color=["#48EF7B", "#D85360", "#48EF7B", "#D85360", "#D85360"],
-        ))])
+    fig = go.Figure(
+        data=[
+            go.Sankey(
+                arrangement="perpendicular",
+                node=dict(
+                    pad=40,
+                    thickness=20,
+                    line=dict(color="black", width=0.5),
+                    label=[
+                        "Total",
+                        "Non-null",
+                        "Null",
+                        "Legitimate",
+                        "Not legitimate",
+                        "Null",
+                    ],
+                    color=[
+                        "#636EFA",
+                        "#48EF7B",
+                        "#D85360",
+                        "#48EF7B",
+                        "#D85360",
+                        "#D85360",
+                    ],
+                ),
+                link=dict(
+                    source=[0, 0, 1, 1, 2],
+                    target=[1, 2, 3, 4, 5],
+                    value=[5081, 2533, 4132, 949, 2533],
+                    color=["#48EF7B", "#D85360",
+                           "#48EF7B", "#D85360", "#D85360"],
+                ),
+            )
+        ]
+    )
 
     fig.update_layout(
-        hovermode='x',
+        hovermode="x",
         margin=dict(t=0, l=50),
         height=420,
         paper_bgcolor="rgba(0,0,0,0)",
@@ -115,12 +141,18 @@ def update_sankey_chart(value):
     return fig
 
 
+
 # WORDCLOUD (looks a bit difffrent from other outputs)
 def plot_wordcloud(data):
     d = {a: x for a, x in data.values}
 
-    wc = WordCloud(background_color='black', width=800,
-                   height=360, max_words=1000, colormap="plasma")
+    wc = WordCloud(
+        background_color="black",
+        width=800,
+        height=360,
+        max_words=1000,
+        colormap="plasma",
+    )
 
     wc.fit_words(d)
     return wc.to_image()
@@ -130,8 +162,9 @@ def plot_wordcloud(data):
 @app.callback(Output('image_wc', 'src'), [Input('image_wc', 'id')])
 def make_image(b):
     img = BytesIO()
-    plot_wordcloud(data=word_freqs_l).save(img, format='PNG')
-    return 'data:image/png;base64,{}'.format(base64.b64encode(img.getvalue()).decode())
+    plot_wordcloud(data=word_freqs_l).save(img, format="PNG")
+    return "data:image/png;base64,{}".format(base64.b64encode(img.getvalue()).decode())
+
 
 
 # BARCHART 1
@@ -146,7 +179,7 @@ def update_bar_chart(value):
             "freq": "Frequency",
             "word": "",
         },
-        text_auto=True
+        text_auto=True,
     )
     fig.update_layout(
         margin=dict(t=0, l=50),
@@ -187,36 +220,41 @@ def update_bar_chart(value):
 # LOCATION MAP
 @app.callback(Output("map_from_pgo", "figure"), Input("location-radio-items", "value"))
 def update_location_map(value):
-    df2 = pd.read_csv("data/location/totals.csv")
+    df2 = pd.read_csv(
+        os.path.join(os.getcwd(), "dashboard", "src", "data",
+                     "location", "location_totals.csv")
+    )
     df2 = df2[["country", value]]
+    
     # DATA TRANSFORMATIONS TO FEED MAP
-    fig = go.Figure(data=go.Choropleth(
-        locations=df2['country'],
-        z=df2[value],
-        text=df2['country'],
-        colorscale='Plasma',
-        autocolorscale=False,
-        reversescale=True,
-        marker_line_color='darkgray',
-        marker_line_width=0.5,
-        colorbar_title='Number of disasters', ))
+    fig = go.Figure(
+        data=go.Choropleth(
+            locations=df2["country"],
+            z=df2[value],
+            text=df2["country"],
+            colorscale="Plasma",
+            autocolorscale=False,
+            reversescale=True,
+            marker_line_color="darkgray",
+            marker_line_width=0.5,
+            colorbar_title="Number of disasters",
+        )
+    )
     fig.update_layout(
         geo=dict(
             showframe=False,
             showcoastlines=False,
             projection_type="orthographic",
-            bgcolor='rgba(0,0,0,0)',
+            bgcolor="rgba(0,0,0,0)",
             lakecolor="#17082D",
             showocean=True,
-            oceancolor="#17082D"
+            oceancolor="#17082D",
         ),
-        height=600, margin={"r": 0, "t": 0, "l": 0, "b": 0},
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        font=dict(
-            size=14,
-            color="#32FBE2"
-        ),
+        height=600,
+        margin={"r": 0, "t": 0, "l": 0, "b": 0},
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(size=14, color="#32FBE2"),
     )
 
     return fig
@@ -228,16 +266,48 @@ def update_bar_chart(value):
     ndf = word_freqs_g
 
     if value == 1:
-        include = ['UNINDENTIFIED', 'TRANSPORT', 'WIND', 'FIRE', 'FLOODING', 'TERRORISM', 'EXPLOSION', 'WAR',
-                   'TECTONICS',
-                   'ERROSION', 'DISEASE', 'LIGHTENING', 'CONSTRUCTION', 'RIOT', 'NUCLEAR', 'INDUSTRIAL', 'FAMINE',
-                   'HOT WEATHER']
-        ndf = ndf[ndf['word'].isin(include)]
+        include = [
+            "UNINDENTIFIED",
+            "TRANSPORT",
+            "WIND",
+            "FIRE",
+            "FLOODING",
+            "TERRORISM",
+            "EXPLOSION",
+            "WAR",
+            "TECTONICS",
+            "ERROSION",
+            "DISEASE",
+            "LIGHTENING",
+            "CONSTRUCTION",
+            "RIOT",
+            "NUCLEAR",
+            "INDUSTRIAL",
+            "FAMINE",
+            "HOT WEATHER",
+        ]
+        ndf = ndf[ndf["word"].isin(include)]
     elif value == 2:
-        exclude = ['TRANSPORT', 'WIND', 'FIRE', 'FLOODING', 'TERRORISM', 'EXPLOSION', 'WAR', 'TECTONICS',
-                   'ERROSION', 'DISEASE', 'LIGHTENING', 'CONSTRUCTION', 'RIOT', 'NUCLEAR', 'INDUSTRIAL', 'FAMINE',
-                   'HOT WEATHER']
-        ndf = ndf[ndf['word'].isin(exclude)]
+        exclude = [
+            "TRANSPORT",
+            "WIND",
+            "FIRE",
+            "FLOODING",
+            "TERRORISM",
+            "EXPLOSION",
+            "WAR",
+            "TECTONICS",
+            "ERROSION",
+            "DISEASE",
+            "LIGHTENING",
+            "CONSTRUCTION",
+            "RIOT",
+            "NUCLEAR",
+            "INDUSTRIAL",
+            "FAMINE",
+            "HOT WEATHER",
+        ]
+        ndf = ndf[ndf["word"].isin(exclude)]
 
     fig = px.bar(
         ndf,
@@ -245,7 +315,7 @@ def update_bar_chart(value):
         y="freq",
         text_auto=True,
         color="freq",
-        color_continuous_scale='plasma',
+        color_continuous_scale="plasma",
         labels={
             "freq": "Frequency",
             "word": "",
@@ -266,17 +336,23 @@ def update_bar_chart(value):
 @app.callback(Output("balance-output", "figure"), Input("balance-input", "value"))
 def update_pie_chart(value):
     # DATA
-    df = pd.read_csv("data/original/train.csv")
+    # df = pd.read_csv(
+    #     os.path.join(os.getcwd(), "dashboard", "src", "data", "original", "train.csv")
+    #     )
 
-    count_0 = df['target'].value_counts().loc[0].item()
-    count_1 = df['target'].value_counts().loc[1].item()
+    count_0 = df["target"].value_counts().loc[0].item()
+    count_1 = df["target"].value_counts().loc[1].item()
 
     dfp = pd.DataFrame(
         {"Class": ["Class 0", "Class 1"], "Count": [count_0, count_1]})
 
-    fig = px.pie(dfp, values='Count', names='Class',
-                 color_discrete_sequence=["#D85360", "#48EF7B"])
-    fig.update_traces(textposition='inside', textinfo='percent+label')
+    fig = px.pie(
+        dfp,
+        values="Count",
+        names="Class",
+        color_discrete_sequence=["#D85360", "#48EF7B"],
+    )
+    fig.update_traces(textposition="inside", textinfo="percent+label")
     fig.update_layout(
         margin=dict(t=0, l=50),
         height=350,
@@ -335,7 +411,8 @@ def update_bar_chart(data):
 )
 def our_function(preprocessing_checklist, vectorization, model):
     tic = time.time()
-    df_train = pd.read_csv(TRAIN_DATA_PATH)
+    global df
+    df_train = df.copy()
 
     # Data Cleaning
     df_train = preprocess_data(df_train, preprocessing_checklist)
@@ -530,8 +607,42 @@ def on_button_click(n_clicks):
     else:
         return ""
 
+# TAB 5 - TWITTER BOT ANALYTICS ########################################################################################################
 
-# TABS SETUP
+# FIRST BAR CHART
+
+
+@app.callback(Output("bot-timeseries", "figure"), Input("bot-timeseries-input", "value"))
+def update_bar_chart(value):
+
+    # Define data for the data viz
+    df = px.data.stocks()  # replace with your own data source
+    fig = px.line(df, x='date', y="AMZN")
+
+    # fig = px.bar(
+    #     ndf,
+    #     x="word",
+    #     y="freq",
+    #     text_auto=True,
+    #     color="freq",
+    #     color_continuous_scale="plasma",
+    #     labels={
+    #         "freq": "Frequency",
+    #         "word": "",
+    #     },
+    # )
+    fig.update_layout(
+        margin=dict(t=0, l=50),
+        height=350,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+        font=dict(size=14, color="#32FBE2"),
+    )
+    return fig
+
+
+# TABS SETUP ###########################################################################################################################
 tabs = dbc.Tabs(
     [
         dbc.Tab(tab1_content, label="Exploratory Data Analysis", tab_id="tab-1"),
@@ -558,7 +669,7 @@ tabs = dbc.Tabs(
             tab_id="tab-6",
         ),
     ],
-    active_tab="tab-2",
+    active_tab="tab-5",
 )
 
 # Declare server for Heroku deployment. Needed for Procfile.
@@ -569,5 +680,5 @@ app.layout = dbc.Container(
     [html.H1([html.I(className="bi bi-twitter me-2"), "NLP Disaster Tweets"]), tabs]
 )
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(debug=True)

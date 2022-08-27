@@ -231,8 +231,8 @@ tab1_content = dbc.Card(
                 style={"float": "right"}
             ),
             html.P("Fig 1. Frequencies of disasters by category"),
-            dcc.Graph(id="barplot_groups"),
-
+            dbc.Spinner([dcc.Graph(id="barplot_groups")],
+                        color="success", spinner_style={"width": "8rem", "height": "8rem"}),
             # LOCATION #########################################################################
             html.H2("Location"),
             html.P(
@@ -256,7 +256,8 @@ tab1_content = dbc.Card(
                 inline=True,
                 style={'display': 'none'}
             ),
-            dcc.Graph(id="sankey-legit-location"),
+            dbc.Spinner([dcc.Graph(id="sankey-legit-location")],
+                        color="success", spinner_style={"width": "8rem", "height": "8rem"}),
             # BLOCKED: by Stim
             html.P("By further filtering our sample of 4 132 tweets to include only those where disastered did happen ('target' = 1) we obtain a sample of X."),
             html.P("This allows us to make the observation that the highest number of disasters were tweeted from: A, B, C, D."),
@@ -269,7 +270,7 @@ tab1_content = dbc.Card(
                             style={"fontSize": 20}),
                     dbc.RadioItems(
                         options=[
-                            {"label": "All types", "value": "all"},
+                            {"label": "All types", "value": "total"},
                             {"label": "🔥 Fire", "value": "fire"},
                             {"label": "💥 Explosion",
                              "value": "explosion"},
@@ -281,14 +282,14 @@ tab1_content = dbc.Card(
                              "value": "construction"},
                             {"label": "💨 Wind", "value": "wind"},
                             {"label": "🌊 Flooding", "value": "flooding"},
-                            {"label": "☀️ Hot weather", "value": "hot"},
+                            {"label": "☀️ Hot weather", "value": "hot_weather"},
                             {"label": "🌋 Tectonics",
                              "value": "tectonics"},
                             {"label": "🌽 Famine", "value": "famine"},
                             {"label": "🏔️ Errosion", "value": "errosion"},
                             {"label": "⚡ Lightening",
                              "value": "lightening"},
-                            {"label": "🩸 Mass murder", "value": "mass"},
+                            {"label": "🩸 Mass murder", "value": "mass_murder"},
                             {"label": "☢️ Nuclear", "value": "nuclear"},
                             {"label": "🏭 Industrial",
                              "value": "industrial"},
@@ -296,12 +297,16 @@ tab1_content = dbc.Card(
                             {"label": "👥 Riot", "value": "riot"},
                             {"label": "⚔️ War", "value": "war"},
                             {"label": "🚨 Unidentified",
-                             "value": "Unidentified"},
+                             "value": "unidentified"},
                         ],
-                        value="all",
+                        value="total",
                         id="location-radio-items",
                     )], width=2),
-                dbc.Col([dcc.Graph(id="map_from_pgo")], width=10),
+                dbc.Col([dbc.Spinner([dcc.Graph(id="map_from_pgo")],
+                        color="success", spinner_style={"width": "8rem", "height": "8rem"}), ], width=10),
+                html.P(
+                    "Caveat 1. The above map represents data where 'target'=1, so records labelled as actual disasters."),
+                html.P("Caveat 2. Locations should be thought of as approximates. That's because we take into account location of the profile posting a tweet. The tweet itself could, nevertheless, relate to a disaster happening in another country.")
             ]),
             # TEXT #################################################################################################################
             html.H2("Text"),
@@ -316,7 +321,8 @@ tab1_content = dbc.Card(
             html.P("Choose number of top words to display"),
             dcc.Slider(0, 300, 10, value=60, id='n_of_words'),
             html.P("Fig 4. Most frequent words and their counts in raw data"),
-            dcc.Graph(id="freq_w_stopwords"),
+            dbc.Spinner([dcc.Graph(id="freq_w_stopwords")], color="success", spinner_style={
+                        "width": "8rem", "height": "8rem"}),
             html.P("Taking a first glance at the word frequency distribution, we discover that stopwords take up the first 50 most frequent words. Stopwords represent words like 'the', 'a', 'to', 'in', 'of', 'and', etc. This type of words is common in all kinds of text irregardles of the meaning. Therefore, we decided to perform the following data manipulations:"),
             html.Ul(
                 [
@@ -342,7 +348,8 @@ tab1_content = dbc.Card(
             html.P("This resulted in the following data:"),
             dcc.Slider(0, 300, 10, value=100, id='n_of_words_cleaned'),
             html.P("Fig 5. Most frequent words and their counts in cleaned data"),
-            dcc.Graph(id="freq_w_cleaned"),
+            dbc.Spinner([dcc.Graph(id="freq_w_cleaned")], color="success", spinner_style={
+                        "width": "8rem", "height": "8rem"}),
             html.P(
                 "Alternatively, we can get the sense of most common words by looking at the wordcloud below:"),
             html.P("Fig 6. Most common words in cleaned text data"),
@@ -401,8 +408,8 @@ tab1_content = dbc.Card(
                 inline=True,
                 style={'display': 'none'}
             ),
-            dcc.Graph(id="balance-output"),
-
+            dbc.Spinner([dcc.Graph(id="balance-output")], color="success",
+                        spinner_style={"width": "8rem", "height": "8rem"}),
         ]
     ),
     className="mt-3",
