@@ -231,7 +231,8 @@ tab1_content = dbc.Card(
                 style={"float": "right"}
             ),
             html.P("Fig 1. Frequencies of disasters by category"),
-            dcc.Graph(id="barplot_groups"),
+            dbc.Spinner([dcc.Graph(id="barplot_groups")],
+                        color="success", size="md"),
 
             # LOCATION #########################################################################
             html.H2("Location"),
