@@ -43,7 +43,6 @@ progress = html.Div(
     ]
 )
 
-
 # TAB 2: CLASSIFICATION ##############################################################################################################
 tab2_content = dbc.Card(
     dbc.CardBody(
@@ -56,7 +55,7 @@ tab2_content = dbc.Card(
                             html.Div(
                                 [
                                     html.H3("Data Cleaning", style={
-                                            "fontSize": 20}),
+                                        "fontSize": 20}),
                                     dbc.Checklist(
                                         options=[
                                             {"label": "Remove hashes", "value": 1},
@@ -66,9 +65,9 @@ tab2_content = dbc.Card(
                                             },
                                             {"label": "Remove tickers", "value": 3},
                                             {"label": "Remove hyperlinks",
-                                                "value": 4},
+                                             "value": 4},
                                             {"label": "Remove whitespaces",
-                                                "value": 5},
+                                             "value": 5},
                                             {
                                                 "label": "Remove URL, RT, mention(@)",
                                                 "value": 6,
@@ -83,13 +82,13 @@ tab2_content = dbc.Card(
                                             },
                                             {"label": "Remove emojis", "value": 9},
                                             {"label": "Remove Mojibake",
-                                                "value": 10},
+                                             "value": 10},
                                             {
                                                 "label": "Tokenize & Lemmatize",
                                                 "value": 11,
                                             },
                                             {"label": "Leave only nouns",
-                                                "value": 12},
+                                             "value": 12},
                                             {
                                                 "label": "Spell check",
                                                 "value": 13,
@@ -108,7 +107,7 @@ tab2_content = dbc.Card(
                             html.Div(
                                 [
                                     html.H3("Vectorization", style={
-                                            "fontSize": 20}),
+                                        "fontSize": 20}),
                                     dbc.RadioItems(
                                         options=[
                                             {"label": "Count", "value": "count"},
@@ -137,9 +136,9 @@ tab2_content = dbc.Card(
                                         options=[
                                             {"label": "SVC", "value": "SVC"},
                                             {"label": "Logistic",
-                                                "value": "Logistic"},
+                                             "value": "Logistic"},
                                             {"label": "Naive Bayes",
-                                                "value": "Bayes"},
+                                             "value": "Bayes"},
                                             {
                                                 "label": "LSTM ANN model",
                                                 "value": "LSTM",
@@ -215,65 +214,75 @@ tab2_content = dbc.Card(
             ),
             dbc.Row(
                 [
-
-
-                    ##
+                    # H1 Raport
                     html.Div(
-
-
-
                         dbc.Row([
 
                             dbc.Col([
 
                                 html.H2("REPORT", style={"marginTop": 25})],
                                 width=2),
-
-                            dbc.Col(
-                                html.Div([progress],
-                                         style={"marginTop": 32, "marginRight": 28}),
-
-                                width=10)
-
-
                         ]),
                     ),
+
+                    # First column & Confusion Matrix
                     dbc.Col(
                         [
-                            html.Div(id="performance-metrics-accuracy-text"),
-                            html.H3(
-                                "Fig 1. Confusion Matrix data", style={"fontSize": 20}
-                            ),
-                            dcc.Graph(id="class_barchart"),
+                            dbc.Spinner(
+                                [
+                                    html.Div(id="performance-metrics-accuracy-text"),
+                                    html.H3(
+                                        "Fig 1. Confusion Matrix data", style={"fontSize": 20}
+                                    ),
+                                    dcc.Graph(id="class_barchart"),
+                                ],
+                                color="success",
+                                spinner_style={"width": "8rem", "height": "8rem"})
                         ],
                         width=4,
                     ),
+
+                    # Second column & Performance Metrics
                     dbc.Col(
                         [
-                            html.Div(id="performance-metrics-precison-text"),
-                            html.H3(
-                                "Fig 2. Performance Metrics", style={"fontSize": 20}
-                            ),
-                            html.Div(
+                            dbc.Spinner(
                                 [
-                                    html.Div(id="output-datatable"),
-                                    dcc.Store(id="intermediate-value"),
-                                ]
-                            ),
-                            html.P(id="performance-metrics-recall-text"),
+                                    html.Div(id="performance-metrics-precison-text"),
+                                    html.H3(
+                                        "Fig 2. Performance Metrics", style={"fontSize": 20}
+                                    ),
+                                    html.Div(
+                                        [
+                                            html.Div(id="output-datatable"),
+                                            dcc.Store(id="intermediate-value"),
+                                        ]
+                                    ),
+                                    html.P(id="performance-metrics-recall-text")
+                                ],
+                                color="warning",
+                                spinner_style={"width": "8rem", "height": "8rem"})
                         ],
                         width=4,
                     ),
                     # dbc.Col([html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
                     #          dcc.Graph(id="confusion-matrix-graph")], width=4),
+
+                    # Third column & ROC & AUC
                     dbc.Col(
                         [
-                            html.P(
-                                "Fig 3. shows the performance of the classification model at all classification thresholds."
-                            ),
-                            html.H3("Fig 3. ROC & AUC",
-                                    style={"fontSize": 20}),
-                            dcc.Graph(id="roc-graph"),
+                            dbc.Spinner(
+                                [
+                                    html.P(
+                                        "Fig 3. shows the performance of the classification model at all classification thresholds."
+                                    ),
+                                    html.H3("Fig 3. ROC & AUC",
+                                            style={"fontSize": 20}),
+                                    dcc.Graph(id="roc-graph"),
+                                ],
+                                color="light",
+                                spinner_style={"width": "8rem", "height": "8rem"}
+                            )
+
                         ],
                         width=4,
                     ),

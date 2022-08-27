@@ -41,29 +41,47 @@ import itertools
 from collections import Counter
 from scipy.stats import kstest
 
+## PATHS ##
+TRAIN_DATA_PATH = r"data/original/train.csv"
+CLASS_CHART_PATH = r"data/class_chart/class_chart.csv"
+WORD_FREQ_LEMMATIZED_PATH = r"data/word_frequencies/word-freq_lemmatized.csv"
+WORD_FREQ_PATH = r"data/keyword/group_frequencies.csv"
 
-# APP
-app = Dash(__name__, title="folder", external_stylesheets=[
-           dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
+
+## FUNCTIONS ##
+def get_corpus(text):
+    words = []
+    for i in text:
+        i = str(i)
+        for j in i.split():
+            words.append(j.strip())
+    return words
+
 
 # IMPORT DATA
-df = pd.read_csv("data/original/train.csv")
-text = df[['text']]
-dfm = " ".join(df[df.target == 1].text)
-TRAIN_DATA_PATH = r"data\original\train.csv"
-dummy_class = pd.read_csv("data/class_chart/class_chart.csv")
+df = pd.read_csv(TRAIN_DATA_PATH)
+dummy_class = pd.read_csv(CLASS_CHART_PATH)
+word_freqs_l = pd.read_csv(WORD_FREQ_LEMMATIZED_PATH)
+word_freqs_g = pd.read_csv(WORD_FREQ_PATH)
 
-word_freqs_l = pd.read_csv(
-    "data/word_frequencies/word-freq_lemmatized.csv")
+# get corpus of list
+corpus = get_corpus(df.text)
+nlp_words = nltk.FreqDist(corpus)
+list_of_words = list(nlp_words.keys())
+list_of_counts = list(nlp_words.values())
 
-word_freqs_g = pd.read_csv(
-    "data/keyword/group_frequencies.csv")
+# WORDCLOUD DATA
+word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
+word_freqs = word_freqs.sort_values(by=["freq"], ascending=False)
+
+# APP SATRT
+app = Dash(__name__, title="folder", external_stylesheets=[
+    dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
+
 
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
 
-# SANKEY
-
-
+# SANKEY diagram
 @app.callback(Output("sankey-legit-location", "figure"), Input("sankey-input", "value"))
 def update_sankey_chart(value):
     fig = go.Figure(data=[go.Sankey(
@@ -97,29 +115,7 @@ def update_sankey_chart(value):
     return fig
 
 
-# WORDCLOUD DATA
-
-
-def get_corpus(text):
-    words = []
-    for i in text:
-        i = str(i)
-        for j in i.split():
-            words.append(j.strip())
-    return words
-
-
-corpus = get_corpus(df.text)
-nlp_words = nltk.FreqDist(corpus)
-list_of_words = list(nlp_words.keys())
-list_of_counts = list(nlp_words.values())
-
-word_freqs = pd.DataFrame({'word': list_of_words, 'freq': list_of_counts})
-word_freqs = word_freqs.sort_values(by=["freq"], ascending=False)
-
 # WORDCLOUD (looks a bit difffrent from other outputs)
-
-
 def plot_wordcloud(data):
     d = {a: x for a, x in data.values}
 
@@ -130,15 +126,15 @@ def plot_wordcloud(data):
     return wc.to_image()
 
 
+# TODO:???
 @app.callback(Output('image_wc', 'src'), [Input('image_wc', 'id')])
 def make_image(b):
     img = BytesIO()
     plot_wordcloud(data=word_freqs_l).save(img, format='PNG')
     return 'data:image/png;base64,{}'.format(base64.b64encode(img.getvalue()).decode())
 
+
 # BARCHART 1
-
-
 @app.callback(Output("freq_w_stopwords", "figure"), Input("n_of_words", "value"))
 def update_bar_chart(value):
     ndf = word_freqs.iloc[:value]
@@ -162,9 +158,8 @@ def update_bar_chart(value):
     )
     return fig
 
+
 # BARCHART 2
-
-
 @app.callback(Output("freq_w_cleaned", "figure"), Input("n_of_words_cleaned", "value"))
 def update_bar_chart(value):
     ndf = word_freqs_l.iloc[:value]
@@ -190,10 +185,7 @@ def update_bar_chart(value):
 
 
 # LOCATION MAP
-
-
-@app.callback(
-    Output("map_from_pgo", "figure"), Input("location-radio-items", "value"))
+@app.callback(Output("map_from_pgo", "figure"), Input("location-radio-items", "value"))
 def update_location_map(value):
     df2 = pd.read_csv("data/location/totals.csv")
     df2 = df2[["country", value]]
@@ -207,7 +199,7 @@ def update_location_map(value):
         reversescale=True,
         marker_line_color='darkgray',
         marker_line_width=0.5,
-        colorbar_title='Number of disasters',))
+        colorbar_title='Number of disasters', ))
     fig.update_layout(
         geo=dict(
             showframe=False,
@@ -233,16 +225,18 @@ def update_location_map(value):
 # FIRST BAR CHART
 @app.callback(Output("barplot_groups", "figure"), Input("groups-input", "value"))
 def update_bar_chart(value):
-
     ndf = word_freqs_g
 
     if value == 1:
-        include = ['UNINDENTIFIED', 'TRANSPORT', 'WIND', 'FIRE', 'FLOODING', 'TERRORISM', 'EXPLOSION', 'WAR', 'TECTONICS',
-                   'ERROSION', 'DISEASE', 'LIGHTENING', 'CONSTRUCTION', 'RIOT', 'NUCLEAR', 'INDUSTRIAL', 'FAMINE', 'HOT WEATHER']
+        include = ['UNINDENTIFIED', 'TRANSPORT', 'WIND', 'FIRE', 'FLOODING', 'TERRORISM', 'EXPLOSION', 'WAR',
+                   'TECTONICS',
+                   'ERROSION', 'DISEASE', 'LIGHTENING', 'CONSTRUCTION', 'RIOT', 'NUCLEAR', 'INDUSTRIAL', 'FAMINE',
+                   'HOT WEATHER']
         ndf = ndf[ndf['word'].isin(include)]
     elif value == 2:
         exclude = ['TRANSPORT', 'WIND', 'FIRE', 'FLOODING', 'TERRORISM', 'EXPLOSION', 'WAR', 'TECTONICS',
-                   'ERROSION', 'DISEASE', 'LIGHTENING', 'CONSTRUCTION', 'RIOT', 'NUCLEAR', 'INDUSTRIAL', 'FAMINE', 'HOT WEATHER']
+                   'ERROSION', 'DISEASE', 'LIGHTENING', 'CONSTRUCTION', 'RIOT', 'NUCLEAR', 'INDUSTRIAL', 'FAMINE',
+                   'HOT WEATHER']
         ndf = ndf[ndf['word'].isin(exclude)]
 
     fig = px.bar(
@@ -267,12 +261,10 @@ def update_bar_chart(value):
     )
     return fig
 
+
 # BALANCE PIE CHART
-
-
 @app.callback(Output("balance-output", "figure"), Input("balance-input", "value"))
 def update_pie_chart(value):
-
     # DATA
     df = pd.read_csv("data/original/train.csv")
 
@@ -300,8 +292,6 @@ def update_pie_chart(value):
 # TAB 2: CLASSIFICATION ##############################################################################################################
 
 # BARCHART
-
-
 @app.callback(Output("class_barchart", "figure"), Input("intermediate-value", "data"))
 def update_bar_chart(data):
     dff = pd.read_json(data, typ="series")
@@ -335,8 +325,6 @@ def update_bar_chart(data):
 
 
 # INTERIM DATA
-
-
 @app.callback(
     Output("intermediate-value", "data"),
     [
@@ -374,11 +362,7 @@ def our_function(preprocessing_checklist, vectorization, model):
 
 
 # PERFORMANCE METRICS TABLE
-
-
-@app.callback(
-    Output("output-datatable", "children"), Input("intermediate-value", "data")
-)
+@app.callback(Output("output-datatable", "children"), Input("intermediate-value", "data"))
 def update_datatable(data):
     dff = pd.read_json(data, typ="series")
     return html.Div(
@@ -443,54 +427,44 @@ def update_datatable(data):
 
 
 # PERFORMANCE METRICS TEXT - ACCURACY
-@app.callback(
-    Output("performance-metrics-accuracy-text", "children"),
-    Input("intermediate-value", "data"),
+@app.callback(Output("performance-metrics-accuracy-text", "children"), Input("intermediate-value", "data"),
 )
 def update_performance_metrics_accuracy_text(data):
     dff = pd.read_json(data, typ="series")
     tn, fp, fn, tp = np.array(dff.get("Confusion Matrix")).ravel()
     return (
         html.P(
-            f"Your customized model has been tried out on a test sample of {fn+fp+fn+tp} tweets in {round(dff.get('Time'),4)} seconds. "
-            f"It correctly classified {tn+tp} of records, while the remaining {fp+fn} were assigned to a wrong class. "
-            f"This means that the accuracy is {round(dff.get('Accuracy'), 3)*100}%."
+            f"Your customized model has been tried out on a test sample of {fn + fp + fn + tp} tweets in {round(dff.get('Time'), 4)} seconds. "
+            f"It correctly classified {tn + tp} of records, while the remaining {fp + fn} were assigned to a wrong class. "
+            f"This means that the accuracy is {round(dff.get('Accuracy'), 3) * 100}%."
         ),
     )
 
 
 # PERFORMANCE METRICS TEXT - PRECISION
-@app.callback(
-    Output("performance-metrics-precison-text", "children"),
-    Input("intermediate-value", "data"),
-)
+@app.callback(Output("performance-metrics-precison-text", "children"), Input("intermediate-value", "data"),)
 def update_performance_metrics_precision_text(data):
     dff = pd.read_json(data, typ="series")
     tn, fp, fn, tp = np.array(dff.get("Confusion Matrix")).ravel()
     return html.P(
-        f"The classifier has marked a total of {fp+tp} tweets as those that relate to natural disasters (class 1). Out of these"
-        f", {tp} were actually in this group. This gives precision of {round(dff.get('Precision'), 3)*100}%"
+        f"The classifier has marked a total of {fp + tp} tweets as those that relate to natural disasters (class 1). Out of these"
+        f", {tp} were actually in this group. This gives precision of {round(dff.get('Precision'), 3) * 100}%"
     )
 
 
 # PERFORMANCE METRICS TEXT - RECALL
-@app.callback(
-    Output("performance-metrics-recall-text", "children"),
-    Input("intermediate-value", "data"),
-)
+@app.callback(Output("performance-metrics-recall-text", "children"),Input("intermediate-value", "data"),)
 def update_performance_metrics_recall_text(data):
     dff = pd.read_json(data, typ="series")
     tn, _, fn, _ = np.array(dff.get("Confusion Matrix")).ravel()
     return html.P(
-        f"The sample contained a total of {tn+fn} true negatives. "
-        f"Out of them, {tn} were correctly predicted by the model. Hence, the recall is {round(dff.get('Recall'), 3)*100}%. "
-        f"Finally, the harmonic mean of precison and recall is {round(dff.get('F1 Score'), 3)*100}%."
+        f"The sample contained a total of {tn + fn} true negatives. "
+        f"Out of them, {tn} were correctly predicted by the model. Hence, the recall is {round(dff.get('Recall'), 3) * 100}%. "
+        f"Finally, the harmonic mean of precison and recall is {round(dff.get('F1 Score'), 3) * 100}%."
     )
 
 
 # ROC GRAPH
-
-
 @app.callback(Output("roc-graph", "figure"), Input("intermediate-value", "data"))
 def update_roc(data):
     dff = pd.read_json(data, typ="series")
@@ -531,12 +505,7 @@ def update_roc(data):
 
 
 # PROGRESS BAR
-
-
-@ app.callback(
-    [Output("progress", "value"), Output("progress", "label")],
-    [Input("progress-interval", "n_intervals")],
-)
+@app.callback([Output("progress", "value"),Output("progress", "label")],[Input("progress-interval", "n_intervals")])
 def update_progress(n):
     # check progress of some background process, in this example we'll just
     # use n_intervals constrained to be in 0-100
@@ -546,14 +515,14 @@ def update_progress(n):
     return progress, f"{progress} %" if progress >= 5 else ""
 
 
+# TAB 3 - SOME FUNNY TEXT   ###########################################################################################################
+
+
 # TAB 4 - MAKE A PREDICTION ###########################################################################################################
 
-@app.callback(
-    Output("input-tweet-to-predict", "value"),
-    [Input("input-make-a-prediction", "n_clicks")],
-)
+# TODO: Some text
+@app.callback(Output("input-tweet-to-predict", "value"),[Input("input-make-a-prediction", "n_clicks")],)
 def on_button_click(n_clicks):
-
     if n_clicks:
         names = ["Arthur Dent", "Ford Prefect", "Trillian Astra"]
         which = n_clicks % len(names)
