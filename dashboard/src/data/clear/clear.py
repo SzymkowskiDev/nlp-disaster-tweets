@@ -113,8 +113,8 @@ def lemmatization(words: list) -> list:
 
 ######################################PATHS###########################################
 
-ORIGINAL_PATH = r"data/original/"
-CLEAR_PATH = r"data/clear/"
+ORIGINAL_PATH = r"dashboard/src/data/original/"
+CLEAR_PATH = r"dashboard/src/data/clear/"
 
 ##################################Auxiliary files#####################################
 
@@ -128,6 +128,11 @@ punctuation = list(string.punctuation)
 stop.update(punctuation)
 
 nltk.download('averaged_perceptron_tagger')
+
+# add ectra stop words
+extra_stopwords = ['s', 'u', 'new', 'will', 'one','2']
+stop.update(extra_stopwords)
+
 
 ####################################CLEANING##########################################
 
