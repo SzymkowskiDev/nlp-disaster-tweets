@@ -128,8 +128,8 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 - [ ] Dashboard live analytics
 
 
-## 🆕 Changelog
-log of major changes to subsequent versions of the project/prediction model
+## 🆕 Project duration
+03/07/2022 - 15/09/2022 (74 days)
 
 ## 🤖 Stack
 * Python
