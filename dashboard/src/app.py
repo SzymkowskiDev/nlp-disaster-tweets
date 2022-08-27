@@ -658,8 +658,42 @@ def on_button_click(n_clicks):
     else:
         return ""
 
+# TAB 5 - TWITTER BOT ANALYTICS ########################################################################################################
 
-# TABS SETUP
+# FIRST BAR CHART
+
+
+@app.callback(Output("bot-timeseries", "figure"), Input("bot-timeseries-input", "value"))
+def update_bar_chart(value):
+
+    # Define data for the data viz
+    df = px.data.stocks()  # replace with your own data source
+    fig = px.line(df, x='date', y="AMZN")
+
+    # fig = px.bar(
+    #     ndf,
+    #     x="word",
+    #     y="freq",
+    #     text_auto=True,
+    #     color="freq",
+    #     color_continuous_scale="plasma",
+    #     labels={
+    #         "freq": "Frequency",
+    #         "word": "",
+    #     },
+    # )
+    fig.update_layout(
+        margin=dict(t=0, l=50),
+        height=350,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+        font=dict(size=14, color="#32FBE2"),
+    )
+    return fig
+
+
+# TABS SETUP ###########################################################################################################################
 tabs = dbc.Tabs(
     [
         dbc.Tab(tab1_content, label="Exploratory Data Analysis", tab_id="tab-1"),
@@ -686,7 +720,7 @@ tabs = dbc.Tabs(
             tab_id="tab-6",
         ),
     ],
-    active_tab="tab-2",
+    active_tab="tab-5",
 )
 
 # Declare server for Heroku deployment. Needed for Procfile.
