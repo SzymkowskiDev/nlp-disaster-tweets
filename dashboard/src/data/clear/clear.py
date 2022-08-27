@@ -129,6 +129,11 @@ stop.update(punctuation)
 
 nltk.download('averaged_perceptron_tagger')
 
+# add ectra stop words
+extra_stopwords = ['s', 'u', 'new', 'will', 'one','2']
+stop.update(extra_stopwords)
+
+
 ####################################CLEANING##########################################
 
 
