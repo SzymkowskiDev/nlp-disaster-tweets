@@ -53,7 +53,8 @@ app = Dash(
 # IMPORT DATA
 
 df = pd.read_csv(
-    os.path.join(os.getcwd(), "dashboard", "src", "data", "original", "train.csv")
+    os.path.join(os.getcwd(), "dashboard", "src",
+                 "data", "original", "train.csv")
 )
 
 text = df[["text"]]
@@ -119,7 +120,8 @@ def update_sankey_chart(value):
                     source=[0, 0, 1, 1, 2],
                     target=[1, 2, 3, 4, 5],
                     value=[5081, 2533, 4132, 949, 2533],
-                    color=["#48EF7B", "#D85360", "#48EF7B", "#D85360", "#D85360"],
+                    color=["#48EF7B", "#D85360",
+                           "#48EF7B", "#D85360", "#D85360"],
                 ),
             )
         ]
@@ -243,7 +245,8 @@ def update_bar_chart(value):
 @app.callback(Output("map_from_pgo", "figure"), Input("location-radio-items", "value"))
 def update_location_map(value):
     df2 = pd.read_csv(
-        os.path.join(os.getcwd(), "dashboard", "src", "data", "location", "totals.csv")
+        os.path.join(os.getcwd(), "dashboard", "src", "data",
+                     "location", "location_totals.csv")
     )
     df2 = df2[["country", value]]
     # DATA TRANSFORMATIONS TO FEED MAP
@@ -367,7 +370,8 @@ def update_pie_chart(value):
     count_0 = df["target"].value_counts().loc[0].item()
     count_1 = df["target"].value_counts().loc[1].item()
 
-    dfp = pd.DataFrame({"Class": ["Class 0", "Class 1"], "Count": [count_0, count_1]})
+    dfp = pd.DataFrame(
+        {"Class": ["Class 0", "Class 1"], "Count": [count_0, count_1]})
 
     fig = px.pie(
         dfp,
@@ -588,7 +592,8 @@ def update_roc(data):
     dff = pd.read_json(data, typ="series")
     fpr, tpr, _ = dff.get("Roc curve")
     fig = px.area(
-        x=fpr, y=tpr, labels=dict(x="False Positive Rate", y="True Positive Rate")
+        x=fpr, y=tpr, labels=dict(
+            x="False Positive Rate", y="True Positive Rate")
     )
     fig.add_shape(
         type="line", line=dict(dash="dash", color="red"), x0=0, x1=1, y0=0, y1=1
