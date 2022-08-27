@@ -113,8 +113,8 @@ def lemmatization(words: list) -> list:
 
 ######################################PATHS###########################################
 
-ORIGINAL_PATH = r"dashboard/src/data/original/"
-CLEAR_PATH = r"dashboard/src/data/clear/"
+ORIGINAL_PATH = r"data/original/"
+CLEAR_PATH = r"data/clear/"
 
 ##################################Auxiliary files#####################################
 
