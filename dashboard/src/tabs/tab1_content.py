@@ -270,7 +270,7 @@ tab1_content = dbc.Card(
                             style={"fontSize": 20}),
                     dbc.RadioItems(
                         options=[
-                            {"label": "All types", "value": "all"},
+                            {"label": "All types", "value": "total"},
                             {"label": "🔥 Fire", "value": "fire"},
                             {"label": "💥 Explosion",
                              "value": "explosion"},
@@ -282,14 +282,14 @@ tab1_content = dbc.Card(
                              "value": "construction"},
                             {"label": "💨 Wind", "value": "wind"},
                             {"label": "🌊 Flooding", "value": "flooding"},
-                            {"label": "☀️ Hot weather", "value": "hot"},
+                            {"label": "☀️ Hot weather", "value": "hot_weather"},
                             {"label": "🌋 Tectonics",
                              "value": "tectonics"},
                             {"label": "🌽 Famine", "value": "famine"},
                             {"label": "🏔️ Errosion", "value": "errosion"},
                             {"label": "⚡ Lightening",
                              "value": "lightening"},
-                            {"label": "🩸 Mass murder", "value": "mass"},
+                            {"label": "🩸 Mass murder", "value": "mass_murder"},
                             {"label": "☢️ Nuclear", "value": "nuclear"},
                             {"label": "🏭 Industrial",
                              "value": "industrial"},
@@ -297,12 +297,15 @@ tab1_content = dbc.Card(
                             {"label": "👥 Riot", "value": "riot"},
                             {"label": "⚔️ War", "value": "war"},
                             {"label": "🚨 Unidentified",
-                             "value": "Unidentified"},
+                             "value": "unidentified"},
                         ],
-                        value="all",
+                        value="total",
                         id="location-radio-items",
                     )], width=2),
                 dbc.Col([dcc.Graph(id="map_from_pgo")], width=10),
+                html.P(
+                    "Caveat 1. The above map represents data where 'target'=1, so records labelled as actual disasters."),
+                html.P("Caveat 2. Locations should be thought of as approximates. That's because we take into account location of the profile posting a tweet. The tweet itself could, nevertheless, relate to a disaster happening in another country.")
             ]),
             # TEXT #################################################################################################################
             html.H2("Text"),
