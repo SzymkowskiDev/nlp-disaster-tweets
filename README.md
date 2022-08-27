@@ -96,33 +96,37 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 
 
 ## 📅 Development Schedule
-**Version 1.0.0**
+**Version 1.0.0** MILESTONE: classification model
 
 - [X] First Solution to the Kaggle's problem as a Jupyter notebook
 
-**Version 1.1.0**
-
-- [ ] Improved production model (Machine Learning)
-    - [X] Selecting current best performing model
-    - [ ] Exploratory Data Analysis
-    - [ ] Comparison of preprocessors (vectorizers)
-    - [ ] Testing influence of data pre preprocessing methods
-    - [ ] Assembling a better model
-
-**Version 1.2.0**
-- [ ] Deep learning model
-
-**Version 2.0.0**
+**Version 1.1.0** MILESTONE: model + dashboard
 
 - [X] Deployment of a blank dashboard (and integrate Dash)
-- [ ] Customized classification
-    - [X] Inputs (Parameters for classification)
-    - [X] Outputs (Data Visualisation)
-        - [X] Pefromance metrics visalisation (input data)
-        - [ ] Word cloud visualisation (output data)
-        - [X] Performance metrics visalisation (output data)   
-        - [ ] Word cloud visualisation (input data)
-        - [ ] Map of locations (input data)
+- [X] Exploratory Data Analysis tab
+    - [X] Introduction
+    - [X] Data Quality Issues
+    - [X] Keyword
+    - [X] Location (+interactive globe data viz)
+    - [ ] Text
+            - [X] Word frequency (+Wordcloud)
+            - [ ] Parts of Speech
+            - [ ] Sentiment Analysis
+            - [ ] Spelling Erros
+            - [ ] ~~Named Entity Recognition~~
+            - [ ] ~~Unsupervised Learning~~
+    - [X] Target
+- [X] Customized classification tab
+- [X] ~~Compare runs~~ (we can replace it with 'best performing')
+- [ ] Make a prediction
+- [X] Twitter BOT Analytics (not connected)
+- [X] About page
+
+**Version 1.2.0** MILESTONE: twitter bot
+
+- [ ] Twitter bot
+- [ ] Dashboard live analytics
+
 
 ## 🆕 Changelog
 log of major changes to subsequent versions of the project/prediction model
