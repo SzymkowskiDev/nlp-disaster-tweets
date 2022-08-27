@@ -232,8 +232,7 @@ tab1_content = dbc.Card(
             ),
             html.P("Fig 1. Frequencies of disasters by category"),
             dbc.Spinner([dcc.Graph(id="barplot_groups")],
-                        color="success", size="md"),
-
+                        color="success", spinner_style={"width": "8rem", "height": "8rem"}),
             # LOCATION #########################################################################
             html.H2("Location"),
             html.P(
@@ -257,7 +256,8 @@ tab1_content = dbc.Card(
                 inline=True,
                 style={'display': 'none'}
             ),
-            dcc.Graph(id="sankey-legit-location"),
+            dbc.Spinner([dcc.Graph(id="sankey-legit-location")],
+                        color="success", spinner_style={"width": "8rem", "height": "8rem"}),
             # BLOCKED: by Stim
             html.P("By further filtering our sample of 4 132 tweets to include only those where disastered did happen ('target' = 1) we obtain a sample of X."),
             html.P("This allows us to make the observation that the highest number of disasters were tweeted from: A, B, C, D."),
@@ -302,7 +302,8 @@ tab1_content = dbc.Card(
                         value="total",
                         id="location-radio-items",
                     )], width=2),
-                dbc.Col([dcc.Graph(id="map_from_pgo")], width=10),
+                dbc.Col([dbc.Spinner([dcc.Graph(id="map_from_pgo")],
+                        color="success", spinner_style={"width": "8rem", "height": "8rem"}), ], width=10),
                 html.P(
                     "Caveat 1. The above map represents data where 'target'=1, so records labelled as actual disasters."),
                 html.P("Caveat 2. Locations should be thought of as approximates. That's because we take into account location of the profile posting a tweet. The tweet itself could, nevertheless, relate to a disaster happening in another country.")
@@ -320,7 +321,8 @@ tab1_content = dbc.Card(
             html.P("Choose number of top words to display"),
             dcc.Slider(0, 300, 10, value=60, id='n_of_words'),
             html.P("Fig 4. Most frequent words and their counts in raw data"),
-            dcc.Graph(id="freq_w_stopwords"),
+            dbc.Spinner([dcc.Graph(id="freq_w_stopwords")], color="success", spinner_style={
+                        "width": "8rem", "height": "8rem"}),
             html.P("Taking a first glance at the word frequency distribution, we discover that stopwords take up the first 50 most frequent words. Stopwords represent words like 'the', 'a', 'to', 'in', 'of', 'and', etc. This type of words is common in all kinds of text irregardles of the meaning. Therefore, we decided to perform the following data manipulations:"),
             html.Ul(
                 [
@@ -346,7 +348,8 @@ tab1_content = dbc.Card(
             html.P("This resulted in the following data:"),
             dcc.Slider(0, 300, 10, value=100, id='n_of_words_cleaned'),
             html.P("Fig 5. Most frequent words and their counts in cleaned data"),
-            dcc.Graph(id="freq_w_cleaned"),
+            dbc.Spinner([dcc.Graph(id="freq_w_cleaned")], color="success", spinner_style={
+                        "width": "8rem", "height": "8rem"}),
             html.P(
                 "Alternatively, we can get the sense of most common words by looking at the wordcloud below:"),
             html.P("Fig 6. Most common words in cleaned text data"),
@@ -405,8 +408,8 @@ tab1_content = dbc.Card(
                 inline=True,
                 style={'display': 'none'}
             ),
-            dcc.Graph(id="balance-output"),
-
+            dbc.Spinner([dcc.Graph(id="balance-output")], color="success",
+                        spinner_style={"width": "8rem", "height": "8rem"}),
         ]
     ),
     className="mt-3",
