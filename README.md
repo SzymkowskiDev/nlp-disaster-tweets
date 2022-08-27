@@ -109,12 +109,12 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     - [X] Keyword
     - [X] Location (+interactive globe data viz)
     - [ ] Text
-            - [X] Word frequency (+Wordcloud)
-            - [ ] Parts of Speech
-            - [ ] Sentiment Analysis
-            - [ ] Spelling Erros
-            - [ ] ~~Named Entity Recognition~~
-            - [ ] ~~Unsupervised Learning~~
+        - [X] Word frequency (+Wordcloud)
+        - [ ] Parts of Speech
+        - [ ] Sentiment Analysis
+        - [ ] Spelling Erros
+        - [ ] ~~Named Entity Recognition~~
+        - [ ] ~~Unsupervised Learning~~
     - [X] Target
 - [X] Customized classification tab
 - [X] ~~Compare runs~~ (we can replace it with 'best performing')
