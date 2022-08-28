@@ -88,7 +88,9 @@ word_freqs = word_freqs.sort_values(by=["freq"], ascending=False)
 
 # APP SATRT
 app = Dash(__name__, title="folder", external_stylesheets=[
-    dbc.themes.VAPOR, dbc.icons.BOOTSTRAP])
+    dbc.themes.VAPOR, dbc.icons.BOOTSTRAP], meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5"},
+])
 
 
 # TAB 1: EXPLORATORY DATA ANALYSIS ###################################################################################################
@@ -239,7 +241,6 @@ def update_location_map(value):
             reversescale=True,
             marker_line_color="darkgray",
             marker_line_width=0.5,
-            colorbar_title="Number of disasters",
         )
     )
     fig.update_layout(
@@ -258,6 +259,7 @@ def update_location_map(value):
         plot_bgcolor="rgba(0,0,0,0)",
         font=dict(size=14, color="#32FBE2"),
     )
+    fig.update_traces(showscale=False)
 
     return fig
 

@@ -129,7 +129,7 @@ tab2_content = dbc.Card(
                                 ]
                             )
                         ],
-                        width=3,
+                        width=3, xs=10, sm=8, md=5, lg=3, xl=3,
                     ),
                     dbc.Col(
                         [
@@ -154,7 +154,7 @@ tab2_content = dbc.Card(
                                 ]
                             )
                         ],
-                        width=2,
+                        width=2, xs=10, sm=8, md=5, lg=2, xl=2, style={"marginTop": 25}
                     ),
                     dbc.Col(
                         [
@@ -191,7 +191,7 @@ tab2_content = dbc.Card(
                                 ]
                             )
                         ],
-                        width=3,
+                        width=3, xs=10, sm=8, md=5, lg=3, xl=3, style={"marginTop": 25}
                     ),
                     dbc.Col(
                         [
@@ -237,7 +237,7 @@ tab2_content = dbc.Card(
                                 className="d-grid gap-2",
                             ),
                         ],
-                        width=3,
+                        width=3, xs=10, sm=8, md=5, lg=3, xl=3, style={"marginTop": 25}
                     ),
                 ]
             ),
@@ -246,31 +246,25 @@ tab2_content = dbc.Card(
                     dbc.Row(
                         [
                             # H1 Raport
-                            html.Div(
-                                dbc.Row([
-
-                                    dbc.Col([
-
-                                        html.H2("REPORT", style={"marginTop": 25})],
-                                        width=2),
-                                ]),
-                            ),
+                            html.H2("REPORT", style={"marginTop": 25}),
                             # First column & Confusion Matrix
                             dbc.Col(
                                 [
-                                    html.Div(id="performance-metrics-accuracy-text"),
+                                    html.Div(
+                                        id="performance-metrics-accuracy-text"),
                                     html.H3(
                                         "Fig 1. Confusion Matrix data", style={"fontSize": 20}
                                     ),
                                     dcc.Graph(id="class_barchart"),
                                 ],
-                                width=4,
+                                width=4, xs=10, sm=8, md=5, lg=4, xl=4,
                             ),
 
                             # Second column & Performance Metrics
                             dbc.Col(
                                 [
-                                    html.Div(id="performance-metrics-precison-text"),
+                                    html.Div(
+                                        id="performance-metrics-precison-text"),
                                     html.H3(
                                         "Fig 2. Performance Metrics", style={"fontSize": 20}
                                     ),
@@ -282,7 +276,7 @@ tab2_content = dbc.Card(
                                     ),
                                     html.P(id="performance-metrics-recall-text")
                                 ],
-                                width=4,
+                                width=4, xs=10, sm=8, md=5, lg=4, xl=4,
                             ),
 
                             # Third column & ROC & AUC
@@ -295,7 +289,7 @@ tab2_content = dbc.Card(
                                             style={"fontSize": 20}),
                                     dcc.Graph(id="roc-graph"),
                                 ],
-                                width=4,
+                                width=4, xs=10, sm=8, md=5, lg=4, xl=4,
                             ),
                         ], style={"backgroundColor": "#30115E"}
                     ),

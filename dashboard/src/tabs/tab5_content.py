@@ -20,14 +20,14 @@ tab5_content = dbc.Card(
                            style={"color": "#35F8DF"}),
                     html.P("Number of tweets retweeted: 12 162",
                            style={"color": "#35F8DF"}),
-                ], width=3),
+                ], width=3, xs=12, sm=12, md=12, lg=3, xl=3,),
                 dbc.Col([
                     # This input is hidden, it is here to make bot-timeseries work
                     dbc.RadioItems(options=[{"label": "All groups", "value": 1}, {
                                    "label": "Exclude 'UNIDENTIFIED'", "value": 2}, ], value=2, id="bot-timeseries-input", inline=True, style={'display': 'none'}),
                     dbc.Spinner([dcc.Graph(id="bot-timeseries")], color="success",
                                 spinner_style={"width": "8rem", "height": "8rem"})
-                ], width=9),
+                ], width=9, xs=12, sm=12, md=12, lg=9, xl=9,),
             ]),
         ]
     ),

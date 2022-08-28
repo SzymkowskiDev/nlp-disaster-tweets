@@ -73,28 +73,28 @@ tab1_content = dbc.Card(
                                 "color": "#32FBE2", "fontSize": "18px"}),
                         html.P("ablaze arson arsonist arson arsonist buildings burning buildings on fire burned burning burning buildings  bush fires fire fire truck first responders flames forest fire forest fires wild fires wildfire engulfed hellfire",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("💥 EXPLOSION",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("blew up blown up bomb bombed bombing detonate detonation explode exploded explosion loud bang",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("🚗 TRANSPORT",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("airplane accident   collide collided collision crash crashed wreck wreckage wrecked derail derailed derailment sinking sunk",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("🧨 TERRORISM",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("bioterrorism bioterror hijack hijacker  hijacking hostage hostages suicide bomb suicide bomber suicide bombing terrorism terrorist",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
             ]),
             dbc.Row([
                 dbc.Col(
@@ -103,28 +103,28 @@ tab1_content = dbc.Card(
                             "color": "#32FBE2", "fontSize": "18px"}),
                         html.P("bridge collapse collapse  collapsed structural failure",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("💨 WIND",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("cyclone  hurricane rainstorm snowstorm storm tornado typhoon whirlwind windstorm blizzard hail hailstorm sandstorm dust storm violent storm",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("🏔️ ERROSION",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("landslide  mudslide sinkhole avalanche cliff fall",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("☀️ HOT WEATHER",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("drought heat wave",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
             ]),
             dbc.Row([
                 dbc.Col(
@@ -133,21 +133,21 @@ tab1_content = dbc.Card(
                             "color": "#32FBE2", "fontSize": "18px"}),
                         html.P("earthquake epicentre lava seismic volcano",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("🌽 FAMINE",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("famine",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("🌊 FLOOD",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("deluge deluged drown drowned drowning  flooding floods flood tsunami",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
 
                 dbc.Col(
                     [
@@ -155,7 +155,7 @@ tab1_content = dbc.Card(
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("lightning thunder thunderstorm",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
             ]),
             dbc.Row([
                 dbc.Col(
@@ -164,28 +164,28 @@ tab1_content = dbc.Card(
                             "color": "#32FBE2", "fontSize": "18px"}),
                         html.P("mass murder mass murderer",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("☢️ NUCLEAR",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("meltdown military natural disaster nuclear disaster nuclear reactor radiation emergency",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("🏭 INDUSTRIAL",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("oil spill electrocute electrocuted chemical emergency",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("🦠 DISEASE",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("outbreak quarantine quarantined",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
             ]),
             dbc.Row([
                 dbc.Col(
@@ -194,17 +194,17 @@ tab1_content = dbc.Card(
                             "color": "#32FBE2", "fontSize": "18px"}),
                         html.P("riot rioting",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
                         html.H2("⚔️ WAR",
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("war zone weapon weapons army battle refugees",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
                 dbc.Col(
                     [
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
 
                 dbc.Col(
                     [
@@ -212,7 +212,7 @@ tab1_content = dbc.Card(
                                 style={"color": "#32FBE2", "fontSize": "18px"}),
                         html.P("",
                                style={"color": "#32FBE2", "fontSize": "14px"})
-                    ], width=3),
+                    ], width=3, xs=10, sm=8, md=5, lg=3, xl=3,),
             ]),
             html.P("We have created an additional category for all the generic words that relate to distasters like 'emergency' while not indicating any specific type:"),
             html.H2("🚨 UNIDENTIFIED",
@@ -258,7 +258,6 @@ tab1_content = dbc.Card(
             ),
             dbc.Spinner([dcc.Graph(id="sankey-legit-location")],
                         color="success", spinner_style={"width": "8rem", "height": "8rem"}),
-            # BLOCKED: by Stim
             html.P("By further filtering our sample of 4 132 tweets to include only those where disastered did happen ('target' = 1) we obtain a sample of X."),
             html.P("This allows us to make the observation that the highest number of disasters were tweeted from: USA (574), Australia (148), UK (118), Canada (106) and India (96)."),
             html.P(
@@ -301,9 +300,9 @@ tab1_content = dbc.Card(
                         ],
                         value="total",
                         id="location-radio-items",
-                    )], width=2),
+                    )], width=2, xs=12, sm=12, md=12, lg=2, xl=2,),
                 dbc.Col([dbc.Spinner([dcc.Graph(id="map_from_pgo")],
-                        color="success", spinner_style={"width": "8rem", "height": "8rem"}), ], width=10),
+                        color="success", spinner_style={"width": "8rem", "height": "8rem"}), ], width=10, xs=12, sm=12, md=12, lg=10, xl=10,),
                 html.P(
                     "Caveat 1. The above map represents data where 'target'=1, so records labelled as actual disasters."),
                 html.P("Caveat 2. Locations should be thought of as approximates. That's because we take into account location of the profile posting a tweet. The tweet itself could, nevertheless, relate to a disaster happening in another country.")
