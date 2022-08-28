@@ -35,6 +35,35 @@ import itertools
 from collections import Counter
 from scipy.stats import kstest
 
+
+svg = """
+<svg
+  height="70"
+  width="100"
+  viewBox="0 0 100% 100%"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect width="100%" height="100%">
+    <animate
+      attributeName="rx"
+      values="0;50;0"
+      dur="5s"
+      repeatCount="indefinite"
+    />
+  </rect>
+  <circle r="40%" cx="50%" cy="50%" fill="#ffffff"></circle>
+  <circle r="20%" cx="50%" cy="50%" fill="#000000">
+    <animate
+      attributeName="r"
+      values="20%;40%;20%"
+      dur="5s"
+      repeatCount="indefinite"
+    />
+  </circle>
+</svg>
+"""
+
+
 # REUSABLE COMPONENTS
 progress = html.Div(
     [
@@ -212,23 +241,22 @@ tab2_content = dbc.Card(
                     ),
                 ]
             ),
-            dbc.Row(
+            dbc.Spinner(
                 [
-                    # H1 Raport
-                    html.Div(
-                        dbc.Row([
-
-                            dbc.Col([
-
-                                html.H2("REPORT", style={"marginTop": 25})],
-                                width=2),
-                        ]),
-                    ),
-
-                    # First column & Confusion Matrix
-                    dbc.Col(
+                    dbc.Row(
                         [
-                            dbc.Spinner(
+                            # H1 Raport
+                            html.Div(
+                                dbc.Row([
+
+                                    dbc.Col([
+
+                                        html.H2("REPORT", style={"marginTop": 25})],
+                                        width=2),
+                                ]),
+                            ),
+                            # First column & Confusion Matrix
+                            dbc.Col(
                                 [
                                     html.Div(id="performance-metrics-accuracy-text"),
                                     html.H3(
@@ -236,16 +264,11 @@ tab2_content = dbc.Card(
                                     ),
                                     dcc.Graph(id="class_barchart"),
                                 ],
-                                color="success",
-                                spinner_style={"width": "8rem", "height": "8rem"})
-                        ],
-                        width=4,
-                    ),
+                                width=4,
+                            ),
 
-                    # Second column & Performance Metrics
-                    dbc.Col(
-                        [
-                            dbc.Spinner(
+                            # Second column & Performance Metrics
+                            dbc.Col(
                                 [
                                     html.Div(id="performance-metrics-precison-text"),
                                     html.H3(
@@ -259,18 +282,11 @@ tab2_content = dbc.Card(
                                     ),
                                     html.P(id="performance-metrics-recall-text")
                                 ],
-                                color="warning",
-                                spinner_style={"width": "8rem", "height": "8rem"})
-                        ],
-                        width=4,
-                    ),
-                    # dbc.Col([html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
-                    #          dcc.Graph(id="confusion-matrix-graph")], width=4),
+                                width=4,
+                            ),
 
-                    # Third column & ROC & AUC
-                    dbc.Col(
-                        [
-                            dbc.Spinner(
+                            # Third column & ROC & AUC
+                            dbc.Col(
                                 [
                                     html.P(
                                         "Fig 3. shows the performance of the classification model at all classification thresholds."
@@ -279,15 +295,15 @@ tab2_content = dbc.Card(
                                             style={"fontSize": 20}),
                                     dcc.Graph(id="roc-graph"),
                                 ],
-                                color="light",
-                                spinner_style={"width": "8rem", "height": "8rem"}
-                            )
-
-                        ],
-                        width=4,
+                                width=4,
+                            ),
+                        ], style={"backgroundColor": "#30115E"}
                     ),
-                ], style={"backgroundColor": "#30115E"}
-            ),
+                ],
+                color="light",
+                type="grow",
+                spinner_style={"width": "15rem", "height": "15rem"}
+            )
         ]
     ),
     className="mt-3",

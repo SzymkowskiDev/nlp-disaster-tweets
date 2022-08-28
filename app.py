@@ -581,17 +581,6 @@ def update_roc(data):
     return fig
 
 
-# PROGRESS BAR
-@app.callback([Output("progress", "value"),Output("progress", "label")],[Input("progress-interval", "n_intervals")])
-def update_progress(n):
-    # check progress of some background process, in this example we'll just
-    # use n_intervals constrained to be in 0-100
-
-    progress = min(n % 110, 100)
-    # only add text after 5% progress to ensure text isn't squashed too much
-    return progress, f"{progress} %" if progress >= 5 else ""
-
-
 # TAB 3 - SOME FUNNY TEXT   ###########################################################################################################
 
 
