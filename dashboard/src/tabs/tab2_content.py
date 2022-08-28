@@ -1,7 +1,7 @@
 # IMPORT LOCAL
-from models.production.generate_perf_report import generate_perf_report
-from models.production.vectorize_data import vectorize_data
-from models.production.preprocess_data import preprocess_data
+from dashboard.src.models.production.generate_perf_report import generate_perf_report
+from dashboard.src.models.production.vectorize_data import vectorize_data
+from dashboard.src.models.production.preprocess_data import preprocess_data
 
 # IMPORT EXTERNAL
 import time

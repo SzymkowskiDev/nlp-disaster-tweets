@@ -1,13 +1,13 @@
 # IMPORT LOCAL
-from tabs.tab1_content import tab1_content
-from tabs.tab2_content import tab2_content
-from tabs.tab3_content import tab3_content
-from tabs.tab4_content import tab4_content
-from tabs.tab5_content import tab5_content
-from tabs.tab6_content import tab6_content
-from models.production.generate_perf_report import generate_perf_report
-from models.production.vectorize_data import vectorize_data
-from models.production.preprocess_data import preprocess_data
+from dashboard.src.tabs.tab1_content import tab1_content
+from dashboard.src.tabs.tab2_content import tab2_content
+from dashboard.src.tabs.tab3_content import tab3_content
+from dashboard.src.tabs.tab4_content import tab4_content
+from dashboard.src.tabs.tab5_content import tab5_content
+from dashboard.src.tabs.tab6_content import tab6_content
+from dashboard.src.models.production.generate_perf_report import generate_perf_report
+from dashboard.src.models.production.vectorize_data import vectorize_data
+from dashboard.src.models.production.preprocess_data import preprocess_data
 
 # IMPORT EXTERNAL
 import time
