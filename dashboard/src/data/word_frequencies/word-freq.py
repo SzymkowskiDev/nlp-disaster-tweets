@@ -3,8 +3,8 @@ import sys
 import pandas as pd
 from collections import Counter
 
-CLEAR_PATH = r'data/clear/'
-FREQ_PATH = r'data/word_frequencies/'
+CLEAR_PATH = r'../clear/'
+FREQ_PATH = r'../word_frequencies/'
 
 
 

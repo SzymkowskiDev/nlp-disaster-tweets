@@ -35,6 +35,35 @@ import itertools
 from collections import Counter
 from scipy.stats import kstest
 
+
+svg = """
+<svg
+  height="70"
+  width="100"
+  viewBox="0 0 100% 100%"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect width="100%" height="100%">
+    <animate
+      attributeName="rx"
+      values="0;50;0"
+      dur="5s"
+      repeatCount="indefinite"
+    />
+  </rect>
+  <circle r="40%" cx="50%" cy="50%" fill="#ffffff"></circle>
+  <circle r="20%" cx="50%" cy="50%" fill="#000000">
+    <animate
+      attributeName="r"
+      values="20%;40%;20%"
+      dur="5s"
+      repeatCount="indefinite"
+    />
+  </circle>
+</svg>
+"""
+
+
 # REUSABLE COMPONENTS
 progress = html.Div(
     [
@@ -42,7 +71,6 @@ progress = html.Div(
         dbc.Progress(id="progress", striped=True, color="success"),
     ]
 )
-
 
 # TAB 2: CLASSIFICATION ##############################################################################################################
 tab2_content = dbc.Card(
@@ -56,7 +84,7 @@ tab2_content = dbc.Card(
                             html.Div(
                                 [
                                     html.H3("Data Cleaning", style={
-                                            "fontSize": 20}),
+                                        "fontSize": 20}),
                                     dbc.Checklist(
                                         options=[
                                             {"label": "Remove hashes", "value": 1},
@@ -66,9 +94,9 @@ tab2_content = dbc.Card(
                                             },
                                             {"label": "Remove tickers", "value": 3},
                                             {"label": "Remove hyperlinks",
-                                                "value": 4},
+                                             "value": 4},
                                             {"label": "Remove whitespaces",
-                                                "value": 5},
+                                             "value": 5},
                                             {
                                                 "label": "Remove URL, RT, mention(@)",
                                                 "value": 6,
@@ -83,13 +111,13 @@ tab2_content = dbc.Card(
                                             },
                                             {"label": "Remove emojis", "value": 9},
                                             {"label": "Remove Mojibake",
-                                                "value": 10},
+                                             "value": 10},
                                             {
                                                 "label": "Tokenize & Lemmatize",
                                                 "value": 11,
                                             },
                                             {"label": "Leave only nouns",
-                                                "value": 12},
+                                             "value": 12},
                                             {
                                                 "label": "Spell check",
                                                 "value": 13,
@@ -108,7 +136,7 @@ tab2_content = dbc.Card(
                             html.Div(
                                 [
                                     html.H3("Vectorization", style={
-                                            "fontSize": 20}),
+                                        "fontSize": 20}),
                                     dbc.RadioItems(
                                         options=[
                                             {"label": "Count", "value": "count"},
@@ -137,9 +165,9 @@ tab2_content = dbc.Card(
                                         options=[
                                             {"label": "SVC", "value": "SVC"},
                                             {"label": "Logistic",
-                                                "value": "Logistic"},
+                                             "value": "Logistic"},
                                             {"label": "Naive Bayes",
-                                                "value": "Bayes"},
+                                             "value": "Bayes"},
                                             {
                                                 "label": "LSTM ANN model",
                                                 "value": "LSTM",
@@ -213,72 +241,69 @@ tab2_content = dbc.Card(
                     ),
                 ]
             ),
-            dbc.Row(
+            dbc.Spinner(
                 [
-
-
-                    ##
-                    html.Div(
-
-
-
-                        dbc.Row([
-
-                            dbc.Col([
-
-                                html.H2("REPORT", style={"marginTop": 25})],
-                                width=2),
-
-                            dbc.Col(
-                                html.Div([progress],
-                                         style={"marginTop": 32, "marginRight": 28}),
-
-                                width=10)
-
-
-                        ]),
-                    ),
-                    dbc.Col(
+                    dbc.Row(
                         [
-                            html.Div(id="performance-metrics-accuracy-text"),
-                            html.H3(
-                                "Fig 1. Confusion Matrix data", style={"fontSize": 20}
-                            ),
-                            dcc.Graph(id="class_barchart"),
-                        ],
-                        width=4,
-                    ),
-                    dbc.Col(
-                        [
-                            html.Div(id="performance-metrics-precison-text"),
-                            html.H3(
-                                "Fig 2. Performance Metrics", style={"fontSize": 20}
-                            ),
+                            # H1 Raport
                             html.Div(
+                                dbc.Row([
+
+                                    dbc.Col([
+
+                                        html.H2("REPORT", style={"marginTop": 25})],
+                                        width=2),
+                                ]),
+                            ),
+                            # First column & Confusion Matrix
+                            dbc.Col(
                                 [
-                                    html.Div(id="output-datatable"),
-                                    dcc.Store(id="intermediate-value"),
-                                ]
+                                    html.Div(id="performance-metrics-accuracy-text"),
+                                    html.H3(
+                                        "Fig 1. Confusion Matrix data", style={"fontSize": 20}
+                                    ),
+                                    dcc.Graph(id="class_barchart"),
+                                ],
+                                width=4,
                             ),
-                            html.P(id="performance-metrics-recall-text"),
-                        ],
-                        width=4,
-                    ),
-                    # dbc.Col([html.H3("Fig 2. Confusion Matrix", style={"fontSize": 20}),
-                    #          dcc.Graph(id="confusion-matrix-graph")], width=4),
-                    dbc.Col(
-                        [
-                            html.P(
-                                "Fig 3. shows the performance of the classification model at all classification thresholds."
+
+                            # Second column & Performance Metrics
+                            dbc.Col(
+                                [
+                                    html.Div(id="performance-metrics-precison-text"),
+                                    html.H3(
+                                        "Fig 2. Performance Metrics", style={"fontSize": 20}
+                                    ),
+                                    html.Div(
+                                        [
+                                            html.Div(id="output-datatable"),
+                                            dcc.Store(id="intermediate-value"),
+                                        ]
+                                    ),
+                                    html.P(id="performance-metrics-recall-text")
+                                ],
+                                width=4,
                             ),
-                            html.H3("Fig 3. ROC & AUC",
-                                    style={"fontSize": 20}),
-                            dcc.Graph(id="roc-graph"),
-                        ],
-                        width=4,
+
+                            # Third column & ROC & AUC
+                            dbc.Col(
+                                [
+                                    html.P(
+                                        "Fig 3. shows the performance of the classification model at all classification thresholds."
+                                    ),
+                                    html.H3("Fig 3. ROC & AUC",
+                                            style={"fontSize": 20}),
+                                    dcc.Graph(id="roc-graph"),
+                                ],
+                                width=4,
+                            ),
+                        ], style={"backgroundColor": "#30115E"}
                     ),
-                ], style={"backgroundColor": "#30115E"}
-            ),
+                ],
+                color="light",
+                type="grow",
+                spinner_style={"width": "15rem", "height": "15rem"}
+            )
         ]
     ),
     className="mt-3",
