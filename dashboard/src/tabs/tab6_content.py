@@ -20,7 +20,7 @@ tab6_content = dbc.Card(
                       html.P([html.A(["Related GitHub repo can be accessed here."],
                              href="https://github.com/SzymkowskiDev/nlp-disaster-tweets")])
                       ],
-                     style={"backgroundImage": "url(assets/frist_responders.jpeg", "width": "100%", "height": 600, "padding": 40}),
+                     style={"backgroundImage": "url(/assets/fire.jpg", "background-repeat": "no-repeat", "width": "100%", "height": 600, "padding": 40}),
         ]
     ),
     className="mt-3",

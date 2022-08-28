@@ -260,7 +260,7 @@ tab1_content = dbc.Card(
                         color="success", spinner_style={"width": "8rem", "height": "8rem"}),
             # BLOCKED: by Stim
             html.P("By further filtering our sample of 4 132 tweets to include only those where disastered did happen ('target' = 1) we obtain a sample of X."),
-            html.P("This allows us to make the observation that the highest number of disasters were tweeted from: A, B, C, D."),
+            html.P("This allows us to make the observation that the highest number of disasters were tweeted from: USA (574), Australia (148), UK (118), Canada (106) and India (96)."),
             html.P(
                 "Map 3. Frequencies of disaster types by country"
             ),
@@ -410,6 +410,7 @@ tab1_content = dbc.Card(
             ),
             dbc.Spinner([dcc.Graph(id="balance-output")], color="success",
                         spinner_style={"width": "8rem", "height": "8rem"}),
+            html.P("This concludes the exploration of training data. Navigate to 'Classification' to construct a prediction model.")
         ]
     ),
     className="mt-3",

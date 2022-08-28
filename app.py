@@ -49,10 +49,14 @@ from scipy.stats import kstest
 # WORD_FREQ_PATH = r"data/keyword/group_frequencies.csv"
 
 
-TRAIN_DATA_PATH = os.path.join(os.getcwd(), "dashboard", "src", "data", "original", "train.csv")
-CLASS_CHART_PATH = os.path.join(os.getcwd(), "dashboard", "src", "data", "class_chart", "class_chart.csv")
-WORD_FREQ_LEMMATIZED_PATH = os.path.join(os.getcwd(),"dashboard","src","data","word_frequencies","word-freq_lemmatized.csv")
-WORD_FREQ_PATH = os.path.join(os.getcwd(), "dashboard", "src", "data", "keyword", "group_frequencies.csv")
+TRAIN_DATA_PATH = os.path.join(
+    os.getcwd(), "dashboard", "src", "data", "original", "train.csv")
+CLASS_CHART_PATH = os.path.join(
+    os.getcwd(), "dashboard", "src", "data", "class_chart", "class_chart.csv")
+WORD_FREQ_LEMMATIZED_PATH = os.path.join(os.getcwd(
+), "dashboard", "src", "data", "word_frequencies", "word-freq_lemmatized.csv")
+WORD_FREQ_PATH = os.path.join(
+    os.getcwd(), "dashboard", "src", "data", "keyword", "group_frequencies.csv")
 
 
 ## FUNCTIONS ##
@@ -141,7 +145,6 @@ def update_sankey_chart(value):
     return fig
 
 
-
 # WORDCLOUD (looks a bit difffrent from other outputs)
 def plot_wordcloud(data):
     d = {a: x for a, x in data.values}
@@ -164,7 +167,6 @@ def make_image(b):
     img = BytesIO()
     plot_wordcloud(data=word_freqs_l).save(img, format="PNG")
     return "data:image/png;base64,{}".format(base64.b64encode(img.getvalue()).decode())
-
 
 
 # BARCHART 1
@@ -225,7 +227,7 @@ def update_location_map(value):
                      "location", "location_totals.csv")
     )
     df2 = df2[["country", value]]
-    
+
     # DATA TRANSFORMATIONS TO FEED MAP
     fig = go.Figure(
         data=go.Choropleth(
@@ -505,7 +507,7 @@ def update_datatable(data):
 
 # PERFORMANCE METRICS TEXT - ACCURACY
 @app.callback(Output("performance-metrics-accuracy-text", "children"), Input("intermediate-value", "data"),
-)
+              )
 def update_performance_metrics_accuracy_text(data):
     dff = pd.read_json(data, typ="series")
     tn, fp, fn, tp = np.array(dff.get("Confusion Matrix")).ravel()
@@ -530,7 +532,7 @@ def update_performance_metrics_precision_text(data):
 
 
 # PERFORMANCE METRICS TEXT - RECALL
-@app.callback(Output("performance-metrics-recall-text", "children"),Input("intermediate-value", "data"),)
+@app.callback(Output("performance-metrics-recall-text", "children"), Input("intermediate-value", "data"),)
 def update_performance_metrics_recall_text(data):
     dff = pd.read_json(data, typ="series")
     tn, _, fn, _ = np.array(dff.get("Confusion Matrix")).ravel()
@@ -587,7 +589,7 @@ def update_roc(data):
 # TAB 4 - MAKE A PREDICTION ###########################################################################################################
 
 # TODO: Some text
-@app.callback(Output("input-tweet-to-predict", "value"),[Input("input-make-a-prediction", "n_clicks")],)
+@app.callback(Output("input-tweet-to-predict", "value"), [Input("input-make-a-prediction", "n_clicks")],)
 def on_button_click(n_clicks):
     if n_clicks:
         names = ["Arthur Dent", "Ford Prefect", "Trillian Astra"]
@@ -638,8 +640,7 @@ tabs = dbc.Tabs(
         dbc.Tab(tab2_content, label="Classification", tab_id="tab-2"),
         dbc.Tab(
             tab3_content,
-            label="Compare runs",
-            disabled=True,
+            label="Best performing",
             tab_id="tab-3",
         ),
         dbc.Tab(
@@ -658,7 +659,7 @@ tabs = dbc.Tabs(
             tab_id="tab-6",
         ),
     ],
-    active_tab="tab-5",
+    active_tab="tab-2",
 )
 
 # Declare server for Heroku deployment. Needed for Procfile.
