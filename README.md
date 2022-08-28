@@ -2,6 +2,8 @@
 # NLP with Disaster Tweets (group project)
 Group solution to the Kaggle problem titled "Natural Language Processing with Disaster Tweets". The problem is to classify text data from 10,000 tweets into one of two groups: representing tweets about real natural disaster (1), tweets that are not about actual disaster (0).
 
+[Dashboard implementing our solution is available here.](https://nlp-disaster-tweets.herokuapp.com/)
+
 * ⭐ Kaggle's top score:           0.86117
 * ⭐ Our top prediction score:     0.84155
 
