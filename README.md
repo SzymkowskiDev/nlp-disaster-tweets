@@ -110,18 +110,12 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     - [X] Data Quality Issues
     - [X] Keyword
     - [X] Location (+interactive globe data viz)
-    - [ ] Text
-        - [X] Word frequency (+Wordcloud)
-        - [ ] Parts of Speech
-        - [ ] Sentiment Analysis
-        - [ ] Spelling Erros
-        - [ ] ~~Named Entity Recognition~~
-        - [ ] ~~Unsupervised Learning~~
+    - [X] Text (Word frequency (+Wordcloud))
     - [X] Target
 - [X] Customized classification tab
-- [X] ~~Compare runs~~ (we can replace it with 'best performing')
+- [ ] Best performing
 - [ ] Make a prediction
-- [X] Twitter BOT Analytics (not connected)
+- [X] Twitter BOT Analytics (blank)
 - [X] About page
 
 **Version 1.2.0** MILESTONE: twitter bot
