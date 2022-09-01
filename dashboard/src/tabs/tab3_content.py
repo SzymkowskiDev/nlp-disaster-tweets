@@ -9,8 +9,8 @@ tab3_content = dbc.Card(
     dbc.CardBody(
         [
             html.H2("BEST PERFORMING MODEL"),
-            html.P("We have found that the best performing model is X, in combination with the following data preprocessing operations:")
-        ], style={"height": 500}
+            html.P("We have found that the best performing model is X, in combination with the following data preprocessing operations:"),
+        ], style={"height": 400}
     ),
     className="mt-3",
 )

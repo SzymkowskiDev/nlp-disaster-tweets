@@ -8,6 +8,7 @@ from dashboard.src.tabs.tab6_content import tab6_content
 from dashboard.src.models.production.generate_perf_report import generate_perf_report
 from dashboard.src.models.production.vectorize_data import vectorize_data
 from dashboard.src.models.production.preprocess_data import preprocess_data
+from dashboard.src.models.production.make_a_prediction import make_a_prediction
 
 # IMPORT EXTERNAL
 import time
@@ -87,7 +88,7 @@ word_freqs = word_freqs.sort_values(by=["freq"], ascending=False)
 
 
 # APP SATRT
-app = Dash(__name__, title="folder", external_stylesheets=[
+app = Dash(__name__, title="NLP Disaster Tweets", external_stylesheets=[
     dbc.themes.VAPOR, dbc.icons.BOOTSTRAP], meta_tags=[
         {"name": "viewport", "content": "width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5"},
 ])
@@ -515,9 +516,9 @@ def update_performance_metrics_accuracy_text(data):
     tn, fp, fn, tp = np.array(dff.get("Confusion Matrix")).ravel()
     return (
         html.P(
-            f"Your customized model has been tried out on a test sample of {fn + fp + fn + tp} tweets in {round(dff.get('Time'), 4)} seconds. "
+            f"Your customized model has been tried out on a test sample of {fn + fp + tn + tp} tweets in {round(dff.get('Time'), 4)} seconds. "
             f"It correctly classified {tn + tp} of records, while the remaining {fp + fn} were assigned to a wrong class. "
-            f"This means that the accuracy is {round(dff.get('Accuracy'), 3) * 100}%."
+            f"This means that the accuracy is {dff.get('Accuracy')*100:.2f}%."
         ),
     )
 
@@ -529,7 +530,7 @@ def update_performance_metrics_precision_text(data):
     tn, fp, fn, tp = np.array(dff.get("Confusion Matrix")).ravel()
     return html.P(
         f"The classifier has marked a total of {fp + tp} tweets as those that relate to natural disasters (class 1). Out of these"
-        f", {tp} were actually in this group. This gives precision of {round(dff.get('Precision'), 3) * 100}%"
+        f", {tp} were actually in this group. This gives precision of {dff.get('Precision')*100:.2f}%"
     )
 
 
@@ -539,9 +540,9 @@ def update_performance_metrics_recall_text(data):
     dff = pd.read_json(data, typ="series")
     tn, _, fn, _ = np.array(dff.get("Confusion Matrix")).ravel()
     return html.P(
-        f"The sample contained a total of {tn + fn} true negatives. "
-        f"Out of them, {tn} were correctly predicted by the model. Hence, the recall is {round(dff.get('Recall'), 3) * 100}%. "
-        f"Finally, the harmonic mean of precison and recall is {round(dff.get('F1 Score'), 3) * 100}%."
+        f"The sample contained a total of {tn + fn} negatives. "
+        f"Out of them, {tn} were correctly predicted by the model. Hence, the recall is {dff.get('Recall')*100:.2f}  %. "
+        f"Finally, the harmonic mean of precison and recall is {dff.get('F1 Score')*100:.2f}%."
     )
 
 
@@ -590,15 +591,19 @@ def update_roc(data):
 
 # TAB 4 - MAKE A PREDICTION ###########################################################################################################
 
-# TODO: Some text
-@app.callback(Output("input-tweet-to-predict", "value"), [Input("input-make-a-prediction", "n_clicks")],)
-def on_button_click(n_clicks):
-    if n_clicks:
-        names = ["Arthur Dent", "Ford Prefect", "Trillian Astra"]
-        which = n_clicks % len(names)
-        return names[which]
+@app.callback(Output("output-outcome-of-prediction", "children"), Input("input-tweet-to-predict", "value"))
+def on_text_input(value):
+
+    prediction = make_a_prediction(df, value)
+
+    # Conditional display on outcome
+    if prediction == 0:
+        return html.P("This is likely not about a disaster, no need for an alert.", style={"color": "#49EF7B"})
+    elif prediction == 1:
+        return html.P("This is likely an emergency, call 112.", style={"color": "#DA525E"})
     else:
-        return ""
+        return html.P("Outcome will appear here.", style={"color": "#32FBE2"})
+
 
 # TAB 5 - TWITTER BOT ANALYTICS ########################################################################################################
 

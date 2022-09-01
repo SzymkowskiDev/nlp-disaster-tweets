@@ -129,7 +129,7 @@ tab2_content = dbc.Card(
                                 ]
                             )
                         ],
-                        width=3, xs=10, sm=8, md=5, lg=3, xl=3,
+                        width=4, xs=10, sm=8, md=5, lg=4, xl=4, style={"marginTop": 25, "marginBottom": 25}
                     ),
                     dbc.Col(
                         [
@@ -154,7 +154,7 @@ tab2_content = dbc.Card(
                                 ]
                             )
                         ],
-                        width=2, xs=10, sm=8, md=5, lg=2, xl=2, style={"marginTop": 25}
+                        width=4, xs=10, sm=8, md=5, lg=4, xl=4, style={"marginTop": 25}
                     ),
                     dbc.Col(
                         [
@@ -191,55 +191,9 @@ tab2_content = dbc.Card(
                                 ]
                             )
                         ],
-                        width=3, xs=10, sm=8, md=5, lg=3, xl=3, style={"marginTop": 25}
-                    ),
-                    dbc.Col(
-                        [
-                            html.Div(
-                                [
-                                    dbc.Button(
-                                        "Run",
-                                        color="success",
-                                        outline=True,
-                                        id="run",
-                                        style={
-                                            "borderRadius": "50%",
-                                            "height": 110,
-                                            "width": 110,
-                                            "marginBottom": 20,
-                                        },
-                                    ),
-                                    dbc.Button(
-                                        "Reset",
-                                        color="secondary",
-                                        outline=True,
-                                        id="reset",
-                                        style={
-                                            "borderRadius": "50%",
-                                            "height": 110,
-                                            "width": 110,
-                                            "marginBottom": 20,
-                                        },
-                                    ),
-                                    dbc.Button(
-                                        "Save",
-                                        color="primary",
-                                        outline=True,
-                                        id="save",
-                                        style={
-                                            "borderRadius": "50%",
-                                            "height": 110,
-                                            "width": 110,
-                                            "marginBottom": 20,
-                                        },
-                                    ),
-                                ],
-                                className="d-grid gap-2",
-                            ),
-                        ],
-                        width=3, xs=10, sm=8, md=5, lg=3, xl=3, style={"marginTop": 25}
-                    ),
-                ]
+                        width=4, xs=10, sm=8, md=5, lg=4, xl=4, style={"marginTop": 25}
+                    )
+                ],
             ),
             dbc.Spinner(
                 [

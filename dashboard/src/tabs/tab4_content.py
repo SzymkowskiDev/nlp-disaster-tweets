@@ -10,17 +10,11 @@ tab4_content = dbc.Card(
         [
             html.H3("Classify your tweet"),
             html.P("Input the text of your tweet below, the app will use our best performing model to decide, whether to call for emergency services. "),
-            dbc.InputGroup(
-                [
-                    dbc.Button("Predict",
-                               id="input-make-a-prediction", n_clicks=0),
-                    dbc.Input(id="input-tweet-to-predict"),
-                ]
-            ),
-            html.P("This is likely not about a disaster, no need for an alert.", style={
-                   "color": "#49EF7B"}),
-            html.P("This is likely an emergency, call 112.",
-                   style={"color": "#DA525E"})
+            # INPUTS
+            dbc.Input(id="input-tweet-to-predict", type="text"),
+            # OUTPUT PARAGRAPH
+            dbc.Spinner([html.Div(id="output-outcome-of-prediction")],
+                        color="success", type="grow", spinner_style={"width": "8rem", "height": "8rem"}),
         ]
     ),
     className="mt-3", style={"height": 600}
