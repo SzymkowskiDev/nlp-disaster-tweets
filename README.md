@@ -29,6 +29,8 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 
 ## 🔗 Related Projects
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
+* NLP Disaster Tweets [online dashboard](https://nlp-disaster-tweets.herokuapp.com/)
+* Twitter BOT built for this project [Disaster Retweeter](https://github.com/bswck/disaster-retweeter)
 
 ## 👓 Theory
 [Theory has been moved to the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
