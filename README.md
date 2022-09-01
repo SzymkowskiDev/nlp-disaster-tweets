@@ -116,7 +116,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     - [X] Target
 - [X] Customized classification tab
 - [ ] Best performing
-- [ ] Make a prediction
+- [X] Make a prediction
 - [X] Twitter BOT Analytics (blank)
 - [X] About page
 
