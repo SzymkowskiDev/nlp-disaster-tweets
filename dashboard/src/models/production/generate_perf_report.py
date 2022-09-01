@@ -50,7 +50,8 @@ def generate_perf_report(
 
     clf = clf or svm.SVC()
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, random_state=40)
 
     model = clf.fit(X_train, y_train)
     predictions = model.predict(X_test)  # type: ignore
