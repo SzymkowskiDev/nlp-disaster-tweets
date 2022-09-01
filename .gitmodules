@@ -1,0 +1,3 @@
+[submodule "disaster-retweeter"]
+	path = disaster-retweeter
+	url = https://github.com/bswck/disaster-retweeter.git
