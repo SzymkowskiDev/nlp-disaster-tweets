@@ -380,7 +380,7 @@ def search(geoname: str) -> RecordT:
     return _db.search(geoname)
 
 
-NOT_FOUND: tuple[Any, Any] = (None, None)
+NOT_FOUND: tuple[None, ...] = (None, None, None)
 
 
 def relevance_choice(
