@@ -6,15 +6,18 @@ from typing import Callable
 
 import pandas as pd
 from dashboard.src.models.production.normalize_location import normalize_location
+from dashboard.src.models.production.normalize_location import get_blacklist
 
 
 _DEFAULT_DATASET_PATH: str = "dashboard/src/data/original/train.csv"
 _DEFAULT_OUTPUT_PATH: str = "dashboard/src/data/location/norm_loc.csv"
 
+BLACKLIST = get_blacklist()
 
-def verbose_normalizer(location):
+
+def verbose_normalizer(location, blacklist=BLACKLIST):
     start = time.perf_counter()
-    normalized = normalize_location(location)
+    normalized = normalize_location(location, blacklisted_words=BLACKLIST)
     elapsed = time.perf_counter() - start
     if normalized:
         print(
