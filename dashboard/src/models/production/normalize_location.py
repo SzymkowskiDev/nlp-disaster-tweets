@@ -56,18 +56,6 @@ def _normalize_location(
     return result
 
 
-def normalize_location(
-    location: str, *,
-    blacklisted_words: _BlackListT = (),
-    blacklist_tolerance: int = 0
-) -> str:
-    return _normalize_location(
-        location,
-        blacklisted_words=blacklisted_words,
-        blacklist_tolerance=blacklist_tolerance
-    )[0]
-
-
 _BlackListT = Tuple[re.Pattern, ...]
 
 
@@ -80,3 +68,15 @@ def get_blacklist(filename: str = BLACKLIST_PATH, sep: str = "----") -> _BlackLi
             )
     except FileNotFoundError:
         return ()
+
+
+def normalize_location(
+    location: str, *,
+    blacklisted_words: _BlackListT = get_blacklist(),
+    blacklist_tolerance: int = 0
+) -> str:
+    return _normalize_location(
+        location,
+        blacklisted_words=blacklisted_words,
+        blacklist_tolerance=blacklist_tolerance
+    )[0]
