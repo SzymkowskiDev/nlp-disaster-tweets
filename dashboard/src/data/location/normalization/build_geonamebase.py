@@ -2,7 +2,7 @@
 # that is needed to use search() function later
 import time
 
-from dashboard.data.location.normalization import geonamebase
+from dashboard.src.data.location.normalization import geonamebase
 
 
 def build_geonamebase(path=geonamebase.DEFAULT_PATH):
