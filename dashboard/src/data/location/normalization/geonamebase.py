@@ -279,11 +279,11 @@ class CountryCodes(SourceDataset):
 
 
 SOURCE_DATASETS = (
-    CountryAliases("dashboard/data/location/normalization/datasets/countryaliases.csv"),
-    CountryCodes("dashboard/data/location/normalization/datasets/isocountrycodes.csv"),
-    Geonames("dashboard/data/location/normalization/datasets/cities500.csv"),
+    CountryAliases("dashboard/src/data/location/normalization/datasets/countryaliases.csv"),
+    CountryCodes("dashboard/src/data/location/normalization/datasets/isocountrycodes.csv"),
+    Geonames("dashboard/src/data/location/normalization/datasets/cities500.csv"),
     Geonames(
-        "dashboard/data/location/normalization/datasets/allcountries.csv",
+        "dashboard/src/data/location/normalization/datasets/allcountries.csv",
         chunksize=1000,
         iterates=True,
     ),
