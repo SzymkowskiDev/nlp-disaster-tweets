@@ -43,15 +43,16 @@ def _normalize_location(
     blacklist_tolerance: int = 0,
 ) -> geonamebase.RecordT:
     result = geonamebase.NOT_FOUND
-    location = " ".join(location.split())
-    for sep in CONTENT_SEPARATORS:
-        result = _normalize_location_impl(
-            location,
-            blacklisted_patterns=blacklisted_words,
-            blacklist_tolerance=blacklist_tolerance,
-            prev_result=result,
-            sep=sep
-        )
+    location = " ".join(location.strip().split())
+    if location:
+        for sep in CONTENT_SEPARATORS:
+            result = _normalize_location_impl(
+                location,
+                blacklisted_patterns=blacklisted_words,
+                blacklist_tolerance=blacklist_tolerance,
+                prev_result=result,
+                sep=sep
+            )
     return result
 
 
