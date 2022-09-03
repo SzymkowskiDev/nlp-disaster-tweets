@@ -1,14 +1,25 @@
 from __future__ import annotations
 
 import argparse
+import time
 from typing import Callable
 
 import pandas as pd
-from dashboard.models.production.normalize_location import normalize_location
+from dashboard.src.models.production.normalize_location import normalize_location
 
 
 _DEFAULT_DATASET_PATH: str = "dashboard/data/original/train.csv"
 _DEFAULT_OUTPUT_PATH: str = "dashboard/data/location/norm_loc.csv"
+
+
+def verbose_normalizer(location):
+    start = time.perf_counter()
+    normalized = normalize_location(location)
+    elapsed = time.perf_counter() - start
+    print(
+        location.ljust(30), " -> ", str(normalized).ljust(5),
+        f'{elapsed * 1000:.4f} ms'
+    )
 
 
 def bulk_normalize_location(
@@ -34,7 +45,14 @@ if __name__ == '__main__':
         '-o', '--output_file', help=f'Path to the new, transformed CSV dataset.',
         default=_DEFAULT_OUTPUT_PATH
     )
+    parser.add_argument(
+        '-v', help=f'Run in verbose mode.',
+        action='store_true'
+    )
 
     args = parser.parse_args()
 
-    bulk_normalize_location(pd.read_csv(args.file)).to_csv(args.output_file)
+    bulk_normalize_location(
+        pd.read_csv(args.file),
+        normalizer=verbose_normalizer if args.v else normalize_location
+    ).to_csv(args.output_file)
