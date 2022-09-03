@@ -14,7 +14,7 @@ _DEFAULT_OUTPUT_PATH: str = "dashboard/src/data/location/norm_loc.csv"
 
 def verbose_normalizer(location: str):
     start = time.perf_counter()
-    normalized = normalize_location(location, blacklisted_words=blacklist)
+    normalized = normalize_location(location)
     elapsed = time.perf_counter() - start
     if normalized:
         print(
