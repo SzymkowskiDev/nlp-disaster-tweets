@@ -39,7 +39,7 @@ def _normalize_location_impl(
 
 def _normalize_location(
     location: str, *,
-    blacklisted_words: _BlackListT = (),
+    blacklist: _BlackListT = (),
     blacklist_tolerance: int = 0,
 ) -> geonamebase.RecordT:
     result = geonamebase.NOT_FOUND
@@ -48,7 +48,7 @@ def _normalize_location(
         for sep in CONTENT_SEPARATORS:
             result = _normalize_location_impl(
                 location,
-                blacklisted_patterns=blacklisted_words,
+                blacklisted_patterns=blacklist,
                 blacklist_tolerance=blacklist_tolerance,
                 prev_result=result,
                 sep=sep
@@ -72,11 +72,11 @@ def get_blacklist(filename: str = BLACKLIST_PATH, sep: str = "----") -> _BlackLi
 
 def normalize_location(
     location: str, *,
-    blacklisted_words: _BlackListT = get_blacklist(),
+    blacklist: _BlackListT = get_blacklist(),
     blacklist_tolerance: int = 0
 ) -> str:
     return _normalize_location(
         location,
-        blacklisted_words=blacklisted_words,
+        blacklist=blacklist,
         blacklist_tolerance=blacklist_tolerance
     )[0]
