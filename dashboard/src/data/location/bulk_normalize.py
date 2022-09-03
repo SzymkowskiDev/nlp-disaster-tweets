@@ -8,8 +8,8 @@ import pandas as pd
 from dashboard.src.models.production.normalize_location import normalize_location
 
 
-_DEFAULT_DATASET_PATH: str = "dashboard/data/original/train.csv"
-_DEFAULT_OUTPUT_PATH: str = "dashboard/data/location/norm_loc.csv"
+_DEFAULT_DATASET_PATH: str = "dashboard/src/data/original/train.csv"
+_DEFAULT_OUTPUT_PATH: str = "dashboard/src/data/location/norm_loc.csv"
 
 
 def verbose_normalizer(location):
