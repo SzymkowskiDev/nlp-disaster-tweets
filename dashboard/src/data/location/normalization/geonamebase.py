@@ -30,7 +30,7 @@ __all__ = (
 
 log = logging.getLogger(__name__)
 
-DEFAULT_PATH: str = "dashboard/data/location/normalization/geonamebase.db"
+DEFAULT_PATH: str = "dashboard/src/data/location/normalization/geonamebase.db"
 
 
 class SourceDataset:
