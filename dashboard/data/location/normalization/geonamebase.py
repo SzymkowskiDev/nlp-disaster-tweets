@@ -224,16 +224,14 @@ class Geonames(SourceDataset):
             new_record = (
                 row.country_code,
                 row.feature_class,
-                population := row.population,
+                row.population,
             )
             for name in map(str.lower, names):
                 name = sys.intern(name)
                 if name in db:
                     old_record = db[name]
                     if relevance_choice(old_record, new_record) is new_record:
-                        old_population = old_record[2] or 0.0
-                        if old_population < population:
-                            db[name] = new_record
+                        db[name] = new_record
                 else:
                     db[name] = new_record
 
@@ -320,19 +318,19 @@ class GeoNameBase:
             it = executor.map(operator.methodcaller("push", self.db), self.sources)
             set(it)  # activate by implicit full iteration
 
-    def get(self, geoname: str) -> tuple[str | None, str | None]:
+    def search(self, geoname: str) -> RecordT:
         """
         Search for the country of a place that a given geagraphical name points to.
 
         Returns
         -------
-        country, feature : (str, str)
-            Country code and feature class of the geographical object
-            inferred from search.
+        country, feature, population : (str, str, float or None)
+            Country code, feature class and population of the geographical object
+            found via search.
         """
         key = sys.intern(" ".join(geoname.lower().split()))
 
-        country, feature_class, _ = self.db.get(key, self.MISSING)
+        country, feature_class, population = self.db.get(key, self.MISSING)
 
         # lazy alpha-2 -> alpha-3 normalization
         # note: 2-letter result/input is being upper-cased here, because codes
@@ -348,7 +346,7 @@ class GeoNameBase:
         if alpha2:
             country, _, _ = self.db.get(alpha2, (country, None, None))
 
-        return country, feature_class
+        return country, feature_class, population
 
 
 def get_geonamebase(
@@ -371,15 +369,15 @@ def get_geonamebase(
 _db: GeoNameBase | None = None
 
 
-RecordT = Union[Tuple[Optional[str], Optional[str]], Tuple[Any, ...]]
+RecordT = Union[Tuple[Optional[str], Optional[str], Optional[float]], Tuple[Any, ...]]
 
 
 def search(geoname: str) -> RecordT:
-    """Shortcut for `get_namebase().search(geoname)`."""
+    """Shortcut for `get_geonamebase().search(geoname)`."""
     global _db
     if _db is None:
         _db = get_geonamebase()
-    return _db.get(geoname)
+    return _db.search(geoname)
 
 
 NOT_FOUND: tuple[Any, Any] = (None, None)
@@ -390,15 +388,17 @@ def relevance_choice(
     record_2: RecordT,
     hierarchy: tuple[str, ...] = FeatureClass.RELEVANCE_HIERARCHY,
 ) -> RecordT:
-    """Determine which record is more relevant in terms of feature classes."""
+    """
+    Determine which record is more relevant
+    in terms of feature classes and population.
+    """
     feature_class_1 = record_1[1]
     feature_class_2 = record_2[1]
     if record_2 == NOT_FOUND or feature_class_1 == feature_class_2:
+        if len(record_1) == len(record_2) == 3:
+            return max((record_1, record_2), key=lambda record: record[2] or 0)
         return record_1
     if record_1 == NOT_FOUND:
         return record_2
-    choices = {
-        hierarchy.index(feature_class_1): record_1,
-        hierarchy.index(feature_class_2): record_2,
-    }
-    return choices[min(choices)]
+    return min((record_1, record_2), key=lambda record: hierarchy.index(record[1]))
+
