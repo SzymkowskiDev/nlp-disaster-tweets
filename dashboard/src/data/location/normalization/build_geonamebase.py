@@ -10,6 +10,7 @@ from dashboard.src.data.location.normalization import geonamebase
 def build_geonamebase(path=geonamebase.DEFAULT_PATH):
     if "-v" in sys.argv:
         geonamebase.log.setLevel(logging.INFO)
+        geonamebase.log.addHandler(logging.StreamHandler())
     geonamebase.log.info(f"Building your geographical name database at {path}...")
     db = geonamebase.get_geonamebase(_flag="c")
     start = time.perf_counter()
