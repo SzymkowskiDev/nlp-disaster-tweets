@@ -27,12 +27,12 @@ def _normalize_location_impl(
     sep: str = "",
 ) -> geonamebase.RecordT:
     result = prev_result
-    for word in map(_fix_word, location.split(sep)):
+    for word in location.split(sep):
         if any(pat.match(word) for pat in blacklisted_patterns):
             if blacklist_tolerance == 0:
                 break
             blacklist_tolerance -= 1
-        found = geonamebase.search(word)
+        found = geonamebase.search(_fix_word(word))
         result = geonamebase.relevance_choice(result, found)
     return result
 
