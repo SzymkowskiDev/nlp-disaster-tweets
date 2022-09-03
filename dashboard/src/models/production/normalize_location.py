@@ -1,16 +1,13 @@
 from __future__ import annotations
 
-from typing import Tuple, TYPE_CHECKING
+import re
+from typing import Tuple
 
-from dashboard.data.location.normalization.geonamebase import search, relevance_choice
-from dashboard.data.location.normalization.geonamebase import NOT_FOUND
-
-if TYPE_CHECKING:
-    from dashboard.data.location.normalization.geonamebase import RecordT
+from dashboard.src.data.location.normalization import geonamebase
 
 
-BLACKLIST_PATH: str = "dashboard/data/location/normalization/blacklist.txt"
-CONTENT_SEPARATORS: str = ",;|"
+BLACKLIST_PATH: str = "dashboard/src/data/location/normalization/blacklist.txt"
+CONTENT_SEPARATORS: tuple[str, ...] = (*",;|", " (")
 
 
 def _char_ok(char: str) -> bool:
@@ -23,19 +20,19 @@ def _fix_word(word: str) -> str:
 
 def _normalize_location_impl(
     location: str, *,
-    blacklisted_words: _BlackListT = (),
+    blacklisted_patterns: _BlackListT = (),
     blacklist_tolerance: int = 0,
-    prev_result: RecordT = NOT_FOUND,
+    prev_result: geonamebase.RecordT = geonamebase.NOT_FOUND,
     sep: str = "",
-) -> RecordT:
+) -> geonamebase.RecordT:
     result = prev_result
     for word in map(_fix_word, location.split(sep)):
-        if word in blacklisted_words:
+        if any(pat.match(word) for pat in blacklisted_patterns):
             if blacklist_tolerance == 0:
                 break
             blacklist_tolerance -= 1
-        found = search(word)
-        result = relevance_choice(result, found)
+        found = geonamebase.search(word)
+        result = geonamebase.relevance_choice(result, found)
     return result
 
 
@@ -43,12 +40,13 @@ def _normalize_location(
     location: str, *,
     blacklisted_words: _BlackListT = (),
     blacklist_tolerance: int = 0,
-) -> RecordT:
-    result = NOT_FOUND
+) -> geonamebase.RecordT:
+    result = geonamebase.NOT_FOUND
+    location = " ".join(location.split())
     for sep in CONTENT_SEPARATORS:
         result = _normalize_location_impl(
             location,
-            blacklisted_words=blacklisted_words,
+            blacklisted_patterns=blacklisted_words,
             blacklist_tolerance=blacklist_tolerance,
             prev_result=result,
             sep=sep
@@ -68,12 +66,15 @@ def normalize_location(
     )[0]
 
 
-_BlackListT = Tuple[str, ...]
+_BlackListT = Tuple[re.Pattern, ...]
 
 
-def get_blacklist(filename: str = BLACKLIST_PATH) -> _BlackListT:
+def get_blacklist(filename: str = BLACKLIST_PATH, sep: str = "----") -> _BlackListT:
     try:
         with open(filename, 'r', encoding='UTF-8') as file:
-            return tuple(file.read().split('\n'))
+            text = ''.join(' '.join(file.read().split()).split('\n'))
+            return tuple(
+                map(re.compile, ''.join(text.split(sep)))  # type: ignore
+            )
     except FileNotFoundError:
         return ()
