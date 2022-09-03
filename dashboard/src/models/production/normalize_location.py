@@ -8,10 +8,11 @@ from dashboard.src.data.location.normalization import geonamebase
 
 BLACKLIST_PATH: str = "dashboard/src/data/location/normalization/blacklist.txt"
 CONTENT_SEPARATORS: tuple[str, ...] = (*",;|", " (")
+NONALPHA_CHARS_ALLOWED: str = " -."
 
 
 def _char_ok(char: str) -> bool:
-    return char in " -" or char.isalpha()
+    return char in NONALPHA_CHARS_ALLOWED or char.isalnum()
 
 
 def _fix_word(word: str) -> str:
