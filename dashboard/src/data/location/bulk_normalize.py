@@ -16,10 +16,11 @@ def verbose_normalizer(location):
     start = time.perf_counter()
     normalized = normalize_location(location)
     elapsed = time.perf_counter() - start
-    print(
-        location.ljust(30), " -> ", str(normalized).ljust(5),
-        f'{elapsed * 1000:.4f} ms'
-    )
+    if normalized:
+        print(
+            location.ljust(30), " -> ", str(normalized).ljust(5),
+            f'{elapsed * 1000:.4f} ms'.rjust(30)
+        )
 
 
 def bulk_normalize_location(
