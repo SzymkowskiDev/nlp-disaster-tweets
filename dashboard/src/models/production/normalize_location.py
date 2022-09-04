@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import functools
 import re
 from typing import Tuple
 
@@ -68,7 +69,7 @@ def get_blacklist(filename: str = BLACKLIST_PATH, sep: str = "----") -> _BlackLi
     try:
         with open(filename, 'r', encoding='UTF-8') as file:
             pats = ''.join(file.read().split()).split(sep)
-            return tuple(map(re.compile, pats))  # type: ignore
+            return tuple(map(functools.partial(re.compile, flags=re.I), pats))
     except FileNotFoundError:
         return ()
 
