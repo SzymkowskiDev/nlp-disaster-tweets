@@ -10,7 +10,7 @@ from dashboard.src.models.production.normalize_location import get_blacklist
 
 
 _DEFAULT_DATASET_PATH: str = "dashboard/src/data/original/train.csv"
-_DEFAULT_OUTPUT_PATH: str = "dashboard/src/data/location/norm_loc.csv"
+_DEFAULT_OUTPUT_PATH: str = "dashboard/src/data/location/train_normalized.csv"
 
 
 def verbose_normalizer(location: str):
