@@ -22,6 +22,7 @@ def verbose_normalizer(location: str):
             location.ljust(100), " -> ", str(normalized).ljust(5),
             f'{elapsed * 1000:.4f} ms'.rjust(30)
         )
+    return normalized
 
 
 def bulk_normalize_location(
