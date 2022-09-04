@@ -170,7 +170,10 @@ class FeatureClass:
     U: ClassVar[str] = "U"  # underseas
 
     # countries > administrative boundaries > populated places > hypsographic objects...
-    RELEVANCE_HIERARCHY: tuple[str, ...] = (C, A, P, T, R, H, S, L, V, U)
+    RELEVANCE_HIERARCHY: dict[str, int] = {
+        C: 0, A: 1, P: 1, T: 2, R: 3,
+        H: 4, S: 5, L: 6, V: 7, U: 8
+    }
 
 
 class Geonames(SourceDataset):
@@ -390,18 +393,20 @@ NOT_FOUND: tuple[None, ...] = (None, None, None)
 def relevance_choice(
     record_1: RecordT,
     record_2: RecordT,
-    hierarchy: tuple[str, ...] = FeatureClass.RELEVANCE_HIERARCHY,
+    hierarchy: dict[str, int] | None = None,
 ) -> RecordT:
     """
     Determine which record is more relevant
     in terms of feature classes and population.
     """
+    if hierarchy is None:
+        hierarchy = FeatureClass.RELEVANCE_HIERARCHY
     feature_class_1 = record_1[1]
     feature_class_2 = record_2[1]
-    if record_2 == NOT_FOUND or feature_class_1 == feature_class_2:
-        if len(record_1) == len(record_2) == 3:
-            return max((record_1, record_2), key=lambda record: record[2] or 0)
+    if record_2 == NOT_FOUND:
         return record_1
     if record_1 == NOT_FOUND:
         return record_2
-    return min((record_1, record_2), key=lambda record: hierarchy.index(record[1]))
+    if hierarchy[feature_class_1] == hierarchy[feature_class_2]:
+        return max(record_1, record_2, key=lambda record: record[2] or 0)
+    return min(record_1, record_2, key=lambda record: hierarchy[record[1]])
