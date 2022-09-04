@@ -8,7 +8,7 @@ from dashboard.src.data.location.normalization import geonamebase
 
 
 BLACKLIST_PATH: str = "dashboard/src/data/location/normalization/blacklist.txt"
-CONTENT_SEPARATORS: tuple[str, ...] = (*",&|", " (")
+CONTENT_SEPARATORS: tuple[str, ...] = (*",&|/", " (")
 NONALPHA_CHARS_ALLOWED: str = " -."
 
 

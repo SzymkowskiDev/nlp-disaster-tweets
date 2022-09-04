@@ -34,7 +34,7 @@ def bulk_normalize_location(
     column.
     """
     df[column_name] = df["location"].fillna("").map(normalizer)
-    return df[["id", "keyword", "location", column_name, "text", "target"]]
+    return df[["keyword", "location", column_name, "text", "target"]]
 
 
 if __name__ == '__main__':
@@ -55,6 +55,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     bulk_normalize_location(
-        pd.read_csv(args.file),
+        pd.read_csv(args.file, index_col="id"),
         normalizer=verbose_normalizer if args.v else normalize_location
     ).to_csv(args.output_file)
