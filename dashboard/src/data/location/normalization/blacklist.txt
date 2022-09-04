@@ -7,6 +7,7 @@
 ----
   earth | planet | galaxy | universe | inexpressible | paradise
 | hell | heaven
+| click | link | url | website | site | web | webpage
 | twitter | facebook | google | yahoo | bing | youtube
 | t?here | everywhere | nowhere | unknown | incognito
 | bathroom | kitchen | bedroom
