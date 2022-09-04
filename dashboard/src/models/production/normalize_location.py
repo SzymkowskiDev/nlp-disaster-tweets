@@ -7,7 +7,7 @@ from dashboard.src.data.location.normalization import geonamebase
 
 
 BLACKLIST_PATH: str = "dashboard/src/data/location/normalization/blacklist.txt"
-CONTENT_SEPARATORS: tuple[str, ...] = (*",;|", " (")
+CONTENT_SEPARATORS: tuple[str, ...] = (*",&|", " (")
 NONALPHA_CHARS_ALLOWED: str = " -."
 
 
@@ -15,26 +15,28 @@ def _char_ok(char: str) -> bool:
     return char in NONALPHA_CHARS_ALLOWED or char.isalnum()
 
 
-def _fix_word(word: str) -> str:
-    return "".join(filter(_char_ok, word)).lower()
+def _transform_word_to_query(word: str) -> str:
+    return "".join(filter(_char_ok, word)).strip().lower()
 
 
 def _normalize_location_impl(
     location: str, *,
-    blacklisted_patterns: _BlackListT = (),
+    blacklist: _BlackListT = (),
     blacklist_tolerance: int = 0,
     prev_result: geonamebase.RecordT = geonamebase.NOT_FOUND,
     sep: str = "",
 ) -> geonamebase.RecordT:
     result = prev_result
-    for word in location.split(sep):
-        if any(pat.match(word) for pat in blacklisted_patterns):
-            if blacklist_tolerance == 0:
-                break
-            blacklist_tolerance -= 1
-        found = geonamebase.search(_fix_word(word))
-        result = geonamebase.relevance_choice(result, found)
-    return result
+    blacklist_hits = 0
+    for word in map(str.strip, location.split(sep)):
+        if blacklist_hits > blacklist_tolerance:
+            break
+        blacklist_hits += any(pat.match(word) for pat in blacklist)
+        query_word = _transform_word_to_query(word)
+        if query_word:
+            found = geonamebase.search(query_word)
+            result = geonamebase.relevance_choice(result, found)
+    return result, blacklist_hits
 
 
 def _normalize_location(
@@ -46,13 +48,16 @@ def _normalize_location(
     location = " ".join(location.strip().split())
     if location:
         for sep in CONTENT_SEPARATORS:
-            result = _normalize_location_impl(
+            normalized, blacklist_hits = _normalize_location_impl(
                 location,
-                blacklisted_patterns=blacklist,
+                blacklist=blacklist,
                 blacklist_tolerance=blacklist_tolerance,
                 prev_result=result,
                 sep=sep
             )
+            if blacklist_hits > blacklist_tolerance:
+                break
+            result = normalized
     return result
 
 
@@ -62,10 +67,8 @@ _BlackListT = Tuple[re.Pattern, ...]
 def get_blacklist(filename: str = BLACKLIST_PATH, sep: str = "----") -> _BlackListT:
     try:
         with open(filename, 'r', encoding='UTF-8') as file:
-            text = ''.join(' '.join(file.read().split()).split('\n'))
-            return tuple(
-                map(re.compile, ''.join(text.split(sep)))  # type: ignore
-            )
+            pats = ''.join(file.read().split()).split(sep)
+            return tuple(map(re.compile, pats))  # type: ignore
     except FileNotFoundError:
         return ()
 

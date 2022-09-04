@@ -226,7 +226,7 @@ class Geonames(SourceDataset):
                 row.feature_class,
                 row.population,
             )
-            for name in map(str.lower, names):
+            for name in filter(None, map(str.strip, map(str.lower, names))):
                 name = sys.intern(name)
                 if name in db:
                     old_record = db[name]
@@ -279,8 +279,12 @@ class CountryCodes(SourceDataset):
 
 
 SOURCE_DATASETS = (
-    CountryAliases("dashboard/src/data/location/normalization/datasets/countryaliases.csv"),
-    CountryCodes("dashboard/src/data/location/normalization/datasets/isocountrycodes.csv"),
+    CountryAliases(
+        "dashboard/src/data/location/normalization/datasets/countryaliases.csv"
+    ),
+    CountryCodes(
+        "dashboard/src/data/location/normalization/datasets/isocountrycodes.csv"
+    ),
     Geonames("dashboard/src/data/location/normalization/datasets/cities500.csv"),
     Geonames(
         "dashboard/src/data/location/normalization/datasets/allcountries.csv",
@@ -328,7 +332,7 @@ class GeoNameBase:
             Country code, feature class and population of the geographical object
             found via search.
         """
-        key = sys.intern(" ".join(geoname.lower().split()))
+        key = sys.intern(" ".join(geoname.strip().lower().split()))
 
         country, feature_class, population = self.db.get(key, self.MISSING)
 
@@ -377,7 +381,7 @@ def search(geoname: str) -> RecordT:
     global _db
     if _db is None:
         _db = get_geonamebase()
-    return _db.search(geoname)
+    return _db.search(geoname)  # type: ignore
 
 
 NOT_FOUND: tuple[None, ...] = (None, None, None)
@@ -401,4 +405,3 @@ def relevance_choice(
     if record_1 == NOT_FOUND:
         return record_2
     return min((record_1, record_2), key=lambda record: hierarchy.index(record[1]))
-

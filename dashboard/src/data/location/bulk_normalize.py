@@ -6,6 +6,7 @@ from typing import Callable
 
 import pandas as pd
 from dashboard.src.models.production.normalize_location import normalize_location
+from dashboard.src.models.production.normalize_location import get_blacklist
 
 
 _DEFAULT_DATASET_PATH: str = "dashboard/src/data/original/train.csv"
