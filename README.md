@@ -141,10 +141,19 @@ Description
 
 **Version 1.2.0** MILESTONE: twitter bot
 
-- [ ] Twitter bot
-- [ ] Dashboard live analytics
-
-
+- [ ] The Disaster Retweeter
+    - [ ] BOT: crawler
+    - [ ] BOT: classification
+    - [ ] BOT: retweeter
+    - [X] Database 1: PostgreSQL
+    - [X] Databse 2: Redis
+    - [X] Rest API 1: analytics.py router
+    - [ ] Rest API 2:  logs.py router
+    - [ ] Client part 1: module
+    - [X] Client part 2: dashboard end   
+    - [ ] tests
+    
+  
 ## 🆕 Project duration
 03/07/2022 - 15/09/2022 (74 days)
 
