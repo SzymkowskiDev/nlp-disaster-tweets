@@ -7,7 +7,7 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 * ⭐ Kaggle's top score:           0.86117
 * ⭐ Our top prediction score:     0.84155
 
-![banner](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/assets/banner.PNG?raw=true)
+![dashboard](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/assets/dashboard.gif?raw=true)
 
 ## Contents
 1. [🔗 Related Projects](#-Related-Projects)
@@ -220,3 +220,5 @@ Function `vectorize_data()` takes two parameters:
 [MIT License](https://choosealicense.com/licenses/mit/) ©️ 2019-2020 [Kamil Szymkowski](https://github.com/SzymkowskiDev "Get in touch!")
 
 [![](https://img.shields.io/badge/license-MIT-green?style=plastic)](https://choosealicense.com/licenses/mit/)
+   
+![banner](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/assets/banner.PNG?raw=true)
