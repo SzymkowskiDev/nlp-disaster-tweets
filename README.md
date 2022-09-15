@@ -77,7 +77,6 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [bswck](https://github.com/bswck)
 
 ## 🏛️ Architecture
-Description
 ![architecture](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/assets/architecture.png?raw=true)
    
    
