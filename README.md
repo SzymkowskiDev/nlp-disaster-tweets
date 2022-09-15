@@ -83,26 +83,17 @@ Description
    
 ## 📂 Directory Structure
     ├───assets
-    ├───dashboard
-    ├───data
-    │   └───original
-    │   │   ├───test.csv
-    │   │   └───train.csv
-    │   └───train_split
-    │       ├───python
-    │       ├───test_new.csv
-    │       └───train_new.csv
-    ├───models
-    │   └───production
-    │       ├───best_performing.py
-    │       └───validation.py
+    ├───dashboard/src
+    |   ├───data
+    |   ├───models/production
+    |   └───tabs
+    ├───disaster-retweeter (git module to https://github.com/bswck/disaster-retweeter)
     ├───notebooks
+    ├───reports
     ├───submissions
-    └───reports
-        ├───EDA.ipynb/.doc
-        ├───Preprocessor_comparison.ipynb/.doc
-        ├───Tests_of_pre_preprocessing.ipynb/.doc
-        └───Validator.py
+    ├───app.py
+    └───requirements.txt
+
 
 ## 🎓 Learning/Reference Materials
 ❗ More resources are available on Team's google drive: discordnlp7@gmail.com, ask a team member for password ❗
