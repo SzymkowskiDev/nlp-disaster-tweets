@@ -77,7 +77,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 
 ## 🏛️ Architecture
 Description
-![architecture](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/assets/architecture.PNG?raw=true)
+![architecture](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/assets/architecture.png?raw=true)
    
    
 ## 📂 Directory Structure
