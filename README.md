@@ -45,7 +45,7 @@ Take these steps before section "🚀 How to run"
 
 ## 🚀 How to run
 
-    *Follow the steps in "⚙️ Setup" section that describe how to install all the dependencies*
+    Follow the steps in "⚙️ Setup" section that describe how to install all the dependencies
    
 ### How to access the web app?
 The dashboard is deployed at Heroku and is live at the address [https://nlp-disaster-tweets.herokuapp.com/](https://nlp-disaster-tweets.herokuapp.com/)
@@ -74,6 +74,11 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
 * [PanNorek](https://github.com/PanNorek)
 * [bswck](https://github.com/bswck)
 
+## 🏛️ Architecture
+Description
+![architecture](https://github.com/SzymkowskiDev/nlp-disaster-tweets/blob/master/assets/architecture.PNG?raw=true)
+   
+   
 ## 📂 Directory Structure
     ├───assets
     ├───dashboard
