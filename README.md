@@ -218,9 +218,7 @@ Function `vectorize_data()` takes two parameters:
 
 [![](https://img.shields.io/twitter/url?label=/rafal-nojek/&logo=linkedin&logoColor=%230077B5&style=social&url=https%3A%2F%2Fwww.linkedin.com%2in%2rafaln97%2F)](https://www.linkedin.com/in/rafaln97/) [![](https://img.shields.io/twitter/url?label=/PanNorek&logo=github&logoColor=%23292929&style=social&url=https%3A%2F%2Fgithub.com%2FPanNorek)](https://github.com/PanNorek)
 
-[![](https://img.shields.io/twitter/url?label=/bartosz-sławecki-25384b250/&logo=linkedin&logoColor=%230077B5&style=social&url)](https://www.linkedin.com/in/bartosz-s%C5%82awecki-25384b250/) 
-
-[![](https://img.shields.io/twitter/url?label=/bswck&logo=github&logoColor=%23292929&style=social&url=https://github.com/bswck)](https://github.com/bswck)
+[![](https://img.shields.io/twitter/url?label=/bartosz-sławecki-25384b250/&logo=linkedin&logoColor=%230077B5&style=social&url)](https://www.linkedin.com/in/bartosz-s%C5%82awecki-25384b250/) [![](https://img.shields.io/twitter/url?label=/bswck&logo=github&logoColor=%23292929&style=social&url=https://github.com/bswck)](https://github.com/bswck)
 
 
 ## 📄 License
