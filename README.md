@@ -163,6 +163,9 @@ Description
 * scikit-learn
 * nltk
 * dash
+* PostgreSQL
+* Redis
+* FastAPI
 
 ## 📝 Examples
 **Example 1. Measuring performance metrics with `generate_perf_report()`**
