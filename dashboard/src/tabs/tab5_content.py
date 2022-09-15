@@ -13,22 +13,35 @@ tab5_content = dbc.Card(
                 ["The BOT can be accessed here."], href="https://twitter.com/elonmusk")]),
             html.P("Below are live analytics from its long-term operations."),
             dbc.Row([
-                dbc.Col([
-                    html.P("Time of operations: 341 days",
-                           style={"color": "#35F8DF"}),
-                    html.P("Number of tweets classified: 148 526",
-                           style={"color": "#35F8DF"}),
-                    html.P("Number of tweets retweeted: 12 162",
-                           style={"color": "#35F8DF"}),
-                ], width=3, xs=12, sm=12, md=12, lg=3, xl=3,),
-                dbc.Col([
-                    # This input is hidden, it is here to make bot-timeseries work
-                    dbc.RadioItems(options=[{"label": "All groups", "value": 1}, {
-                                   "label": "Exclude 'UNIDENTIFIED'", "value": 2}, ], value=2, id="bot-timeseries-input", inline=True, style={'display': 'none'}),
-                    dbc.Spinner([dcc.Graph(id="bot-timeseries")], color="success",
-                                spinner_style={"width": "8rem", "height": "8rem"})
-                ], width=9, xs=12, sm=12, md=12, lg=9, xl=9,),
+                # Example of JSON data being displayed here from the retweeter web API
+                # This input is hidden and is only here so that the output can work
+                dcc.Textarea(
+                    id='analytics-input-dummy',
+                    value='Textarea content initialized\nwith multiple lines of text',
+                    style={'display': 'none'}
+                    # style={'width': '100%', 'height': 300},
+                ),
+
+                html.Div(id='analytics-output',
+                         style={'whiteSpace': 'pre-line'}),
             ]),
+            # dbc.Row([
+            #     dbc.Col([
+            #         html.P("Time of operations: 341 days",
+            #                style={"color": "#35F8DF"}),
+            #         html.P("Number of tweets classified: 148 526",
+            #                style={"color": "#35F8DF"}),
+            #         html.P("Number of tweets retweeted: 12 162",
+            #                style={"color": "#35F8DF"}),
+            #     ], width=3, xs=12, sm=12, md=12, lg=3, xl=3,),
+            #     dbc.Col([
+            #         # This input is hidden, it is here to make bot-timeseries work
+            #         dbc.RadioItems(options=[{"label": "All groups", "value": 1}, {
+            #                        "label": "Exclude 'UNIDENTIFIED'", "value": 2}, ], value=2, id="bot-timeseries-input", inline=True, style={'display': 'none'}),
+            #         dbc.Spinner([dcc.Graph(id="bot-timeseries")], color="success",
+            #                     spinner_style={"width": "8rem", "height": "8rem"})
+            #     ], width=9, xs=12, sm=12, md=12, lg=9, xl=9,),
+            # ]),
         ]
     ),
     className="mt-3", style={"height": 600}
