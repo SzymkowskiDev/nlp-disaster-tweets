@@ -607,6 +607,23 @@ def on_text_input(value):
 
 # TAB 5 - TWITTER BOT ANALYTICS ########################################################################################################
 
+@app.callback(
+    Output('analytics-output', 'children'),
+    Input('analytics-input-dummy', 'value')
+)
+def get_analytics_data(value):
+
+    # HTTP request to the REST API of the bot will go here
+
+    # api_data = requests.get('https://API_DOMAIN_NAME/')
+    # or
+    # api_data = requests.get('https://API_DOMAIN_NAME/recent/{seconds}')
+
+    api_data = 100
+
+    return 'The data from the server is: \n{}'.format(api_data)
+
+
 # FIRST BAR CHART
 
 
