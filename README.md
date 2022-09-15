@@ -36,11 +36,17 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 [Theory has been moved to the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
 
 ## 🚀 How to run
-### How to run the web app locally?
+### How to run the web app ("NLP Disaster Tweets") locally?
 1. Clone the repo to the destination of your choice `git clone https://github.com/SzymkowskiDev/nlp-disaster-tweets.git`
-2. Open Python interpreter (e.g. Anaconda Prompt) and change the directory to the root of the project
+2. Open Python interpreter (e.g. Anaconda Prompt) and change the directory to the root of the project `nlp-disaster-tweets`
 3. In the terminal run the command `python app.py`
 4. The app will launch in your web browser at the address [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
+
+### How to run the REST API development server ("Disaster Retweeter Web") locally?
+1. Clone the repo to the destination of your choice `git clone https://github.com/bswck/disaster-retweeter`
+2. In your Python interpreter (e.g. Anaconda Prompt) change the directory to the root of the project `disaster-retweeter`
+3. In the terminal run the command 'uvicorn retweeter_web.app.main:app`
+4. The app will lanuch in your web browser at the address [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ### How to run a Jupyter notebook?
 In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and launching it with Jupyter.
