@@ -40,7 +40,7 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 1. Clone the repo to the destination of your choice `git clone https://github.com/SzymkowskiDev/nlp-disaster-tweets.git`
 2. Open Python interpreter (e.g. Anaconda Prompt) and change the directory to the root of the project
 3. In the terminal run the command `python app.py`
-4. The app will launch in your web browser at the address (http://127.0.0.1:8050/)[http://127.0.0.1:8050/]
+4. The app will launch in your web browser at the address [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
 
 ### How to run a Jupyter notebook?
 In the first iteration of the project, all there is to running the project is downloading a Jupyter notebook from directory "notebooks" and launching it with Jupyter.
