@@ -36,6 +36,9 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 [Theory has been moved to the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
 
 ## 🚀 How to run
+### How to access the web app?
+The dashboard is deployed at Heroku and is live at the address [https://nlp-disaster-tweets.herokuapp.com/]()
+
 ### How to run the web app ("NLP Disaster Tweets") locally?
 1. Clone the repo to the destination of your choice `git clone https://github.com/SzymkowskiDev/nlp-disaster-tweets.git`
 2. Open Python interpreter (e.g. Anaconda Prompt) and change the directory to the root of the project `nlp-disaster-tweets`
