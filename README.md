@@ -12,20 +12,21 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 ## Contents
 1. [🔗 Related Projects](#-Related-Projects)
 2. [👓 Theory](#-Theory)
-3. [🚀 How to run](#-How-to-run)
-4. [👨‍💻 Contributing](#-Contributing)
-5. [📂 Directory Structure](#-Directory-Structure)
-6. [🎓 Learning Materials](#-Learning-Materials)
-7. [📅 Development Schedule](#-Development-Schedule)
-8. [🆕 Changelog](#-Changelog)
-9. [🤖 Stack](#-Stack)
-10. [📝 Examples](#-Examples)
-11. [⚙ Configurations](#-Configurations)
-12. [💡 Tips](#-Tips)
-13. [🚧 Warnings](#-Warnings)
-14. [🧰 Troubleshooting](#-Troubleshooting)
-15. [📧 Contact](#-Contact)
-16. [📄 License](#-License)
+3. [⚙️ Setup](#-Setup)
+4. [🚀 How to run](#-How-to-run)
+5. [👨‍💻 Contributing](#-Contributing)
+6. [📂 Directory Structure](#-Directory-Structure)
+7. [🎓 Learning Materials](#-Learning-Materials)
+8. [📅 Development Schedule](#-Development-Schedule)
+9. [🆕 Changelog](#-Changelog)
+10. [🤖 Stack](#-Stack)
+11. [📝 Examples](#-Examples)
+12. [⚙ Configurations](#-Configurations)
+13. [💡 Tips](#-Tips)
+14. [🚧 Warnings](#-Warnings)
+15. [🧰 Troubleshooting](#-Troubleshooting)
+16. [📧 Contact](#-Contact)
+17. [📄 License](#-License)
 
 ## 🔗 Related Projects
 * Kaggle problem: ["Natural Language Processing with Disaster Tweets"](https://www.kaggle.com/competitions/nlp-getting-started/overview)
@@ -35,7 +36,17 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 ## 👓 Theory
 [Theory has been moved to the repo's wiki](https://github.com/SzymkowskiDev/nlp-disaster-tweets/wiki)
 
+## ⚙️ Setup
+Take these steps before section "🚀 How to run"
+<li>Create a virtual environment using <code> virtualenv venv </code>
+<li>Activate the virtual environment by running <code> venv/bin/activate </code>
+<li>On Windows use <code> venv\Scripts\activate.bat </code>
+<li>Install the dependencies using <code> pip install -r requirements.txt </code>
+
 ## 🚀 How to run
+
+    *Follow the steps in "⚙️ Setup" section that describe how to install all the dependencies*
+   
 ### How to access the web app?
 The dashboard is deployed at Heroku and is live at the address [https://nlp-disaster-tweets.herokuapp.com/](https://nlp-disaster-tweets.herokuapp.com/)
 
@@ -56,12 +67,6 @@ In the first iteration of the project, all there is to running the project is do
 Jupyter is available for download as a part of Anaconda suite from https://www.anaconda.com/.
 
 When feeding a Jupyter notebook with data, use data provided in directory "train_split" [here](https://github.com/SzymkowskiDev/nlp-disaster-tweets/tree/master/data/train_split).
-
-### Setup
-<li>Create a virtual environment using <code> virtualenv venv </code>
-<li>Activate the virtual environment by running <code> venv/bin/activate </code>
-<li>On Windows use <code> venv\Scripts\activate.bat </code>
-<li>Install the dependencies using <code> pip install -r requirements.txt </code>
 
 ## 👨‍💻 Contributing
 * [SzymkowskiDev](https://github.com/SzymkowskiDev)
