@@ -19,7 +19,7 @@ Group solution to the Kaggle problem titled "Natural Language Processing with Di
 7. [📂 Directory Structure](#-Directory-Structure)
 8. [🎓 Learning Materials](#-Learning-Materials)
 9. [📅 Development Schedule](#-Development-Schedule)
-10. [🆕 Changelog](#-Changelog)
+10. [🆕 Project duration](#-Project-duration)
 11. [🤖 Stack](#-Stack)
 12. [📝 Examples](#-Examples)
 13. [⚙ Configurations](#-Configurations)
