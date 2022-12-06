@@ -133,7 +133,7 @@ When feeding a Jupyter notebook with data, use data provided in directory "train
     - [X] Text (Word frequency (+Wordcloud))
     - [X] Target
 - [X] Customized classification tab
-- [ ] Best performing
+- [X] Best performing
 - [X] Make a prediction
 - [X] Twitter BOT Analytics (blank)
 - [X] About page
